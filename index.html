@@ -1,130 +1,2252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZERONIC | Premium Wearables & Audio Store Pakistan</title>
-    
-    <!-- Programmatic SEO Meta Architecture -->
-    <meta name="description" content="Shop ZERONIC Pro 2 Earbuds in Pakistan. High-bass sound acoustics, extended battery playtime, and crystal-clear calls. Enjoy Free Shipping and Cash on Delivery nationwide.">
-    <meta name="keywords" content="Zeronic, Zeronic Pro 2, earbuds price in pakistan, wireless earpods lahore, tech hunk clone, online shopping pakistan cod">
-    <meta property="og:title" content="ZERONIC | Premium Wireless Audio & Smart Wearables">
-    <meta property="og:description" content="Get the ZERONIC Pro 2 Earbuds for just PKR 1,999. Limited launch offer with Free Shipping and 7-Day Replacement Guarantee.">
-    <meta property="og:image" content="https://ibb.co">
-    <meta property="og:type" content="website">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- CRITICAL FIX: Official Stable Tailwind CSS v3 Script Engine -->
-    <script src="https://tailwindcss.com"></script>
-    
-    <!-- FontAwesome Core Vector Icons -->
-    <link rel="stylesheet" href="https://cloudflare.com">
+  <title>ZERONIC — Premium Tech & Gadgets in Pakistan</title>
+
+  <meta
+    name="description"
+    content="Discover premium smartwatches, earbuds, speakers and everyday tech gadgets at ZERONIC Pakistan."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    /* =========================================================
+       ZERONIC - GLOBAL
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-2: #181818;
+      --gray: #6b7280;
+      --light-gray: #f5f5f5;
+      --border: #e7e7e7;
+      --white: #ffffff;
+      --accent: #111111;
+      --green: #20b26b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--black);
+      background: #fff;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+
+    /* =========================================================
+       TOP ANNOUNCEMENT
+    ========================================================= */
+
+    .announcement {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .4px;
+      padding: 10px 15px;
+    }
+
+    .announcement span {
+      opacity: .7;
+      margin: 0 5px;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    header {
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #000;
+      transition: .3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 19px;
+    }
+
+    .cart-btn {
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: 0;
+      right: -3px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #000;
+      color: #fff;
+      font-size: 9px;
+      display: grid;
+      place-items: center;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 620px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.86) 0%,
+          rgba(0,0,0,.60) 45%,
+          rgba(0,0,0,.08) 100%
+        ),
+        url("https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=2000&q=90")
+        center/cover no-repeat;
+
+      display: flex;
+      align-items: center;
+      color: #fff;
+    }
+
+    .hero-content {
+      max-width: 590px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,.35);
+      padding: 8px 13px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 74px);
+      line-height: .98;
+      letter-spacing: -4px;
+      font-weight: 900;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #d7d7d7;
+    }
+
+    .hero p {
+      max-width: 500px;
+      font-size: 16px;
+      color: #ddd;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .btn-dark {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-dark:hover {
+      background: #e7e7e7;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      color: #fff;
+      border-color: rgba(255,255,255,.45);
+    }
+
+    .btn-outline:hover {
+      background: #fff;
+      color: #000;
+    }
+
+
+    /* =========================================================
+       TRUST BAR
+    ========================================================= */
+
+    .trust-bar {
+      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .trust-item {
+      padding: 25px 18px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .trust-item:last-child {
+      border-right: 0;
+    }
+
+    .trust-icon {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    .trust-item small {
+      color: var(--gray);
+      font-size: 11px;
+    }
+
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-heading .eyebrow {
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .section-heading h2 {
+      font-size: 34px;
+      letter-spacing: -1.5px;
+      margin-bottom: 9px;
+    }
+
+    .section-heading p {
+      color: var(--gray);
+      font-size: 14px;
+      max-width: 570px;
+      margin: auto;
+    }
+
+
+    /* =========================================================
+       PRODUCT CARDS
+    ========================================================= */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image {
+      background: #f5f5f5;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.06);
+    }
+
+    .badge {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      background: #000;
+      color: #fff;
+      padding: 6px 9px;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      z-index: 2;
+    }
+
+    .product-info {
+      padding: 17px 2px;
+    }
+
+    .product-category {
+      color: #888;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .product-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .stars {
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .old-price {
+      color: #999;
+      text-decoration: line-through;
+      font-size: 12px;
+      font-weight: 500;
+      margin-left: 7px;
+    }
+
+
+    /* =========================================================
+       FEATURED PRODUCT
+    ========================================================= */
+
+    .feature-section {
+      background: #f5f5f5;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 570px;
+    }
+
+    .feature-image {
+      overflow: hidden;
+    }
+
+    .feature-image img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .feature-content {
+      background: #111;
+      color: #fff;
+      padding: 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .feature-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 18px;
+    }
+
+    .feature h2 {
+      font-size: clamp(34px, 4vw, 55px);
+      line-height: 1;
+      letter-spacing: -2.5px;
+      margin-bottom: 20px;
+    }
+
+    .feature p {
+      color: #bbb;
+      font-size: 14px;
+      max-width: 430px;
+      margin-bottom: 28px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .feature-list li {
+      padding: 9px 0;
+      border-bottom: 1px solid #2b2b2b;
+      color: #ddd;
+      font-size: 13px;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      margin-right: 10px;
+    }
+
+
+    /* =========================================================
+       CATEGORIES
+    ========================================================= */
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .category-card {
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+      background: #eee;
+    }
+
+    .category-card img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .category-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        transparent 35%,
+        rgba(0,0,0,.8)
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 25px;
+      color: #fff;
+    }
+
+    .category-overlay h3 {
+      font-size: 21px;
+      margin-bottom: 7px;
+    }
+
+    .category-overlay a {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+
+    /* =========================================================
+       STATS
+    ========================================================= */
+
+    .stats-section {
+      background: #fafafa;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+    }
+
+    .stat {
+      padding: 15px;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border: 0;
+    }
+
+    .stat-number {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      color: #777;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+
+    /* =========================================================
+       REVIEWS
+    ========================================================= */
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .review {
+      border: 1px solid var(--border);
+      padding: 28px;
+      background: #fff;
+    }
+
+    .review-stars {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .review p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 24px;
+    }
+
+    .review-author {
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .review-location {
+      font-size: 10px;
+      color: #999;
+      margin-top: 3px;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .cta {
+      background:
+        linear-gradient(
+          rgba(0,0,0,.75),
+          rgba(0,0,0,.75)
+        ),
+        url("https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1800&q=90")
+        center/cover;
+      color: #fff;
+      text-align: center;
+      padding: 115px 20px;
+    }
+
+    .cta h2 {
+      font-size: clamp(35px, 5vw, 58px);
+      letter-spacing: -2.5px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #ccc;
+      max-width: 570px;
+      margin: 0 auto 28px;
+      font-size: 14px;
+    }
+
+
+    /* =========================================================
+       NEWSLETTER
+    ========================================================= */
+
+    .newsletter {
+      padding: 65px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .newsletter-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .newsletter h2 {
+      font-size: 27px;
+      letter-spacing: -1px;
+    }
+
+    .newsletter p {
+      color: var(--gray);
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      width: 440px;
+      max-width: 100%;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      border: 1px solid #ccc;
+      padding: 14px 16px;
+      outline: none;
+      font-size: 12px;
+    }
+
+    .newsletter-form button {
+      background: #000;
+      color: #fff;
+      border: 0;
+      padding: 0 22px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      background: #0b0b0b;
+      color: #fff;
+      padding: 65px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.4fr;
+      gap: 45px;
+      padding-bottom: 50px;
+    }
+
+    .footer-logo {
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 17px;
+    }
+
+    .footer-about {
+      color: #999;
+      font-size: 12px;
+      max-width: 300px;
+      line-height: 1.8;
+    }
+
+    .footer h4 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #999;
+      font-size: 12px;
+      transition: .2s;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-contact {
+      color: #999;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .footer-contact a {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #222;
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 10px;
+    }
+
+
+    /* =========================================================
+       WHATSAPP FLOAT
+    ========================================================= */
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+      z-index: 2000;
+      transition: .25s;
+    }
+
+    .whatsapp:hover {
+      transform: scale(1.08);
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media(max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-image {
+        min-height: 420px;
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trust-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .trust-item:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(1),
+      .stat:nth-child(2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .reviews {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .newsletter-form {
+        width: 100%;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+
+    @media(max-width: 600px) {
+
+      .announcement {
+        font-size: 10px;
+      }
+
+      .nav {
+        height: 65px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .nav-icons {
+        gap: 5px;
+      }
+
+      .hero {
+        min-height: 600px;
+        background-position: 62% center;
+      }
+
+      .hero h1 {
+        letter-spacing: -2.5px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .section-heading {
+        margin-bottom: 30px;
+      }
+
+      .section-heading h2 {
+        font-size: 28px;
+      }
+
+      .products {
+        gap: 13px;
+      }
+
+      .product-title {
+        font-size: 13px;
+      }
+
+      .product-info {
+        padding-top: 12px;
+      }
+
+      .feature-content {
+        padding: 45px 25px;
+      }
+
+      .feature h2 {
+        letter-spacing: -1.5px;
+      }
+
+      .categories {
+        gap: 10px;
+      }
+
+      .category-card {
+        height: 280px;
+      }
+
+      .category-overlay {
+        padding: 17px;
+      }
+
+      .category-overlay h3 {
+        font-size: 17px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .whatsapp {
+        width: 53px;
+        height: 53px;
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+
+  </style>
 </head>
-<body class="bg-black text-white font-sans antialiased">
 
-    <!-- 1. TOP ANNOUNCEMENT BAR (Tech Hunk Baseline Style) -->
-    <div class="bg-zinc-900 text-center py-2 px-4 border-b border-zinc-800 text-xs font-semibold tracking-wider text-gray-300 uppercase">
-        <i class="fa-solid fa-truck-fast text-green-500 mr-1.5"></i> Launch Deal: Free Nationwide Shipping + Cash on Delivery
+
+<body>
+
+
+  <!-- ========================================================
+       ANNOUNCEMENT BAR
+  ========================================================= -->
+
+  <div class="announcement">
+    FREE DELIVERY ON SELECTED ORDERS
+    <span>•</span>
+    CASH ON DELIVERY AVAILABLE ACROSS PAKISTAN
+  </div>
+
+
+  <!-- ========================================================
+       HEADER
+  ========================================================= -->
+
+  <header>
+
+    <div class="container nav">
+
+      <a href="#" class="logo">
+        ZERONIC<span>.</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#shop">Shop</a>
+        <a href="#new">New Arrivals</a>
+        <a href="#categories">Categories</a>
+        <a href="#bestsellers">Best Sellers</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-icons">
+
+        <button class="icon-btn" onclick="openSearch()" aria-label="Search">
+          ⌕
+        </button>
+
+        <button class="icon-btn" aria-label="Account">
+          ♙
+        </button>
+
+        <button class="icon-btn cart-btn" onclick="showCart()" aria-label="Cart">
+          ♧
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+
+        <button class="icon-btn mobile-menu" onclick="toggleMobileMenu()">
+          ☰
+        </button>
+
+      </div>
+
     </div>
 
-    <!-- 2. NAVIGATION NAV STRIP (Exact Logo Integration) -->
-    <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-zinc-900 px-4 md:px-8 py-4 flex justify-between items-center">
-        <a href="#" class="flex items-center">
-            <!-- Your direct verified ImgBB raw image asset loads perfectly here -->
-            <img src="https://ibb.co" alt="ZERONIC LOGO" class="h-6 md:h-8 w-auto object-contain">
-        </a>
-        <nav class="hidden md:flex gap-6 text-xs uppercase tracking-widest font-semibold text-gray-400">
-            <a href="#" class="text-white hover:text-white transition">Home</a>
-            <a href="#earbuds" class="hover:text-white transition">Earbuds</a>
-            <a href="#checkout-form" class="hover:text-white transition">Order Tracking</a>
-        </nav>
-        <a href="#checkout-form" class="bg-white text-black font-bold text-xs px-4 py-2.5 rounded-sm uppercase tracking-wider transition hover:bg-gray-200">
-            Order Now
-        </a>
-    </header>
+  </header>
 
-    <main class="max-w-6xl mx-auto px-4 py-8 md:py-16">
-        
-        <!-- 3. NEW ARRIVALS & BEST SELLER ROW SECTION -->
-        <section id="earbuds" class="mb-20 space-y-8">
-            <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
-                <h2 class="text-xl md:text-2xl font-black uppercase tracking-wider">Featured Flagship Products</h2>
-                <span class="text-xs font-bold text-green-500 uppercase tracking-widest bg-green-500/10 px-3 py-1 rounded-sm">1 Item Active</span>
+
+  <!-- ========================================================
+       HERO
+  ========================================================= -->
+
+  <section class="hero" id="shop">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <div class="hero-label">
+          ZERONIC — NEXT GENERATION TECH
+        </div>
+
+        <h1>
+          Technology<br>
+          <span>Made Better.</span>
+        </h1>
+
+        <p>
+          Discover smart gadgets designed for modern everyday life.
+          Premium style, useful features and exceptional value —
+          all in one place.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#bestsellers" class="btn btn-dark">
+            SHOP BESTSELLERS
+          </a>
+
+          <a href="#categories" class="btn btn-outline">
+            EXPLORE COLLECTION
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       TRUST
+  ========================================================= -->
+
+  <div class="trust-bar">
+
+    <div class="container trust-grid">
+
+      <div class="trust-item">
+        <div class="trust-icon">🚚</div>
+        <strong>Nationwide Delivery</strong>
+        <small>Fast delivery across Pakistan</small>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <strong>Secure Checkout</strong>
+        <small>Your information stays protected</small>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        <strong>Quality Products</strong>
+        <small>Carefully selected gadgets</small>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">💬</div>
+        <strong>WhatsApp Support</strong>
+        <small>We're here when you need us</small>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================
+       NEW ARRIVALS
+  ========================================================= -->
+
+  <section id="new">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Discover What's New
+        </div>
+
+        <h2>New Arrivals</h2>
+
+        <p>
+          Fresh tech. Modern designs. Everyday functionality.
+        </p>
+
+      </div>
+
+
+      <div class="products">
+
+
+        <!-- PRODUCT 1 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">New</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=85"
+              alt="Wireless earbuds"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Audio
             </div>
 
-            <!-- Single Product Grid Showcase -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-[#0a0a0a] border border-zinc-900 rounded-sm p-6 md:p-10">
-                
-                <!-- Left Column: Premium Interactive Product Display Case -->
-                <div class="space-y-4">
-                    <div class="bg-black border border-zinc-900 rounded-sm p-6 flex justify-center items-center relative aspect-square" style="min-height: 350px;">
-                        <img id="mainImage" src="https://unsplash.com" alt="ZERONIC Pro 2 Earbuds" class="max-h-80 w-auto object-contain transition duration-300">
-                        <span class="absolute top-4 left-4 bg-red-600 text-white text-xs font-black px-2.5 py-1 uppercase tracking-widest rounded-sm">
-                            70% OFF TODAY
-                        </span>
-                        <span class="absolute top-4 right-4 bg-green-500 text-black text-xs font-black px-2.5 py-1 uppercase tracking-widest rounded-sm">
-                            Best Seller
-                        </span>
-                    </div>
-                    
-                    <!-- Micro Thumbnail Swapping Navigation Array -->
-                    <div class="grid grid-cols-4 gap-2">
-                        <button onclick="swapImage('https://unsplash.com')" class="bg-black border border-zinc-800 p-2 rounded-sm focus:border-white transition">
-                            <img src="https://unsplash.com" alt="Thumbnail 1" class="w-full h-auto object-contain">
-                        </button>
-                        <button onclick="swapImage('https://unsplash.com')" class="bg-black border border-zinc-800 p-2 rounded-sm focus:border-white transition">
-                            <img src="https://unsplash.com" alt="Thumbnail 2" class="w-full h-auto object-contain">
-                        </button>
-                        <button onclick="swapImage('https://unsplash.com')" class="bg-black border border-zinc-800 p-2 rounded-sm focus:border-white transition">
-                            <img src="https://unsplash.com" alt="Thumbnail 3" class="w-full h-auto object-contain">
-                        </button>
-                        <button onclick="swapImage('https://unsplash.com')" class="bg-black border border-zinc-800 p-2 rounded-sm focus:border-white transition">
-                            <img src="https://unsplash.com" alt="Thumbnail 4" class="w-full h-auto object-contain">
-                        </button>
-                    </div>
-                </div>
+            <h3 class="product-title">
+              ZERONIC AirPods X
+            </h3>
 
-                <!-- Right Column: Premium High-End Copy Stack Details -->
-                <div class="space-y-6 text-left">
-                    <div class="space-y-1">
-                        <h3 class="text-2xl font-black uppercase tracking-tight text-white">ZERONIC Pro 2 Earbuds</h3>
-                        <p class="text-xs font-semibold text-gray-400 tracking-wider">ENC Clear Calling | Supreme Bass | Gaming Mode</p>
-                    </div>
-
-                    <div class="flex items-center gap-2 text-xs text-yellow-500">
-                        <div class="flex gap-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <span class="text-gray-400 font-medium">(4.8 / 5.0 Based on 1,428 local orders)</span>
-                    </div>
-
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        Engineered with 13mm customized composite structural drivers to deliver studio-level deep bass acoustics. Featuring 4.5 hours of continuous runtime per charge cycle loop.
-                    </p>
-
-                    <!-- Exact Minimalist Tech Hunk Price Card Structure -->
-                    <div class="p-4 bg-black border border-zinc-900 rounded-sm flex items-center justify-between">
-                        <div>
-                            <span class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-0.5">LAUNCH DEAL VALUE</span>
-                            <div class="flex items-baseline gap-2.5">
-                                <span class="text-2xl font-black text-white">PKR 1,999</span>
-                                <span class="text-xs text-gray-500 line-through ml-2">PKR 5,499</span>
-                            </div>
-                        </div>
-                        <span class="text-xs font-extrabold text-green-500 border border-green-500/30 bg-green-500/5 px-2.5 py-1 uppercase rounded-sm">
-                            FREE SHIPPING
-                        </span>
-                    </div>
-
-                    <!-- Tech Feature Quick Grid Matrix -->
-                    <div class="grid grid-cols-2 gap-2 text-center text-xs font-bold uppercase tracking-wider">
-                        <div class="bg-black border border-zinc-800 p-2.5 rounded-sm text-gray-300"><i class="fa-solid fa-music text-gray-500 mr-2"></i>Heavy Bass</div>
-                        <div class="bg-black border border-zinc-800 p-2.5 rounded-sm text-gray-300"><i class="fa-solid fa-circle-play text-gray-500 mr-2"></i>4.5H Battery</div>
-                        <div class="bg-black border border-zinc-800 p-2.5 rounded-sm text-gray-300"><i class="fa-solid fa-hand text-gray-500 mr-2"></i>Smart Touch</div>
-                        <div class="bg-black border border-zinc-800 p-2.5 rounded-sm text-gray-300"><i class="fa-solid fa-bolt text-gray-500 mr-2"></i>Instant Popup</div>
-                    </div>
-
-                    <a href="#checkout-form" class="block text-center bg-white text-black font-black text-sm py-4 rounded-sm uppercase tracking-widest transition hover:bg-gray-200">
-                        Buy It Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
-                    </a>
-                </div>
+            <div class="stars">
+              ★★★★★
             </div>
-        </section>
 
+            <div class="price">
+              Rs. 4,999
+              <span class="old-price">
+                Rs. 6,499
+              </span>
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">New</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"
+              alt="Smartwatch"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Smart Wear
+            </div>
+
+            <h3 class="product-title">
+              ZERONIC Watch Pro
+            </h3>
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <div class="price">
+              Rs. 6,499
+              <span class="old-price">
+                Rs. 8,999
+              </span>
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">Popular</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=85"
+              alt="Bluetooth speaker"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Audio
+            </div>
+
+            <h3 class="product-title">
+              ZERONIC Sound Mini
+            </h3>
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <div class="price">
+              Rs. 3,499
+              <span class="old-price">
+                Rs. 4,999
+              </span>
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 4 -->
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">Sale</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1587033411391-5d9e51cce126?auto=format&fit=crop&w=900&q=85"
+              alt="Smart tech gadget"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Accessories
+            </div>
+
+            <h3 class="product-title">
+              ZERONIC Charge Hub
+            </h3>
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <div class="price">
+              Rs. 2,499
+              <span class="old-price">
+                Rs. 3,499
+              </span>
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       FEATURED PRODUCT
+  ========================================================= -->
+
+  <section class="feature-section">
+
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="feature-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=1200&q=90"
+            alt="Premium wireless earbuds"
+          >
+
+        </div>
+
+
+        <div class="feature-content">
+
+          <div class="feature-label">
+            Featured Collection
+          </div>
+
+          <h2>
+            Sound Without Limits.
+          </h2>
+
+          <p>
+            Experience powerful sound, effortless connectivity and
+            a design made for everyday movement.
+          </p>
+
+          <ul class="feature-list">
+
+            <li>Active Noise Cancellation</li>
+
+            <li>Clear Calling Technology</li>
+
+            <li>Long Battery Life</li>
+
+            <li>Low Latency Gaming Mode</li>
+
+            <li>USB-C Fast Charging</li>
+
+          </ul>
+
+          <div>
+
+            <a
+              href="https://wa.me/923420672554?text=Hi%20ZERONIC%2C%20I%20want%20to%20know%20more%20about%20your%20earbuds."
+              target="_blank"
+              class="btn btn-dark"
+            >
+              SHOP NOW
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       CATEGORIES
+  ========================================================= -->
+
+  <section id="categories">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Explore ZERONIC
+        </div>
+
+        <h2>Shop By Category</h2>
+
+        <p>
+          Find the technology that fits your lifestyle.
+        </p>
+
+      </div>
+
+
+      <div class="categories">
+
+
+        <div class="category-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"
+            alt="Smart Watches"
+          >
+
+          <div class="category-overlay">
+
+            <h3>Smart Watches</h3>
+
+            <a href="#">
+              Explore Collection →
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="category-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=85"
+            alt="Wireless Earbuds"
+          >
+
+          <div class="category-overlay">
+
+            <h3>Wireless Earbuds</h3>
+
+            <a href="#">
+              Explore Collection →
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="category-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=85"
+            alt="Bluetooth Speakers"
+          >
+
+          <div class="category-overlay">
+
+            <h3>Speakers</h3>
+
+            <a href="#">
+              Explore Collection →
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="category-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=900&q=85"
+            alt="Tech Accessories"
+          >
+
+          <div class="category-overlay">
+
+            <h3>Accessories</h3>
+
+            <a href="#">
+              Explore Collection →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       STATS
+  ========================================================= -->
+
+  <section class="stats-section">
+
+    <div class="container">
+
+      <div class="stats">
+
+        <div class="stat">
+
+          <div class="stat-number">
+            4.8/5
+          </div>
+
+          <div class="stat-label">
+            Customer Rating
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-number">
+            24/7
+          </div>
+
+          <div class="stat-label">
+            Online Support
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-number">
+            100%
+          </div>
+
+          <div class="stat-label">
+            Quality Focused
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-number">
+            COD
+          </div>
+
+          <div class="stat-label">
+            Available Pakistan-Wide
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       BESTSELLERS
+  ========================================================= -->
+
+  <section id="bestsellers">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Customer Favorites
+        </div>
+
+        <h2>Best Sellers</h2>
+
+        <p>
+          Our most-loved gadgets, selected for performance and value.
+        </p>
+
+      </div>
+
+
+      <div class="products">
+
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">Best Seller</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=85"
+              alt="Wireless Earbuds"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Earbuds
+            </div>
+
+            <h3 class="product-title">
+              ZERONIC Buds Pro
+            </h3>
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <div class="price">
+              Rs. 5,499
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">Best Seller</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"
+              alt="Smart Watch"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Smart Watch
+            </div>
+
+            <h3 class="product-title">
+              ZERONIC Ultra
+            </h3>
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <div class="price">
+              Rs. 7,499
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">Trending</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=85"
+              alt="Bluetooth Speaker"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Speakers
+            </div>
+
+            <h3 class="product-title">
+              ZERONIC Boom Mini
+            </h3>
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <div class="price">
+              Rs. 3,999
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="badge">Sale</span>
+
+            <img
+              src="https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=900&q=85"
+              alt="Charging accessory"
+            >
+
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Accessories
+            </div>
+
+            <h3 class="product-title">
+              ZERONIC Fast Charger
+            </h3>
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <div class="price">
+              Rs. 1,999
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       REVIEWS
+  ========================================================= -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div class="eyebrow">
+          Customer Love
+        </div>
+
+        <h2>What Our Customers Say</h2>
+
+        <p>
+          Real experiences from people using ZERONIC every day.
+        </p>
+
+      </div>
+
+
+      <div class="reviews">
+
+
+        <div class="review">
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+          <p>
+            “The design is really clean and the earbuds sound much
+            better than I expected at this price. Definitely worth it.”
+          </p>
+
+          <div class="review-author">
+            Muhammad A.
+          </div>
+
+          <div class="review-location">
+            Lahore, Pakistan
+          </div>
+
+        </div>
+
+
+        <div class="review">
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+          <p>
+            “Ordered the smartwatch and received it quickly.
+            Looks premium and the calling feature works perfectly.”
+          </p>
+
+          <div class="review-author">
+            Hamza R.
+          </div>
+
+          <div class="review-location">
+            Islamabad, Pakistan
+          </div>
+
+        </div>
+
+
+        <div class="review">
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+          <p>
+            “Good quality, nice packaging and responsive support.
+            I will definitely order again.”
+          </p>
+
+          <div class="review-author">
+            Ali K.
+          </div>
+
+          <div class="review-location">
+            Karachi, Pakistan
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       CTA
+  ========================================================= -->
+
+  <section class="cta">
+
+    <div class="container">
+
+      <h2>
+        Upgrade Your Everyday.
+      </h2>
+
+      <p>
+        Discover smarter gadgets, better accessories and modern
+        technology designed around the way you live.
+      </p>
+
+      <a href="#bestsellers" class="btn btn-dark">
+        SHOP ZERONIC
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       NEWSLETTER
+  ========================================================= -->
+
+  <section class="newsletter">
+
+    <div class="container newsletter-inner">
+
+      <div>
+
+        <h2>
+          Stay in the loop.
+        </h2>
+
+        <p>
+          Get new product launches and exclusive offers.
+        </p>
+
+      </div>
+
+
+      <form
+        class="newsletter-form"
+        onsubmit="subscribeNewsletter(event)"
+      >
+
+        <input
+          type="email"
+          placeholder="Your email address"
+          required
+        >
+
+        <button type="submit">
+          SUBSCRIBE
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       FOOTER
+  ========================================================= -->
+
+  <footer id="contact">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+
+        <div>
+
+          <div class="footer-logo">
+            ZERONIC.
+          </div>
+
+          <p class="footer-about">
+            Modern technology for modern living.
+            Discover carefully selected gadgets designed
+            to make everyday life smarter and easier.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h4>Shop</h4>
+
+          <ul class="footer-links">
+
+            <li>
+              <a href="#bestsellers">Best Sellers</a>
+            </li>
+
+            <li>
+              <a href="#new">New Arrivals</a>
+            </li>
+
+            <li>
+              <a href="#categories">Smart Watches</a>
+            </li>
+
+            <li>
+              <a href="#categories">Earbuds</a>
+            </li>
+
+            <li>
+              <a href="#categories">Accessories</a>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div>
+
+          <h4>Quick Links</h4>
+
+          <ul class="footer-links">
+
+            <li>
+              <a href="#">About Us</a>
+            </li>
+
+            <li>
+              <a href="#">Shipping Policy</a>
+            </li>
+
+            <li>
+              <a href="#">Returns</a>
+            </li>
+
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
+
+            <li>
+              <a href="#">Terms & Conditions</a>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div>
+
+          <h4>Contact ZERONIC</h4>
+
+          <div class="footer-contact">
+
+            <p>
+              WhatsApp:
+              <br>
+              <a
+                href="https://wa.me/923420672554"
+                target="_blank"
+              >
+                +92 342 0672554
+              </a>
+            </p>
+
+            <br>
+
+            <p>
+              Email:
+              <br>
+              <a href="mailto:support@zeronicpk.store">
+                support@zeronicpk.store
+              </a>
+            </p>
+
+            <br>
+
+            <p>
+              Pakistan
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <div>
+          © 2026 ZERONIC. All rights reserved.
+        </div>
+
+        <div>
+          Premium Tech • Pakistan
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ========================================================
+       WHATSAPP
+  ========================================================= -->
+
+  <a
+    class="whatsapp"
+    href="https://wa.me/923420672554?text=Hi%20ZERONIC%2C%20I%20need%20help%20with%20your%20products."
+    target="_blank"
+    aria-label="Contact ZERONIC on WhatsApp"
+  >
+    ☎
+  </a>
+
+
+  <!-- ========================================================
+       JAVASCRIPT
+  ========================================================= -->
+
+  <script>
+
+    let cartCount = 0;
+
+
+    /* -----------------------------------------------
+       CART
+    ----------------------------------------------- */
+
+    function addToCart() {
+
+      cartCount++;
+
+      document.getElementById("cartCount").textContent = cartCount;
+
+    }
+
+
+    function showCart() {
+
+      if (cartCount === 0) {
+
+        alert("Your cart is currently empty.");
+
+      } else {
+
+        alert(
+          "You have " +
+          cartCount +
+          " item(s) in your cart."
+        );
+
+      }
+
+    }
+
+
+    /* -----------------------------------------------
+       SEARCH
+    ----------------------------------------------- */
+
+    function openSearch() {
+
+      const search = prompt(
+        "What are you looking for?"
+      );
+
+      if (search && search.trim() !== "") {
+
+        alert(
+          'Search results for "' +
+          search +
+          '" will appear here.'
+        );
+
+      }
+
+    }
+
+
+    /* -----------------------------------------------
+       MOBILE MENU
+    ----------------------------------------------- */
+
+    function toggleMobileMenu() {
+
+      const links =
+        document.querySelector(".nav-links");
+
+      if (links.style.display === "flex") {
+
+        links.style.display = "none";
+
+      } else {
+
+        links.style.display = "flex";
+
+        links.style.position = "absolute";
+        links.style.top = "65px";
+        links.style.left = "0";
+        links.style.right = "0";
+        links.style.background = "#fff";
+        links.style.padding = "25px";
+        links.style.flexDirection = "column";
+        links.style.alignItems = "flex-start";
+        links.style.borderBottom = "1px solid #eee";
+
+      }
+
+    }
+
+
+    /* -----------------------------------------------
+       NEWSLETTER
+    ----------------------------------------------- */
+
+    function subscribeNewsletter(event) {
+
+      event.preventDefault();
+
+      const email =
+        event.target.querySelector("input").value;
+
+      alert(
+        "Thanks! " +
+        email +
+        " has been added to our newsletter."
+      );
+
+      event.target.reset();
+
+    }
+
+
+    /* -----------------------------------------------
+       PRODUCT IMAGE CLICK
+    ----------------------------------------------- */
+
+    document.querySelectorAll(".product-card").forEach(
+      card => {
+
+        card.style.cursor = "pointer";
+
+        card.addEventListener(
+          "click",
+          function() {
+
+            alert(
+              "Product page coming soon. Replace this with your product URL."
+            );
+
+          }
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
