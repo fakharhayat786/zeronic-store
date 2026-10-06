@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ZERONIC | Premium Wireless Earbuds</title>
+  <title>ZERONIC — Premium Wireless Earbuds in Pakistan</title>
 
   <meta
     name="description"
-    content="Discover ZERONIC wireless earbuds — premium sound, modern design and everyday comfort."
-  />
+    content="Discover premium wireless earbuds from ZERONIC Pakistan. Clean sound, modern design and everyday comfort."
+  >
 
-  <meta name="theme-color" content="#0b3b82" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
-  />
+  >
 
   <style>
 
     /* =========================================================
-       RESET
+       GLOBAL
     ========================================================= */
 
     * {
@@ -33,31 +31,32 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --black: #080808;
+      --dark: #111111;
+      --gray: #6b7280;
+      --light-gray: #f5f5f5;
+      --border: #e7e7e7;
+      --white: #ffffff;
+      --blue: #0867d5;
+      --whatsapp: #25D366;
+      --container: 1180px;
+    }
+
     html {
       scroll-behavior: smooth;
     }
 
     body {
       font-family: "Inter", sans-serif;
-      color: #111111;
-      background: #ffffff;
+      color: var(--black);
+      background: #fff;
       line-height: 1.5;
       overflow-x: hidden;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      border: 0;
-      cursor: pointer;
+    body.no-scroll {
+      overflow: hidden;
     }
 
     a {
@@ -65,102 +64,45 @@
       text-decoration: none;
     }
 
-    ul {
-      list-style: none;
+    button,
+    input {
+      font-family: inherit;
     }
 
-    :root {
-      --blue: #0b3b82;
-      --blue-dark: #06285c;
-      --blue-light: #eaf2ff;
-      --black: #080808;
-      --dark: #111111;
-      --gray: #6d6d6d;
-      --light: #f6f6f4;
-      --border: #e7e7e7;
-      --white: #ffffff;
-      --container: 1240px;
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     .container {
-      width: min(var(--container), calc(100% - 40px));
+      width: min(var(--container), calc(100% - 48px));
       margin: 0 auto;
     }
 
-    .section {
-      padding: 110px 0;
-    }
-
-    .eyebrow {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(38px, 5vw, 68px);
-      line-height: 1.02;
-      letter-spacing: -0.045em;
-      font-weight: 800;
-    }
-
-    .section-description {
-      max-width: 600px;
-      color: var(--gray);
-      font-size: 16px;
-      line-height: 1.8;
-      margin-top: 22px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 25px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: 0.25s ease;
-    }
-
-    .btn-dark {
-      background: var(--black);
-      color: white;
-    }
-
-    .btn-dark:hover {
-      background: var(--blue);
-      transform: translateY(-2px);
-    }
-
-    .btn-white {
-      background: white;
-      color: #111;
-    }
-
-    .btn-white:hover {
-      transform: translateY(-2px);
-    }
 
     /* =========================================================
-       ANNOUNCEMENT
+       ANNOUNCEMENT BAR
     ========================================================= */
 
     .announcement {
-      background: var(--blue);
-      color: white;
+      background: #000;
+      color: #fff;
       text-align: center;
-      padding: 9px 20px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
+      padding: 10px 15px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .5px;
     }
+
+    .announcement span {
+      opacity: .45;
+      margin: 0 8px;
+    }
+
 
     /* =========================================================
        HEADER
@@ -170,17 +112,16 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid #eeeeee;
+      backdrop-filter: blur(14px);
     }
 
     .header-inner {
-      min-height: 86px;
+      min-height: 76px;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 20px;
     }
 
     .header-left {
@@ -199,244 +140,320 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      gap: 10px;
+      gap: 5px;
     }
 
     .header-logo {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      line-height: 0;
     }
 
     .header-logo img {
       width: 210px;
       height: auto;
       object-fit: contain;
-    }
-
-    @media (max-width: 768px) {
-      .header-logo img {
-        width: 160px;
-      }
+      display: block;
     }
 
     .icon-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      border: 0;
       background: transparent;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.2s ease;
+      display: grid;
+      place-items: center;
+      position: relative;
       color: #111;
+      transition: .2s ease;
     }
 
     .icon-btn:hover {
-      background: #f1f1f1;
+      background: #f4f4f4;
+      border-radius: 50%;
     }
 
     .icon {
       width: 20px;
       height: 20px;
-      stroke: currentColor;
       fill: none;
-      stroke-width: 1.8;
+      stroke: currentColor;
+      stroke-width: 1.7;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
+    .cart-count {
+      position: absolute;
+      top: 2px;
+      right: 0;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #000;
+      color: #fff;
+      font-size: 9px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
     .hamburger {
+      width: 21px;
       display: flex;
       flex-direction: column;
       gap: 5px;
-      width: 20px;
     }
 
     .hamburger span {
-      width: 20px;
-      height: 1.8px;
+      width: 100%;
+      height: 1.5px;
       background: #111;
-      border-radius: 5px;
+      display: block;
     }
 
-    .cart-button {
-      position: relative;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: 3px;
-      right: 1px;
-      min-width: 17px;
-      height: 17px;
-      padding: 0 4px;
-      background: var(--blue);
-      color: white;
-      border-radius: 50px;
-      font-size: 9px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
 
     /* =========================================================
-       HERO
+       GENERAL BUTTONS
+    ========================================================= */
+
+    .btn {
+      min-height: 48px;
+      padding: 0 25px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1px;
+      border: 1px solid transparent;
+      transition: .25s ease;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-white:hover {
+      background: #e9e9e9;
+      transform: translateY(-2px);
+    }
+
+    .btn-black {
+      background: #000;
+      color: #fff;
+    }
+
+    .btn-black:hover {
+      background: #222;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,.45);
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      background: #fff;
+      color: #000;
+    }
+
+
+    /* =========================================================
+       DESKTOP HERO
     ========================================================= */
 
     .hero {
-      background: #f2f3f5;
-      padding: 30px 0;
+      background: #080808;
+      color: #fff;
+      padding: 18px 0;
     }
 
     .hero-card {
-      position: relative;
-      min-height: 680px;
+      min-height: 650px;
+      border-radius: 24px;
       overflow: hidden;
-      border-radius: 32px;
+      position: relative;
+
       background:
-        radial-gradient(
-          circle at 76% 46%,
-          rgba(42, 104, 196, 0.34),
-          transparent 28%
-        ),
         linear-gradient(
-          125deg,
-          #0a0a0a 0%,
-          #111827 58%,
-          #0a326e 100%
-        );
-      color: white;
+          90deg,
+          rgba(0,0,0,.95) 0%,
+          rgba(0,0,0,.74) 45%,
+          rgba(0,0,0,.15) 100%
+        ),
+        url("https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=2000&q=90")
+        center / cover no-repeat;
+
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
     }
 
     .hero-content {
+      padding: 80px 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: relative;
       z-index: 2;
-      padding: 80px 50px 80px 75px;
     }
 
     .hero-eyebrow {
-      color: #9fc5ff;
-      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      border: 1px solid rgba(255,255,255,.32);
+      padding: 8px 13px;
+      border-radius: 50px;
+      font-size: 10px;
       font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      letter-spacing: 1.8px;
+      margin-bottom: 22px;
     }
 
     .hero-title {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(52px, 6vw, 92px);
-      line-height: 0.94;
-      letter-spacing: -0.06em;
-      font-weight: 800;
-      max-width: 620px;
+      max-width: 600px;
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: .96;
+      letter-spacing: -4px;
+      font-weight: 900;
+      margin: 0;
     }
 
     .hero-title span {
-      color: #8dbaff;
+      color: #d7d7d7;
     }
 
     .hero-actions {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 38px;
-      justify-content: center;
+      justify-content: flex-start;
+      margin-top: 34px;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 22px;
-      margin-top: 42px;
+      gap: 17px;
+      margin-top: 35px;
     }
 
     .hero-meta-item {
       display: flex;
       align-items: center;
-      gap: 9px;
-      color: rgba(255,255,255,0.72);
-      font-size: 12px;
+      gap: 7px;
+      color: rgba(255,255,255,.72);
+      font-size: 10px;
       font-weight: 600;
     }
 
     .hero-meta-dot {
-      width: 7px;
-      height: 7px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
-      background: #8dbaff;
+      background: #fff;
+      opacity: .8;
     }
 
     .hero-visual {
-      height: 100%;
-      min-height: 680px;
+      min-height: 650px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px;
-    }
-
-    .hero-glow {
-      position: absolute;
-      width: 440px;
-      height: 440px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
+      overflow: hidden;
     }
 
     .hero-product {
-      position: relative;
-      z-index: 2;
-      width: min(650px, 100%);
-      height: 540px;
-      object-fit: contain;
-      filter: drop-shadow(0 35px 45px rgba(0,0,0,0.45));
-      transform: rotate(-5deg);
+      width: 88%;
+      max-width: 560px;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 20px;
+      mix-blend-mode: screen;
+      opacity: .95;
     }
 
-    .hero-floating-card {
-      position: absolute;
-      z-index: 3;
-      right: 8%;
-      bottom: 12%;
-      padding: 18px 20px;
-      min-width: 180px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.16);
-      backdrop-filter: blur(18px);
-    }
-
-    .hero-floating-card small {
-      display: block;
-      color: rgba(255,255,255,0.55);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 5px;
-    }
-
-    .hero-floating-card strong {
-      font-family: "Manrope", sans-serif;
-      font-size: 18px;
-    }
 
     /* =========================================================
-       STATEMENT
+       MOBILE HERO BANNER
+    ========================================================= */
+
+    .mobile-hero {
+      display: none;
+    }
+
+    .mobile-hero-banner {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .mobile-hero-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .mobile-hero-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 11% 20px 7%;
+    }
+
+    .mobile-hero-copy {
+      margin-top: 14%;
+    }
+
+    .mobile-hero-eyebrow {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      margin-bottom: 18px;
+      opacity: .9;
+    }
+
+    .mobile-hero-title {
+      font-size: clamp(39px, 11vw, 58px);
+      line-height: .94;
+      letter-spacing: -2.8px;
+      font-weight: 900;
+    }
+
+    .mobile-hero-title span {
+      color: #d7d7d7;
+    }
+
+    .mobile-hero-action {
+      margin-top: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mobile-hero-action .btn {
+      min-width: 175px;
+      box-shadow: 0 12px 35px rgba(0,0,0,.25);
+    }
+
+
+    /* =========================================================
+       STATEMENT STRIP
     ========================================================= */
 
     .statement {
-      padding: 22px 0;
-      background: var(--black);
-      color: white;
-      overflow: hidden;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
     }
 
     .statement-track {
@@ -444,26 +461,67 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 22px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      gap: 14px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      color: #555;
     }
 
     .statement-dot {
       width: 4px;
       height: 4px;
-      background: #7eaef8;
       border-radius: 50%;
+      background: #aaa;
     }
 
+
     /* =========================================================
-       PRODUCTS
+       TRUST BAR
     ========================================================= */
 
-    .products-section {
-      background: white;
+    .trust-bar {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .trust-item {
+      text-align: center;
+      padding: 24px 15px;
+      border-right: 1px solid var(--border);
+    }
+
+    .trust-item:last-child {
+      border-right: 0;
+    }
+
+    .trust-icon {
+      font-size: 20px;
+      margin-bottom: 7px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+
+    .trust-item small {
+      color: var(--gray);
+      font-size: 10px;
+    }
+
+
+    /* =========================================================
+       SECTIONS
+    ========================================================= */
+
+    .section {
+      padding: 90px 0;
     }
 
     .section-top {
@@ -471,12 +529,36 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 30px;
-      margin-bottom: 50px;
+      margin-bottom: 42px;
     }
 
-    .section-top .section-description {
-      margin-top: 15px;
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #777;
+      margin-bottom: 10px;
     }
+
+    .section-title {
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: .98;
+      letter-spacing: -2.5px;
+      font-weight: 900;
+    }
+
+    .section-description {
+      color: var(--gray);
+      max-width: 520px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       PRODUCTS
+    ========================================================= */
 
     .products-grid {
       display: grid;
@@ -485,446 +567,331 @@
     }
 
     .product-card {
-      position: relative;
-      background: #f6f6f4;
-      border-radius: 22px;
       overflow: hidden;
-      transition: 0.3s ease;
+      background: #f6f6f6;
+      border-radius: 20px;
+      transition: .3s ease;
     }
 
     .product-card:hover {
-      transform: translateY(-7px);
-    }
-
-    .product-image-wrap {
-      position: relative;
-      aspect-ratio: 1 / 1.05;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        radial-gradient(circle at center, #ffffff 0%, #eeeeeb 75%);
+      transform: translateY(-4px);
     }
 
     .product-image {
-      width: 88%;
-      height: 88%;
-      object-fit: contain;
-      transition: 0.35s ease;
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #f1f1f1;
     }
 
-    .product-card:hover .product-image {
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .product-card:hover .product-image img {
       transform: scale(1.05);
     }
 
     .product-badge {
       position: absolute;
-      top: 15px;
-      left: 15px;
+      left: 13px;
+      top: 13px;
       z-index: 2;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: #111;
-      color: white;
-      font-size: 9px;
+      background: #000;
+      color: #fff;
+      padding: 6px 9px;
+      font-size: 8px;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: .8px;
       text-transform: uppercase;
     }
 
     .product-info {
-      padding: 21px;
-      background: white;
+      padding: 18px;
+      background: #fff;
+    }
+
+    .product-category {
+      color: #888;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
     }
 
     .product-name {
-      font-family: "Manrope", sans-serif;
-      font-size: 17px;
+      font-size: 15px;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      margin-bottom: 5px;
     }
 
     .product-subtitle {
-      color: #7b7b7b;
-      font-size: 12px;
-      margin-top: 5px;
+      color: #888;
+      font-size: 11px;
     }
 
     .product-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 15px;
-      margin-top: 16px;
+      gap: 10px;
+      margin-top: 15px;
     }
 
     .product-price {
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 900;
     }
 
     .add-btn {
-      width: 39px;
-      height: 39px;
+      width: 36px;
+      height: 36px;
+      border: 0;
       border-radius: 50%;
-      background: #111;
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.2s ease;
+      background: #000;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      transition: .2s;
     }
 
     .add-btn:hover {
-      background: var(--blue);
-      transform: rotate(8deg);
+      transform: scale(1.06);
+      background: #222;
     }
 
+
     /* =========================================================
-       EXPERIENCE
+       EXPERIENCE SECTION
     ========================================================= */
 
     .experience {
-      background: #080808;
-      color: white;
-      padding: 130px 0;
+      background: #f5f5f3;
     }
 
     .experience-grid {
       display: grid;
-      grid-template-columns: 0.82fr 1.18fr;
+      grid-template-columns: .9fr 1.1fr;
       gap: 80px;
       align-items: center;
     }
 
-    .experience-copy .eyebrow {
-      color: #9fc5ff;
+    .experience-copy {
+      max-width: 520px;
     }
 
     .experience-title {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(46px, 6vw, 82px);
-      line-height: 0.96;
-      letter-spacing: -0.055em;
-      font-weight: 800;
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: .92;
+      letter-spacing: -4px;
+      font-weight: 900;
+      margin-bottom: 24px;
     }
 
     .experience-title span {
-      color: #7faef4;
+      color: #8d8d8d;
     }
 
     .experience-description {
-      margin-top: 25px;
-      max-width: 510px;
-      color: rgba(255,255,255,0.62);
-      line-height: 1.85;
-      font-size: 15px;
-    }
-
-    .experience-action {
-      margin-top: 32px;
-      display: flex;
-      justify-content: center;
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 470px;
+      margin-bottom: 30px;
     }
 
     .experience-image-area {
+      min-height: 560px;
+      border-radius: 26px;
+      background: #111;
       position: relative;
-      min-height: 570px;
-      border-radius: 30px;
       overflow: hidden;
-      background:
-        radial-gradient(
-          circle at 50% 45%,
-          rgba(44, 107, 197, 0.28),
-          transparent 40%
-        ),
-        linear-gradient(145deg, #151515, #0d1727);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .experience-image {
-      width: 90%;
-      max-width: 620px;
-      height: 480px;
-      object-fit: contain;
-      filter: drop-shadow(0 30px 45px rgba(0,0,0,0.55));
+      width: 80%;
+      height: 470px;
+      object-fit: cover;
+      border-radius: 20px;
+      opacity: .95;
     }
 
-    .experience-tag {
+    .experience-label {
       position: absolute;
       top: 25px;
       left: 25px;
-      padding: 9px 13px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,.7);
       font-size: 9px;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      backdrop-filter: blur(12px);
     }
 
     .experience-number {
       position: absolute;
-      right: 28px;
-      bottom: 24px;
-      color: rgba(255,255,255,0.16);
-      font-family: "Manrope", sans-serif;
-      font-size: 100px;
+      right: 25px;
+      bottom: 8px;
+      color: rgba(255,255,255,.08);
+      font-size: 110px;
       line-height: 1;
-      font-weight: 800;
-      letter-spacing: -0.08em;
+      font-weight: 900;
     }
+
 
     /* =========================================================
-       FEATURES
+       PRODUCT BENEFITS
     ========================================================= */
 
-    .feature-section {
-      background: #f5f5f3;
+    .benefits {
+      background: #fff;
     }
 
-    .feature-heading {
-      max-width: 720px;
-      margin-bottom: 60px;
+    .benefits-heading {
+      margin-bottom: 45px;
     }
 
-    .features-grid {
+    .benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
-    .feature-card {
-      background: white;
-      border-radius: 24px;
-      padding: 35px;
-      min-height: 300px;
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: 0.25s ease;
+    .benefit-card {
+      padding: 35px 30px;
+      border-right: 1px solid var(--border);
     }
 
-    .feature-card:hover {
-      transform: translateY(-5px);
+    .benefit-card:last-child {
+      border-right: 0;
     }
 
-    .feature-number {
-      width: 43px;
-      height: 43px;
-      border-radius: 50%;
-      background: var(--blue-light);
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
+    .benefit-number {
+      color: #999;
+      font-size: 10px;
       font-weight: 800;
-      margin-bottom: 55px;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
     }
 
-    .feature-card h3 {
-      font-family: "Manrope", sans-serif;
-      font-size: 24px;
-      letter-spacing: -0.03em;
+    .benefit-card h3 {
+      font-size: 20px;
+      letter-spacing: -.6px;
       margin-bottom: 12px;
     }
 
-    .feature-card p {
+    .benefit-card p {
       color: var(--gray);
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.75;
+      max-width: 310px;
     }
 
+
     /* =========================================================
-       CTA
+       CTA / EXPLORE EXPERIENCE
     ========================================================= */
 
     .cta-section {
-      padding: 30px 0 110px;
-      background: #f5f5f3;
+      padding: 0 0 90px;
     }
 
     .cta-card {
-      position: relative;
+      min-height: 580px;
+      border-radius: 26px;
       overflow: hidden;
-      border-radius: 30px;
-      min-height: 510px;
+      position: relative;
       background:
-        radial-gradient(
-          circle at 72% 50%,
-          rgba(50, 113, 205, 0.26),
-          transparent 31%
-        ),
         linear-gradient(
-          120deg,
-          #111111,
-          #101b2d 75%,
-          #0c3778
-        );
-      color: white;
+          90deg,
+          rgba(0,0,0,.9),
+          rgba(0,0,0,.45)
+        ),
+        url("https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1800&q=90")
+        center / cover no-repeat;
+
       display: flex;
       align-items: center;
     }
 
     .cta-content {
+      width: 55%;
+      padding: 70px;
+      color: #fff;
       position: relative;
       z-index: 2;
-      width: 55%;
-      padding: 65px;
     }
 
     .cta-content .eyebrow {
-      color: #9fc5ff;
+      color: rgba(255,255,255,.6);
     }
 
     .cta-title {
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(42px, 5vw, 68px);
-      line-height: 0.98;
-      letter-spacing: -0.055em;
-      font-weight: 800;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: .92;
+      letter-spacing: -3.5px;
+      font-weight: 900;
+      margin-bottom: 20px;
     }
 
     .cta-description {
-      max-width: 500px;
-      margin-top: 20px;
-      color: rgba(255,255,255,0.66);
+      color: rgba(255,255,255,.72);
+      font-size: 14px;
       line-height: 1.8;
-      font-size: 15px;
+      max-width: 460px;
+      margin-bottom: 30px;
     }
 
     .cta-actions {
-      margin-top: 30px;
+      display: flex;
+      justify-content: center;
     }
 
-    .cta-image {
-      position: absolute;
-      right: 2%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48%;
-      height: 90%;
-      object-fit: contain;
-      filter: drop-shadow(0 30px 40px rgba(0,0,0,0.5));
-    }
-
-    /* =========================================================
-       WHY ZERONIC
-    ========================================================= */
-
-    .why-section {
-      background: white;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 90px;
-      align-items: start;
-    }
-
-    .why-sticky {
-      position: sticky;
-      top: 130px;
-    }
-
-    .why-list {
-      border-top: 1px solid var(--border);
-    }
-
-    .why-item {
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 25px;
-      padding: 30px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .why-index {
-      font-size: 12px;
-      color: var(--blue);
-      font-weight: 800;
-      padding-top: 5px;
-    }
-
-    .why-item h3 {
-      font-family: "Manrope", sans-serif;
-      font-size: 24px;
-      letter-spacing: -0.03em;
-      margin-bottom: 8px;
-    }
-
-    .why-item p {
-      max-width: 550px;
-      color: var(--gray);
-      font-size: 14px;
-      line-height: 1.75;
-    }
 
     /* =========================================================
        FOOTER
     ========================================================= */
 
-    .footer {
-      background: #f3f3f1;
-      padding: 25px 20px 20px;
+    .zeronic-footer {
+      width: 100%;
+      padding: 12px 10px 10px;
+      background: #fff;
     }
 
-    .footer-container {
+    .footer-box {
+      max-width: 1400px;
+      margin: 0 auto;
       background: var(--blue);
-      color: white;
-      border-radius: 30px;
+      color: #fff;
+      border-radius: 28px;
       overflow: hidden;
-    }
-
-    .footer-main {
-      padding: 65px 55px 45px;
+      padding: 0 55px;
     }
 
     .footer-top {
       display: grid;
-      grid-template-columns: 1.15fr 0.75fr 0.75fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1.2fr;
       gap: 50px;
-      padding-bottom: 55px;
-      border-bottom: 1px solid rgba(255,255,255,0.14);
+      padding: 60px 0 50px;
+      border-bottom: 1px solid rgba(255,255,255,.22);
     }
 
-    .footer-brand {
-      max-width: 350px;
-    }
-
-    .footer-logo-wrap {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: transparent;
-      padding: 0;
-      border-radius: 0;
-      margin-bottom: 24px;
-    }
-
-    .footer-logo-wrap img {
-      width: 210px;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .footer-brand-text {
-      color: rgba(255,255,255,0.66);
-      font-size: 13px;
-      line-height: 1.8;
-      max-width: 310px;
+    .footer-column {
+      min-width: 0;
     }
 
     .footer-heading {
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.13em;
+      letter-spacing: .13em;
       text-transform: uppercase;
       margin-bottom: 20px;
     }
@@ -937,14 +904,45 @@
 
     .footer-links a {
       width: fit-content;
-      color: rgba(255,255,255,0.68);
+      color: rgba(255,255,255,.68);
       font-size: 13px;
-      transition: 0.2s ease;
+      transition: .2s ease;
     }
 
     .footer-links a:hover {
-      color: white;
+      color: #fff;
       transform: translateX(2px);
+    }
+
+    .footer-brand {
+      margin-bottom: 15px;
+    }
+
+    /*
+      White footer logo:
+      Keep the same dimensions and spacing as the previous footer.
+    */
+
+    .footer-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+      background: transparent;
+      padding: 0;
+    }
+
+    .footer-logo-wrap img {
+      width: 125px;
+      height: auto;
+      display: block;
+    }
+
+    .footer-brand p {
+      max-width: 360px;
+      color: rgba(255,255,255,.72);
+      font-size: 13px;
+      line-height: 1.8;
     }
 
     .footer-contact {
@@ -957,9 +955,13 @@
       display: flex;
       align-items: flex-start;
       gap: 11px;
-      color: rgba(255,255,255,0.68);
+      color: rgba(255,255,255,.68);
       font-size: 13px;
       line-height: 1.55;
+    }
+
+    .contact-item a:hover {
+      color: #fff;
     }
 
     .contact-icon {
@@ -987,13 +989,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      transition: 0.2s ease;
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      transition: .2s ease;
     }
 
     .social-btn:hover {
-      background: white;
+      background: #fff;
       color: var(--blue);
       transform: translateY(-2px);
     }
@@ -1004,12 +1006,8 @@
       fill: currentColor;
     }
 
-    .footer-accordion {
-      display: none;
-    }
-
     .footer-bottom {
-      padding: 23px 55px;
+      padding: 23px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1017,7 +1015,7 @@
     }
 
     .footer-copy {
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,.55);
       font-size: 11px;
     }
 
@@ -1027,13 +1025,23 @@
     }
 
     .footer-bottom-links a {
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,.55);
       font-size: 11px;
     }
 
     .footer-bottom-links a:hover {
-      color: white;
+      color: #fff;
     }
+
+
+    /* =========================================================
+       FOOTER MOBILE ACCORDIONS
+    ========================================================= */
+
+    .footer-accordions {
+      display: none;
+    }
+
 
     /* =========================================================
        SIDE MENU
@@ -1043,10 +1051,10 @@
       position: fixed;
       inset: 0;
       z-index: 1100;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,.45);
       opacity: 0;
       visibility: hidden;
-      transition: 0.3s ease;
+      transition: .3s ease;
     }
 
     .overlay.active {
@@ -1061,9 +1069,9 @@
       bottom: 0;
       z-index: 1200;
       width: min(390px, 90vw);
-      background: white;
+      background: #fff;
       transform: translateX(-100%);
-      transition: 0.35s ease;
+      transition: .35s ease;
       padding: 25px;
       overflow-y: auto;
     }
@@ -1088,11 +1096,14 @@
     .close-btn {
       width: 40px;
       height: 40px;
+      border: 0;
       border-radius: 50%;
       background: #f4f4f4;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 22px;
+      color: #111;
     }
 
     .menu-links {
@@ -1104,15 +1115,14 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 0;
-      font-family: "Manrope", sans-serif;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
-      border-bottom: 1px solid #eeeeee;
+      border-bottom: 1px solid #eee;
     }
 
     .menu-links a span {
       color: #aaa;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .menu-support {
@@ -1134,72 +1144,122 @@
       line-height: 1.7;
     }
 
+    .menu-support-links {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .menu-support-links a {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .menu-support-links a:hover {
+      text-decoration: underline;
+    }
+
+
     /* =========================================================
-       SEARCH
+       SEARCH OVERLAY
     ========================================================= */
 
-    .search-panel {
+    .search-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      inset: 0;
       z-index: 1300;
-      background: white;
-      transform: translateY(-100%);
-      transition: 0.35s ease;
-      box-shadow: 0 15px 45px rgba(0,0,0,0.12);
-    }
-
-    .search-panel.active {
-      transform: translateY(0);
-    }
-
-    .search-inner {
-      width: min(var(--container), calc(100% - 40px));
-      margin: 0 auto;
-      padding: 22px 0;
+      background: rgba(255,255,255,.98);
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s ease;
       display: flex;
-      align-items: center;
-      gap: 15px;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 130px;
+    }
+
+    .search-overlay.active {
+      opacity: 1;
+      visibility: visible;
     }
 
     .search-box {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: #f5f5f3;
-      border-radius: 999px;
-      padding: 0 20px;
+      width: min(700px, calc(100% - 40px));
     }
 
-    .search-box input {
-      flex: 1;
-      min-width: 0;
-      height: 52px;
+    .search-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .search-header strong {
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .search-close {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      background: #f3f3f3;
+      border-radius: 50%;
+      font-size: 20px;
+    }
+
+    .search-input-wrap {
+      border-bottom: 2px solid #111;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      width: 100%;
       border: 0;
       outline: 0;
       background: transparent;
-      font-size: 14px;
+      padding: 15px 0;
+      font-size: 25px;
+      font-weight: 600;
     }
 
+    .search-results {
+      padding-top: 25px;
+    }
+
+    .search-result {
+      display: none;
+      padding: 13px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .search-result.show {
+      display: block;
+    }
+
+
     /* =========================================================
-       CART
+       CART DRAWER
     ========================================================= */
 
     .cart-drawer {
       position: fixed;
-      right: 0;
       top: 0;
+      right: 0;
       bottom: 0;
-      z-index: 1200;
+      z-index: 1250;
       width: min(430px, 92vw);
-      background: white;
+      background: #fff;
       transform: translateX(100%);
-      transition: 0.35s ease;
+      transition: .35s ease;
+      box-shadow: -15px 0 45px rgba(0,0,0,.12);
       display: flex;
       flex-direction: column;
-      box-shadow: -20px 0 50px rgba(0,0,0,0.1);
     }
 
     .cart-drawer.active {
@@ -1207,50 +1267,116 @@
     }
 
     .cart-header {
+      min-height: 75px;
+      padding: 0 25px;
+      border-bottom: 1px solid #eee;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 25px;
-      border-bottom: 1px solid var(--border);
+      justify-content: space-between;
     }
 
-    .cart-header h3 {
-      font-family: "Manrope", sans-serif;
-      font-size: 22px;
+    .cart-header strong {
+      font-size: 15px;
+    }
+
+    .cart-close {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 50%;
+      background: #f4f4f4;
+      font-size: 20px;
     }
 
     .cart-body {
       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      place-items: center;
       padding: 30px;
       text-align: center;
     }
 
     .empty-cart-icon {
-      width: 65px;
-      height: 65px;
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
-      background: #f5f5f3;
-      margin: 0 auto 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: #f5f5f5;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 15px;
+      font-size: 22px;
     }
 
-    .empty-cart h4 {
-      font-family: "Manrope", sans-serif;
-      font-size: 20px;
+    .cart-body h3 {
+      font-size: 18px;
       margin-bottom: 7px;
     }
 
-    .empty-cart p {
+    .cart-body p {
       color: var(--gray);
-      font-size: 13px;
-      line-height: 1.6;
-      max-width: 260px;
+      font-size: 12px;
+      margin-bottom: 20px;
     }
+
+
+    /* =========================================================
+       FLOATING WHATSAPP
+    ========================================================= */
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--whatsapp);
+      color: #fff;
+      z-index: 1050;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.18),
+        0 0 0 4px rgba(255,255,255,.9);
+      transition: .25s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow:
+        0 14px 35px rgba(0,0,0,.22),
+        0 0 0 4px rgba(255,255,255,.9);
+    }
+
+    .whatsapp-float svg {
+      width: 28px;
+      height: 28px;
+      fill: #fff;
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #111;
+      color: #fff;
+      white-space: nowrap;
+      padding: 8px 11px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      opacity: 0;
+      visibility: hidden;
+      transition: .2s ease;
+    }
+
+    .whatsapp-float:hover .whatsapp-tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+
 
     /* =========================================================
        RESPONSIVE
@@ -1278,20 +1404,21 @@
         gap: 45px;
       }
 
-      .why-grid {
-        gap: 50px;
+      .cta-content {
+        width: 65%;
       }
 
     }
 
+
     @media (max-width: 850px) {
 
-      .section {
-        padding: 80px 0;
+      .container {
+        width: min(var(--container), calc(100% - 36px));
       }
 
       .hero {
-        padding: 15px 0;
+        padding: 14px 0;
       }
 
       .hero-card {
@@ -1300,25 +1427,11 @@
       }
 
       .hero-content {
-        padding: 60px 35px 20px;
-        text-align: center;
-      }
-
-      .hero-title {
-        margin: 0 auto;
+        padding: 65px 35px 45px;
       }
 
       .hero-visual {
-        min-height: 470px;
-        padding: 15px;
-      }
-
-      .hero-product {
-        height: 400px;
-      }
-
-      .experience {
-        padding: 85px 0;
+        min-height: 430px;
       }
 
       .experience-grid {
@@ -1327,6 +1440,7 @@
 
       .experience-copy {
         text-align: center;
+        margin: 0 auto;
       }
 
       .experience-description {
@@ -1334,42 +1448,31 @@
         margin-right: auto;
       }
 
-      .experience-image-area {
-        min-height: 480px;
-      }
-
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
       .cta-card {
         min-height: 620px;
-        align-items: flex-start;
       }
 
       .cta-content {
         width: 100%;
-        padding: 50px 35px;
+        padding: 55px 35px;
+        align-self: flex-start;
       }
 
-      .cta-image {
-        width: 75%;
-        height: 45%;
-        right: 10%;
-        top: auto;
-        bottom: 0;
-        transform: none;
-      }
-
-      .why-grid {
+      .benefits-grid {
         grid-template-columns: 1fr;
       }
 
-      .why-sticky {
-        position: static;
+      .benefit-card {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .benefit-card:last-child {
+        border-bottom: 0;
       }
 
     }
+
 
     @media (max-width: 650px) {
 
@@ -1380,6 +1483,10 @@
       .header-inner {
         min-height: 72px;
         gap: 5px;
+      }
+
+      .header-logo img {
+        width: 160px;
       }
 
       .header-right {
@@ -1396,62 +1503,105 @@
         padding: 8px 12px;
       }
 
-      .hero-card {
-        border-radius: 22px;
+
+      /* Mobile banner replaces desktop hero */
+
+      .hero {
+        display: none;
       }
 
-      .hero-content {
-        padding: 45px 20px 5px;
+      .mobile-hero {
+        display: block;
       }
 
-      .hero-title {
-        font-size: clamp(44px, 13vw, 64px);
+      .mobile-hero-overlay {
+        padding-left: 17px;
+        padding-right: 17px;
       }
 
-      .hero-actions {
-        margin-top: 30px;
+      .mobile-hero-copy {
+        margin-top: 12%;
       }
 
-      .hero-meta {
-        gap: 12px;
-        margin-top: 27px;
-        justify-content: center;
+      .mobile-hero-eyebrow {
+        font-size: 9px;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
       }
 
-      .hero-visual {
-        min-height: 350px;
+      .mobile-hero-title {
+        font-size: clamp(40px, 11.5vw, 56px);
+        letter-spacing: -2.7px;
       }
 
-      .hero-product {
-        height: 300px;
+      .mobile-hero-action {
+        padding-bottom: 3%;
       }
 
-      .hero-floating-card {
-        right: 5%;
-        bottom: 8%;
-        min-width: 145px;
-        padding: 13px 14px;
+      .mobile-hero-action .btn {
+        min-height: 47px;
+        min-width: 165px;
+        padding: 0 20px;
       }
 
-      .hero-floating-card strong {
-        font-size: 14px;
+
+      /* Statement */
+
+      .statement {
+        padding: 15px 0;
       }
 
       .statement-track {
-        gap: 11px;
-        font-size: 9px;
+        gap: 9px;
+        font-size: 8px;
+        letter-spacing: 1px;
+      }
+
+
+      /* Trust */
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trust-item {
+        padding: 19px 8px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .trust-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .trust-item:nth-child(3),
+      .trust-item:nth-child(4) {
+        border-bottom: 0;
+      }
+
+
+      /* Sections */
+
+      .section {
+        padding: 65px 0;
       }
 
       .section-top {
         display: block;
-        margin-bottom: 35px;
+        margin-bottom: 30px;
+        text-align: center;
       }
 
       .section-top .btn {
-        display: flex;
-        width: fit-content;
-        margin: 25px auto 0;
+        margin: 22px auto 0;
       }
+
+      .section-title {
+        font-size: 39px;
+        letter-spacing: -2px;
+      }
+
+
+      /* Products */
 
       .products-grid {
         grid-template-columns: 1fr 1fr;
@@ -1459,99 +1609,102 @@
       }
 
       .product-card {
-        border-radius: 17px;
+        border-radius: 16px;
       }
 
       .product-info {
-        padding: 15px;
+        padding: 14px;
       }
 
       .product-name {
-        font-size: 14px;
+        font-size: 13px;
       }
 
       .product-subtitle {
-        font-size: 10px;
-      }
-
-      .product-bottom {
-        margin-top: 12px;
+        font-size: 9px;
       }
 
       .product-price {
-        font-size: 12px;
+        font-size: 11px;
+      }
+
+      .product-bottom {
+        margin-top: 11px;
       }
 
       .add-btn {
-        width: 34px;
-        height: 34px;
+        width: 32px;
+        height: 32px;
+      }
+
+
+      /* Experience */
+
+      .experience {
+        padding: 70px 0;
       }
 
       .experience-title {
-        font-size: clamp(43px, 13vw, 62px);
+        font-size: clamp(43px, 13vw, 61px);
       }
 
       .experience-image-area {
-        min-height: 370px;
+        min-height: 390px;
         border-radius: 22px;
       }
 
       .experience-image {
-        height: 320px;
+        height: 330px;
       }
 
       .experience-number {
-        font-size: 70px;
+        font-size: 75px;
       }
 
-      .experience-action {
-        margin-top: 26px;
+
+      /* Benefits */
+
+      .benefits-heading {
+        text-align: center;
       }
 
-      .feature-heading {
-        margin-bottom: 35px;
+      .benefit-card {
+        padding: 27px 20px;
       }
 
-      .feature-card {
-        min-height: auto;
-        padding: 24px;
-        border-radius: 19px;
+      .benefit-number {
+        margin-bottom: 15px;
       }
 
-      .feature-number {
-        width: 37px;
-        height: 37px;
-        margin-bottom: 30px;
+      .benefit-card h3 {
+        font-size: 18px;
       }
 
-      .feature-card h3 {
-        font-size: 20px;
-      }
 
-      .feature-card p {
-        font-size: 13px;
-      }
+      /* CTA */
 
       .cta-section {
-        padding-bottom: 80px;
+        padding: 0 0 65px;
       }
 
       .cta-card {
+        min-height: 570px;
         border-radius: 22px;
-        min-height: 580px;
+        align-items: flex-start;
       }
 
       .cta-content {
-        padding: 42px 25px;
+        padding: 48px 25px;
         text-align: center;
       }
 
       .cta-content .eyebrow {
-        margin-bottom: 13px;
+        text-align: center;
       }
 
       .cta-title {
-        font-size: clamp(42px, 13vw, 60px);
+        font-size: clamp(43px, 13vw, 61px);
+        letter-spacing: -3px;
       }
 
       .cta-description {
@@ -1560,177 +1713,83 @@
       }
 
       .cta-actions {
-        display: flex;
         justify-content: center;
       }
 
-      .cta-image {
-        width: 85%;
-        right: 5%;
-      }
 
-      /* =====================================================
-         COMPACT MOBILE WHY ZERONIC
-      ====================================================== */
+      /* Footer */
 
-      .why-section {
-        padding: 55px 0;
-      }
-
-      .why-grid {
-        gap: 35px;
-      }
-
-      .why-sticky {
-        text-align: center;
-      }
-
-      .why-sticky .eyebrow {
-        margin-bottom: 10px;
-      }
-
-      .why-sticky .section-title {
-        font-size: 34px;
-        line-height: 1.05;
-      }
-
-      .why-sticky .section-description {
-        font-size: 12px;
-        line-height: 1.6;
-        margin: 13px auto 0;
-        max-width: 330px;
-      }
-
-      .why-item {
-        grid-template-columns: 32px 1fr;
-        gap: 12px;
-        padding: 17px 0;
-      }
-
-      .why-index {
-        font-size: 10px;
-        padding-top: 2px;
-      }
-
-      .why-item h3 {
-        font-size: 17px;
-        line-height: 1.2;
-        margin-bottom: 5px;
-      }
-
-      .why-item p {
-        font-size: 11px;
-        line-height: 1.55;
-        max-width: none;
-      }
-
-      .footer {
-        padding: 15px 10px 10px;
-      }
-
-      .footer-container {
+      .footer-box {
+        padding: 0 22px;
         border-radius: 22px;
       }
 
-      .footer-main {
-        padding: 42px 22px 25px;
-      }
-
       .footer-top {
-        display: block;
-        padding-bottom: 20px;
-        border-bottom: 0;
-      }
-
-      .footer-brand {
-        max-width: none;
-        margin-bottom: 28px;
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding: 45px 0;
       }
 
       .footer-logo-wrap img {
-        width: 180px;
-      }
-
-      .footer-brand-text {
-        max-width: 300px;
-      }
-
-      .footer-desktop-column {
-        display: none;
-      }
-
-      .footer-accordion {
-        display: block;
-        border-top: 1px solid rgba(255,255,255,0.14);
-      }
-
-      .footer-accordion-header {
-        width: 100%;
-        background: transparent;
-        color: white;
-        padding: 19px 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.13em;
-        text-transform: uppercase;
-      }
-
-      .footer-accordion-icon {
-        width: 18px;
-        height: 18px;
-        position: relative;
-      }
-
-      .footer-accordion-icon::before,
-      .footer-accordion-icon::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 11px;
-        height: 1.5px;
-        background: white;
-        transform: translate(-50%, -50%);
-        transition: 0.2s ease;
-      }
-
-      .footer-accordion-icon::after {
-        transform: translate(-50%, -50%) rotate(90deg);
-      }
-
-      .footer-accordion.open .footer-accordion-icon::after {
-        transform: translate(-50%, -50%) rotate(0deg);
-      }
-
-      .footer-accordion-content {
-        display: none;
-        padding: 0 0 18px;
-      }
-
-      .footer-accordion.open .footer-accordion-content {
-        display: block;
-      }
-
-      .footer-contact {
-        padding-bottom: 10px;
-      }
-
-      .socials {
-        margin-top: 15px;
+        width: 125px;
       }
 
       .footer-bottom {
-        padding: 20px 22px 23px;
-        display: block;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 0;
       }
 
       .footer-bottom-links {
-        margin-top: 12px;
         flex-wrap: wrap;
-        gap: 10px 18px;
+        gap: 12px 18px;
+      }
+
+
+      /* Side menu */
+
+      .side-menu {
+        width: min(360px, 92vw);
+        padding: 20px;
+      }
+
+      .menu-links {
+        padding: 18px 0;
+      }
+
+      .menu-links a {
+        padding: 13px 0;
+        font-size: 16px;
+      }
+
+
+      /* Search */
+
+      .search-overlay {
+        padding-top: 95px;
+      }
+
+      .search-input {
+        font-size: 21px;
+      }
+
+
+      /* WhatsApp */
+
+      .whatsapp-float {
+        right: 17px;
+        bottom: 17px;
+        width: 54px;
+        height: 54px;
+      }
+
+      .whatsapp-float svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      .whatsapp-tooltip {
+        display: none;
       }
 
     }
@@ -1741,13 +1800,12 @@
 
 <body>
 
-
   <!-- =======================================================
        ANNOUNCEMENT
   ======================================================== -->
 
   <div class="announcement">
-    Premium wireless earbuds. Designed for your everyday.
+    Premium Audio · Designed for Everyday Listening
   </div>
 
 
@@ -1765,14 +1823,13 @@
           class="icon-btn"
           id="menuOpen"
           aria-label="Open menu"
+          type="button"
         >
-
           <span class="hamburger">
             <span></span>
             <span></span>
             <span></span>
           </span>
-
         </button>
 
       </div>
@@ -1788,7 +1845,7 @@
           <img
             src="assets/logo.svg"
             alt="ZERONIC"
-          />
+          >
         </a>
 
       </div>
@@ -1799,23 +1856,22 @@
         <button
           class="icon-btn"
           id="searchOpen"
-          aria-label="Search"
+          aria-label="Search earbuds"
+          type="button"
         >
-
           <svg class="icon" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="6.8"></circle>
             <path d="M16.2 16.2L21 21"></path>
           </svg>
-
         </button>
 
 
         <button
-          class="icon-btn cart-button"
+          class="icon-btn"
           id="cartOpen"
-          aria-label="Cart"
+          aria-label="Open cart"
+          type="button"
         >
-
           <svg class="icon" viewBox="0 0 24 24">
             <path d="M4 5h2l1.5 10.2a2 2 0 0 0 2 1.8h7.7a2 2 0 0 0 1.9-1.5L21 8H7"></path>
             <circle cx="10" cy="20" r="1"></circle>
@@ -1825,9 +1881,7 @@
           <span
             class="cart-count"
             id="cartCount"
-          >
-            0
-          </span>
+          >0</span>
 
         </button>
 
@@ -1839,17 +1893,63 @@
 
 
   <!-- =======================================================
-       HERO
+       MOBILE HERO
   ======================================================== -->
 
-  <main id="home">
+  <section class="mobile-hero" id="home">
 
-    <section class="hero">
+    <div class="mobile-hero-banner">
+
+      <img
+        src="assets/mobile-hero-banner.webp"
+        alt="ZERONIC premium wireless earbuds"
+      >
+
+      <div class="mobile-hero-overlay">
+
+        <div class="mobile-hero-copy">
+
+          <div class="mobile-hero-eyebrow">
+            ZERONIC AUDIO
+          </div>
+
+          <h1 class="mobile-hero-title">
+            Hear more.<br>
+            <span>Feel everything.</span>
+          </h1>
+
+        </div>
+
+
+        <div class="mobile-hero-action">
+
+          <a
+            href="#earbuds"
+            class="btn btn-white"
+          >
+            View Collection
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       DESKTOP HERO
+  ======================================================== -->
+
+  <main>
+
+    <section class="hero" id="home-desktop">
 
       <div class="container">
 
         <div class="hero-card">
-
 
           <div class="hero-content">
 
@@ -1857,17 +1957,10 @@
               ZERONIC AUDIO
             </div>
 
-
             <h1 class="hero-title">
-
-              Hear more.<br />
-
-              <span>
-                Feel everything.
-              </span>
-
+              Hear more.<br>
+              <span>Feel everything.</span>
             </h1>
-
 
             <div class="hero-actions">
 
@@ -1884,29 +1977,18 @@
             <div class="hero-meta">
 
               <div class="hero-meta-item">
-
                 <span class="hero-meta-dot"></span>
-
                 Premium Audio
-
               </div>
 
-
               <div class="hero-meta-item">
-
                 <span class="hero-meta-dot"></span>
-
                 Everyday Comfort
-
               </div>
 
-
               <div class="hero-meta-item">
-
                 <span class="hero-meta-dot"></span>
-
                 Modern Design
-
               </div>
 
             </div>
@@ -1916,27 +1998,11 @@
 
           <div class="hero-visual">
 
-            <div class="hero-glow"></div>
-
-
             <img
               class="hero-product"
               src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1200&q=90"
               alt="ZERONIC wireless earbuds"
-            />
-
-
-            <div class="hero-floating-card">
-
-              <small>
-                New Collection
-              </small>
-
-              <strong>
-                ZERONIC Earbuds
-              </strong>
-
-            </div>
+            >
 
           </div>
 
@@ -1957,27 +2023,19 @@
 
         <div class="statement-track">
 
-          <span>
-            PURE SOUND
-          </span>
+          <span>PURE SOUND</span>
 
           <span class="statement-dot"></span>
 
-          <span>
-            SMART DESIGN
-          </span>
+          <span>SMART DESIGN</span>
 
           <span class="statement-dot"></span>
 
-          <span>
-            EVERYDAY COMFORT
-          </span>
+          <span>EVERYDAY COMFORT</span>
 
           <span class="statement-dot"></span>
 
-          <span>
-            ZERONIC AUDIO
-          </span>
+          <span>ZERONIC AUDIO</span>
 
         </div>
 
@@ -1987,7 +2045,67 @@
 
 
     <!-- =====================================================
-         PRODUCTS
+         TRUST BAR
+    ====================================================== -->
+
+    <section class="trust-bar">
+
+      <div class="container">
+
+        <div class="trust-grid">
+
+          <div class="trust-item">
+
+            <div class="trust-icon">◉</div>
+
+            <strong>Premium Audio</strong>
+
+            <small>Designed around listening</small>
+
+          </div>
+
+
+          <div class="trust-item">
+
+            <div class="trust-icon">◇</div>
+
+            <strong>Modern Design</strong>
+
+            <small>Clean and refined</small>
+
+          </div>
+
+
+          <div class="trust-item">
+
+            <div class="trust-icon">⌁</div>
+
+            <strong>Everyday Comfort</strong>
+
+            <small>Made for daily use</small>
+
+          </div>
+
+
+          <div class="trust-item">
+
+            <div class="trust-icon">✓</div>
+
+            <strong>Direct Support</strong>
+
+            <small>We're here when needed</small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         EARBUDS
     ====================================================== -->
 
     <section
@@ -1996,7 +2114,6 @@
     >
 
       <div class="container">
-
 
         <div class="section-top">
 
@@ -2007,75 +2124,73 @@
             </div>
 
             <h2 class="section-title">
-              Find your<br />
-              everyday sound.
+              Find your sound.
             </h2>
-
-            <p class="section-description">
-              Explore the ZERONIC earbuds collection and choose the sound,
-              style and experience that fits your day.
-            </p>
 
           </div>
 
 
           <a
-            href="#all-products"
-            class="btn btn-dark"
+            href="#earbuds"
+            class="btn btn-black"
           >
-            View Collection
+            View All Earbuds
           </a>
 
         </div>
 
 
-        <div
-          class="products-grid"
-          id="all-products"
-        >
+        <div class="products-grid">
 
 
-          <!-- PRODUCT 1 -->
+          <!-- PRODUCT 01 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-product="ZERONIC Air One"
+          >
 
-            <div class="product-image-wrap">
+            <div class="product-image">
 
               <span class="product-badge">
                 New
               </span>
 
               <img
-                class="product-image"
                 src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=90"
-                alt="ZERONIC Air One earbuds"
-              />
+                alt="ZERONIC Air One wireless earbuds"
+                loading="lazy"
+              >
 
             </div>
 
 
             <div class="product-info">
 
-              <h3 class="product-name">
+              <div class="product-category">
+                Wireless Earbuds
+              </div>
+
+              <div class="product-name">
                 ZERONIC Air One
-              </h3>
+              </div>
 
-              <p class="product-subtitle">
-                Everyday wireless earbuds
-              </p>
+              <div class="product-subtitle">
+                Everyday wireless listening
+              </div>
 
 
               <div class="product-bottom">
 
-                <span class="product-price">
-                  Rs. 2,999
-                </span>
-
+                <div class="product-price">
+                  Coming Soon
+                </div>
 
                 <button
                   class="add-btn"
-                  onclick="addToCart('ZERONIC Air One')"
+                  type="button"
                   aria-label="Add ZERONIC Air One to cart"
+                  data-add="ZERONIC Air One"
                 >
                   +
                 </button>
@@ -2087,47 +2202,54 @@
           </article>
 
 
-          <!-- PRODUCT 2 -->
+          <!-- PRODUCT 02 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-product="ZERONIC Air Pro"
+          >
 
-            <div class="product-image-wrap">
+            <div class="product-image">
 
               <span class="product-badge">
-                Featured
+                New
               </span>
 
               <img
-                class="product-image"
                 src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=900&q=90"
-                alt="ZERONIC Air Pro earbuds"
-              />
+                alt="ZERONIC Air Pro wireless earbuds"
+                loading="lazy"
+              >
 
             </div>
 
 
             <div class="product-info">
 
-              <h3 class="product-name">
-                ZERONIC Air Pro
-              </h3>
+              <div class="product-category">
+                Wireless Earbuds
+              </div>
 
-              <p class="product-subtitle">
-                Premium everyday listening
-              </p>
+              <div class="product-name">
+                ZERONIC Air Pro
+              </div>
+
+              <div class="product-subtitle">
+                Refined everyday audio
+              </div>
 
 
               <div class="product-bottom">
 
-                <span class="product-price">
-                  Rs. 3,499
-                </span>
-
+                <div class="product-price">
+                  Coming Soon
+                </div>
 
                 <button
                   class="add-btn"
-                  onclick="addToCart('ZERONIC Air Pro')"
+                  type="button"
                   aria-label="Add ZERONIC Air Pro to cart"
+                  data-add="ZERONIC Air Pro"
                 >
                   +
                 </button>
@@ -2139,43 +2261,50 @@
           </article>
 
 
-          <!-- PRODUCT 3 -->
+          <!-- PRODUCT 03 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-product="ZERONIC Buds X"
+          >
 
-            <div class="product-image-wrap">
+            <div class="product-image">
 
               <img
-                class="product-image"
-                src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=90"
-                alt="ZERONIC Buds X earbuds"
-              />
+                src="https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?auto=format&fit=crop&w=900&q=90"
+                alt="ZERONIC Buds X wireless earbuds"
+                loading="lazy"
+              >
 
             </div>
 
 
             <div class="product-info">
 
-              <h3 class="product-name">
-                ZERONIC Buds X
-              </h3>
+              <div class="product-category">
+                Wireless Earbuds
+              </div>
 
-              <p class="product-subtitle">
-                Compact sound for every day
-              </p>
+              <div class="product-name">
+                ZERONIC Buds X
+              </div>
+
+              <div class="product-subtitle">
+                Compact everyday listening
+              </div>
 
 
               <div class="product-bottom">
 
-                <span class="product-price">
-                  Rs. 2,799
-                </span>
-
+                <div class="product-price">
+                  Coming Soon
+                </div>
 
                 <button
                   class="add-btn"
-                  onclick="addToCart('ZERONIC Buds X')"
+                  type="button"
                   aria-label="Add ZERONIC Buds X to cart"
+                  data-add="ZERONIC Buds X"
                 >
                   +
                 </button>
@@ -2187,47 +2316,54 @@
           </article>
 
 
-          <!-- PRODUCT 4 -->
+          <!-- PRODUCT 04 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-product="ZERONIC Pods Pro"
+          >
 
-            <div class="product-image-wrap">
+            <div class="product-image">
 
               <span class="product-badge">
-                Popular
+                Premium
               </span>
 
               <img
-                class="product-image"
-                src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=90"
-                alt="ZERONIC Pods Pro earbuds"
-              />
+                src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=90"
+                alt="ZERONIC Pods Pro wireless earbuds"
+                loading="lazy"
+              >
 
             </div>
 
 
             <div class="product-info">
 
-              <h3 class="product-name">
-                ZERONIC Pods Pro
-              </h3>
+              <div class="product-category">
+                Wireless Earbuds
+              </div>
 
-              <p class="product-subtitle">
-                A refined wireless experience
-              </p>
+              <div class="product-name">
+                ZERONIC Pods Pro
+              </div>
+
+              <div class="product-subtitle">
+                Premium wireless experience
+              </div>
 
 
               <div class="product-bottom">
 
-                <span class="product-price">
-                  Rs. 3,999
-                </span>
-
+                <div class="product-price">
+                  Coming Soon
+                </div>
 
                 <button
                   class="add-btn"
-                  onclick="addToCart('ZERONIC Pods Pro')"
+                  type="button"
                   aria-label="Add ZERONIC Pods Pro to cart"
+                  data-add="ZERONIC Pods Pro"
                 >
                   +
                 </button>
@@ -2250,10 +2386,7 @@
          EXPERIENCE
     ====================================================== -->
 
-    <section
-      class="experience"
-      id="experience"
-    >
+    <section class="section experience">
 
       <div class="container">
 
@@ -2266,58 +2399,46 @@
               The ZERONIC Experience
             </div>
 
-
             <h2 class="experience-title">
-
-              Sound.<br />
-
-              <span>
-                Designed around you.
-              </span>
-
+              Sound.<br>
+              <span>Designed for you.</span>
             </h2>
 
-
             <p class="experience-description">
-              Great earbuds should disappear into your routine and let the
-              music take over. ZERONIC brings together a clean aesthetic,
-              immersive listening and an experience made for everyday use.
+              ZERONIC keeps the experience simple and focused. Premium-looking
+              earbuds, a clean design language and an effortless listening
+              experience made for everyday life.
             </p>
 
-
-            <div class="experience-action">
-
-              <a
-                href="#features"
-                class="btn btn-white"
-              >
-                Explore the Experience
-              </a>
-
-            </div>
+            <a
+              href="#earbuds"
+              class="btn btn-black"
+            >
+              Explore the Experience
+            </a>
 
           </div>
 
 
           <div class="experience-image-area">
 
-            <div class="experience-tag">
-              ZERONIC / AUDIO
+            <div class="experience-label">
+              ZERONIC AUDIO
             </div>
-
 
             <img
               class="experience-image"
-              src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=1200&q=90"
-              alt="Premium ZERONIC earbuds"
-            />
-
+              src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1200&q=90"
+              alt="ZERONIC wireless earbuds"
+              loading="lazy"
+            >
 
             <div class="experience-number">
               01
             </div>
 
           </div>
+
 
         </div>
 
@@ -2327,38 +2448,32 @@
 
 
     <!-- =====================================================
-         FEATURES
+         BENEFITS
     ====================================================== -->
 
-    <section
-      class="section feature-section"
-      id="features"
-    >
+    <section class="section benefits">
 
       <div class="container">
 
-
-        <div class="feature-heading">
+        <div class="benefits-heading">
 
           <div class="eyebrow">
             Built Around Listening
           </div>
 
-
           <h2 class="section-title">
-            Everything you need.<br />
-            Nothing you don't.
+            Everything that matters.
           </h2>
 
         </div>
 
 
-        <div class="features-grid">
+        <div class="benefits-grid">
 
 
-          <article class="feature-card">
+          <article class="benefit-card">
 
-            <div class="feature-number">
+            <div class="benefit-number">
               01
             </div>
 
@@ -2368,15 +2483,15 @@
 
             <p>
               Enjoy a more immersive everyday listening experience designed
-              to keep music, podcasts and calls feeling natural.
+              around music, podcasts and calls.
             </p>
 
           </article>
 
 
-          <article class="feature-card">
+          <article class="benefit-card">
 
-            <div class="feature-number">
+            <div class="benefit-number">
               02
             </div>
 
@@ -2385,26 +2500,26 @@
             </h3>
 
             <p>
-              Stay connected throughout your day with earbuds designed for
-              comfortable, convenient wireless calling.
+              Stay connected throughout your day with a wireless listening
+              experience designed around everyday calls.
             </p>
 
           </article>
 
 
-          <article class="feature-card">
+          <article class="benefit-card">
 
-            <div class="feature-number">
+            <div class="benefit-number">
               03
             </div>
 
             <h3>
-              Made for everyday comfort
+              Everyday comfort
             </h3>
 
             <p>
               A compact wireless form designed to fit naturally into your
-              routine — from work and travel to your daily downtime.
+              routine, from work and travel to your daily downtime.
             </p>
 
           </article>
@@ -2427,25 +2542,21 @@
 
         <div class="cta-card">
 
-
           <div class="cta-content">
 
             <div class="eyebrow">
               Upgrade Your Everyday
             </div>
 
-
             <h2 class="cta-title">
-              Your day.<br />
+              Your day.<br>
               Your sound.
             </h2>
-
 
             <p class="cta-description">
               From your first song in the morning to the last call at night,
               choose earbuds that feel as good as they sound.
             </p>
-
 
             <div class="cta-actions">
 
@@ -2453,149 +2564,10 @@
                 href="#earbuds"
                 class="btn btn-white"
               >
-                Shop Earbuds
+                Explore the Experience
               </a>
 
             </div>
-
-          </div>
-
-
-          <img
-            class="cta-image"
-            src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1200&q=90"
-            alt="ZERONIC wireless earbuds"
-          />
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         WHY ZERONIC
-    ====================================================== -->
-
-    <section class="section why-section">
-
-      <div class="container">
-
-        <div class="why-grid">
-
-
-          <div class="why-sticky">
-
-            <div class="eyebrow">
-              Why ZERONIC
-            </div>
-
-
-            <h2 class="section-title">
-              Technology that fits your life.
-            </h2>
-
-
-            <p class="section-description">
-              We keep the experience focused on what matters — sound,
-              design, comfort and simple everyday use.
-            </p>
-
-          </div>
-
-
-          <div class="why-list">
-
-
-            <div class="why-item">
-
-              <div class="why-index">
-                01
-              </div>
-
-              <div>
-
-                <h3>
-                  Product-first thinking
-                </h3>
-
-                <p>
-                  Every part of the experience starts with the product and
-                  how naturally it fits into your everyday routine.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div class="why-item">
-
-              <div class="why-index">
-                02
-              </div>
-
-              <div>
-
-                <h3>
-                  Clean, modern design
-                </h3>
-
-                <p>
-                  Minimal visual design keeps the focus where it belongs:
-                  on the earbuds and the experience they create.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div class="why-item">
-
-              <div class="why-index">
-                03
-              </div>
-
-              <div>
-
-                <h3>
-                  Made for everyday listening
-                </h3>
-
-                <p>
-                  Whether you're working, travelling, relaxing or simply
-                  enjoying your favourite playlist, ZERONIC is built around
-                  everyday listening.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div class="why-item">
-
-              <div class="why-index">
-                04
-              </div>
-
-              <div>
-
-                <h3>
-                  Direct support
-                </h3>
-
-                <p>
-                  Need help? Reach ZERONIC directly through WhatsApp, phone
-                  or email during our support hours.
-                </p>
-
-              </div>
-
-            </div>
-
 
           </div>
 
@@ -2612,276 +2584,67 @@
        FOOTER
   ======================================================== -->
 
-  <footer class="footer">
+  <footer class="zeronic-footer">
 
-    <div class="footer-container">
-
-      <div class="footer-main">
+    <div class="footer-box">
 
 
-        <div class="footer-top">
+      <div class="footer-top">
 
 
-          <!-- BRAND -->
+        <!-- BRAND -->
+
+        <div class="footer-column">
 
           <div class="footer-brand">
 
-            <a
-              href="#home"
-              class="footer-logo-wrap"
-              aria-label="ZERONIC Home"
-            >
+            <div class="footer-logo-wrap">
+
+              <!-- UPDATED WHITE FOOTER LOGO -->
 
               <img
-                src="assets/logo.svg"
+                src="assets/white logo.svg"
                 alt="ZERONIC"
-              />
+              >
 
-            </a>
+            </div>
 
 
-            <p class="footer-brand-text">
-              Premium wireless earbuds designed for modern everyday
-              listening. Discover the ZERONIC audio experience.
+            <p>
+              Premium wireless audio designed with a focus on sound,
+              simplicity and everyday listening.
             </p>
 
 
             <div class="socials">
 
-
               <a
+                class="social-btn"
                 href="https://www.instagram.com/zeronicpk/"
                 target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-                aria-label="Instagram"
+                rel="noopener"
+                aria-label="ZERONIC Instagram"
               >
 
                 <svg viewBox="0 0 24 24">
-                  <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+                  <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
                 </svg>
 
               </a>
 
 
               <a
+                class="social-btn"
                 href="https://www.facebook.com/zeronicpk"
                 target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-                aria-label="Facebook"
+                rel="noopener"
+                aria-label="ZERONIC Facebook"
               >
 
                 <svg viewBox="0 0 24 24">
-                  <path d="M13.5 22v-8h2.75l.4-3h-3.15V9.08c0-.87.24-1.46 1.5-1.46h1.78V4.94c-.31-.04-1.37-.14-2.61-.14-2.58 0-4.35 1.58-4.35 4.48V11H7v3h2.82v8h3.68z"/>
+                  <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.87.24-1.46 1.5-1.46H17V4.96c-.35-.05-1.56-.16-2.58-.16-2.55 0-4.3 1.56-4.3 4.43V11H7.4v3h2.72v8h3.38z"/>
                 </svg>
 
-              </a>
-
-
-              <a
-                href="https://wa.me/923420672554"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-                aria-label="WhatsApp"
-              >
-
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.18-1.34A10 10 0 1 0 12 2zm0 2a8 8 0 0 1 6.94 12L18.1 17l.1.48-3.72.96-.45-.27A7.96 7.96 0 0 1 4 12c0-4.42 3.58-8 8-8z"/>
-                </svg>
-
-              </a>
-
-
-            </div>
-
-          </div>
-
-
-          <!-- SHOP -->
-
-          <div class="footer-desktop-column">
-
-            <h3 class="footer-heading">
-              Shop
-            </h3>
-
-
-            <div class="footer-links">
-
-              <a href="#earbuds">
-                Earbuds
-              </a>
-
-              <a href="#all-products">
-                New Arrivals
-              </a>
-
-              <a href="#all-products">
-                Featured Earbuds
-              </a>
-
-            </div>
-
-          </div>
-
-
-          <!-- QUICK LINKS -->
-
-          <div class="footer-desktop-column">
-
-            <h3 class="footer-heading">
-              Quick Links
-            </h3>
-
-
-            <div class="footer-links">
-
-              <a href="#home">
-                Home
-              </a>
-
-              <a href="#experience">
-                About ZERONIC
-              </a>
-
-              <a href="#contact">
-                Contact
-              </a>
-
-              <a href="#support">
-                Support
-              </a>
-
-            </div>
-
-          </div>
-
-
-          <!-- CONTACT -->
-
-          <div
-            class="footer-desktop-column"
-            id="contact"
-          >
-
-            <h3 class="footer-heading">
-              Contact
-            </h3>
-
-
-            <div class="footer-contact">
-
-
-              <a
-                href="https://wa.me/923420672554"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-item"
-              >
-
-                <svg class="contact-icon" viewBox="0 0 24 24">
-                  <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.18-1.34A10 10 0 1 0 12 2z"/>
-                </svg>
-
-                <span>
-                  +92 342 0672554
-                </span>
-
-              </a>
-
-
-              <a
-                href="tel:+923420672554"
-                class="contact-item"
-              >
-
-                <svg class="contact-icon" viewBox="0 0 24 24">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.08 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L9 10.73a16 16 0 0 0 4.27 4.27l1.27-1.25a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/>
-                </svg>
-
-                <span>
-                  +92 342 0672554
-                </span>
-
-              </a>
-
-
-              <a
-                href="mailto:support@zeronicpk.store"
-                class="contact-item"
-              >
-
-                <svg class="contact-icon" viewBox="0 0 24 24">
-                  <rect x="3" y="5" width="18" height="14" rx="2"/>
-                  <path d="M3 7l9 6 9-6"/>
-                </svg>
-
-                <span>
-                  support@zeronicpk.store
-                </span>
-
-              </a>
-
-
-              <div class="contact-item">
-
-                <svg class="contact-icon" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9"/>
-                  <path d="M12 7v5l3 2"/>
-                </svg>
-
-                <span>
-                  Mon to Sat<br />
-                  8am - 6pm
-                </span>
-
-              </div>
-
-
-            </div>
-
-          </div>
-
-
-        </div>
-
-
-        <!-- =================================================
-             MOBILE SHOP
-        ================================================== -->
-
-        <div class="footer-accordion">
-
-          <button
-            class="footer-accordion-header"
-            onclick="toggleAccordion(this)"
-          >
-
-            <span>
-              Shop
-            </span>
-
-            <span class="footer-accordion-icon"></span>
-
-          </button>
-
-
-          <div class="footer-accordion-content">
-
-            <div class="footer-links">
-
-              <a href="#earbuds">
-                Earbuds
-              </a>
-
-              <a href="#all-products">
-                New Arrivals
-              </a>
-
-              <a href="#all-products">
-                Featured Earbuds
               </a>
 
             </div>
@@ -2891,174 +2654,143 @@
         </div>
 
 
-        <!-- =================================================
-             MOBILE QUICK LINKS
-        ================================================== -->
+        <!-- SHOP -->
 
-        <div class="footer-accordion">
+        <div class="footer-column">
 
-          <button
-            class="footer-accordion-header"
-            onclick="toggleAccordion(this)"
-          >
+          <div class="footer-heading">
+            Shop
+          </div>
 
-            <span>
-              Quick Links
-            </span>
+          <div class="footer-links">
 
-            <span class="footer-accordion-icon"></span>
+            <a href="#earbuds">
+              Earbuds
+            </a>
 
-          </button>
+            <a href="#earbuds">
+              New Arrivals
+            </a>
 
-
-          <div class="footer-accordion-content">
-
-            <div class="footer-links">
-
-              <a href="#home">
-                Home
-              </a>
-
-              <a href="#experience">
-                About ZERONIC
-              </a>
-
-              <a href="#contact">
-                Contact
-              </a>
-
-              <a href="#support">
-                Support
-              </a>
-
-            </div>
+            <a href="#earbuds">
+              Best Sellers
+            </a>
 
           </div>
 
         </div>
 
 
-        <!-- =================================================
-             MOBILE CONTACT
-        ================================================== -->
+        <!-- QUICK LINKS -->
 
-        <div class="footer-accordion">
+        <div class="footer-column">
 
-          <button
-            class="footer-accordion-header"
-            onclick="toggleAccordion(this)"
-          >
+          <div class="footer-heading">
+            Quick Links
+          </div>
 
-            <span>
-              Contact
-            </span>
+          <div class="footer-links">
 
-            <span class="footer-accordion-icon"></span>
+            <a href="#home">
+              Home
+            </a>
 
-          </button>
+            <a href="#earbuds">
+              Earbuds
+            </a>
+
+            <a href="#earbuds">
+              New Arrivals
+            </a>
+
+            <a href="#support">
+              Support
+            </a>
+
+          </div>
+
+        </div>
 
 
-          <div class="footer-accordion-content">
+        <!-- CONTACT -->
 
-            <div class="footer-contact">
+        <div
+          class="footer-column"
+          id="support"
+        >
 
+          <div class="footer-heading">
+            Need Help?
+          </div>
+
+
+          <div class="footer-contact">
+
+
+            <div class="contact-item">
+
+              <svg class="contact-icon" viewBox="0 0 24 24">
+                <path d="M20 11.5a8 8 0 0 1-8 8 8.5 8.5 0 0 1-3.7-.85L4 20l1.35-4.3A8 8 0 1 1 20 11.5z"></path>
+                <path d="M8.8 8.8c.2-.4.45-.4.7-.4h.45c.15 0 .3.08.38.25l.6 1.45c.08.18.05.38-.08.53l-.48.57c.65 1.1 1.5 1.95 2.6 2.6l.57-.48c.15-.13.35-.16.53-.08l1.45.6c.17.08.25.23.25.38v.45c0 .25 0 .5-.4.7-.38.2-1.35.35-2.65-.25-1.3-.6-2.45-1.75-3.05-3.05-.6-1.3-.45-2.27-.25-2.65z"></path>
+              </svg>
 
               <a
                 href="https://wa.me/923420672554"
                 target="_blank"
-                rel="noopener noreferrer"
-                class="contact-item"
+                rel="noopener"
               >
-
-                <span>
-                  WhatsApp: +92 342 0672554
-                </span>
-
+                +92 342 0672554
               </a>
-
-
-              <a
-                href="tel:+923420672554"
-                class="contact-item"
-              >
-
-                <span>
-                  Phone: +92 342 0672554
-                </span>
-
-              </a>
-
-
-              <a
-                href="mailto:support@zeronicpk.store"
-                class="contact-item"
-              >
-
-                <span>
-                  support@zeronicpk.store
-                </span>
-
-              </a>
-
-
-              <div class="contact-item">
-
-                <span>
-                  Mon to Sat — 8am - 6pm
-                </span>
-
-              </div>
-
-
-              <div class="socials">
-
-                <a
-                  href="https://www.instagram.com/zeronicpk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-btn"
-                  aria-label="Instagram"
-                >
-
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
-                  </svg>
-
-                </a>
-
-
-                <a
-                  href="https://www.facebook.com/zeronicpk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-btn"
-                  aria-label="Facebook"
-                >
-
-                  <svg viewBox="0 0 24 24">
-                    <path d="M13.5 22v-8h2.75l.4-3h-3.15V9.08c0-.87.24-1.46 1.5-1.46h1.78V4.94c-.31-.04-1.37-.14-2.61-.14-2.58 0-4.35 1.58-4.35 4.48V11H7v3h2.82v8h3.68z"/>
-                  </svg>
-
-                </a>
-
-
-                <a
-                  href="https://wa.me/923420672554"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-btn"
-                  aria-label="WhatsApp"
-                >
-
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.18-1.34A10 10 0 1 0 12 2z"/>
-                  </svg>
-
-                </a>
-
-              </div>
 
             </div>
+
+
+            <div class="contact-item">
+
+              <svg class="contact-icon" viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                <path d="m3 7 9 6 9-6"></path>
+              </svg>
+
+              <a href="mailto:support@zeronicpk.store">
+                support@zeronicpk.store
+              </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+              <svg class="contact-icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 7v5l3 2"></path>
+              </svg>
+
+              <span>
+                Mon to Sat · 8am – 6pm
+              </span>
+
+            </div>
+
+
+          </div>
+
+
+          <div class="socials">
+
+            <a
+              class="social-btn"
+              href="https://wa.me/923420672554"
+              target="_blank"
+              rel="noopener"
+              aria-label="Chat with ZERONIC on WhatsApp"
+            >
+
+              <svg viewBox="0 0 24 24">
+                <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.55 0 .22 5.33.22 11.9c0 2.1.55 4.15 1.6 5.95L.12 24l6.3-1.65a11.9 11.9 0 0 0 5.67 1.44h.01c6.56 0 11.89-5.33 11.89-11.9 0-3.18-1.24-6.17-3.49-8.39zM12.1 21.8h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.74.98 1-3.65-.23-.38a9.86 9.86 0 1 1 8.39 4.64zm5.43-7.39c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.8-1.49-1.79-1.67-2.09-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51 0 1.48 1.08 2.91 1.23 3.11.15.2 2.12 3.24 5.13 4.54.72.31 1.28.49 1.72.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+              </svg>
+
+            </a>
 
           </div>
 
@@ -3068,9 +2800,126 @@
       </div>
 
 
-      <!-- =================================================
-           FOOTER BOTTOM
-      ================================================== -->
+      <!-- MOBILE FOOTER LINKS -->
+
+      <div class="footer-accordions">
+
+
+        <div class="footer-accordion">
+
+          <button
+            class="footer-accordion-button"
+            type="button"
+          >
+
+            <span>
+              Shop
+            </span>
+
+            <span class="footer-plus">
+              +
+            </span>
+
+          </button>
+
+
+          <div class="footer-accordion-content">
+
+            <a href="#earbuds">
+              Earbuds
+            </a>
+
+            <a href="#earbuds">
+              New Arrivals
+            </a>
+
+            <a href="#earbuds">
+              Best Sellers
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="footer-accordion">
+
+          <button
+            class="footer-accordion-button"
+            type="button"
+          >
+
+            <span>
+              Quick Links
+            </span>
+
+            <span class="footer-plus">
+              +
+            </span>
+
+          </button>
+
+
+          <div class="footer-accordion-content">
+
+            <a href="#home">
+              Home
+            </a>
+
+            <a href="#earbuds">
+              Earbuds
+            </a>
+
+            <a href="#support">
+              Support
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="footer-accordion">
+
+          <button
+            class="footer-accordion-button"
+            type="button"
+          >
+
+            <span>
+              Support
+            </span>
+
+            <span class="footer-plus">
+              +
+            </span>
+
+          </button>
+
+
+          <div class="footer-accordion-content">
+
+            <a href="https://wa.me/923420672554">
+              WhatsApp
+            </a>
+
+            <a href="tel:+923420672554">
+              +92 342 0672554
+            </a>
+
+            <a href="mailto:support@zeronicpk.store">
+              Email Support
+            </a>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- FOOTER BOTTOM -->
 
       <div class="footer-bottom">
 
@@ -3097,6 +2946,7 @@
 
       </div>
 
+
     </div>
 
   </footer>
@@ -3115,8 +2965,8 @@
   <aside
     class="side-menu"
     id="sideMenu"
+    aria-label="Main menu"
   >
-
 
     <div class="side-menu-header">
 
@@ -3124,26 +2974,20 @@
         href="#home"
         class="side-menu-logo"
       >
-
         <img
           src="assets/logo.svg"
           alt="ZERONIC"
-        />
-
+        >
       </a>
 
 
       <button
         class="close-btn"
         id="menuClose"
+        type="button"
         aria-label="Close menu"
       >
-
-        <svg class="icon" viewBox="0 0 24 24">
-          <path d="M6 6l12 12"></path>
-          <path d="M18 6L6 18"></path>
-        </svg>
-
+        ×
       </button>
 
     </div>
@@ -3152,23 +2996,33 @@
     <nav class="menu-links">
 
       <a href="#home">
-        Home
+        <span>Home</span>
         <span>01</span>
       </a>
 
       <a href="#earbuds">
-        Earbuds
+        <span>Earbuds</span>
         <span>02</span>
       </a>
 
-      <a href="#experience">
-        ZERONIC Experience
+      <a href="#earbuds">
+        <span>New Arrivals</span>
         <span>03</span>
       </a>
 
-      <a href="#contact">
-        Contact
+      <a href="#earbuds">
+        <span>Best Sellers</span>
         <span>04</span>
+      </a>
+
+      <a href="#support">
+        <span>Support</span>
+        <span>05</span>
+      </a>
+
+      <a href="#support">
+        <span>Contact</span>
+        <span>06</span>
       </a>
 
     </nav>
@@ -3177,13 +3031,40 @@
     <div class="menu-support">
 
       <strong>
-        Need help?
+        Need Help?
       </strong>
 
       <p>
-        WhatsApp us at +92 342 0672554<br />
-        Mon to Sat — 8am - 6pm
+        Our support team is available for product questions,
+        orders and general assistance.
       </p>
+
+      <p style="margin-top:6px;">
+        <strong style="display:inline;font-size:12px;">
+          Mon to Sat · 8am – 6pm
+        </strong>
+      </p>
+
+
+      <div class="menu-support-links">
+
+        <a
+          href="https://wa.me/923420672554"
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp →
+        </a>
+
+        <a href="tel:+923420672554">
+          +92 342 0672554 →
+        </a>
+
+        <a href="mailto:support@zeronicpk.store">
+          support@zeronicpk.store →
+        </a>
+
+      </div>
 
     </div>
 
@@ -3191,45 +3072,85 @@
 
 
   <!-- =======================================================
-       SEARCH PANEL
+       SEARCH
   ======================================================== -->
 
   <div
-    class="search-panel"
-    id="searchPanel"
+    class="search-overlay"
+    id="searchOverlay"
   >
 
-    <div class="search-inner">
+    <div class="search-box">
 
-      <div class="search-box">
+      <div class="search-header">
 
-        <svg class="icon" viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="6.8"></circle>
-          <path d="M16.2 16.2L21 21"></path>
-        </svg>
+        <strong>
+          Search ZERONIC
+        </strong>
 
-
-        <input
-          type="search"
-          id="searchInput"
-          placeholder="Search earbuds..."
-        />
+        <button
+          class="search-close"
+          id="searchClose"
+          type="button"
+          aria-label="Close search"
+        >
+          ×
+        </button>
 
       </div>
 
 
-      <button
-        class="close-btn"
-        id="searchClose"
-        aria-label="Close search"
+      <div class="search-input-wrap">
+
+        <input
+          class="search-input"
+          id="searchInput"
+          type="search"
+          placeholder="Search earbuds..."
+          autocomplete="off"
+        >
+
+      </div>
+
+
+      <div
+        class="search-results"
+        id="searchResults"
       >
 
-        <svg class="icon" viewBox="0 0 24 24">
-          <path d="M6 6l12 12"></path>
-          <path d="M18 6L6 18"></path>
-        </svg>
+        <a
+          href="#earbuds"
+          class="search-result"
+          data-search="air one wireless earbuds"
+        >
+          ZERONIC Air One
+        </a>
 
-      </button>
+        <a
+          href="#earbuds"
+          class="search-result"
+          data-search="air pro wireless earbuds"
+        >
+          ZERONIC Air Pro
+        </a>
+
+        <a
+          href="#earbuds"
+          class="search-result"
+          data-search="buds x wireless earbuds"
+        >
+          ZERONIC Buds X
+        </a>
+
+        <a
+          href="#earbuds"
+          class="search-result"
+          data-search="pods pro wireless earbuds"
+        >
+          ZERONIC Pods Pro
+        </a>
+
+      </div>
 
     </div>
 
@@ -3243,27 +3164,22 @@
   <aside
     class="cart-drawer"
     id="cartDrawer"
+    aria-label="Shopping cart"
   >
-
 
     <div class="cart-header">
 
-      <h3>
+      <strong>
         Your Cart
-      </h3>
-
+      </strong>
 
       <button
-        class="close-btn"
+        class="cart-close"
         id="cartClose"
+        type="button"
         aria-label="Close cart"
       >
-
-        <svg class="icon" viewBox="0 0 24 24">
-          <path d="M6 6l12 12"></path>
-          <path d="M18 6L6 18"></path>
-        </svg>
-
+        ×
       </button>
 
     </div>
@@ -3271,36 +3187,26 @@
 
     <div class="cart-body">
 
-      <div class="empty-cart">
+      <div>
 
         <div class="empty-cart-icon">
-
-          <svg class="icon" viewBox="0 0 24 24">
-            <path d="M4 5h2l1.5 10.2a2 2 0 0 0 2 1.8h7.7a2 2 0 0 0 1.9-1.5L21 8H7"></path>
-            <circle cx="10" cy="20" r="1"></circle>
-            <circle cx="18" cy="20" r="1"></circle>
-          </svg>
-
+          🛒
         </div>
 
-
-        <h4>
+        <h3>
           Your cart is empty
-        </h4>
-
+        </h3>
 
         <p>
-          Explore our earbuds collection and find your next everyday sound.
+          Add your favourite ZERONIC earbuds to get started.
         </p>
-
 
         <a
           href="#earbuds"
-          class="btn btn-dark"
-          style="margin-top: 20px;"
-          onclick="closeCart()"
+          class="btn btn-black"
+          id="cartShopBtn"
         >
-          Explore Earbuds
+          Shop Earbuds
         </a>
 
       </div>
@@ -3311,56 +3217,94 @@
 
 
   <!-- =======================================================
+       FLOATING WHATSAPP BUTTON
+  ======================================================== -->
+
+  <a
+    href="https://wa.me/923420672554"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat with ZERONIC on WhatsApp"
+  >
+
+    <span class="whatsapp-tooltip">
+      Chat with us
+    </span>
+
+
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.55 0 .22 5.33.22 11.9c0 2.1.55 4.15 1.6 5.95L.12 24l6.3-1.65a11.9 11.9 0 0 0 5.67 1.44h.01c6.56 0 11.89-5.33 11.89-11.9 0-3.18-1.24-6.17-3.49-8.39zM12.1 21.8h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.74.98 1-3.65-.23-.38a9.86 9.86 0 1 1 8.39 4.64zm5.43-7.39c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.8-1.49-1.79-1.67-2.09-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51 0 1.48 1.08 2.91 1.23 3.11.15.2 2.12 3.24 5.13 4.54.72.31 1.28.49 1.72.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+    </svg>
+
+  </a>
+
+
+  <!-- =======================================================
        JAVASCRIPT
   ======================================================== -->
 
   <script>
 
-
-    /* =======================================================
+    /* =========================================================
        ELEMENTS
-    ======================================================== */
+    ========================================================= */
 
-    const overlay =
-      document.getElementById("overlay");
+    const body = document.body;
 
-    const sideMenu =
-      document.getElementById("sideMenu");
+    const overlay = document.getElementById("overlay");
 
-    const menuOpen =
-      document.getElementById("menuOpen");
+    const sideMenu = document.getElementById("sideMenu");
 
-    const menuClose =
-      document.getElementById("menuClose");
+    const menuOpen = document.getElementById("menuOpen");
 
-    const searchPanel =
-      document.getElementById("searchPanel");
-
-    const searchOpen =
-      document.getElementById("searchOpen");
-
-    const searchClose =
-      document.getElementById("searchClose");
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-    const cartDrawer =
-      document.getElementById("cartDrawer");
-
-    const cartOpen =
-      document.getElementById("cartOpen");
-
-    const cartClose =
-      document.getElementById("cartClose");
-
-    const cartCount =
-      document.getElementById("cartCount");
+    const menuClose = document.getElementById("menuClose");
 
 
-    /* =======================================================
-       MENU
-    ======================================================== */
+    const searchOverlay = document.getElementById("searchOverlay");
+
+    const searchOpen = document.getElementById("searchOpen");
+
+    const searchClose = document.getElementById("searchClose");
+
+    const searchInput = document.getElementById("searchInput");
+
+    const searchResults = document.querySelectorAll(".search-result");
+
+
+    const cartDrawer = document.getElementById("cartDrawer");
+
+    const cartOpen = document.getElementById("cartOpen");
+
+    const cartClose = document.getElementById("cartClose");
+
+    const cartShopBtn = document.getElementById("cartShopBtn");
+
+    const cartCount = document.getElementById("cartCount");
+
+
+    let cartItems = [];
+
+
+    /* =========================================================
+       BODY SCROLL
+    ========================================================= */
+
+    function lockBody() {
+      body.classList.add("no-scroll");
+    }
+
+    function unlockBody() {
+      body.classList.remove("no-scroll");
+    }
+
+
+    /* =========================================================
+       SIDE MENU
+    ========================================================= */
 
     function openMenu() {
 
@@ -3368,7 +3312,7 @@
 
       overlay.classList.add("active");
 
-      document.body.style.overflow = "hidden";
+      lockBody();
 
     }
 
@@ -3379,32 +3323,36 @@
 
       overlay.classList.remove("active");
 
-      document.body.style.overflow = "";
+      unlockBody();
 
     }
 
 
-    menuOpen.addEventListener(
-      "click",
-      openMenu
-    );
+    menuOpen.addEventListener("click", openMenu);
+
+    menuClose.addEventListener("click", closeMenu);
+
+    overlay.addEventListener("click", closeMenu);
 
 
-    menuClose.addEventListener(
-      "click",
-      closeMenu
-    );
+    document.querySelectorAll(".menu-links a").forEach(link => {
+
+      link.addEventListener("click", closeMenu);
+
+    });
 
 
-    /* =======================================================
+    /* =========================================================
        SEARCH
-    ======================================================== */
+    ========================================================= */
 
     function openSearch() {
 
-      searchPanel.classList.add("active");
+      searchOverlay.classList.add("active");
 
-      setTimeout(function() {
+      lockBody();
+
+      setTimeout(() => {
 
         searchInput.focus();
 
@@ -3415,55 +3363,66 @@
 
     function closeSearch() {
 
-      searchPanel.classList.remove("active");
+      searchOverlay.classList.remove("active");
+
+      unlockBody();
+
+      searchInput.value = "";
+
+      searchResults.forEach(result => {
+
+        result.classList.remove("show");
+
+      });
 
     }
 
 
-    searchOpen.addEventListener(
-      "click",
-      openSearch
-    );
+    searchOpen.addEventListener("click", openSearch);
+
+    searchClose.addEventListener("click", closeSearch);
 
 
-    searchClose.addEventListener(
-      "click",
-      closeSearch
-    );
+    searchInput.addEventListener("input", () => {
 
+      const query = searchInput.value
+        .trim()
+        .toLowerCase();
 
-    searchInput.addEventListener(
-      "keydown",
-      function(event) {
+      searchResults.forEach(result => {
 
-        if (event.key === "Enter") {
+        const text = (
+          result.dataset.search || ""
+        ).toLowerCase();
 
-          const query =
-            searchInput.value.trim();
+        if (
+          query.length > 0 &&
+          text.includes(query)
+        ) {
 
+          result.classList.add("show");
 
-          if (query) {
+        } else {
 
-            alert(
-              "Search is ready for: " +
-              query +
-              ". Connect this field to your product search system when products are added."
-            );
-
-          }
+          result.classList.remove("show");
 
         }
 
-      }
-    );
+      });
+
+    });
 
 
-    /* =======================================================
+    searchResults.forEach(result => {
+
+      result.addEventListener("click", closeSearch);
+
+    });
+
+
+    /* =========================================================
        CART
-    ======================================================== */
-
-    let cartItems = 0;
-
+    ========================================================= */
 
     function openCart() {
 
@@ -3471,7 +3430,7 @@
 
       overlay.classList.add("active");
 
-      document.body.style.overflow = "hidden";
+      lockBody();
 
     }
 
@@ -3482,171 +3441,142 @@
 
       overlay.classList.remove("active");
 
-      document.body.style.overflow = "";
+      unlockBody();
 
     }
 
 
-    cartOpen.addEventListener(
-      "click",
-      openCart
-    );
+    cartOpen.addEventListener("click", openCart);
+
+    cartClose.addEventListener("click", closeCart);
 
 
-    cartClose.addEventListener(
-      "click",
-      closeCart
-    );
+    cartShopBtn.addEventListener("click", closeCart);
 
 
-    function addToCart(productName) {
+    /* =========================================================
+       ADD TO CART
+    ========================================================= */
 
-      cartItems++;
+    document.querySelectorAll("[data-add]").forEach(button => {
 
-      cartCount.textContent =
-        cartItems;
+      button.addEventListener("click", () => {
+
+        const product = button.dataset.add;
+
+        cartItems.push(product);
+
+        cartCount.textContent = cartItems.length;
+
+        button.textContent = "✓";
+
+        setTimeout(() => {
+
+          button.textContent = "+";
+
+        }, 1000);
+
+        openCart();
+
+      });
+
+    });
 
 
-      alert(
-        productName +
-        " has been added to your cart."
-      );
+    /* =========================================================
+       ESCAPE KEY
+    ========================================================= */
 
-    }
+    document.addEventListener("keydown", event => {
 
-
-    /* =======================================================
-       OVERLAY
-    ======================================================== */
-
-    overlay.addEventListener(
-      "click",
-      function() {
+      if (event.key === "Escape") {
 
         closeMenu();
+
+        closeSearch();
 
         closeCart();
 
       }
-    );
+
+    });
 
 
-    /* =======================================================
-       ESCAPE
-    ======================================================== */
-
-    document.addEventListener(
-      "keydown",
-      function(event) {
-
-        if (event.key === "Escape") {
-
-          closeMenu();
-
-          closeCart();
-
-          closeSearch();
-
-        }
-
-      }
-    );
-
-
-    /* =======================================================
-       MOBILE FOOTER ACCORDIONS
-    ======================================================== */
-
-    function toggleAccordion(button) {
-
-      const accordion =
-        button.parentElement;
-
-
-      accordion.classList.toggle(
-        "open"
-      );
-
-    }
-
-
-    /* =======================================================
-       CLOSE MENU AFTER LINK CLICK
-    ======================================================== */
+    /* =========================================================
+       FOOTER MOBILE ACCORDIONS
+    ========================================================= */
 
     document
-      .querySelectorAll(".menu-links a")
-      .forEach(function(link) {
+      .querySelectorAll(".footer-accordion-button")
+      .forEach(button => {
 
-        link.addEventListener(
-          "click",
-          function() {
+        button.addEventListener("click", () => {
 
-            closeMenu();
+          const content =
+            button.nextElementSibling;
+
+          const isActive =
+            content.classList.contains("active");
+
+
+          document
+            .querySelectorAll(".footer-accordion-content")
+            .forEach(item => {
+
+              item.classList.remove("active");
+
+            });
+
+
+          document
+            .querySelectorAll(".footer-accordion-button")
+            .forEach(item => {
+
+              item.classList.remove("active");
+
+            });
+
+
+          if (!isActive) {
+
+            content.classList.add("active");
+
+            button.classList.add("active");
 
           }
-        );
+
+        });
 
       });
 
 
-    /* =======================================================
-       SMOOTH SCROLL
-    ======================================================== */
+    /* =========================================================
+       CLOSE DRAWERS WHEN CLICKING NORMAL ANCHORS
+    ========================================================= */
 
     document
       .querySelectorAll('a[href^="#"]')
-      .forEach(function(anchor) {
+      .forEach(link => {
 
-        anchor.addEventListener(
-          "click",
-          function(event) {
+        link.addEventListener("click", event => {
 
-            const targetId =
-              this.getAttribute("href");
+          const targetId =
+            link.getAttribute("href");
 
-
-            if (
-              !targetId ||
-              targetId === "#" ||
-              !document.querySelector(targetId)
-            ) {
-
-              return;
-
-            }
-
-
-            event.preventDefault();
-
-
-            const target =
-              document.querySelector(targetId);
-
-
-            const headerHeight =
-              document.querySelector(
-                ".site-header"
-              ).offsetHeight;
-
-
-            const targetPosition =
-              target.getBoundingClientRect().top +
-              window.scrollY -
-              headerHeight -
-              15;
-
-
-            window.scrollTo({
-
-              top: targetPosition,
-
-              behavior: "smooth"
-
-            });
-
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
           }
-        );
+
+          closeMenu();
+
+          closeSearch();
+
+          closeCart();
+
+        });
 
       });
 
