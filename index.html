@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZERONIC Store</title>
   <style>
-    /* CSS RESET & GENERAL STYLES */
+    /* CSS RESET & BASE STYLES */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,6 +16,8 @@
     body {
       background-color: #000000;
       color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* HEADER & NAVIGATION BAR */
@@ -26,6 +28,9 @@
       padding: 16px 20px;
       background-color: #000000;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .header-logo {
@@ -38,9 +43,30 @@
       border: none;
       color: #ffffff;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* SIDE NAVIGATION MENU OVERLAY */
+    .side-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .side-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
     .side-menu {
       position: fixed;
       top: 0;
@@ -55,6 +81,7 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 24px;
+      overflow-y: auto;
     }
 
     .side-menu.active {
@@ -77,6 +104,7 @@
       cursor: pointer;
     }
 
+    /* REMOVED: Best Seller, New Arrivals, Support from Side Menu */
     .menu-links {
       list-style: none;
       margin-top: 20px;
@@ -90,7 +118,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 0;
+      padding: 18px 0;
       color: #ffffff;
       text-decoration: none;
       font-size: 18px;
@@ -102,18 +130,19 @@
       font-size: 14px;
     }
 
-    /* MENU NEED HELP CONTAINER */
     .menu-help-card {
       background-color: #141414;
       border-radius: 12px;
       padding: 20px;
-      margin-top: auto;
+      margin-top: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .menu-help-card h4 {
       font-size: 14px;
       letter-spacing: 1px;
       margin-bottom: 12px;
+      color: #ffffff;
     }
 
     .menu-help-card p {
@@ -140,7 +169,7 @@
 
     .hero-subtitle {
       text-transform: uppercase;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 2px;
       color: #888888;
       margin-bottom: 8px;
@@ -157,9 +186,10 @@
       font-size: 14px;
       color: #a1a1a1;
       line-height: 1.5;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
+    /* Hero Image Wrapper with Overlay Button & Removed Space */
     .hero-image-wrapper {
       position: relative;
       margin-top: 0;
@@ -173,7 +203,6 @@
       border-radius: 12px;
     }
 
-    /* CLEAN OVERLAY BUTTON PLACED UNDER PHOTO */
     .hero-btn-overlay {
       position: absolute;
       bottom: 16px;
@@ -187,9 +216,10 @@
       font-weight: 600;
       font-size: 14px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      white-space: nowrap;
     }
 
-    /* HORIZONTAL CAROUSEL FOR PRODUCTS */
+    /* HORIZONTAL CAROUSEL FOR PRODUCT COLLECTIONS */
     .collections-section {
       padding: 24px 16px;
     }
@@ -199,15 +229,16 @@
       gap: 16px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       padding-bottom: 8px;
     }
 
     .carousel-container::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera */
+      display: none;
     }
 
+    /* Product Cards (Row Form, Only 3 Items) */
     .product-card {
       flex: 0 0 85%;
       scroll-snap-align: start;
@@ -268,7 +299,7 @@
       cursor: pointer;
     }
 
-    /* FOOTER (TECHHUNK STYLE MATCH) */
+    /* EXACT TECHHUNK FOOTER REPLICA */
     footer {
       background-color: #0052cc;
       color: #ffffff;
@@ -325,6 +356,7 @@
     .footer-brand img {
       height: 28px;
       margin-bottom: 16px;
+      display: block;
     }
 
     .social-icons {
@@ -336,13 +368,18 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.15);
+      background-color: rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
       text-decoration: none;
-      font-size: 14px;
+    }
+
+    .social-circle svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
 
     .footer-help {
@@ -383,6 +420,8 @@
       border: none;
       outline: none;
       font-size: 14px;
+      background-color: #ffffff;
+      color: #000000;
     }
 
     .newsletter-submit {
@@ -401,22 +440,31 @@
 
   <!-- HEADER -->
   <header>
-    <button class="menu-btn" id="openMenu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    <button class="menu-btn" id="openMenu" aria-label="Open Navigation Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
     </button>
+    <!-- Light background logo asset -->
     <img src="logo.svg" alt="ZERONIC" class="header-logo">
     <div style="width: 24px;"></div>
   </header>
+
+  <!-- SIDE MENU OVERLAY -->
+  <div class="side-menu-overlay" id="menuOverlay"></div>
 
   <!-- SIDE NAVIGATION MENU -->
   <div class="side-menu" id="sideMenu">
     <div>
       <div class="menu-header">
+        <!-- Dark background logo asset -->
         <img src="white logo.svg" alt="ZERONIC" style="height: 22px;">
-        <button class="menu-close-btn" id="closeMenu">&#10005;</button>
+        <button class="menu-close-btn" id="closeMenu" aria-label="Close Menu">&#10005;</button>
       </div>
 
-      <!-- UPDATED MENU: Best Sellers, New Arrivals, and Support removed -->
+      <!-- UPDATED MENU: Removed Best Sellers, New Arrivals, Support -->
       <ul class="menu-links">
         <li><a href="#">Home <span class="num">01</span></a></li>
         <li><a href="#">Earbuds <span class="num">02</span></a></li>
@@ -439,14 +487,14 @@
     <h1 class="hero-title">Your day.<br>Your sound.</h1>
     <p class="hero-desc">Elevate your daily rhythm with personal audio designed for seamless listening, distinct clarity, and timeless aesthetic.</p>
     
-    <!-- Hero Image with View Collection button placed cleanly at the bottom without extra space -->
+    <!-- Hero Banner with View Collection button placed directly under the photo, negative space removed -->
     <div class="hero-image-wrapper">
       <img src="mobile-hero-banner.webp" alt="Hero Banner">
       <a href="#" class="hero-btn-overlay">View Collection</a>
     </div>
   </section>
 
-  <!-- PRODUCT COLLECTIONS (Horizontal Scrollable Carousel, 3 Items Only) -->
+  <!-- PRODUCT COLLECTIONS: Horizontal Row Carousel (3 Items Only) -->
   <section class="collections-section">
     <div class="carousel-container">
       <!-- Item 1 -->
@@ -496,8 +544,9 @@
     </div>
   </section>
 
-  <!-- FOOTER (TechHunk Layout with updated branding & excluded policies) -->
+  <!-- FOOTER: Exact TechHunk Style with Excluded Policies -->
   <footer>
+    <!-- SHOP Accordion -->
     <div class="accordion-item">
       <button class="accordion-header">
         SHOP <span>+</span>
@@ -512,7 +561,7 @@
       </div>
     </div>
 
-    <!-- Quick Links Accordion without Terms & Conditions, Warranty Claim, Warranty Policy -->
+    <!-- Quick Links Accordion (Terms & Conditions, Warranty Claim, Warranty Policy Removed) -->
     <div class="accordion-item">
       <button class="accordion-header">
         Quick Links <span>+</span>
@@ -520,6 +569,7 @@
       <div class="accordion-content">
         <ul>
           <li><a href="#">Home Page</a></li>
+          <li><a href="#">Support</a></li>
           <li><a href="#">Privacy Policy</a></li>
           <li><a href="#">Shipping Policy</a></li>
           <li><a href="#">Contact us</a></li>
@@ -527,15 +577,23 @@
       </div>
     </div>
 
+    <!-- Footer Brand & Social Icons -->
     <div class="footer-brand">
       <img src="white logo.svg" alt="ZERONIC">
       <div class="social-icons">
-        <a href="#" class="social-circle">f</a>
-        <a href="#" class="social-circle">i</a>
-        <a href="#" class="social-circle">y</a>
+        <a href="#" class="social-circle" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.01 11.49 5.6 13.79 5.6c1.1 0 2.25.2 2.25.2v2.47h-1.27c-1.23 0-1.62.77-1.62 1.56V12h2.78l-.44 3h-2.34v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+        </a>
+        <a href="#" class="social-circle" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" class="social-circle" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
       </div>
     </div>
 
+    <!-- Contact & Helpline Details -->
     <div class="footer-help">
       <h3>We're here to help.</h3>
       <p>Call Us: +92 342 0672554</p>
@@ -543,6 +601,7 @@
       <p>Email Us: support@zeronicpk.store</p>
     </div>
 
+    <!-- Newsletter Form -->
     <div class="footer-newsletter">
       <h4>Get exclusive offer and updates</h4>
       <form class="newsletter-form" onsubmit="event.preventDefault();">
@@ -552,16 +611,29 @@
     </div>
   </footer>
 
+  <!-- JAVASCRIPT CONTROLS -->
   <script>
-    // SIDE MENU TOGGLE
+    // SIDE MENU TOGGLE LOGIC
     const openMenu = document.getElementById('openMenu');
     const closeMenu = document.getElementById('closeMenu');
     const sideMenu = document.getElementById('sideMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-    openMenu.addEventListener('click', () => sideMenu.classList.add('active'));
-    closeMenu.addEventListener('click', () => sideMenu.classList.remove('active'));
+    function showMenu() {
+      sideMenu.classList.add('active');
+      menuOverlay.classList.add('active');
+    }
 
-    // ACCORDION TOGGLE FOR FOOTER
+    function hideMenu() {
+      sideMenu.classList.remove('active');
+      menuOverlay.classList.remove('active');
+    }
+
+    openMenu.addEventListener('click', showMenu);
+    closeMenu.addEventListener('click', hideMenu);
+    menuOverlay.addEventListener('click', hideMenu);
+
+    // FOOTER ACCORDION TOGGLE LOGIC
     const accordions = document.querySelectorAll('.accordion-header');
     accordions.forEach(acc => {
       acc.addEventListener('click', function() {
