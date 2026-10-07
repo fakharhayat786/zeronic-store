@@ -8,25 +8,22 @@
 
   <meta
     name="description"
-    content="Discover ZERONIC wireless earbuds — premium sound, modern design and everyday comfort."
+    content="Discover ZERONIC wireless earbuds — premium sound, modern design, and everyday comfort."
   />
 
-  <meta name="theme-color" content="#0b3b82" />
+  <meta name="theme-color" content="#000000" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
 
   <style>
-
     /* =========================================================
-       RESET
+       RESET & BASE STYLES
     ========================================================= */
-
     * {
       margin: 0;
       padding: 0;
@@ -38,11 +35,12 @@
     }
 
     body {
-      font-family: "Inter", sans-serif;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
       color: #111111;
-      background: #ffffff;
+      background: #000000;
       line-height: 1.5;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
     img {
@@ -58,6 +56,7 @@
     button {
       border: 0;
       cursor: pointer;
+      background: none;
     }
 
     a {
@@ -70,15 +69,15 @@
     }
 
     :root {
-      --blue: #0b3b82;
-      --blue-dark: #06285c;
-      --blue-light: #eaf2ff;
-      --black: #080808;
-      --dark: #111111;
-      --gray: #6d6d6d;
-      --light: #f6f6f4;
-      --border: #e7e7e7;
+      --pure-black: #000000;
+      --dark-gray-1: #111111;
+      --dark-gray-2: #171717;
+      --dark-gray-3: #1f1f1f;
+      --soft-white: #f7f7f5;
       --white: #ffffff;
+      --secondary-gray: #888888;
+      --border-dark: rgba(255, 255, 255, 0.1);
+      --border-light: rgba(0, 0, 0, 0.08);
       --container: 1240px;
     }
 
@@ -88,32 +87,33 @@
     }
 
     .section {
-      padding: 110px 0;
+      padding: 120px 0;
     }
 
     .eyebrow {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.18em;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--secondary-gray);
       margin-bottom: 16px;
     }
 
     .section-title {
       font-family: "Manrope", sans-serif;
-      font-size: clamp(38px, 5vw, 68px);
-      line-height: 1.02;
-      letter-spacing: -0.045em;
+      font-size: clamp(36px, 4.5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
       font-weight: 800;
     }
 
     .section-description {
-      max-width: 600px;
-      color: var(--gray);
-      font-size: 16px;
-      line-height: 1.8;
-      margin-top: 22px;
+      max-width: 580px;
+      color: var(--secondary-gray);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-top: 20px;
+      font-weight: 400;
     }
 
     .btn {
@@ -121,62 +121,69 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      min-height: 52px;
-      padding: 0 25px;
+      min-height: 50px;
+      padding: 0 28px;
       border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: 0.25s ease;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: all 0.25s ease;
     }
 
     .btn-dark {
-      background: var(--black);
-      color: white;
+      background: var(--dark-gray-1);
+      color: var(--white);
+      border: 1px solid var(--border-dark);
     }
 
     .btn-dark:hover {
-      background: var(--blue);
+      background: var(--white);
+      color: var(--pure-black);
+      border-color: var(--white);
       transform: translateY(-2px);
     }
 
     .btn-white {
-      background: white;
-      color: #111;
+      background: var(--white);
+      color: var(--pure-black);
     }
 
     .btn-white:hover {
+      background: var(--soft-white);
       transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
     }
 
     /* =========================================================
-       ANNOUNCEMENT
+       ANNOUNCEMENT BAR
     ========================================================= */
-
     .announcement {
-      background: var(--blue);
-      color: white;
+      background: var(--dark-gray-1);
+      color: var(--secondary-gray);
+      border-bottom: 1px solid var(--border-dark);
       text-align: center;
-      padding: 9px 20px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
+      padding: 10px 20px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     /* =========================================================
        HEADER
     ========================================================= */
-
     .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .header-inner {
-      min-height: 86px;
+      min-height: 80px;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
@@ -199,7 +206,7 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .header-logo {
@@ -222,19 +229,19 @@
     }
 
     .icon-btn {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: transparent;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: 0.2s ease;
-      color: #111;
+      transition: all 0.2s ease;
+      color: var(--white);
     }
 
     .icon-btn:hover {
-      background: #f1f1f1;
+      background: var(--dark-gray-2);
     }
 
     .icon {
@@ -242,7 +249,7 @@
       height: 20px;
       stroke: currentColor;
       fill: none;
-      stroke-width: 1.8;
+      stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
@@ -251,14 +258,14 @@
       display: flex;
       flex-direction: column;
       gap: 5px;
-      width: 20px;
+      width: 18px;
     }
 
     .hamburger span {
-      width: 20px;
-      height: 1.8px;
-      background: #111;
-      border-radius: 5px;
+      width: 100%;
+      height: 1.5px;
+      background: var(--white);
+      border-radius: 2px;
     }
 
     .cart-button {
@@ -267,13 +274,13 @@
 
     .cart-count {
       position: absolute;
-      top: 3px;
-      right: 1px;
-      min-width: 17px;
-      height: 17px;
+      top: 4px;
+      right: 2px;
+      min-width: 16px;
+      height: 16px;
       padding: 0 4px;
-      background: var(--blue);
-      color: white;
+      background: var(--white);
+      color: var(--pure-black);
       border-radius: 50px;
       font-size: 9px;
       font-weight: 800;
@@ -283,187 +290,202 @@
     }
 
     /* =========================================================
-       HERO
+       HERO SECTION (DESKTOP & MOBILE RESPONSIVE)
     ========================================================= */
-
     .hero {
-      background: #f2f3f5;
-      padding: 30px 0;
+      background: var(--pure-black);
+      position: relative;
+      overflow: hidden;
+      padding: 40px 0 60px;
     }
 
+    /* Desktop Hero Layout */
     .hero-card {
       position: relative;
-      min-height: 680px;
+      min-height: 620px;
       overflow: hidden;
-      border-radius: 32px;
-      background:
-        radial-gradient(
-          circle at 76% 46%,
-          rgba(42, 104, 196, 0.34),
-          transparent 28%
-        ),
-        linear-gradient(
-          125deg,
-          #0a0a0a 0%,
-          #111827 58%,
-          #0a326e 100%
-        );
-      color: white;
+      border-radius: 24px;
+      background: var(--dark-gray-1);
+      border: 1px solid var(--border-dark);
+      color: var(--white);
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      padding: 80px 50px 80px 75px;
+      padding: 80px 60px;
     }
 
     .hero-eyebrow {
-      color: #9fc5ff;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.18em;
+      color: var(--secondary-gray);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .hero-title {
       font-family: "Manrope", sans-serif;
-      font-size: clamp(52px, 6vw, 92px);
-      line-height: 0.94;
-      letter-spacing: -0.06em;
+      font-size: clamp(48px, 5.5vw, 80px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
       font-weight: 800;
-      max-width: 620px;
+      max-width: 580px;
     }
 
     .hero-title span {
-      color: #8dbaff;
+      color: var(--secondary-gray);
+      font-weight: 400;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 38px;
-      justify-content: center;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 22px;
-      margin-top: 42px;
-    }
-
-    .hero-meta-item {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      color: rgba(255,255,255,0.72);
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .hero-meta-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #8dbaff;
+      gap: 16px;
+      margin-top: 40px;
     }
 
     .hero-visual {
       height: 100%;
-      min-height: 680px;
+      min-height: 620px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px;
-    }
-
-    .hero-glow {
-      position: absolute;
-      width: 440px;
-      height: 440px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
+      background: radial-gradient(circle at center, var(--dark-gray-2) 0%, var(--dark-gray-1) 100%);
     }
 
     .hero-product {
       position: relative;
       z-index: 2;
-      width: min(650px, 100%);
-      height: 540px;
+      width: min(520px, 100%);
+      height: 480px;
       object-fit: contain;
-      filter: drop-shadow(0 35px 45px rgba(0,0,0,0.45));
-      transform: rotate(-5deg);
+      filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.8));
     }
 
-    .hero-floating-card {
-      position: absolute;
-      z-index: 3;
-      right: 8%;
-      bottom: 12%;
-      padding: 18px 20px;
-      min-width: 180px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.16);
-      backdrop-filter: blur(18px);
+    /* Mobile Hero Layout (Targeting 9:16 portrait image layout) */
+    .hero-mobile-container {
+      display: none;
     }
 
-    .hero-floating-card small {
-      display: block;
-      color: rgba(255,255,255,0.55);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-bottom: 5px;
-    }
-
-    .hero-floating-card strong {
-      font-family: "Manrope", sans-serif;
-      font-size: 18px;
+    @media (max-width: 768px) {
+      .hero {
+        padding: 0;
+      }
+      .hero-desktop-container {
+        display: none;
+      }
+      .hero-mobile-container {
+        display: block;
+        position: relative;
+        width: 100%;
+        background: var(--pure-black);
+      }
+      .hero-mobile-banner-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        max-height: 82vh;
+        overflow: hidden;
+      }
+      .hero-mobile-banner-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .hero-mobile-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 40px 24px;
+        background: linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.75) 0%,
+          rgba(0,0,0,0) 35%,
+          rgba(0,0,0,0) 65%,
+          rgba(0,0,0,0.85) 100%
+        );
+        text-align: center;
+      }
+      .hero-mobile-top {
+        padding-top: 10px;
+      }
+      .hero-mobile-eyebrow {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--secondary-gray);
+        margin-bottom: 8px;
+      }
+      .hero-mobile-title {
+        font-family: "Manrope", sans-serif;
+        font-size: 36px;
+        line-height: 1.08;
+        letter-spacing: -0.04em;
+        font-weight: 800;
+        color: var(--white);
+      }
+      .hero-mobile-title span {
+        display: block;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .hero-mobile-bottom {
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: center;
+      }
     }
 
     /* =========================================================
-       STATEMENT
+       STATEMENT BAR
     ========================================================= */
-
     .statement {
-      padding: 22px 0;
-      background: var(--black);
-      color: white;
-      overflow: hidden;
+      padding: 28px 0;
+      background: var(--pure-black);
+      border-y: 1px solid var(--border-dark);
+      color: var(--white);
+      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .statement-track {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 22px;
-      font-size: 12px;
+      gap: 20px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      color: var(--secondary-gray);
     }
 
     .statement-dot {
       width: 4px;
       height: 4px;
-      background: #7eaef8;
+      background: var(--secondary-gray);
       border-radius: 50%;
+      opacity: 0.5;
     }
 
     /* =========================================================
-       PRODUCTS
+       PRODUCTS SECTION
     ========================================================= */
-
     .products-section {
-      background: white;
+      background: var(--soft-white);
+      color: var(--dark-gray-1);
     }
 
     .section-top {
@@ -471,84 +493,87 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 30px;
-      margin-bottom: 50px;
-    }
-
-    .section-top .section-description {
-      margin-top: 15px;
+      margin-bottom: 60px;
     }
 
     .products-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      gap: 20px;
     }
 
     .product-card {
       position: relative;
-      background: #f6f6f4;
-      border-radius: 22px;
+      background: var(--white);
+      border-radius: 16px;
       overflow: hidden;
-      transition: 0.3s ease;
+      border: 1px solid var(--border-light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .product-card:hover {
-      transform: translateY(-7px);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
     }
 
     .product-image-wrap {
       position: relative;
-      aspect-ratio: 1 / 1.05;
+      aspect-ratio: 1 / 1;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      background:
-        radial-gradient(circle at center, #ffffff 0%, #eeeeeb 75%);
+      background: #fafafa;
+      padding: 30px;
     }
 
     .product-image {
-      width: 88%;
-      height: 88%;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
-      transition: 0.35s ease;
+      transition: transform 0.4s ease;
     }
 
     .product-card:hover .product-image {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
-    .product-badge {
+    .product-tag {
       position: absolute;
-      top: 15px;
-      left: 15px;
+      top: 16px;
+      left: 16px;
       z-index: 2;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: #111;
-      color: white;
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: var(--secondary-gray);
     }
 
     .product-info {
-      padding: 21px;
-      background: white;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .product-name {
       font-family: "Manrope", sans-serif;
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 800;
       letter-spacing: -0.02em;
+      color: var(--dark-gray-1);
     }
 
     .product-subtitle {
-      color: #7b7b7b;
-      font-size: 12px;
-      margin-top: 5px;
+      color: #666666;
+      font-size: 13px;
+      margin-top: 6px;
+      line-height: 1.5;
+      font-weight: 400;
+      flex-grow: 1;
     }
 
     .product-bottom {
@@ -556,217 +581,111 @@
       align-items: center;
       justify-content: space-between;
       gap: 15px;
-      margin-top: 16px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
     }
 
     .product-price {
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 700;
+      color: var(--dark-gray-1);
     }
 
     .add-btn {
-      width: 39px;
-      height: 39px;
-      border-radius: 50%;
-      background: #111;
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.2s ease;
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: var(--dark-gray-1);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s ease;
     }
 
     .add-btn:hover {
-      background: var(--blue);
-      transform: rotate(8deg);
+      background: var(--pure-black);
+      transform: translateY(-1px);
     }
 
     /* =========================================================
-       EXPERIENCE
+       AUDIO EXPERIENCE SECTION
     ========================================================= */
-
     .experience {
-      background: #080808;
-      color: white;
-      padding: 130px 0;
+      background: var(--pure-black);
+      color: var(--white);
+      padding: 140px 0;
+      border-top: 1px solid var(--border-dark);
     }
 
     .experience-grid {
       display: grid;
-      grid-template-columns: 0.82fr 1.18fr;
+      grid-template-columns: 0.85fr 1.15fr;
       gap: 80px;
       align-items: center;
     }
 
-    .experience-copy .eyebrow {
-      color: #9fc5ff;
-    }
-
     .experience-title {
       font-family: "Manrope", sans-serif;
-      font-size: clamp(46px, 6vw, 82px);
-      line-height: 0.96;
-      letter-spacing: -0.055em;
+      font-size: clamp(42px, 5.5vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
       font-weight: 800;
     }
 
     .experience-title span {
-      color: #7faef4;
+      color: var(--secondary-gray);
+      font-weight: 400;
     }
 
     .experience-description {
-      margin-top: 25px;
-      max-width: 510px;
-      color: rgba(255,255,255,0.62);
-      line-height: 1.85;
+      margin-top: 28px;
+      max-width: 500px;
+      color: var(--secondary-gray);
+      line-height: 1.8;
       font-size: 15px;
     }
 
     .experience-action {
-      margin-top: 32px;
-      display: flex;
-      justify-content: center;
+      margin-top: 40px;
     }
 
     .experience-image-area {
       position: relative;
-      min-height: 570px;
-      border-radius: 30px;
+      min-height: 520px;
+      border-radius: 24px;
       overflow: hidden;
-      background:
-        radial-gradient(
-          circle at 50% 45%,
-          rgba(44, 107, 197, 0.28),
-          transparent 40%
-        ),
-        linear-gradient(145deg, #151515, #0d1727);
+      background: var(--dark-gray-1);
+      border: 1px solid var(--border-dark);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .experience-image {
-      width: 90%;
-      max-width: 620px;
-      height: 480px;
+      width: 85%;
+      max-width: 540px;
+      height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 30px 45px rgba(0,0,0,0.55));
-    }
-
-    .experience-tag {
-      position: absolute;
-      top: 25px;
-      left: 25px;
-      padding: 9px 13px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.7);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      backdrop-filter: blur(12px);
-    }
-
-    .experience-number {
-      position: absolute;
-      right: 28px;
-      bottom: 24px;
-      color: rgba(255,255,255,0.16);
-      font-family: "Manrope", sans-serif;
-      font-size: 100px;
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: -0.08em;
+      filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.7));
     }
 
     /* =========================================================
-       FEATURES
+       UPGRADE YOUR EVERYDAY CTA
     ========================================================= */
-
-    .feature-section {
-      background: #f5f5f3;
-    }
-
-    .feature-heading {
-      max-width: 720px;
-      margin-bottom: 60px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .feature-card {
-      background: white;
-      border-radius: 24px;
-      padding: 35px;
-      min-height: 300px;
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: 0.25s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .feature-number {
-      width: 43px;
-      height: 43px;
-      border-radius: 50%;
-      background: var(--blue-light);
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 800;
-      margin-bottom: 55px;
-    }
-
-    .feature-card h3 {
-      font-family: "Manrope", sans-serif;
-      font-size: 24px;
-      letter-spacing: -0.03em;
-      margin-bottom: 12px;
-    }
-
-    .feature-card p {
-      color: var(--gray);
-      font-size: 14px;
-      line-height: 1.75;
-    }
-
-    /* =========================================================
-       CTA
-    ========================================================= */
-
     .cta-section {
-      padding: 30px 0 110px;
-      background: #f5f5f3;
+      padding: 100px 0 120px;
+      background: var(--pure-black);
     }
 
     .cta-card {
       position: relative;
       overflow: hidden;
-      border-radius: 30px;
-      min-height: 510px;
-      background:
-        radial-gradient(
-          circle at 72% 50%,
-          rgba(50, 113, 205, 0.26),
-          transparent 31%
-        ),
-        linear-gradient(
-          120deg,
-          #111111,
-          #101b2d 75%,
-          #0c3778
-        );
-      color: white;
+      border-radius: 24px;
+      min-height: 480px;
+      background: var(--dark-gray-1);
+      border: 1px solid var(--border-dark);
+      color: var(--white);
       display: flex;
       align-items: center;
     }
@@ -775,137 +694,71 @@
       position: relative;
       z-index: 2;
       width: 55%;
-      padding: 65px;
-    }
-
-    .cta-content .eyebrow {
-      color: #9fc5ff;
+      padding: 80px;
     }
 
     .cta-title {
       font-family: "Manrope", sans-serif;
-      font-size: clamp(42px, 5vw, 68px);
-      line-height: 0.98;
-      letter-spacing: -0.055em;
+      font-size: clamp(38px, 4.5vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
       font-weight: 800;
     }
 
+    .cta-title span {
+      color: var(--secondary-gray);
+      font-weight: 400;
+    }
+
     .cta-description {
-      max-width: 500px;
+      max-width: 460px;
       margin-top: 20px;
-      color: rgba(255,255,255,0.66);
-      line-height: 1.8;
+      color: var(--secondary-gray);
+      line-height: 1.7;
       font-size: 15px;
     }
 
     .cta-actions {
-      margin-top: 30px;
+      margin-top: 36px;
     }
 
     .cta-image {
       position: absolute;
-      right: 2%;
+      right: 5%;
       top: 50%;
       transform: translateY(-50%);
-      width: 48%;
-      height: 90%;
+      width: 42%;
+      max-height: 85%;
       object-fit: contain;
-      filter: drop-shadow(0 30px 40px rgba(0,0,0,0.5));
-    }
-
-    /* =========================================================
-       WHY ZERONIC
-    ========================================================= */
-
-    .why-section {
-      background: white;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 90px;
-      align-items: start;
-    }
-
-    .why-sticky {
-      position: sticky;
-      top: 130px;
-    }
-
-    .why-list {
-      border-top: 1px solid var(--border);
-    }
-
-    .why-item {
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 25px;
-      padding: 30px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .why-index {
-      font-size: 12px;
-      color: var(--blue);
-      font-weight: 800;
-      padding-top: 5px;
-    }
-
-    .why-item h3 {
-      font-family: "Manrope", sans-serif;
-      font-size: 24px;
-      letter-spacing: -0.03em;
-      margin-bottom: 8px;
-    }
-
-    .why-item p {
-      max-width: 550px;
-      color: var(--gray);
-      font-size: 14px;
-      line-height: 1.75;
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.8));
     }
 
     /* =========================================================
        FOOTER
     ========================================================= */
-
     .footer {
-      background: #f3f3f1;
-      padding: 25px 20px 20px;
-    }
-
-    .footer-container {
-      background: var(--blue);
-      color: white;
-      border-radius: 30px;
-      overflow: hidden;
-    }
-
-    .footer-main {
-      padding: 65px 55px 45px;
+      background: var(--pure-black);
+      border-top: 1px solid var(--border-dark);
+      padding: 90px 0 40px;
+      color: var(--white);
     }
 
     .footer-top {
       display: grid;
-      grid-template-columns: 1.15fr 0.75fr 0.75fr 1fr;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
       gap: 50px;
-      padding-bottom: 55px;
-      border-bottom: 1px solid rgba(255,255,255,0.14);
+      padding-bottom: 70px;
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .footer-brand {
-      max-width: 350px;
+      max-width: 320px;
     }
 
     .footer-logo-wrap {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      background: transparent;
-      padding: 0;
-      border-radius: 0;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .footer-logo-wrap img {
@@ -915,93 +768,52 @@
     }
 
     .footer-brand-text {
-      color: rgba(255,255,255,0.66);
+      color: var(--secondary-gray);
       font-size: 13px;
-      line-height: 1.8;
-      max-width: 310px;
+      line-height: 1.7;
+      margin-top: 10px;
     }
 
     .footer-heading {
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.13em;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      color: var(--white);
+      margin-bottom: 24px;
     }
 
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .footer-links a {
-      width: fit-content;
-      color: rgba(255,255,255,0.68);
+      color: var(--secondary-gray);
       font-size: 13px;
-      transition: 0.2s ease;
+      transition: color 0.2s ease;
     }
 
     .footer-links a:hover {
-      color: white;
-      transform: translateX(2px);
+      color: var(--white);
     }
 
     .footer-contact {
       display: flex;
       flex-direction: column;
-      gap: 13px;
+      gap: 14px;
     }
 
     .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 11px;
-      color: rgba(255,255,255,0.68);
+      color: var(--secondary-gray);
       font-size: 13px;
-      line-height: 1.55;
+      line-height: 1.6;
+      transition: color 0.2s ease;
     }
 
-    .contact-icon {
-      flex-shrink: 0;
-      width: 17px;
-      height: 17px;
-      margin-top: 2px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.7;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .socials {
-      display: flex;
-      gap: 8px;
-      margin-top: 22px;
-    }
-
-    .social-btn {
-      width: 37px;
-      height: 37px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      transition: 0.2s ease;
-    }
-
-    .social-btn:hover {
-      background: white;
-      color: var(--blue);
-      transform: translateY(-2px);
-    }
-
-    .social-btn svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
+    .contact-item a:hover {
+      color: var(--white);
     }
 
     .footer-accordion {
@@ -1009,7 +821,7 @@
     }
 
     .footer-bottom {
-      padding: 23px 55px;
+      padding-top: 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1017,36 +829,68 @@
     }
 
     .footer-copy {
-      color: rgba(255,255,255,0.55);
-      font-size: 11px;
+      color: var(--secondary-gray);
+      font-size: 12px;
     }
 
     .footer-bottom-links {
       display: flex;
-      gap: 22px;
+      gap: 24px;
     }
 
     .footer-bottom-links a {
-      color: rgba(255,255,255,0.55);
-      font-size: 11px;
+      color: var(--secondary-gray);
+      font-size: 12px;
+      transition: color 0.2s ease;
     }
 
     .footer-bottom-links a:hover {
-      color: white;
+      color: var(--white);
     }
 
     /* =========================================================
-       SIDE MENU
+       WHATSAPP FLOATING BUTTON
     ========================================================= */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      z-index: 900;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
 
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+    }
+
+    .whatsapp-float svg {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
+
+    /* =========================================================
+       SIDE MENU (DRAWER)
+    ========================================================= */
     .overlay {
       position: fixed;
       inset: 0;
       z-index: 1100;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
       opacity: 0;
       visibility: hidden;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .overlay.active {
@@ -1060,11 +904,14 @@
       top: 0;
       bottom: 0;
       z-index: 1200;
-      width: min(390px, 90vw);
-      background: white;
+      width: min(380px, 88vw);
+      background: var(--dark-gray-1);
+      border-right: 1px solid var(--border-dark);
       transform: translateX(-100%);
-      transition: 0.35s ease;
-      padding: 25px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
       overflow-y: auto;
     }
 
@@ -1076,78 +923,103 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 25px;
-      border-bottom: 1px solid var(--border);
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .side-menu-logo img {
-      width: 135px;
+      width: 140px;
       height: auto;
     }
 
     .close-btn {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: #f4f4f4;
+      background: var(--dark-gray-2);
+      color: var(--white);
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .close-btn:hover {
+      background: var(--dark-gray-3);
     }
 
     .menu-links {
-      padding: 25px 0;
+      padding: 30px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .menu-links a {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 0;
+      padding: 12px 0;
       font-family: "Manrope", sans-serif;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
-      border-bottom: 1px solid #eeeeee;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      transition: color 0.2s ease;
+    }
+
+    .menu-links a:hover {
+      color: var(--secondary-gray);
     }
 
     .menu-links a span {
-      color: #aaa;
-      font-size: 14px;
+      color: var(--secondary-gray);
+      font-size: 12px;
+      font-weight: 500;
     }
 
     .menu-support {
-      margin-top: 20px;
-      padding: 20px;
-      background: #f5f5f3;
-      border-radius: 18px;
+      margin-top: auto;
+      padding: 24px;
+      background: var(--dark-gray-2);
+      border-radius: 16px;
+      border: 1px solid var(--border-dark);
     }
 
     .menu-support strong {
       display: block;
       font-size: 13px;
-      margin-bottom: 5px;
+      color: var(--white);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .menu-support p {
-      color: var(--gray);
+      color: var(--secondary-gray);
       font-size: 12px;
       line-height: 1.7;
     }
 
-    /* =========================================================
-       SEARCH
-    ========================================================= */
+    .menu-support a {
+      color: var(--white);
+      text-decoration: underline;
+    }
 
+    /* =========================================================
+       SEARCH PANEL
+    ========================================================= */
     .search-panel {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1300;
-      background: white;
+      background: var(--dark-gray-1);
+      border-bottom: 1px solid var(--border-dark);
       transform: translateY(-100%);
-      transition: 0.35s ease;
-      box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+      transition: transform 0.35s ease;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
     .search-panel.active {
@@ -1157,49 +1029,56 @@
     .search-inner {
       width: min(var(--container), calc(100% - 40px));
       margin: 0 auto;
-      padding: 22px 0;
+      padding: 24px 0;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
     }
 
     .search-box {
       flex: 1;
       display: flex;
       align-items: center;
-      gap: 12px;
-      background: #f5f5f3;
+      gap: 14px;
+      background: var(--dark-gray-2);
+      border: 1px solid var(--border-dark);
       border-radius: 999px;
-      padding: 0 20px;
+      padding: 0 24px;
+      color: var(--white);
     }
 
     .search-box input {
       flex: 1;
       min-width: 0;
-      height: 52px;
+      height: 50px;
       border: 0;
       outline: 0;
       background: transparent;
       font-size: 14px;
+      color: var(--white);
+    }
+
+    .search-box input::placeholder {
+      color: var(--secondary-gray);
     }
 
     /* =========================================================
-       CART
+       CART DRAWER
     ========================================================= */
-
     .cart-drawer {
       position: fixed;
       right: 0;
       top: 0;
       bottom: 0;
       z-index: 1200;
-      width: min(430px, 92vw);
-      background: white;
+      width: min(420px, 90vw);
+      background: var(--dark-gray-1);
+      border-left: 1px solid var(--border-dark);
       transform: translateX(100%);
-      transition: 0.35s ease;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      box-shadow: -20px 0 50px rgba(0,0,0,0.1);
+      box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
     }
 
     .cart-drawer.active {
@@ -1210,13 +1089,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 25px;
-      border-bottom: 1px solid var(--border);
+      padding: 28px;
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .cart-header h3 {
       font-family: "Manrope", sans-serif;
-      font-size: 22px;
+      font-size: 20px;
+      color: var(--white);
     }
 
     .cart-body {
@@ -1229,11 +1109,12 @@
     }
 
     .empty-cart-icon {
-      width: 65px;
-      height: 65px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      background: #f5f5f3;
-      margin: 0 auto 18px;
+      background: var(--dark-gray-2);
+      color: var(--secondary-gray);
+      margin: 0 auto 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1241,545 +1122,221 @@
 
     .empty-cart h4 {
       font-family: "Manrope", sans-serif;
-      font-size: 20px;
-      margin-bottom: 7px;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 8px;
     }
 
     .empty-cart p {
-      color: var(--gray);
+      color: var(--secondary-gray);
       font-size: 13px;
       line-height: 1.6;
       max-width: 260px;
     }
 
     /* =========================================================
-       RESPONSIVE
+       RESPONSIVE ADJUSTMENTS
     ========================================================= */
-
     @media (max-width: 1100px) {
-
       .products-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
       .footer-top {
         grid-template-columns: repeat(2, 1fr);
       }
-
       .hero-card {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        min-height: auto;
       }
-
       .hero-content {
-        padding-left: 45px;
+        padding: 60px 40px;
       }
-
+      .hero-visual {
+        min-height: 440px;
+      }
       .experience-grid {
-        gap: 45px;
-      }
-
-      .why-grid {
         gap: 50px;
       }
-
     }
 
     @media (max-width: 850px) {
-
       .section {
         padding: 80px 0;
       }
-
-      .hero {
-        padding: 15px 0;
-      }
-
-      .hero-card {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-
-      .hero-content {
-        padding: 60px 35px 20px;
-        text-align: center;
-      }
-
-      .hero-title {
-        margin: 0 auto;
-      }
-
-      .hero-visual {
-        min-height: 470px;
-        padding: 15px;
-      }
-
-      .hero-product {
-        height: 400px;
-      }
-
       .experience {
-        padding: 85px 0;
+        padding: 80px 0;
       }
-
       .experience-grid {
         grid-template-columns: 1fr;
       }
-
-      .experience-copy {
-        text-align: center;
-      }
-
-      .experience-description {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
       .experience-image-area {
-        min-height: 480px;
+        min-height: 420px;
       }
-
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
       .cta-card {
-        min-height: 620px;
+        min-height: 520px;
         align-items: flex-start;
       }
-
       .cta-content {
         width: 100%;
-        padding: 50px 35px;
+        padding: 50px 30px;
       }
-
       .cta-image {
-        width: 75%;
-        height: 45%;
-        right: 10%;
+        width: 65%;
+        right: 17.5%;
         top: auto;
-        bottom: 0;
+        bottom: -20px;
         transform: none;
       }
-
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .why-sticky {
-        position: static;
-      }
-
     }
 
     @media (max-width: 650px) {
-
       .container {
-        width: min(var(--container), calc(100% - 28px));
+        width: min(var(--container), calc(100% - 32px));
       }
-
-      .header-inner {
-        min-height: 72px;
-        gap: 5px;
-      }
-
-      .header-right {
-        gap: 0;
-      }
-
-      .icon-btn {
-        width: 39px;
-        height: 39px;
-      }
-
-      .announcement {
-        font-size: 10px;
-        padding: 8px 12px;
-      }
-
-      .hero-card {
-        border-radius: 22px;
-      }
-
-      .hero-content {
-        padding: 45px 20px 5px;
-      }
-
-      .hero-title {
-        font-size: clamp(44px, 13vw, 64px);
-      }
-
-      .hero-actions {
-        margin-top: 30px;
-      }
-
-      .hero-meta {
-        gap: 12px;
-        margin-top: 27px;
-        justify-content: center;
-      }
-
-      .hero-visual {
-        min-height: 350px;
-      }
-
-      .hero-product {
-        height: 300px;
-      }
-
-      .hero-floating-card {
-        right: 5%;
-        bottom: 8%;
-        min-width: 145px;
-        padding: 13px 14px;
-      }
-
-      .hero-floating-card strong {
-        font-size: 14px;
-      }
-
-      .statement-track {
-        gap: 11px;
-        font-size: 9px;
-      }
-
       .section-top {
         display: block;
-        margin-bottom: 35px;
+        margin-bottom: 40px;
       }
-
       .section-top .btn {
-        display: flex;
-        width: fit-content;
-        margin: 25px auto 0;
+        margin-top: 20px;
       }
-
       .products-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
-
-      .product-card {
-        border-radius: 17px;
-      }
-
-      .product-info {
-        padding: 15px;
-      }
-
-      .product-name {
-        font-size: 14px;
-      }
-
-      .product-subtitle {
-        font-size: 10px;
-      }
-
-      .product-bottom {
-        margin-top: 12px;
-      }
-
-      .product-price {
-        font-size: 12px;
-      }
-
-      .add-btn {
-        width: 34px;
-        height: 34px;
-      }
-
-      .experience-title {
-        font-size: clamp(43px, 13vw, 62px);
-      }
-
-      .experience-image-area {
-        min-height: 370px;
-        border-radius: 22px;
-      }
-
-      .experience-image {
-        height: 320px;
-      }
-
-      .experience-number {
-        font-size: 70px;
-      }
-
-      .experience-action {
-        margin-top: 26px;
-      }
-
-      .feature-heading {
-        margin-bottom: 35px;
-      }
-
-      .feature-card {
-        min-height: auto;
-        padding: 24px;
-        border-radius: 19px;
-      }
-
-      .feature-number {
-        width: 37px;
-        height: 37px;
-        margin-bottom: 30px;
-      }
-
-      .feature-card h3 {
-        font-size: 20px;
-      }
-
-      .feature-card p {
-        font-size: 13px;
-      }
-
-      .cta-section {
-        padding-bottom: 80px;
-      }
-
       .cta-card {
-        border-radius: 22px;
-        min-height: 580px;
+        border-radius: 20px;
+        min-height: 540px;
       }
-
       .cta-content {
-        padding: 42px 25px;
+        padding: 40px 24px;
         text-align: center;
       }
-
-      .cta-content .eyebrow {
-        margin-bottom: 13px;
-      }
-
-      .cta-title {
-        font-size: clamp(42px, 13vw, 60px);
-      }
-
       .cta-description {
         margin-left: auto;
         margin-right: auto;
       }
-
-      .cta-actions {
-        display: flex;
-        justify-content: center;
-      }
-
       .cta-image {
-        width: 85%;
-        right: 5%;
+        width: 80%;
+        right: 10%;
+        bottom: -10px;
+      }
+      .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
       }
 
-      /* =====================================================
-         COMPACT MOBILE WHY ZERONIC
-      ====================================================== */
-
-      .why-section {
-        padding: 55px 0;
-      }
-
-      .why-grid {
-        gap: 35px;
-      }
-
-      .why-sticky {
-        text-align: center;
-      }
-
-      .why-sticky .eyebrow {
-        margin-bottom: 10px;
-      }
-
-      .why-sticky .section-title {
-        font-size: 34px;
-        line-height: 1.05;
-      }
-
-      .why-sticky .section-description {
-        font-size: 12px;
-        line-height: 1.6;
-        margin: 13px auto 0;
-        max-width: 330px;
-      }
-
-      .why-item {
-        grid-template-columns: 32px 1fr;
-        gap: 12px;
-        padding: 17px 0;
-      }
-
-      .why-index {
-        font-size: 10px;
-        padding-top: 2px;
-      }
-
-      .why-item h3 {
-        font-size: 17px;
-        line-height: 1.2;
-        margin-bottom: 5px;
-      }
-
-      .why-item p {
-        font-size: 11px;
-        line-height: 1.55;
-        max-width: none;
-      }
-
+      /* Mobile Footer Accordion Layout */
       .footer {
-        padding: 15px 10px 10px;
+        padding: 60px 0 30px;
       }
-
-      .footer-container {
-        border-radius: 22px;
-      }
-
-      .footer-main {
-        padding: 42px 22px 25px;
-      }
-
       .footer-top {
         display: block;
         padding-bottom: 20px;
         border-bottom: 0;
       }
-
       .footer-brand {
         max-width: none;
-        margin-bottom: 28px;
+        margin-bottom: 30px;
       }
-
       .footer-logo-wrap img {
-        width: 180px;
+        width: 170px;
       }
-
-      .footer-brand-text {
-        max-width: 300px;
-      }
-
       .footer-desktop-column {
         display: none;
       }
-
       .footer-accordion {
         display: block;
-        border-top: 1px solid rgba(255,255,255,0.14);
+        border-top: 1px solid var(--border-dark);
       }
-
       .footer-accordion-header {
         width: 100%;
         background: transparent;
-        color: white;
-        padding: 19px 0;
+        color: var(--white);
+        padding: 18px 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.13em;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
       }
-
       .footer-accordion-icon {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
         position: relative;
       }
-
       .footer-accordion-icon::before,
       .footer-accordion-icon::after {
         content: "";
         position: absolute;
         left: 50%;
         top: 50%;
-        width: 11px;
+        width: 10px;
         height: 1.5px;
-        background: white;
+        background: var(--white);
         transform: translate(-50%, -50%);
-        transition: 0.2s ease;
+        transition: transform 0.2s ease;
       }
-
       .footer-accordion-icon::after {
         transform: translate(-50%, -50%) rotate(90deg);
       }
-
       .footer-accordion.open .footer-accordion-icon::after {
         transform: translate(-50%, -50%) rotate(0deg);
       }
-
       .footer-accordion-content {
         display: none;
-        padding: 0 0 18px;
+        padding: 0 0 20px;
       }
-
       .footer-accordion.open .footer-accordion-content {
         display: block;
       }
-
-      .footer-contact {
-        padding-bottom: 10px;
-      }
-
-      .socials {
-        margin-top: 15px;
-      }
-
       .footer-bottom {
-        padding: 20px 22px 23px;
-        display: block;
+        padding-top: 30px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
       }
-
       .footer-bottom-links {
-        margin-top: 12px;
         flex-wrap: wrap;
-        gap: 10px 18px;
+        gap: 16px;
       }
-
     }
-
   </style>
 </head>
 
-
 <body>
 
-
   <!-- =======================================================
-       ANNOUNCEMENT
+       ANNOUNCEMENT BAR
   ======================================================== -->
-
   <div class="announcement">
-    Premium wireless earbuds. Designed for your everyday.
+    ZERONIC — Premium Wireless Audio
   </div>
-
 
   <!-- =======================================================
        HEADER
   ======================================================== -->
-
   <header class="site-header">
-
     <div class="container header-inner">
 
       <div class="header-left">
-
         <button
           class="icon-btn"
           id="menuOpen"
           aria-label="Open menu"
         >
-
           <span class="hamburger">
             <span></span>
             <span></span>
-            <span></span>
           </span>
-
         </button>
-
       </div>
 
-
       <div class="header-center">
-
         <a
           href="#home"
           class="header-logo"
@@ -1790,1866 +1347,758 @@
             alt="ZERONIC"
           />
         </a>
-
       </div>
 
-
       <div class="header-right">
-
         <button
           class="icon-btn"
           id="searchOpen"
           aria-label="Search"
         >
-
           <svg class="icon" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="6.8"></circle>
-            <path d="M16.2 16.2L21 21"></path>
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="M16 16L21 21"></path>
           </svg>
-
         </button>
-
 
         <button
           class="icon-btn cart-button"
           id="cartOpen"
           aria-label="Cart"
         >
-
           <svg class="icon" viewBox="0 0 24 24">
             <path d="M4 5h2l1.5 10.2a2 2 0 0 0 2 1.8h7.7a2 2 0 0 0 1.9-1.5L21 8H7"></path>
             <circle cx="10" cy="20" r="1"></circle>
             <circle cx="18" cy="20" r="1"></circle>
           </svg>
-
           <span
             class="cart-count"
             id="cartCount"
           >
             0
           </span>
-
         </button>
-
       </div>
 
     </div>
-
   </header>
 
-
   <!-- =======================================================
-       HERO
+       MAIN CONTENT
   ======================================================== -->
-
   <main id="home">
 
+    <!-- HERO SECTION -->
     <section class="hero">
 
-      <div class="container">
-
+      <!-- Desktop Hero View -->
+      <div class="container hero-desktop-container">
         <div class="hero-card">
-
-
           <div class="hero-content">
-
             <div class="hero-eyebrow">
               ZERONIC AUDIO
             </div>
-
-
             <h1 class="hero-title">
-
               Hear more.<br />
-
-              <span>
-                Feel everything.
-              </span>
-
+              <span>Feel everything.</span>
             </h1>
-
-
             <div class="hero-actions">
-
               <a
                 href="#earbuds"
                 class="btn btn-white"
               >
                 View Collection
               </a>
-
             </div>
-
-
-            <div class="hero-meta">
-
-              <div class="hero-meta-item">
-
-                <span class="hero-meta-dot"></span>
-
-                Premium Audio
-
-              </div>
-
-
-              <div class="hero-meta-item">
-
-                <span class="hero-meta-dot"></span>
-
-                Everyday Comfort
-
-              </div>
-
-
-              <div class="hero-meta-item">
-
-                <span class="hero-meta-dot"></span>
-
-                Modern Design
-
-              </div>
-
-            </div>
-
           </div>
 
-
           <div class="hero-visual">
-
-            <div class="hero-glow"></div>
-
-
             <img
               class="hero-product"
               src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1200&q=90"
-              alt="ZERONIC wireless earbuds"
+              alt="ZERONIC Wireless Earbuds"
             />
-
-
-            <div class="hero-floating-card">
-
-              <small>
-                New Collection
-              </small>
-
-              <strong>
-                ZERONIC Earbuds
-              </strong>
-
-            </div>
-
           </div>
-
         </div>
-
       </div>
 
-    </section>
-
-
-    <!-- =====================================================
-         STATEMENT
-    ====================================================== -->
-
-    <section class="statement">
-
-      <div class="container">
-
-        <div class="statement-track">
-
-          <span>
-            PURE SOUND
-          </span>
-
-          <span class="statement-dot"></span>
-
-          <span>
-            SMART DESIGN
-          </span>
-
-          <span class="statement-dot"></span>
-
-          <span>
-            EVERYDAY COMFORT
-          </span>
-
-          <span class="statement-dot"></span>
-
-          <span>
-            ZERONIC AUDIO
-          </span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         PRODUCTS
-    ====================================================== -->
-
-    <section
-      class="section products-section"
-      id="earbuds"
-    >
-
-      <div class="container">
-
-
-        <div class="section-top">
-
-          <div>
-
-            <div class="eyebrow">
-              The Collection
+      <!-- Mobile Dedicated 9:16 Hero Banner View -->
+      <div class="hero-mobile-container">
+        <div class="hero-mobile-banner-wrap">
+          <img
+            src="assets/mobile-hero-banner.webp"
+            alt="ZERONIC Wireless Earbuds"
+            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=90';"
+          />
+          <div class="hero-mobile-overlay">
+            <div class="hero-mobile-top">
+              <div class="hero-mobile-eyebrow">ZERONIC AUDIO</div>
+              <h1 class="hero-mobile-title">
+                Hear more.<br />
+                <span>Feel everything.</span>
+              </h1>
             </div>
-
-            <h2 class="section-title">
-              Find your<br />
-              everyday sound.
-            </h2>
-
-            <p class="section-description">
-              Explore the ZERONIC earbuds collection and choose the sound,
-              style and experience that fits your day.
-            </p>
-
-          </div>
-
-
-          <a
-            href="#all-products"
-            class="btn btn-dark"
-          >
-            View Collection
-          </a>
-
-        </div>
-
-
-        <div
-          class="products-grid"
-          id="all-products"
-        >
-
-
-          <!-- PRODUCT 1 -->
-
-          <article class="product-card">
-
-            <div class="product-image-wrap">
-
-              <span class="product-badge">
-                New
-              </span>
-
-              <img
-                class="product-image"
-                src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=90"
-                alt="ZERONIC Air One earbuds"
-              />
-
-            </div>
-
-
-            <div class="product-info">
-
-              <h3 class="product-name">
-                ZERONIC Air One
-              </h3>
-
-              <p class="product-subtitle">
-                Everyday wireless earbuds
-              </p>
-
-
-              <div class="product-bottom">
-
-                <span class="product-price">
-                  Rs. 2,999
-                </span>
-
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('ZERONIC Air One')"
-                  aria-label="Add ZERONIC Air One to cart"
-                >
-                  +
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 2 -->
-
-          <article class="product-card">
-
-            <div class="product-image-wrap">
-
-              <span class="product-badge">
-                Featured
-              </span>
-
-              <img
-                class="product-image"
-                src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=900&q=90"
-                alt="ZERONIC Air Pro earbuds"
-              />
-
-            </div>
-
-
-            <div class="product-info">
-
-              <h3 class="product-name">
-                ZERONIC Air Pro
-              </h3>
-
-              <p class="product-subtitle">
-                Premium everyday listening
-              </p>
-
-
-              <div class="product-bottom">
-
-                <span class="product-price">
-                  Rs. 3,499
-                </span>
-
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('ZERONIC Air Pro')"
-                  aria-label="Add ZERONIC Air Pro to cart"
-                >
-                  +
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 3 -->
-
-          <article class="product-card">
-
-            <div class="product-image-wrap">
-
-              <img
-                class="product-image"
-                src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=900&q=90"
-                alt="ZERONIC Buds X earbuds"
-              />
-
-            </div>
-
-
-            <div class="product-info">
-
-              <h3 class="product-name">
-                ZERONIC Buds X
-              </h3>
-
-              <p class="product-subtitle">
-                Compact sound for every day
-              </p>
-
-
-              <div class="product-bottom">
-
-                <span class="product-price">
-                  Rs. 2,799
-                </span>
-
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('ZERONIC Buds X')"
-                  aria-label="Add ZERONIC Buds X to cart"
-                >
-                  +
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 4 -->
-
-          <article class="product-card">
-
-            <div class="product-image-wrap">
-
-              <span class="product-badge">
-                Popular
-              </span>
-
-              <img
-                class="product-image"
-                src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=90"
-                alt="ZERONIC Pods Pro earbuds"
-              />
-
-            </div>
-
-
-            <div class="product-info">
-
-              <h3 class="product-name">
-                ZERONIC Pods Pro
-              </h3>
-
-              <p class="product-subtitle">
-                A refined wireless experience
-              </p>
-
-
-              <div class="product-bottom">
-
-                <span class="product-price">
-                  Rs. 3,999
-                </span>
-
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('ZERONIC Pods Pro')"
-                  aria-label="Add ZERONIC Pods Pro to cart"
-                >
-                  +
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         EXPERIENCE
-    ====================================================== -->
-
-    <section
-      class="experience"
-      id="experience"
-    >
-
-      <div class="container">
-
-        <div class="experience-grid">
-
-
-          <div class="experience-copy">
-
-            <div class="eyebrow">
-              The ZERONIC Experience
-            </div>
-
-
-            <h2 class="experience-title">
-
-              Sound.<br />
-
-              <span>
-                Designed around you.
-              </span>
-
-            </h2>
-
-
-            <p class="experience-description">
-              Great earbuds should disappear into your routine and let the
-              music take over. ZERONIC brings together a clean aesthetic,
-              immersive listening and an experience made for everyday use.
-            </p>
-
-
-            <div class="experience-action">
-
-              <a
-                href="#features"
-                class="btn btn-white"
-              >
-                Explore the Experience
-              </a>
-
-            </div>
-
-          </div>
-
-
-          <div class="experience-image-area">
-
-            <div class="experience-tag">
-              ZERONIC / AUDIO
-            </div>
-
-
-            <img
-              class="experience-image"
-              src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=1200&q=90"
-              alt="Premium ZERONIC earbuds"
-            />
-
-
-            <div class="experience-number">
-              01
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         FEATURES
-    ====================================================== -->
-
-    <section
-      class="section feature-section"
-      id="features"
-    >
-
-      <div class="container">
-
-
-        <div class="feature-heading">
-
-          <div class="eyebrow">
-            Built Around Listening
-          </div>
-
-
-          <h2 class="section-title">
-            Everything you need.<br />
-            Nothing you don't.
-          </h2>
-
-        </div>
-
-
-        <div class="features-grid">
-
-
-          <article class="feature-card">
-
-            <div class="feature-number">
-              01
-            </div>
-
-            <h3>
-              Deep, balanced sound
-            </h3>
-
-            <p>
-              Enjoy a more immersive everyday listening experience designed
-              to keep music, podcasts and calls feeling natural.
-            </p>
-
-          </article>
-
-
-          <article class="feature-card">
-
-            <div class="feature-number">
-              02
-            </div>
-
-            <h3>
-              Clear conversations
-            </h3>
-
-            <p>
-              Stay connected throughout your day with earbuds designed for
-              comfortable, convenient wireless calling.
-            </p>
-
-          </article>
-
-
-          <article class="feature-card">
-
-            <div class="feature-number">
-              03
-            </div>
-
-            <h3>
-              Made for everyday comfort
-            </h3>
-
-            <p>
-              A compact wireless form designed to fit naturally into your
-              routine — from work and travel to your daily downtime.
-            </p>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         CTA
-    ====================================================== -->
-
-    <section class="cta-section">
-
-      <div class="container">
-
-        <div class="cta-card">
-
-
-          <div class="cta-content">
-
-            <div class="eyebrow">
-              Upgrade Your Everyday
-            </div>
-
-
-            <h2 class="cta-title">
-              Your day.<br />
-              Your sound.
-            </h2>
-
-
-            <p class="cta-description">
-              From your first song in the morning to the last call at night,
-              choose earbuds that feel as good as they sound.
-            </p>
-
-
-            <div class="cta-actions">
-
+            <div class="hero-mobile-bottom">
               <a
                 href="#earbuds"
                 class="btn btn-white"
               >
-                Shop Earbuds
+                View Collection
               </a>
-
             </div>
-
           </div>
-
-
-          <img
-            class="cta-image"
-            src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1200&q=90"
-            alt="ZERONIC wireless earbuds"
-          />
-
         </div>
-
       </div>
 
     </section>
 
+    <!-- BRAND STATEMENT -->
+    <section class="statement">
+      <div class="container">
+        <div class="statement-track">
+          <span>PURE SOUND</span>
+          <span class="statement-dot"></span>
+          <span>PRECISION ENGINEERING</span>
+          <span class="statement-dot"></span>
+          <span>EVERYDAY ESSENTIAL</span>
+          <span class="statement-dot"></span>
+          <span>ZERONIC AUDIO</span>
+        </div>
+      </div>
+    </section>
 
-    <!-- =====================================================
-         WHY ZERONIC
-    ====================================================== -->
-
-    <section class="section why-section">
-
+    <!-- PRODUCT COLLECTION -->
+    <section
+      class="section products-section"
+      id="earbuds"
+    >
       <div class="container">
 
-        <div class="why-grid">
-
-
-          <div class="why-sticky">
-
+        <div class="section-top">
+          <div>
             <div class="eyebrow">
-              Why ZERONIC
+              WIRELESS EARBUDS
             </div>
-
-
             <h2 class="section-title">
-              Technology that fits your life.
+              Designed for better<br />
+              everyday listening.
             </h2>
-
-
             <p class="section-description">
-              We keep the experience focused on what matters — sound,
-              design, comfort and simple everyday use.
+              Intentional audio craft. Choose the listening experience built for your daily motion.
             </p>
-
           </div>
 
+          <a
+            href="#earbuds"
+            class="btn btn-dark"
+          >
+            View Collection
+          </a>
+        </div>
 
-          <div class="why-list">
+        <div class="products-grid">
 
-
-            <div class="why-item">
-
-              <div class="why-index">
-                01
-              </div>
-
-              <div>
-
-                <h3>
-                  Product-first thinking
-                </h3>
-
-                <p>
-                  Every part of the experience starts with the product and
-                  how naturally it fits into your everyday routine.
-                </p>
-
-              </div>
-
+          <!-- PRODUCT 1 -->
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <span class="product-tag">Edition 01</span>
+              <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=800&q=90"
+                alt="ZERONIC Audio Earbuds"
+              />
             </div>
-
-
-            <div class="why-item">
-
-              <div class="why-index">
-                02
+            <div class="product-info">
+              <h3 class="product-name">ZERONIC One</h3>
+              <p class="product-subtitle">Pure essential audio experience built for all-day comfort.</p>
+              <div class="product-bottom">
+                <span class="product-price">Rs. 2,999</span>
+                <button
+                  class="add-btn"
+                  onclick="addToCart('ZERONIC One')"
+                  aria-label="Add ZERONIC One to cart"
+                >
+                  Add to Cart
+                </button>
               </div>
-
-              <div>
-
-                <h3>
-                  Clean, modern design
-                </h3>
-
-                <p>
-                  Minimal visual design keeps the focus where it belongs:
-                  on the earbuds and the experience they create.
-                </p>
-
-              </div>
-
             </div>
+          </article>
 
-
-            <div class="why-item">
-
-              <div class="why-index">
-                03
-              </div>
-
-              <div>
-
-                <h3>
-                  Made for everyday listening
-                </h3>
-
-                <p>
-                  Whether you're working, travelling, relaxing or simply
-                  enjoying your favourite playlist, ZERONIC is built around
-                  everyday listening.
-                </p>
-
-              </div>
-
+          <!-- PRODUCT 2 -->
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <span class="product-tag">Pro Series</span>
+              <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=90"
+                alt="ZERONIC Pro Earbuds"
+              />
             </div>
-
-
-            <div class="why-item">
-
-              <div class="why-index">
-                04
+            <div class="product-info">
+              <h3 class="product-name">ZERONIC Pro</h3>
+              <p class="product-subtitle">Enhanced acoustic tuning with extended everyday performance.</p>
+              <div class="product-bottom">
+                <span class="product-price">Rs. 3,499</span>
+                <button
+                  class="add-btn"
+                  onclick="addToCart('ZERONIC Pro')"
+                  aria-label="Add ZERONIC Pro to cart"
+                >
+                  Add to Cart
+                </button>
               </div>
-
-              <div>
-
-                <h3>
-                  Direct support
-                </h3>
-
-                <p>
-                  Need help? Reach ZERONIC directly through WhatsApp, phone
-                  or email during our support hours.
-                </p>
-
-              </div>
-
             </div>
+          </article>
 
+          <!-- PRODUCT 3 -->
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <span class="product-tag">Compact</span>
+              <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=800&q=90"
+                alt="ZERONIC Studio Earbuds"
+              />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">ZERONIC Studio</h3>
+              <p class="product-subtitle">Ultra-compact wireless form with acoustic clarity.</p>
+              <div class="product-bottom">
+                <span class="product-price">Rs. 2,799</span>
+                <button
+                  class="add-btn"
+                  onclick="addToCart('ZERONIC Studio')"
+                  aria-label="Add ZERONIC Studio to cart"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
 
-          </div>
+          <!-- PRODUCT 4 -->
+          <article class="product-card">
+            <div class="product-image-wrap">
+              <span class="product-tag">Special Edition</span>
+              <img
+                class="product-image"
+                src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=800&q=90"
+                alt="ZERONIC Ultra Earbuds"
+              />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">ZERONIC Ultra</h3>
+              <p class="product-subtitle">Refined sound stage and minimalist tactile finish.</p>
+              <div class="product-bottom">
+                <span class="product-price">Rs. 3,999</span>
+                <button
+                  class="add-btn"
+                  onclick="addToCart('ZERONIC Ultra')"
+                  aria-label="Add ZERONIC Ultra to cart"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
 
         </div>
 
       </div>
+    </section>
 
+    <!-- AUDIO EXPERIENCE STORYTELLING -->
+    <section class="experience">
+      <div class="container">
+        <div class="experience-grid">
+
+          <div class="experience-copy">
+            <div class="eyebrow">
+              THE AUDIO EXPERIENCE
+            </div>
+            <h2 class="experience-title">
+              Sound.<br />
+              <span>Designed around you.</span>
+            </h2>
+            <p class="experience-description">
+              Great audio hardware should integrate seamlessly into your routine. ZERONIC pairs minimal industrial aesthetics with acoustic clarity, delivering immersive sound without distraction.
+            </p>
+            <div class="experience-action">
+              <a
+                href="#earbuds"
+                class="btn btn-white"
+              >
+                Explore Earbuds
+              </a>
+            </div>
+          </div>
+
+          <div class="experience-image-area">
+            <img
+              class="experience-image"
+              src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=1000&q=90"
+              alt="ZERONIC Acoustic Design"
+            />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- UPGRADE YOUR EVERYDAY CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+
+          <div class="cta-content">
+            <div class="eyebrow">
+              UPGRADE YOUR EVERYDAY
+            </div>
+            <h2 class="cta-title">
+              Your day.<br />
+              <span>Your sound.</span>
+            </h2>
+            <p class="cta-description">
+              Elevate your daily rhythm with personal audio designed for seamless listening, distinct clarity, and timeless aesthetic.
+            </p>
+            <div class="cta-actions">
+              <a
+                href="#earbuds"
+                class="btn btn-white"
+              >
+                View Collection
+              </a>
+            </div>
+          </div>
+
+          <img
+            class="cta-image"
+            src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1000&q=90"
+            alt="ZERONIC Premium Wireless Earbuds"
+          />
+
+        </div>
+      </div>
     </section>
 
   </main>
 
-
   <!-- =======================================================
        FOOTER
   ======================================================== -->
-
   <footer class="footer">
+    <div class="container">
 
-    <div class="footer-container">
+      <div class="footer-top">
 
-      <div class="footer-main">
-
-
-        <div class="footer-top">
-
-
-          <!-- BRAND -->
-
-          <div class="footer-brand">
-
-            <a
-              href="#home"
-              class="footer-logo-wrap"
-              aria-label="ZERONIC Home"
-            >
-
-              <img
-                src="assets/logo.svg"
-                alt="ZERONIC"
-              />
-
-            </a>
-
-
-            <p class="footer-brand-text">
-              Premium wireless earbuds designed for modern everyday
-              listening. Discover the ZERONIC audio experience.
-            </p>
-
-
-            <div class="socials">
-
-
-              <a
-                href="https://www.instagram.com/zeronicpk/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-                aria-label="Instagram"
-              >
-
-                <svg viewBox="0 0 24 24">
-                  <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
-                </svg>
-
-              </a>
-
-
-              <a
-                href="https://www.facebook.com/zeronicpk"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-                aria-label="Facebook"
-              >
-
-                <svg viewBox="0 0 24 24">
-                  <path d="M13.5 22v-8h2.75l.4-3h-3.15V9.08c0-.87.24-1.46 1.5-1.46h1.78V4.94c-.31-.04-1.37-.14-2.61-.14-2.58 0-4.35 1.58-4.35 4.48V11H7v3h2.82v8h3.68z"/>
-                </svg>
-
-              </a>
-
-
-              <a
-                href="https://wa.me/923420672554"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-btn"
-                aria-label="WhatsApp"
-              >
-
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.18-1.34A10 10 0 1 0 12 2zm0 2a8 8 0 0 1 6.94 12L18.1 17l.1.48-3.72.96-.45-.27A7.96 7.96 0 0 1 4 12c0-4.42 3.58-8 8-8z"/>
-                </svg>
-
-              </a>
-
-
-            </div>
-
-          </div>
-
-
-          <!-- SHOP -->
-
-          <div class="footer-desktop-column">
-
-            <h3 class="footer-heading">
-              Shop
-            </h3>
-
-
-            <div class="footer-links">
-
-              <a href="#earbuds">
-                Earbuds
-              </a>
-
-              <a href="#all-products">
-                New Arrivals
-              </a>
-
-              <a href="#all-products">
-                Featured Earbuds
-              </a>
-
-            </div>
-
-          </div>
-
-
-          <!-- QUICK LINKS -->
-
-          <div class="footer-desktop-column">
-
-            <h3 class="footer-heading">
-              Quick Links
-            </h3>
-
-
-            <div class="footer-links">
-
-              <a href="#home">
-                Home
-              </a>
-
-              <a href="#experience">
-                About ZERONIC
-              </a>
-
-              <a href="#contact">
-                Contact
-              </a>
-
-              <a href="#support">
-                Support
-              </a>
-
-            </div>
-
-          </div>
-
-
-          <!-- CONTACT -->
-
-          <div
-            class="footer-desktop-column"
-            id="contact"
+        <!-- BRAND -->
+        <div class="footer-brand">
+          <a
+            href="#home"
+            class="footer-logo-wrap"
+            aria-label="ZERONIC Home"
           >
-
-            <h3 class="footer-heading">
-              Contact
-            </h3>
-
-
-            <div class="footer-contact">
-
-
-              <a
-                href="https://wa.me/923420672554"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-item"
-              >
-
-                <svg class="contact-icon" viewBox="0 0 24 24">
-                  <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.18-1.34A10 10 0 1 0 12 2z"/>
-                </svg>
-
-                <span>
-                  +92 342 0672554
-                </span>
-
-              </a>
-
-
-              <a
-                href="tel:+923420672554"
-                class="contact-item"
-              >
-
-                <svg class="contact-icon" viewBox="0 0 24 24">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.08 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L9 10.73a16 16 0 0 0 4.27 4.27l1.27-1.25a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"/>
-                </svg>
-
-                <span>
-                  +92 342 0672554
-                </span>
-
-              </a>
-
-
-              <a
-                href="mailto:support@zeronicpk.store"
-                class="contact-item"
-              >
-
-                <svg class="contact-icon" viewBox="0 0 24 24">
-                  <rect x="3" y="5" width="18" height="14" rx="2"/>
-                  <path d="M3 7l9 6 9-6"/>
-                </svg>
-
-                <span>
-                  support@zeronicpk.store
-                </span>
-
-              </a>
-
-
-              <div class="contact-item">
-
-                <svg class="contact-icon" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9"/>
-                  <path d="M12 7v5l3 2"/>
-                </svg>
-
-                <span>
-                  Mon to Sat<br />
-                  8am - 6pm
-                </span>
-
-              </div>
-
-
-            </div>
-
-          </div>
-
-
+            <img
+              src="assets/white logo.svg"
+              alt="ZERONIC"
+            />
+          </a>
+          <p class="footer-brand-text">
+            Modern audio brand focused on better everyday wireless listening.
+          </p>
         </div>
 
-
-        <!-- =================================================
-             MOBILE SHOP
-        ================================================== -->
-
-        <div class="footer-accordion">
-
-          <button
-            class="footer-accordion-header"
-            onclick="toggleAccordion(this)"
-          >
-
-            <span>
-              Shop
-            </span>
-
-            <span class="footer-accordion-icon"></span>
-
-          </button>
-
-
-          <div class="footer-accordion-content">
-
-            <div class="footer-links">
-
-              <a href="#earbuds">
-                Earbuds
-              </a>
-
-              <a href="#all-products">
-                New Arrivals
-              </a>
-
-              <a href="#all-products">
-                Featured Earbuds
-              </a>
-
-            </div>
-
+        <!-- SHOP -->
+        <div class="footer-desktop-column">
+          <h3 class="footer-heading">Shop</h3>
+          <div class="footer-links">
+            <a href="#earbuds">Earbuds</a>
+            <a href="#earbuds">New Arrivals</a>
+            <a href="#earbuds">Best Sellers</a>
           </div>
-
         </div>
 
-
-        <!-- =================================================
-             MOBILE QUICK LINKS
-        ================================================== -->
-
-        <div class="footer-accordion">
-
-          <button
-            class="footer-accordion-header"
-            onclick="toggleAccordion(this)"
-          >
-
-            <span>
-              Quick Links
-            </span>
-
-            <span class="footer-accordion-icon"></span>
-
-          </button>
-
-
-          <div class="footer-accordion-content">
-
-            <div class="footer-links">
-
-              <a href="#home">
-                Home
-              </a>
-
-              <a href="#experience">
-                About ZERONIC
-              </a>
-
-              <a href="#contact">
-                Contact
-              </a>
-
-              <a href="#support">
-                Support
-              </a>
-
-            </div>
-
+        <!-- QUICK LINKS -->
+        <div class="footer-desktop-column">
+          <h3 class="footer-heading">Quick Links</h3>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#earbuds">Earbuds</a>
+            <a href="#support">Support</a>
+            <a href="#contact">Contact</a>
           </div>
-
         </div>
 
-
-        <!-- =================================================
-             MOBILE CONTACT
-        ================================================== -->
-
-        <div class="footer-accordion">
-
-          <button
-            class="footer-accordion-header"
-            onclick="toggleAccordion(this)"
-          >
-
-            <span>
-              Contact
-            </span>
-
-            <span class="footer-accordion-icon"></span>
-
-          </button>
-
-
-          <div class="footer-accordion-content">
-
-            <div class="footer-contact">
-
-
-              <a
-                href="https://wa.me/923420672554"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-item"
-              >
-
-                <span>
-                  WhatsApp: +92 342 0672554
-                </span>
-
-              </a>
-
-
-              <a
-                href="tel:+923420672554"
-                class="contact-item"
-              >
-
-                <span>
-                  Phone: +92 342 0672554
-                </span>
-
-              </a>
-
-
-              <a
-                href="mailto:support@zeronicpk.store"
-                class="contact-item"
-              >
-
-                <span>
-                  support@zeronicpk.store
-                </span>
-
-              </a>
-
-
-              <div class="contact-item">
-
-                <span>
-                  Mon to Sat — 8am - 6pm
-                </span>
-
-              </div>
-
-
-              <div class="socials">
-
-                <a
-                  href="https://www.instagram.com/zeronicpk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-btn"
-                  aria-label="Instagram"
-                >
-
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
-                  </svg>
-
-                </a>
-
-
-                <a
-                  href="https://www.facebook.com/zeronicpk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-btn"
-                  aria-label="Facebook"
-                >
-
-                  <svg viewBox="0 0 24 24">
-                    <path d="M13.5 22v-8h2.75l.4-3h-3.15V9.08c0-.87.24-1.46 1.5-1.46h1.78V4.94c-.31-.04-1.37-.14-2.61-.14-2.58 0-4.35 1.58-4.35 4.48V11H7v3h2.82v8h3.68z"/>
-                  </svg>
-
-                </a>
-
-
-                <a
-                  href="https://wa.me/923420672554"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-btn"
-                  aria-label="WhatsApp"
-                >
-
-                  <svg viewBox="0 0 24 24">
-                    <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.18-1.34A10 10 0 1 0 12 2z"/>
-                  </svg>
-
-                </a>
-
-              </div>
-
+        <!-- SUPPORT / CONTACT -->
+        <div class="footer-desktop-column" id="contact">
+          <h3 class="footer-heading">Need Help?</h3>
+          <div class="footer-contact" id="support">
+            <div class="contact-item">
+              WhatsApp: <a href="https://wa.me/923420672554" target="_blank" rel="noopener noreferrer">+92 342 0672554</a>
             </div>
-
+            <div class="contact-item">
+              Phone: <a href="tel:+923420672554">+92 342 0672554</a>
+            </div>
+            <div class="contact-item">
+              Email: <a href="mailto:support@zeronicpk.store">support@zeronicpk.store</a>
+            </div>
+            <div class="contact-item" style="margin-top: 4px; opacity: 0.7;">
+              Mon to Sat · 8am – 6pm
+            </div>
           </div>
-
         </div>
-
 
       </div>
 
+      <!-- MOBILE FOOTER ACCORDIONS -->
+      <div class="footer-accordion">
+        <button
+          class="footer-accordion-header"
+          onclick="toggleAccordion(this)"
+        >
+          <span>Shop</span>
+          <span class="footer-accordion-icon"></span>
+        </button>
+        <div class="footer-accordion-content">
+          <div class="footer-links">
+            <a href="#earbuds">Earbuds</a>
+            <a href="#earbuds">New Arrivals</a>
+            <a href="#earbuds">Best Sellers</a>
+          </div>
+        </div>
+      </div>
 
-      <!-- =================================================
-           FOOTER BOTTOM
-      ================================================== -->
+      <div class="footer-accordion">
+        <button
+          class="footer-accordion-header"
+          onclick="toggleAccordion(this)"
+        >
+          <span>Quick Links</span>
+          <span class="footer-accordion-icon"></span>
+        </button>
+        <div class="footer-accordion-content">
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#earbuds">Earbuds</a>
+            <a href="#support">Support</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
 
+      <div class="footer-accordion">
+        <button
+          class="footer-accordion-header"
+          onclick="toggleAccordion(this)"
+        >
+          <span>Need Help?</span>
+          <span class="footer-accordion-icon"></span>
+        </button>
+        <div class="footer-accordion-content">
+          <div class="footer-contact">
+            <div class="contact-item">
+              WhatsApp: <a href="https://wa.me/923420672554" target="_blank" rel="noopener noreferrer">+92 342 0672554</a>
+            </div>
+            <div class="contact-item">
+              Phone: <a href="tel:+923420672554">+92 342 0672554</a>
+            </div>
+            <div class="contact-item">
+              Email: <a href="mailto:support@zeronicpk.store">support@zeronicpk.store</a>
+            </div>
+            <div class="contact-item" style="margin-top: 4px; opacity: 0.7;">
+              Mon to Sat · 8am – 6pm
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER BOTTOM -->
       <div class="footer-bottom">
-
         <div class="footer-copy">
           © 2026 ZERONIC. All rights reserved.
         </div>
-
-
         <div class="footer-bottom-links">
-
-          <a href="#">
-            Privacy Policy
-          </a>
-
-          <a href="#">
-            Terms & Conditions
-          </a>
-
-          <a href="#">
-            Shipping Policy
-          </a>
-
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Shipping Policy</a>
         </div>
-
       </div>
 
     </div>
-
   </footer>
 
+  <!-- =======================================================
+       FLOATING WHATSAPP BUTTON
+  ======================================================== -->
+  <a
+    href="https://wa.me/923420672554"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact us on WhatsApp"
+  >
+    <svg viewBox="0 0 24 24">
+      <path d="M12.031 2c-5.514 0-9.999 4.486-9.999 10.001 0 1.762.459 3.48 1.332 5.002l-1.364 4.997 5.115-1.341c1.472.802 3.136 1.223 4.887 1.223 5.515 0 10.001-4.486 10.001-10.001 0-5.515-4.486-10.001-10.002-10.001zm5.83 14.28c-.244.688-1.222 1.258-2.001 1.336-.532.053-1.227.095-3.567-.872-2.993-1.236-4.918-4.282-5.067-4.48-.148-.198-1.214-1.616-1.214-3.082 0-1.466.767-2.188 1.04-2.483.272-.294.595-.368.793-.368.198 0 .396.002.568.01.183.008.43-.07.672.512.245.587.83 2.029.903 2.177.073.148.122.322.024.516-.098.195-.148.316-.293.488-.148.173-.311.387-.444.52-.148.148-.302.31-.13.606.173.296.768 1.268 1.649 2.052 1.133 1.009 2.088 1.322 2.384 1.47.296.148.469.123.642-.074.173-.198.742-.865.94-1.162.198-.297.396-.247.668-.148.272.099 1.73.816 2.027.964.297.148.495.223.568.347.073.123.073.712-.171 1.401z"/>
+    </svg>
+  </a>
 
   <!-- =======================================================
-       SIDE MENU
+       SIDE MENU DRAWER
   ======================================================== -->
-
   <div
     class="overlay"
     id="overlay"
   ></div>
 
-
   <aside
     class="side-menu"
     id="sideMenu"
   >
-
-
     <div class="side-menu-header">
-
       <a
         href="#home"
         class="side-menu-logo"
       >
-
         <img
-          src="assets/logo.svg"
+          src="assets/white logo.svg"
           alt="ZERONIC"
         />
-
       </a>
-
-
       <button
         class="close-btn"
         id="menuClose"
         aria-label="Close menu"
       >
-
         <svg class="icon" viewBox="0 0 24 24">
           <path d="M6 6l12 12"></path>
           <path d="M18 6L6 18"></path>
         </svg>
-
       </button>
-
     </div>
-
 
     <nav class="menu-links">
-
-      <a href="#home">
-        Home
-        <span>01</span>
-      </a>
-
-      <a href="#earbuds">
-        Earbuds
-        <span>02</span>
-      </a>
-
-      <a href="#experience">
-        ZERONIC Experience
-        <span>03</span>
-      </a>
-
-      <a href="#contact">
-        Contact
-        <span>04</span>
-      </a>
-
+      <a href="#home">Home <span>01</span></a>
+      <a href="#earbuds">Earbuds <span>02</span></a>
+      <a href="#earbuds">New Arrivals <span>03</span></a>
+      <a href="#earbuds">Best Sellers <span>04</span></a>
+      <a href="#support">Support <span>05</span></a>
+      <a href="#contact">Contact <span>06</span></a>
     </nav>
 
-
     <div class="menu-support">
-
-      <strong>
-        Need help?
-      </strong>
-
+      <strong>Need Help?</strong>
       <p>
-        WhatsApp us at +92 342 0672554<br />
-        Mon to Sat — 8am - 6pm
+        WhatsApp: <a href="https://wa.me/923420672554" target="_blank" rel="noopener noreferrer">+92 342 0672554</a><br />
+        Phone: +92 342 0672554<br />
+        Email: support@zeronicpk.store<br />
+        Mon to Sat · 8am – 6pm
       </p>
-
     </div>
-
   </aside>
-
 
   <!-- =======================================================
        SEARCH PANEL
   ======================================================== -->
-
   <div
     class="search-panel"
     id="searchPanel"
   >
-
     <div class="search-inner">
-
       <div class="search-box">
-
         <svg class="icon" viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="6.8"></circle>
-          <path d="M16.2 16.2L21 21"></path>
+          <circle cx="11" cy="11" r="6.5"></circle>
+          <path d="M16 16L21 21"></path>
         </svg>
-
-
         <input
           type="search"
           id="searchInput"
-          placeholder="Search earbuds..."
+          placeholder="Search wireless earbuds..."
         />
-
       </div>
-
-
       <button
         class="close-btn"
         id="searchClose"
         aria-label="Close search"
       >
-
         <svg class="icon" viewBox="0 0 24 24">
           <path d="M6 6l12 12"></path>
           <path d="M18 6L6 18"></path>
         </svg>
-
       </button>
-
     </div>
-
   </div>
-
 
   <!-- =======================================================
        CART DRAWER
   ======================================================== -->
-
   <aside
     class="cart-drawer"
     id="cartDrawer"
   >
-
-
     <div class="cart-header">
-
-      <h3>
-        Your Cart
-      </h3>
-
-
+      <h3>Your Cart</h3>
       <button
         class="close-btn"
         id="cartClose"
         aria-label="Close cart"
       >
-
         <svg class="icon" viewBox="0 0 24 24">
           <path d="M6 6l12 12"></path>
           <path d="M18 6L6 18"></path>
         </svg>
-
       </button>
-
     </div>
 
-
     <div class="cart-body">
-
       <div class="empty-cart">
-
         <div class="empty-cart-icon">
-
           <svg class="icon" viewBox="0 0 24 24">
             <path d="M4 5h2l1.5 10.2a2 2 0 0 0 2 1.8h7.7a2 2 0 0 0 1.9-1.5L21 8H7"></path>
             <circle cx="10" cy="20" r="1"></circle>
             <circle cx="18" cy="20" r="1"></circle>
           </svg>
-
         </div>
-
-
-        <h4>
-          Your cart is empty
-        </h4>
-
-
-        <p>
-          Explore our earbuds collection and find your next everyday sound.
-        </p>
-
-
+        <h4>Your cart is empty</h4>
+        <p>Explore our wireless earbuds collection and find your sound.</p>
         <a
           href="#earbuds"
-          class="btn btn-dark"
-          style="margin-top: 20px;"
+          class="btn btn-white"
+          style="margin-top: 24px;"
           onclick="closeCart()"
         >
-          Explore Earbuds
+          View Collection
         </a>
-
       </div>
-
     </div>
-
   </aside>
 
-
   <!-- =======================================================
-       JAVASCRIPT
+       JAVASCRIPT FUNCTIONALITY
   ======================================================== -->
-
   <script>
+    const overlay = document.getElementById("overlay");
+    const sideMenu = document.getElementById("sideMenu");
+    const menuOpen = document.getElementById("menuOpen");
+    const menuClose = document.getElementById("menuClose");
 
+    const searchPanel = document.getElementById("searchPanel");
+    const searchOpen = document.getElementById("searchOpen");
+    const searchClose = document.getElementById("searchClose");
+    const searchInput = document.getElementById("searchInput");
 
-    /* =======================================================
-       ELEMENTS
-    ======================================================== */
+    const cartDrawer = document.getElementById("cartDrawer");
+    const cartOpen = document.getElementById("cartOpen");
+    const cartClose = document.getElementById("cartClose");
+    const cartCount = document.getElementById("cartCount");
 
-    const overlay =
-      document.getElementById("overlay");
-
-    const sideMenu =
-      document.getElementById("sideMenu");
-
-    const menuOpen =
-      document.getElementById("menuOpen");
-
-    const menuClose =
-      document.getElementById("menuClose");
-
-    const searchPanel =
-      document.getElementById("searchPanel");
-
-    const searchOpen =
-      document.getElementById("searchOpen");
-
-    const searchClose =
-      document.getElementById("searchClose");
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-    const cartDrawer =
-      document.getElementById("cartDrawer");
-
-    const cartOpen =
-      document.getElementById("cartOpen");
-
-    const cartClose =
-      document.getElementById("cartClose");
-
-    const cartCount =
-      document.getElementById("cartCount");
-
-
-    /* =======================================================
-       MENU
-    ======================================================== */
-
+    /* Side Menu Control */
     function openMenu() {
-
       sideMenu.classList.add("active");
-
       overlay.classList.add("active");
-
       document.body.style.overflow = "hidden";
-
     }
-
 
     function closeMenu() {
-
       sideMenu.classList.remove("active");
-
       overlay.classList.remove("active");
-
       document.body.style.overflow = "";
-
     }
 
+    menuOpen.addEventListener("click", openMenu);
+    menuClose.addEventListener("click", closeMenu);
 
-    menuOpen.addEventListener(
-      "click",
-      openMenu
-    );
-
-
-    menuClose.addEventListener(
-      "click",
-      closeMenu
-    );
-
-
-    /* =======================================================
-       SEARCH
-    ======================================================== */
-
+    /* Search Control */
     function openSearch() {
-
       searchPanel.classList.add("active");
-
-      setTimeout(function() {
-
-        searchInput.focus();
-
-      }, 250);
-
+      setTimeout(() => searchInput.focus(), 200);
     }
-
 
     function closeSearch() {
-
       searchPanel.classList.remove("active");
-
     }
 
+    searchOpen.addEventListener("click", openSearch);
+    searchClose.addEventListener("click", closeSearch);
 
-    searchOpen.addEventListener(
-      "click",
-      openSearch
-    );
-
-
-    searchClose.addEventListener(
-      "click",
-      closeSearch
-    );
-
-
-    searchInput.addEventListener(
-      "keydown",
-      function(event) {
-
-        if (event.key === "Enter") {
-
-          const query =
-            searchInput.value.trim();
-
-
-          if (query) {
-
-            alert(
-              "Search is ready for: " +
-              query +
-              ". Connect this field to your product search system when products are added."
-            );
-
-          }
-
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const query = searchInput.value.trim();
+        if (query) {
+          alert("Search for: " + query);
         }
-
       }
-    );
+    });
 
-
-    /* =======================================================
-       CART
-    ======================================================== */
-
+    /* Cart Drawer Control */
     let cartItems = 0;
 
-
     function openCart() {
-
       cartDrawer.classList.add("active");
-
       overlay.classList.add("active");
-
       document.body.style.overflow = "hidden";
-
     }
-
 
     function closeCart() {
-
       cartDrawer.classList.remove("active");
-
       overlay.classList.remove("active");
-
       document.body.style.overflow = "";
-
     }
 
-
-    cartOpen.addEventListener(
-      "click",
-      openCart
-    );
-
-
-    cartClose.addEventListener(
-      "click",
-      closeCart
-    );
-
+    cartOpen.addEventListener("click", openCart);
+    cartClose.addEventListener("click", closeCart);
 
     function addToCart(productName) {
-
       cartItems++;
-
-      cartCount.textContent =
-        cartItems;
-
-
-      alert(
-        productName +
-        " has been added to your cart."
-      );
-
+      cartCount.textContent = cartItems;
+      alert(productName + " added to your cart.");
     }
 
+    /* Global Overlay and Key Interactions */
+    overlay.addEventListener("click", () => {
+      closeMenu();
+      closeCart();
+    });
 
-    /* =======================================================
-       OVERLAY
-    ======================================================== */
-
-    overlay.addEventListener(
-      "click",
-      function() {
-
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
         closeMenu();
-
         closeCart();
-
+        closeSearch();
       }
-    );
+    });
 
-
-    /* =======================================================
-       ESCAPE
-    ======================================================== */
-
-    document.addEventListener(
-      "keydown",
-      function(event) {
-
-        if (event.key === "Escape") {
-
-          closeMenu();
-
-          closeCart();
-
-          closeSearch();
-
-        }
-
-      }
-    );
-
-
-    /* =======================================================
-       MOBILE FOOTER ACCORDIONS
-    ======================================================== */
-
+    /* Mobile Accordion Toggle */
     function toggleAccordion(button) {
-
-      const accordion =
-        button.parentElement;
-
-
-      accordion.classList.toggle(
-        "open"
-      );
-
+      const accordion = button.parentElement;
+      accordion.classList.toggle("open");
     }
 
-
-    /* =======================================================
-       CLOSE MENU AFTER LINK CLICK
-    ======================================================== */
-
-    document
-      .querySelectorAll(".menu-links a")
-      .forEach(function(link) {
-
-        link.addEventListener(
-          "click",
-          function() {
-
-            closeMenu();
-
-          }
-        );
-
+    /* Close Side Menu On Navigation Click */
+    document.querySelectorAll(".menu-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMenu();
       });
+    });
 
+    /* Smooth Scroll Interaction */
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href");
+        if (!targetId || targetId === "#" || !document.querySelector(targetId)) {
+          return;
+        }
+        e.preventDefault();
+        const target = document.querySelector(targetId);
+        const headerHeight = document.querySelector(".site-header").offsetHeight;
+        const targetPosition =
+          target.getBoundingClientRect().top + window.scrollY - headerHeight;
 
-    /* =======================================================
-       SMOOTH SCROLL
-    ======================================================== */
-
-    document
-      .querySelectorAll('a[href^="#"]')
-      .forEach(function(anchor) {
-
-        anchor.addEventListener(
-          "click",
-          function(event) {
-
-            const targetId =
-              this.getAttribute("href");
-
-
-            if (
-              !targetId ||
-              targetId === "#" ||
-              !document.querySelector(targetId)
-            ) {
-
-              return;
-
-            }
-
-
-            event.preventDefault();
-
-
-            const target =
-              document.querySelector(targetId);
-
-
-            const headerHeight =
-              document.querySelector(
-                ".site-header"
-              ).offsetHeight;
-
-
-            const targetPosition =
-              target.getBoundingClientRect().top +
-              window.scrollY -
-              headerHeight -
-              15;
-
-
-            window.scrollTo({
-
-              top: targetPosition,
-
-              behavior: "smooth"
-
-            });
-
-          }
-        );
-
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
       });
-
+    });
   </script>
 
 </body>
