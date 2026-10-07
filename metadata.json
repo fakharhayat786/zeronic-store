@@ -1,0 +1,9 @@
+{
+  "name": "ZERONIC | Premium Wireless Earbuds",
+  "description": "Discover ZERONIC wireless earbuds - premium sound, modern design, and everyday comfort.",
+  "prompt": "ZERONIC premium wireless earbuds e-commerce store with interactive product showcase, cart drawer, and modern responsive design.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ],
+  "permissions": []
+}

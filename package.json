@@ -1,0 +1,15 @@
+{
+  "name": "zeronic-store",
+  "version": "1.0.0",
+  "description": "ZERONIC | Premium Wireless Earbuds",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Static assets ready'"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "sharp": "^0.35.5"
+  }
+}

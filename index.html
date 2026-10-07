@@ -10,13 +10,18 @@
     name="description"
     content="Discover ZERONIC wireless earbuds - premium sound, modern design, and everyday comfort."
   />
+  <meta property="og:title" content="ZERONIC | Premium Wireless Earbuds" />
+  <meta
+    property="og:description"
+    content="Discover ZERONIC wireless earbuds - premium sound, modern design, and everyday comfort."
+  />
 
   <meta name="theme-color" content="#ffffff" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   />
 
@@ -711,7 +716,7 @@
     .experience {
       background: #ffffff;
       color: #111111;
-      padding: 140px 0;
+      padding: 90px 0 45px;
       border-top: 1px solid var(--border-dark);
     }
 
@@ -750,72 +755,129 @@
 
     .experience-image-area {
       position: relative;
-      min-height: 520px;
-      border-radius: 24px;
+      min-height: 500px;
+      border-radius: 28px;
       overflow: hidden;
-      background: #f8f9fa;
+      background: #ffffff;
       border: 1px solid var(--border-dark);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 32px 20px 24px;
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.04);
     }
 
-    /* FOCUS SLIDER STYLING */
+    /* FOCUS SLIDER STYLING (Tech Hunk Style) */
     .th-focus-slider {
       width: 100%;
       position: relative;
+      background: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .thfs-wrap {
+      max-width: 100%;
+      margin: 0;
+      padding: 0 4px;
     }
     .thfs-stage {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 380px;
+      min-height: 270px;
+      overflow: hidden;
+    }
+    /* Soft ambient blue glow behind the center active earbuds */
+    .thfs-stage::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 180px;
+      height: 210px;
+      background: radial-gradient(circle, rgba(20, 52, 124, 0.22) 0%, rgba(20, 52, 124, 0.06) 55%, transparent 75%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
     }
     .thfs-track {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      width: 100%;
-      height: 320px;
     }
     .thfs-slide {
       position: absolute;
-      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-      opacity: 0;
-      transform: scale(0.6);
+      top: 50%;
+      left: 50%;
+      width: 145px;
+      height: 145px;
+      transform: translate(-50%, -50%) scale(0.6);
+      opacity: 0.4;
+      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.45s ease;
+      will-change: transform, opacity;
       z-index: 1;
       pointer-events: none;
-      width: 260px;
-      height: 260px;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: none !important;
+      background: transparent !important;
+      border-radius: 0 !important;
     }
+    /* Strictly uniform sizing for all images */
     .thfs-slide img {
-      max-width: 100%;
-      max-height: 100%;
+      width: 140px;
+      height: auto;
+      max-width: 146px;
+      max-height: 168px;
+      display: block;
       object-fit: contain;
-      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+      user-select: none;
+      cursor: pointer;
+      pointer-events: auto;
     }
-    .thfs-slide.active {
+    .thfs-slide-3 img {
+      width: 142px;
+      max-width: 146px;
+    }
+    .thfs-slide-4 img {
+      width: 148px;
+      max-width: 152px;
+    }
+    /* Positions: Center enlarged, side thumbnails previewed cleanly */
+    .thfs-slide.is-center {
+      transform: translate(-50%, -50%) scale(1.44);
       opacity: 1;
-      transform: scale(1.1);
       z-index: 3;
       pointer-events: auto;
     }
-    .thfs-slide.prev-slide {
-      opacity: 0.4;
-      transform: translateX(-140px) scale(0.75);
+    .thfs-slide.is-left {
+      transform: translate(calc(-50% - clamp(95px, 26vw, 140px)), -50%) scale(0.55);
+      opacity: 0.72;
       z-index: 2;
+      pointer-events: auto;
     }
-    .thfs-slide.next-slide {
-      opacity: 0.4;
-      transform: translateX(140px) scale(0.75);
+    .thfs-slide.is-right {
+      transform: translate(calc(-50% + clamp(95px, 26vw, 140px)), -50%) scale(0.55);
+      opacity: 0.72;
       z-index: 2;
+      pointer-events: auto;
+    }
+    .thfs-slide.is-far {
+      transform: translate(-50%, -50%) scale(0.35);
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
     }
     .thfs-nav {
       position: absolute;
@@ -830,41 +892,94 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 15px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
       transition: all 0.2s ease;
+      color: #111111;
     }
     .thfs-nav:hover {
-      background: #111111;
+      background: #14347c;
       color: #ffffff;
+      border-color: #14347c;
     }
-    .thfs-prev { left: 10px; }
-    .thfs-next { right: 10px; }
+    .thfs-prev { left: 4px; }
+    .thfs-next { right: 4px; }
+    @media (max-width: 768px) {
+      .thfs-nav {
+        display: none !important; /* Hidden on mobile like Tech Hunk screenshot */
+      }
+      .thfs-stage {
+        min-height: 240px;
+      }
+      .thfs-track {
+        height: 220px;
+      }
+      .thfs-slide.is-left {
+        transform: translate(calc(-50% - clamp(85px, 28vw, 120px)), -50%) scale(0.52);
+        opacity: 0.65;
+      }
+      .thfs-slide.is-right {
+        transform: translate(calc(-50% + clamp(85px, 28vw, 120px)), -50%) scale(0.52);
+        opacity: 0.65;
+      }
+      .thfs-slide.is-center {
+        transform: translate(-50%, -50%) scale(1.42);
+        opacity: 1;
+      }
+    }
+    /* Captions */
     .thfs-caption {
       text-align: center;
-      margin-top: 10px;
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
     .thfs-name {
-      font-family: "Manrope", sans-serif;
-      font-size: 18px;
-      font-weight: 800;
-      color: #111111;
-      margin-bottom: 8px;
+      font-family: "Poppins", "Manrope", sans-serif;
+      font-size: clamp(19px, 2.5vw, 22px);
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.01em;
+      margin: 0;
     }
+    /* Visually enhanced Shop Now pill button */
     .thfs-cta {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #14347c;
+      color: #ffffff !important;
+      font-family: "Poppins", "Inter", sans-serif;
       font-size: 13px;
       font-weight: 700;
-      color: #0062d8;
-      text-decoration: underline;
+      letter-spacing: 0.02em;
+      padding: 10px 26px;
+      border-radius: 999px;
+      text-decoration: none !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 6px 18px rgba(20, 52, 124, 0.28);
+    }
+    .thfs-cta:hover {
+      background: #0c2356;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(20, 52, 124, 0.38);
+    }
+    .thfs-cta svg {
+      transition: transform 0.2s ease;
+    }
+    .thfs-cta:hover svg {
+      transform: translateX(3px);
     }
 
     /* =========================================================
        UPGRADE YOUR EVERYDAY CTA
     ========================================================= */
     .cta-section {
-      padding: 100px 0 120px;
+      padding: 45px 0 90px;
       background: #ffffff;
     }
 
@@ -1421,19 +1536,19 @@
 
     @media (max-width: 850px) {
       .section {
-        padding: 80px 0;
+        padding: 60px 0;
       }
       .experience {
-        padding: 80px 0;
+        padding: 50px 0 24px;
       }
       .experience-grid {
         grid-template-columns: 1fr;
       }
       .experience-image-area {
-        min-height: 420px;
+        min-height: 400px;
       }
       .cta-section {
-        padding: 24px 0 32px;
+        padding: 24px 0 36px;
       }
       .cta-card {
         min-height: auto;
@@ -1465,8 +1580,11 @@
       .container {
         width: min(var(--container), calc(100% - 32px));
       }
+      .experience {
+        padding: 38px 0 20px;
+      }
       .cta-section {
-        padding: 16px 0 24px;
+        padding: 20px 0 28px;
       }
       .cta-card {
         border-radius: 20px;
@@ -1827,37 +1945,44 @@
               <section class="dual-heading">
                 <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');</style>  
                 <div class="page-width">
-                  <h2 class="dual-heading__title" style="display:flex; flex-wrap:wrap; gap: 5px; justify-content:center; text-align: center; font-size: 24px; line-height: 1.2; font-family: 'Poppins', sans-serif; letter-spacing: 0px;">
-                    <span style="color: #000000; font-weight: 500; font-style: normal;">ZERONIC</span>
-                    <span style="color: #14347c; font-weight: 700; font-style: normal;">Earbuds</span>
+                  <h2 class="dual-heading__title" style="display:flex; flex-wrap:wrap; gap: 6px; justify-content:center; text-align: center; font-size: 26px; line-height: 1.2; font-family: 'Poppins', sans-serif; letter-spacing: -0.02em; margin-bottom: 4px;">
+                    <span style="color: #000000; font-weight: 600; font-style: normal;">ZERONIC</span>
+                    <span style="color: #14347c; font-weight: 800; font-style: normal;">Earbuds</span>
                   </h2>
                 </div>
               </section>
             </div>
             <div class="shopify-section" style="width: 100%;">
-              <section class="th-focus-slider" style="--bg: #ffffff; --ink: #0f172a; --dot: #1f4db3;">
+              <section class="th-focus-slider" style="--bg: #ffffff; --ink: #0f172a; --dot: #14347c;">
                 <div class="thfs-wrap">    
                   <div class="thfs-stage">
+                    <!-- arrows (desktop only; hidden on mobile via CSS) -->
                     <button class="thfs-nav thfs-prev" aria-label="Previous">&#x276E;</button>
                     <ul class="thfs-track">
-                      <li class="thfs-slide active" data-title="ZERONIC Flex" data-link="#earbuds">
-                        <img src="assets/airpods-1.png" alt="ZERONIC Flex" loading="lazy">
+                      <li class="thfs-slide thfs-slide-1 is-center" data-title="AirPods Pro 2" data-link="#earbuds">
+                        <img src="assets/airpods-1.png" alt="AirPods Pro 2" loading="lazy">
                       </li>
-                      <li class="thfs-slide next-slide" data-title="ZERONIC Steel X" data-link="#earbuds">
-                        <img src="assets/airpods-2.png" alt="ZERONIC Steel X" loading="lazy">
+                      <li class="thfs-slide thfs-slide-2 is-right" data-title="AirPods Pro 2" data-link="#earbuds">
+                        <img src="assets/airpods-2.png" alt="AirPods Pro 2" loading="lazy">
                       </li>
-                      <li class="thfs-slide" data-title="ZERONIC Flick" data-link="#earbuds">
-                        <img src="assets/airpods-3.png" alt="ZERONIC Flick" loading="lazy">
+                      <li class="thfs-slide thfs-slide-3 is-far" data-title="AirPods Pro 2" data-link="#earbuds">
+                        <img src="assets/airpods-3.png" alt="AirPods Pro 2" loading="lazy">
                       </li>
-                      <li class="thfs-slide prev-slide" data-title="ZERONIC Nano" data-link="#earbuds">
-                        <img src="assets/airpods-4.png" alt="ZERONIC Nano" loading="lazy">
+                      <li class="thfs-slide thfs-slide-4 is-left" data-title="AirPods Pro 2" data-link="#earbuds">
+                        <img src="assets/airpods-4.png" alt="AirPods Pro 2" loading="lazy">
                       </li>
                     </ul>
                     <button class="thfs-nav thfs-next" aria-label="Next">&#x276F;</button>
                   </div>
                   <div class="thfs-caption">
-                    <div class="thfs-name">ZERONIC Flex</div>
-                    <a class="thfs-cta" href="#earbuds">Shop Now</a>
+                    <div class="thfs-name">AirPods Pro 2</div>
+                    <a class="thfs-cta" href="#earbuds" aria-label="Shop AirPods Pro 2">
+                      <span>Shop Now</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </a>
                   </div>
                 </div>
               </section>
@@ -2193,7 +2318,11 @@
       if (e.key === "Enter") {
         const query = searchInput.value.trim();
         if (query) {
-          alert("Search for: " + query);
+          closeSearch();
+          const target = document.querySelector("#earbuds");
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
         }
       }
     });
@@ -2219,48 +2348,135 @@
     function addToCart(productName) {
       cartItems++;
       cartCount.textContent = cartItems;
-      alert(productName + " added to your cart.");
+      openCart();
     }
 
-    /* Focus Slider Carousel Logic */
+    /* Focus Slider Carousel Logic (Automatic 2s rotation & Tech Hunk behavior) */
     document.addEventListener("DOMContentLoaded", () => {
-      const slides = Array.from(document.querySelectorAll(".thfs-slide"));
-      const prevBtn = document.querySelector(".thfs-prev");
-      const nextBtn = document.querySelector(".thfs-next");
-      const titleEl = document.querySelector(".thfs-name");
-      const ctaEl = document.querySelector(".thfs-cta");
+      const slider = document.querySelector(".th-focus-slider");
+      if (!slider) return;
+      const track = slider.querySelector(".thfs-track");
+      const slides = Array.from(slider.querySelectorAll(".thfs-slide"));
+      const prevBtn = slider.querySelector(".thfs-prev");
+      const nextBtn = slider.querySelector(".thfs-next");
+      const titleEl = slider.querySelector(".thfs-name");
+      const ctaEl = slider.querySelector(".thfs-cta");
+      const stage = slider.querySelector(".thfs-stage");
 
       if (!slides.length) return;
 
       let currentIndex = 0;
+      let autoplayTimer = null;
+      const AUTOPLAY_MS = 2000; // Automatically changes every 2 seconds as requested
 
       function updateSlider(index) {
-        slides.forEach((slide) => {
-          slide.classList.remove("active", "prev-slide", "next-slide");
-        });
-
         const total = slides.length;
         currentIndex = (index + total) % total;
-        const prevIndex = (currentIndex - 1 + total) % total;
-        const nextIndex = (currentIndex + 1) % total;
+        const leftIndex = (currentIndex - 1 + total) % total;
+        const rightIndex = (currentIndex + 1) % total;
 
-        slides[currentIndex].classList.add("active");
-        slides[prevIndex].classList.add("prev-slide");
-        slides[nextIndex].classList.add("next-slide");
+        slides.forEach((slide, idx) => {
+          slide.classList.remove("is-center", "is-left", "is-right", "is-far", "active", "prev-slide", "next-slide");
+          if (idx === currentIndex) {
+            slide.classList.add("is-center");
+          } else if (idx === leftIndex) {
+            slide.classList.add("is-left");
+          } else if (idx === rightIndex) {
+            slide.classList.add("is-right");
+          } else {
+            slide.classList.add("is-far");
+          }
+        });
 
-        const activeSlide = slides[currentIndex];
-        if (titleEl) titleEl.textContent = activeSlide.dataset.title || "";
-        if (ctaEl) ctaEl.href = activeSlide.dataset.link || "#";
+        // Fixed name as requested: all pods are AirPods Pro 2
+        if (titleEl) {
+          titleEl.textContent = "AirPods Pro 2";
+        }
+        if (ctaEl) {
+          ctaEl.href = slides[currentIndex].dataset.link || "#earbuds";
+        }
       }
 
+      function goNext() {
+        updateSlider(currentIndex + 1);
+      }
+
+      function goPrev() {
+        updateSlider(currentIndex - 1);
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(goNext, AUTOPLAY_MS);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) {
+          clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        }
+      }
+
+      // Initialize initial state and start automatic rotation
+      updateSlider(0);
+      startAutoplay();
+
+      // Clicking any slide focuses it
+      slides.forEach((slide, idx) => {
+        slide.addEventListener("click", () => {
+          updateSlider(idx);
+          startAutoplay();
+        });
+      });
+
+      // Desktop manual navigation buttons
       if (prevBtn) {
-        prevBtn.addEventListener("click", () => updateSlider(currentIndex - 1));
+        prevBtn.addEventListener("click", () => {
+          goPrev();
+          startAutoplay();
+        });
       }
       if (nextBtn) {
-        nextBtn.addEventListener("click", () => updateSlider(currentIndex + 1));
+        nextBtn.addEventListener("click", () => {
+          goNext();
+          startAutoplay();
+        });
       }
 
-      updateSlider(0);
+      // Touch swipe gestures for mobile
+      let touchStartX = null;
+      if (stage) {
+        stage.addEventListener("touchstart", (e) => {
+          touchStartX = e.touches[0].clientX;
+          stopAutoplay();
+        }, { passive: true });
+
+        stage.addEventListener("touchend", (e) => {
+          if (touchStartX === null) return;
+          const deltaX = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(deltaX) > 30) {
+            if (deltaX < 0) {
+              goNext();
+            } else {
+              goPrev();
+            }
+          }
+          touchStartX = null;
+          startAutoplay();
+        });
+
+        stage.addEventListener("mouseenter", stopAutoplay);
+        stage.addEventListener("mouseleave", startAutoplay);
+      }
+
+      // Tab visibility awareness
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          stopAutoplay();
+        } else {
+          startAutoplay();
+        }
+      });
     });
 
     /* Global Overlay and Key Interactions */
