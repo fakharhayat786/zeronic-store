@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   />
 
@@ -291,7 +291,7 @@
     }
 
     /* =========================================================
-       HERO SECTION (DESKTOP & MOBILE RESPONSIVE)
+       HERO SECTION WITH TECH HUNK FOCUS SLIDER
     ========================================================= */
     .hero {
       background: #ffffff;
@@ -350,24 +350,148 @@
       margin-top: 40px;
     }
 
-    .hero-visual {
+    /* TECH HUNK FOCUS SLIDER CSS ENGINES */
+    .th-focus-slider {
+      --bg: #ffffff;
+      --ink: #0f172a;
+      --dot: #1f4db3;
+      width: 100%;
       height: 100%;
-      min-height: 620px;
-      position: relative;
+      min-height: 520px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px;
-      background: radial-gradient(circle at center, #f1f3f5 0%, #e9ecef 100%);
+      position: relative;
     }
 
-    .hero-product {
+    .thfs-wrap {
+      width: 100%;
       position: relative;
-      z-index: 2;
-      width: min(520px, 100%);
-      height: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thfs-stage {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thfs-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      list-style: none;
+    }
+
+    .thfs-slide {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      cursor: pointer;
+      opacity: 0;
+      transform: scale(0.5);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thfs-slide img {
+      width: 100%;
+      height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1));
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.1));
+    }
+
+    /* Active Slide (Center Focus) */
+    .thfs-slide.active {
+      opacity: 1;
+      transform: translateX(0) scale(1.25);
+      z-index: 10;
+    }
+
+    /* Previous Slide (Left) */
+    .thfs-slide.prev {
+      opacity: 0.5;
+      transform: translateX(-140px) scale(0.75);
+      z-index: 5;
+    }
+
+    /* Next Slide (Right) */
+    .thfs-slide.next {
+      opacity: 0.5;
+      transform: translateX(140px) scale(0.75);
+      z-index: 5;
+    }
+
+    /* Hidden Slides */
+    .thfs-slide.far-left {
+      opacity: 0;
+      transform: translateX(-240px) scale(0.5);
+      z-index: 1;
+    }
+
+    .thfs-slide.far-right {
+      opacity: 0;
+      transform: translateX(240px) scale(0.5);
+      z-index: 1;
+    }
+
+    .thfs-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid var(--border-dark);
+      color: #111111;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.2s ease;
+    }
+
+    .thfs-nav:hover {
+      background: #111111;
+      color: #ffffff;
+    }
+
+    .thfs-prev { left: 10px; }
+    .thfs-next { right: 10px; }
+
+    .thfs-caption {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .thfs-name {
+      font-family: 'Manrope', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #111111;
+      margin-bottom: 6px;
+    }
+
+    .thfs-cta {
+      font-size: 13px;
+      font-weight: 700;
+      color: #14347c;
+      text-decoration: underline;
     }
 
     .hero-mobile-container {
@@ -1319,9 +1443,6 @@
       .hero-content {
         padding: 60px 40px;
       }
-      .hero-visual {
-        min-height: 440px;
-      }
       .experience-grid {
         gap: 50px;
       }
@@ -1487,7 +1608,7 @@
   ======================================================== -->
   <main id="home">
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION WITH TECH HUNK FOCUS SLIDER -->
     <section class="hero">
 
       <!-- Desktop Hero View -->
@@ -1511,13 +1632,36 @@
             </div>
           </div>
 
-          <div class="hero-visual">
-            <img
-              class="hero-product"
-              src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1200&q=90"
-              alt="ZERONIC Wireless Earbuds"
-            />
+          <!-- TECH HUNK FOCUS SLIDER IMPLEMENTATION -->
+          <div class="shopify-section">
+            <section class="th-focus-slider">
+              <div class="thfs-wrap">
+                <div class="thfs-stage">
+                  <button class="thfs-nav thfs-prev" aria-label="Previous">&#x276E;</button>
+                  <ul class="thfs-track">
+                    <li class="thfs-slide" data-title="AirPods Pro 2 - Case Closed" data-link="#earbuds">
+                      <img src="assets/airpods-1.png" alt="AirPods Pro 2 Case Closed" loading="lazy">
+                    </li>
+                    <li class="thfs-slide" data-title="AirPods Pro 2 - Case Open" data-link="#earbuds">
+                      <img src="assets/airpods-2.png" alt="AirPods Pro 2 Case Open" loading="lazy">
+                    </li>
+                    <li class="thfs-slide" data-title="AirPods Pro 2 - Earbuds Angled" data-link="#earbuds">
+                      <img src="assets/airpods-3.png" alt="AirPods Pro 2 Earbuds Angled" loading="lazy">
+                    </li>
+                    <li class="thfs-slide" data-title="AirPods Pro 2 - Full Set" data-link="#earbuds">
+                      <img src="assets/airpods-4.png" alt="AirPods Pro 2 Full Set" loading="lazy">
+                    </li>
+                  </ul>
+                  <button class="thfs-nav thfs-next" aria-label="Next">&#x276F;</button>
+                </div>
+                <div class="thfs-caption">
+                  <div class="thfs-name">AirPods Pro 2</div>
+                  <a class="thfs-cta" href="#earbuds">Shop Now</a>
+                </div>
+              </div>
+            </section>
           </div>
+
         </div>
       </div>
 
@@ -2145,6 +2289,63 @@
           behavior: "smooth",
         });
       });
+    });
+
+    /* TECH HUNK FOCUS SLIDER JAVASCRIPT ENGINE */
+    document.addEventListener("DOMContentLoaded", () => {
+      const slides = Array.from(document.querySelectorAll('.thfs-slide'));
+      const prevBtn = document.querySelector('.thfs-prev');
+      const nextBtn = document.querySelector('.thfs-next');
+      const titleEl = document.querySelector('.thfs-name');
+      const ctaEl = document.querySelector('.thfs-cta');
+      let currentIndex = 0;
+
+      function updateSlider() {
+        slides.forEach((slide, idx) => {
+          slide.className = 'thfs-slide';
+          if (idx === currentIndex) {
+            slide.classList.add('active');
+            if (titleEl) titleEl.textContent = slide.getAttribute('data-title') || 'AirPods Pro 2';
+            if (ctaEl) ctaEl.setAttribute('href', slide.getAttribute('data-link') || '#');
+          } else if (idx === (currentIndex - 1 + slides.length) % slides.length) {
+            slide.classList.add('prev');
+          } else if (idx === (currentIndex + 1) % slides.length) {
+            slide.classList.add('next');
+          } else if (idx < currentIndex) {
+            slide.classList.add('far-left');
+          } else {
+            slide.classList.add('far-right');
+          }
+        });
+      }
+
+      if (prevBtn && nextBtn && slides.length) {
+        prevBtn.addEventListener('click', () => {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateSlider();
+        });
+
+        slides.forEach((slide, idx) => {
+          slide.addEventListener('click', () => {
+            currentIndex = idx;
+            updateSlider();
+          });
+        });
+
+        // Initialize Slider State
+        updateSlider();
+
+        // Optional Auto Play
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateSlider();
+        }, 3500);
+      }
     });
   </script>
 
