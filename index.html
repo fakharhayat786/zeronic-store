@@ -485,7 +485,7 @@
     .products-section {
       background: #ffffff;
       color: var(--dark-gray-1);
-      padding: 60px 0 80px;
+      padding: 60px 0 40px;
     }
 
     .section-heading-wrap {
@@ -646,7 +646,62 @@
         font-size: 30px;
       }
       .products-section {
-        padding: 40px 0 50px;
+        padding: 40px 0 20px;
+      }
+    }
+
+    /* =========================================================
+       TRUST BADGES / ICON STRIP SECTION
+    ========================================================= */
+    .th-icon-strip {
+      background: transparent;
+      padding: 20px 0 40px;
+      --title: #1f2a37;
+    }
+    .th-icon-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+    .th-icon-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-items: center;
+      gap: 10px;
+    }
+    .th-icon-unit {
+      text-align: center;
+      padding: 6px 4px;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+    .th-icon-unit:hover {
+      transform: translateY(-2px);
+      opacity: .95;
+    }
+    .th-icon {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 6px;
+      image-rendering: auto;
+    }
+    @media(min-width: 990px) {
+      .th-icon {
+        width: 56px;
+        height: 56px;
+      }
+    }
+    .th-title {
+      color: var(--title);
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 1.2;
+      letter-spacing: .2px;
+    }
+    @media(min-width: 750px) {
+      .th-title {
+        font-size: 14px;
       }
     }
 
@@ -1518,7 +1573,6 @@
     >
       <div class="container">
 
-        <!-- Replaced heading and removed 'View Collection' button as requested -->
         <div class="section-heading-wrap">
           <h2 class="bestseller-heading">
             Best <span>Sellers</span>
@@ -1574,7 +1628,6 @@
                 <div class="th-stars">★★★★★</div>
                 <span class="th-rating-val">4.8</span>
               </div>
-              .
               <div class="th-card-bottom">
                 <span class="th-price">Rs.5,250.00</span>
                 <button
@@ -1620,6 +1673,34 @@
 
         </div>
 
+      </div>
+    </section>
+
+    <!-- TRUST BADGES SECTION (RIGHT BELOW BEST SELLERS) -->
+    <section class="th-icon-strip">
+      <div class="th-icon-wrap">
+        <div class="th-icon-row">
+          <!-- Free Shipping -->
+          <div class="th-icon-unit">
+            <img class="th-icon" src="assets/free-shipping.webp" alt="Free Shipping" loading="lazy">
+            <div class="th-title">Free Shipping</div>
+          </div>
+          <!-- Secure Payments -->
+          <div class="th-icon-unit">
+            <img class="th-icon" src="assets/secure-payments.webp" alt="Secure Payments" loading="lazy">
+            <div class="th-title">Secure Payments</div>
+          </div>
+          <!-- 13 Months Warranty -->
+          <div class="th-icon-unit">
+            <img class="th-icon" src="assets/warranty.webp" alt="13 Months Warranty" loading="lazy">
+            <div class="th-title">13 Months Warranty</div>
+          </div>
+          <!-- 1M+ Satisfied Customers -->
+          <div class="th-icon-unit">
+            <img class="th-icon" src="assets/satisfied-customers.webp" alt="1M+ Satisfied Customers" loading="lazy">
+            <div class="th-title">1M+ Satisfied Customers</div>
+          </div>
+        </div>
       </div>
     </section>
 
