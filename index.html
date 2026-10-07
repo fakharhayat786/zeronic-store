@@ -480,7 +480,7 @@
     }
 
     /* =========================================================
-       PRODUCTS SECTION - UPDATED TO TECH HUNK STYLE
+       PRODUCTS SECTION
     ========================================================= */
     .products-section {
       background: #ffffff;
@@ -760,6 +760,104 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+    }
+
+    /* FOCUS SLIDER STYLING */
+    .th-focus-slider {
+      width: 100%;
+      position: relative;
+    }
+    .thfs-stage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 380px;
+    }
+    .thfs-track {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      height: 320px;
+    }
+    .thfs-slide {
+      position: absolute;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      opacity: 0;
+      transform: scale(0.6);
+      z-index: 1;
+      pointer-events: none;
+      width: 260px;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .thfs-slide img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+    }
+    .thfs-slide.active {
+      opacity: 1;
+      transform: scale(1.1);
+      z-index: 3;
+      pointer-events: auto;
+    }
+    .thfs-slide.prev-slide {
+      opacity: 0.4;
+      transform: translateX(-140px) scale(0.75);
+      z-index: 2;
+    }
+    .thfs-slide.next-slide {
+      opacity: 0.4;
+      transform: translateX(140px) scale(0.75);
+      z-index: 2;
+    }
+    .thfs-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: #ffffff;
+      border: 1px solid var(--border-dark);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.2s ease;
+    }
+    .thfs-nav:hover {
+      background: #111111;
+      color: #ffffff;
+    }
+    .thfs-prev { left: 10px; }
+    .thfs-next { right: 10px; }
+    .thfs-caption {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .thfs-name {
+      font-family: "Manrope", sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #111111;
+      margin-bottom: 8px;
+    }
+    .thfs-cta {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0062d8;
+      text-decoration: underline;
     }
 
     /* =========================================================
@@ -1508,7 +1606,7 @@
           <div class="hero-visual">
             <img
               class="hero-product"
-              src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1200&q=90"
+              src="assets/airpods-1.png"
               alt="ZERONIC Wireless Earbuds"
             />
           </div>
@@ -1521,7 +1619,7 @@
           <img
             src="assets/mobile-hero-banner.webp"
             alt="ZERONIC Wireless Earbuds"
-            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=90';"
+            onerror="this.onerror=null; this.src='assets/airpods-1.png';"
           />
           <div class="hero-mobile-overlay">
             <div class="hero-mobile-top">
@@ -1560,7 +1658,7 @@
       </div>
     </section>
 
-    <!-- PRODUCT COLLECTION (OPTIMIZED TO MATCH TECH HUNK BEST SELLERS VIEW) -->
+    <!-- PRODUCT COLLECTION -->
     <section
       class="products-section"
       id="earbuds"
@@ -1575,18 +1673,18 @@
 
         <div class="products-carousel-wrapper">
 
-          <!-- PRODUCT 1 (TH Flex Earbuds) -->
+          <!-- PRODUCT 1 -->
           <article class="th-product-card">
             <div class="th-card-image-wrap">
               <span class="th-badge">Software based</span>
               <img
                 class="th-product-img"
-                src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=90"
-                alt="TH Flex Earbuds"
+                src="assets/airpods-1.png"
+                alt="ZERONIC Flex Earbuds"
               />
             </div>
             <div class="th-card-info">
-              <h3 class="th-product-title">TH Flex Earbuds</h3>
+              <h3 class="th-product-title">ZERONIC Flex Earbuds</h3>
               <p class="th-product-desc">Ultra Bass | Clear Sound | USB-C</p>
               <div class="th-rating-row">
                 <div class="th-stars">★★★★★</div>
@@ -1596,8 +1694,8 @@
                 <span class="th-price">Rs.4,950.00</span>
                 <button
                   class="th-buy-btn"
-                  onclick="addToCart('TH Flex Earbuds')"
-                  aria-label="Buy TH Flex Earbuds"
+                  onclick="addToCart('ZERONIC Flex Earbuds')"
+                  aria-label="Buy ZERONIC Flex Earbuds"
                 >
                   Buy Now
                 </button>
@@ -1605,18 +1703,18 @@
             </div>
           </article>
 
-          <!-- PRODUCT 2 (TH Gaming Pods) -->
+          <!-- PRODUCT 2 -->
           <article class="th-product-card">
             <div class="th-card-image-wrap">
               <span class="th-badge">Low Latency</span>
               <img
                 class="th-product-img"
-                src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=800&q=90"
-                alt="TH Gaming Pods"
+                src="assets/airpods-2.png"
+                alt="ZERONIC Gaming Pods"
               />
             </div>
             <div class="th-card-info">
-              <h3 class="th-product-title">TH Gaming Pods</h3>
+              <h3 class="th-product-title">ZERONIC Gaming Pods</h3>
               <p class="th-product-desc">Mode Switch | Dual Mic for Calls</p>
               <div class="th-rating-row">
                 <div class="th-stars">★★★★★</div>
@@ -1626,8 +1724,8 @@
                 <span class="th-price">Rs.5,250.00</span>
                 <button
                   class="th-buy-btn"
-                  onclick="addToCart('TH Gaming Pods')"
-                  aria-label="Buy TH Gaming Pods"
+                  onclick="addToCart('ZERONIC Gaming Pods')"
+                  aria-label="Buy ZERONIC Gaming Pods"
                 >
                   Buy Now
                 </button>
@@ -1635,18 +1733,18 @@
             </div>
           </article>
 
-          <!-- PRODUCT 3 (TH Pro Wireless) -->
+          <!-- PRODUCT 3 -->
           <article class="th-product-card">
             <div class="th-card-image-wrap">
               <span class="th-badge">Active Noise Cancellation</span>
               <img
                 class="th-product-img"
-                src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=800&q=90"
-                alt="TH Pro Wireless"
+                src="assets/airpods-3.png"
+                alt="ZERONIC Pro Wireless"
               />
             </div>
             <div class="th-card-info">
-              <h3 class="th-product-title">TH Pro Wireless</h3>
+              <h3 class="th-product-title">ZERONIC Pro Wireless</h3>
               <p class="th-product-desc">ANC Mode | High Fidelity Sound</p>
               <div class="th-rating-row">
                 <div class="th-stars">★★★★★</div>
@@ -1656,8 +1754,8 @@
                 <span class="th-price">Rs.6,490.00</span>
                 <button
                   class="th-buy-btn"
-                  onclick="addToCart('TH Pro Wireless')"
-                  aria-label="Buy TH Pro Wireless"
+                  onclick="addToCart('ZERONIC Pro Wireless')"
+                  aria-label="Buy ZERONIC Pro Wireless"
                 >
                   Buy Now
                 </button>
@@ -1670,7 +1768,7 @@
       </div>
     </section>
 
-    <!-- TRUST BADGES SECTION (RIGHT BELOW BEST SELLERS) -->
+    <!-- TRUST BADGES SECTION -->
     <section class="th-icon-strip">
       <div class="th-icon-wrap">
         <div class="th-icon-row">
@@ -1725,50 +1823,41 @@
           </div>
 
           <div class="experience-image-area">
-            <div id="shopify-section-template--27665880449303__split_heading_JTPxGe" class="shopify-section">
-              <section id="dual-heading-template--27665880449303__split_heading_JTPxGe" class="dual-heading">
+            <div class="shopify-section">
+              <section class="dual-heading">
                 <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');</style>  
                 <div class="page-width">
                   <h2 class="dual-heading__title" style="display:flex; flex-wrap:wrap; gap: 5px; justify-content:center; text-align: center; font-size: 24px; line-height: 1.2; font-family: 'Poppins', sans-serif; letter-spacing: 0px;">
-                    <span style="color: #000000; font-weight: 500; font-style: normal;">Tech Hunk</span>
+                    <span style="color: #000000; font-weight: 500; font-style: normal;">ZERONIC</span>
                     <span style="color: #14347c; font-weight: 700; font-style: normal;">Earbuds</span>
                   </h2>
                 </div>
               </section>
-              <style>
-                #dual-heading-template--27665880449303__split_heading_JTPxGe{ padding-top: 0px; padding-bottom: 0px; margin-top: 0px; margin-bottom: 0px; }
-                #shopify-section-template--27665880449303__split_heading_JTPxGe{ margin-top: -10px; margin-bottom: -10px; }
-                @media(min-width: 750px){
-                  #dual-heading-template--27665880449303__split_heading_JTPxGe .dual-heading__title{ font-size: 40px !important; }
-                  #dual-heading-template--27665880449303__split_heading_JTPxGe{ padding-top: 0px; padding-bottom: 0px; margin-top: 0px; margin-bottom: 0px; }
-                  #shopify-section-template--27665880449303__split_heading_JTPxGe{ margin-top: -24px; margin-bottom: -24px; }
-                }
-              </style>
             </div>
-            <div id="shopify-section-template--27665880449303__earbuds_section_cW4cRx" class="shopify-section" style="width: 100%;">
+            <div class="shopify-section" style="width: 100%;">
               <section class="th-focus-slider" style="--bg: #ffffff; --ink: #0f172a; --dot: #1f4db3;">
                 <div class="thfs-wrap">    
                   <div class="thfs-stage">
                     <button class="thfs-nav thfs-prev" aria-label="Previous">&#x276E;</button>
                     <ul class="thfs-track">
-                      <li class="thfs-slide" data-title="Th Flex" data-link="/products/th-flex">
-                        <img src="//techhunk.pk/cdn/shop/files/white.webp?v=1757370769&width=600" alt="Th Flex" loading="lazy">
+                      <li class="thfs-slide active" data-title="ZERONIC Flex" data-link="#earbuds">
+                        <img src="assets/airpods-1.png" alt="ZERONIC Flex" loading="lazy">
                       </li>
-                      <li class="thfs-slide" data-title="Th Steel X" data-link="/products/th-steel-x">
-                        <img src="//techhunk.pk/cdn/shop/files/steelsxok.webp?v=1757506412&width=600" alt="Th Steel X" loading="lazy">
+                      <li class="thfs-slide next-slide" data-title="ZERONIC Steel X" data-link="#earbuds">
+                        <img src="assets/airpods-2.png" alt="ZERONIC Steel X" loading="lazy">
                       </li>
-                      <li class="thfs-slide" data-title="Th Flick" data-link="/products/th-flick-earbuds">
-                        <img src="//techhunk.pk/cdn/shop/files/flick_2cb3b4cc-cffb-44ad-b13f-a48c4b13a52e.webp?v=1770117571&width=600" alt="Th Flick" loading="lazy">
+                      <li class="thfs-slide" data-title="ZERONIC Flick" data-link="#earbuds">
+                        <img src="assets/airpods-3.png" alt="ZERONIC Flick" loading="lazy">
                       </li>
-                      <li class="thfs-slide" data-title="Th Nano" data-link="/products/th-nano-earbuds">
-                        <img src="//techhunk.pk/cdn/shop/files/nano_47fb6d5a-7277-44c0-8fee-6c5eea7f25d3.webp?v=1757370769&width=600" alt="Th Nano" loading="lazy">
+                      <li class="thfs-slide prev-slide" data-title="ZERONIC Nano" data-link="#earbuds">
+                        <img src="assets/airpods-4.png" alt="ZERONIC Nano" loading="lazy">
                       </li>
                     </ul>
                     <button class="thfs-nav thfs-next" aria-label="Next">&#x276F;</button>
                   </div>
                   <div class="thfs-caption">
-                    <div class="thfs-name"></div>
-                    <a class="thfs-cta" href="#">Shop Now</a>
+                    <div class="thfs-name">ZERONIC Flex</div>
+                    <a class="thfs-cta" href="#earbuds">Shop Now</a>
                   </div>
                 </div>
               </section>
@@ -1799,7 +1888,7 @@
 
           <img
             class="cta-image"
-            src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1000&q=90"
+            src="assets/airpods-1.png"
             alt="ZERONIC Premium Wireless Earbuds"
           />
 
@@ -2132,6 +2221,47 @@
       cartCount.textContent = cartItems;
       alert(productName + " added to your cart.");
     }
+
+    /* Focus Slider Carousel Logic */
+    document.addEventListener("DOMContentLoaded", () => {
+      const slides = Array.from(document.querySelectorAll(".thfs-slide"));
+      const prevBtn = document.querySelector(".thfs-prev");
+      const nextBtn = document.querySelector(".thfs-next");
+      const titleEl = document.querySelector(".thfs-name");
+      const ctaEl = document.querySelector(".thfs-cta");
+
+      if (!slides.length) return;
+
+      let currentIndex = 0;
+
+      function updateSlider(index) {
+        slides.forEach((slide) => {
+          slide.classList.remove("active", "prev-slide", "next-slide");
+        });
+
+        const total = slides.length;
+        currentIndex = (index + total) % total;
+        const prevIndex = (currentIndex - 1 + total) % total;
+        const nextIndex = (currentIndex + 1) % total;
+
+        slides[currentIndex].classList.add("active");
+        slides[prevIndex].classList.add("prev-slide");
+        slides[nextIndex].classList.add("next-slide");
+
+        const activeSlide = slides[currentIndex];
+        if (titleEl) titleEl.textContent = activeSlide.dataset.title || "";
+        if (ctaEl) ctaEl.href = activeSlide.dataset.link || "#";
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", () => updateSlider(currentIndex - 1));
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => updateSlider(currentIndex + 1));
+      }
+
+      updateSlider(0);
+    });
 
     /* Global Overlay and Key Interactions */
     overlay.addEventListener("click", () => {
