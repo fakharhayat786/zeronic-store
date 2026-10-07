@@ -680,11 +680,19 @@
       overflow: hidden;
       border-radius: 24px;
       min-height: 480px;
-      background: var(--dark-gray-1);
-      border: 1px solid var(--border-dark);
+      background: #0062d8;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: var(--white);
       display: flex;
       align-items: center;
+    }
+
+    .cta-card .eyebrow {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .cta-card .cta-description {
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .cta-content {
@@ -692,6 +700,8 @@
       z-index: 2;
       width: 55%;
       padding: 80px;
+      display: flex;
+      flex-direction: column;
     }
 
     .cta-title {
@@ -703,14 +713,14 @@
     }
 
     .cta-title span {
-      color: var(--secondary-gray);
+      color: rgba(255, 255, 255, 0.75);
       font-weight: 400;
     }
 
     .cta-description {
       max-width: 460px;
       margin-top: 20px;
-      color: var(--secondary-gray);
+      color: rgba(255, 255, 255, 0.9);
       line-height: 1.7;
       font-size: 15px;
     }
@@ -727,7 +737,7 @@
       width: 42%;
       max-height: 85%;
       object-fit: contain;
-      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.8));
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.4));
     }
 
     /* =========================================================
@@ -1230,20 +1240,32 @@
       .experience-image-area {
         min-height: 420px;
       }
+      .cta-section {
+        padding: 24px 0 32px;
+      }
       .cta-card {
-        min-height: 520px;
-        align-items: flex-start;
+        min-height: auto;
+        flex-direction: column;
+        align-items: center;
       }
       .cta-content {
         width: 100%;
-        padding: 50px 30px;
+        padding: 36px 20px 28px;
+        text-align: center;
       }
       .cta-image {
-        width: 65%;
-        right: 17.5%;
+        position: relative;
+        right: auto;
         top: auto;
-        bottom: -20px;
+        bottom: auto;
         transform: none;
+        width: 90%;
+        max-width: 380px;
+        max-height: 260px;
+        margin: 0 auto 16px;
+      }
+      .cta-actions {
+        margin-top: 12px;
       }
     }
 
@@ -1262,22 +1284,29 @@
         grid-template-columns: 1fr;
         gap: 16px;
       }
+      .cta-section {
+        padding: 16px 0 24px;
+      }
       .cta-card {
         border-radius: 20px;
-        min-height: 540px;
+        min-height: auto;
+        padding-bottom: 24px;
       }
       .cta-content {
-        padding: 40px 24px;
+        padding: 32px 20px 16px;
         text-align: center;
       }
       .cta-description {
         margin-left: auto;
         margin-right: auto;
       }
+      .cta-actions {
+        margin-top: 0;
+      }
       .cta-image {
-        width: 80%;
-        right: 10%;
-        bottom: -10px;
+        width: 92%;
+        max-width: 340px;
+        margin: 4px auto 16px;
       }
       .whatsapp-float {
         bottom: 20px;
@@ -1642,14 +1671,6 @@
             <p class="cta-description">
               Elevate your daily rhythm with personal audio designed for seamless listening, distinct clarity, and timeless aesthetic.
             </p>
-            <div class="cta-actions">
-              <a
-                href="#earbuds"
-                class="btn btn-white"
-              >
-                View Collection
-              </a>
-            </div>
           </div>
 
           <img
@@ -1657,6 +1678,15 @@
             src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1000&q=90"
             alt="ZERONIC Premium Wireless Earbuds"
           />
+
+          <div class="cta-actions">
+            <a
+              href="#earbuds"
+              class="btn btn-white"
+            >
+              View Collection
+            </a>
+          </div>
 
         </div>
       </div>
