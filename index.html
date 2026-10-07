@@ -480,131 +480,174 @@
     }
 
     /* =========================================================
-       PRODUCTS SECTION
+       PRODUCTS SECTION - UPDATED TO TECH HUNK STYLE
     ========================================================= */
     .products-section {
       background: #ffffff;
       color: var(--dark-gray-1);
+      padding: 60px 0 80px;
     }
 
-    .section-top {
+    .section-heading-wrap {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .bestseller-heading {
+      font-family: "Manrope", sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: #111111;
+      letter-spacing: -0.02em;
+    }
+
+    .bestseller-heading span {
+      color: #111111;
+    }
+
+    .products-carousel-wrapper {
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 30px;
-      margin-bottom: 60px;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 20px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
     }
 
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+    .products-carousel-wrapper::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
     }
 
-    .product-card {
-      position: relative;
-      background: #f8f9fa;
-      border-radius: 16px;
+    .th-product-card {
+      flex: 0 0 calc(50% - 8px);
+      min-width: 280px;
+      max-width: 380px;
+      scroll-snap-align: start;
+      border: 1px solid #111111;
+      border-radius: 28px;
       overflow: hidden;
-      border: 1px solid var(--border-light);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #ffffff;
       display: flex;
       flex-direction: column;
-    }
-
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-    }
-
-    .product-image-wrap {
       position: relative;
+    }
+
+    .th-card-image-wrap {
+      position: relative;
+      width: 100%;
       aspect-ratio: 1 / 1;
-      overflow: hidden;
+      background: #ffffff;
+      padding: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ffffff;
-      padding: 30px;
     }
 
-    .product-image {
+    .th-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #eef2ff;
+      color: #111111;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      z-index: 2;
+    }
+
+    .th-product-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      transition: transform 0.4s ease;
     }
 
-    .product-card:hover .product-image {
-      transform: scale(1.04);
-    }
-
-    .product-tag {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      z-index: 2;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--secondary-gray);
-    }
-
-    .product-info {
-      padding: 24px;
+    .th-card-info {
+      background: #ebedee;
+      padding: 18px 20px 20px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
 
-    .product-name {
+    .th-product-title {
       font-family: "Manrope", sans-serif;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 800;
-      letter-spacing: -0.02em;
+      color: #111111;
+      margin-bottom: 4px;
+      line-height: 1.25;
+    }
+
+    .th-product-desc {
+      font-size: 12px;
+      color: #555555;
+      margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .th-rating-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .th-stars {
+      color: #ffb800;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .th-rating-val {
+      font-size: 13px;
+      font-weight: 800;
       color: #111111;
     }
 
-    .product-subtitle {
-      color: #666666;
-      font-size: 13px;
-      margin-top: 6px;
-      line-height: 1.5;
-      font-weight: 400;
-      flex-grow: 1;
-    }
-
-    .product-bottom {
+    .th-card-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 15px;
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-light);
+      margin-top: auto;
     }
 
-    .product-price {
-      font-size: 14px;
-      font-weight: 700;
+    .th-price {
+      font-size: 18px;
+      font-weight: 800;
       color: #111111;
     }
 
-    .add-btn {
-      min-height: 38px;
-      padding: 0 16px;
-      border-radius: 999px;
+    .th-buy-btn {
       background: #111111;
       color: #ffffff;
-      font-size: 12px;
-      font-weight: 600;
-      transition: all 0.2s ease;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .add-btn:hover {
+    .th-buy-btn:hover {
       background: #333333;
       transform: translateY(-1px);
+    }
+
+    @media (max-width: 650px) {
+      .th-product-card {
+        flex: 0 0 82%;
+        min-width: auto;
+      }
+      .bestseller-heading {
+        font-size: 30px;
+      }
+      .products-section {
+        padding: 40px 0 50px;
+      }
     }
 
     /* =========================================================
@@ -1214,9 +1257,6 @@
        RESPONSIVE ADJUSTMENTS
     ========================================================= */
     @media (max-width: 1100px) {
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
       .hero-card {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -1277,17 +1317,6 @@
     @media (max-width: 650px) {
       .container {
         width: min(var(--container), calc(100% - 32px));
-      }
-      .section-top {
-        display: block;
-        margin-bottom: 40px;
-      }
-      .section-top .btn {
-        margin-top: 20px;
-      }
-      .products-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
       }
       .cta-section {
         padding: 16px 0 24px;
@@ -1482,136 +1511,108 @@
       </div>
     </section>
 
-    <!-- PRODUCT COLLECTION -->
+    <!-- PRODUCT COLLECTION (OPTIMIZED TO MATCH TECH HUNK BEST SELLERS VIEW) -->
     <section
-      class="section products-section"
+      class="products-section"
       id="earbuds"
     >
       <div class="container">
 
-        <div class="section-top">
-          <div>
-            <div class="eyebrow">
-              WIRELESS EARBUDS
-            </div>
-            <h2 class="section-title">
-              Designed for better<br />
-              everyday listening.
-            </h2>
-            <p class="section-description">
-              Intentional audio craft. Choose the listening experience built for your daily motion.
-            </p>
-          </div>
-
-          <a
-            href="#earbuds"
-            class="btn btn-dark"
-          >
-            View Collection
-          </a>
+        <!-- Replaced heading and removed 'View Collection' button as requested -->
+        <div class="section-heading-wrap">
+          <h2 class="bestseller-heading">
+            Best <span>Sellers</span>
+          </h2>
         </div>
 
-        <div class="products-grid">
+        <div class="products-carousel-wrapper">
 
-          <!-- PRODUCT 1 -->
-          <article class="product-card">
-            <div class="product-image-wrap">
-              <span class="product-tag">Edition 01</span>
+          <!-- PRODUCT 1 (TH Flex Earbuds) -->
+          <article class="th-product-card">
+            <div class="th-card-image-wrap">
+              <span class="th-badge">Software based</span>
               <img
-                class="product-image"
-                src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=800&q=90"
-                alt="ZERONIC Audio Earbuds"
-              />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">ZERONIC One</h3>
-              <p class="product-subtitle">Pure essential audio experience built for all-day comfort.</p>
-              <div class="product-bottom">
-                <span class="product-price">Rs. 2,999</span>
-                <button
-                  class="add-btn"
-                  onclick="addToCart('ZERONIC One')"
-                  aria-label="Add ZERONIC One to cart"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- PRODUCT 2 -->
-          <article class="product-card">
-            <div class="product-image-wrap">
-              <span class="product-tag">Pro Series</span>
-              <img
-                class="product-image"
+                class="th-product-img"
                 src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=90"
-                alt="ZERONIC Pro Earbuds"
+                alt="TH Flex Earbuds"
               />
             </div>
-            <div class="product-info">
-              <h3 class="product-name">ZERONIC Pro</h3>
-              <p class="product-subtitle">Enhanced acoustic tuning with extended everyday performance.</p>
-              <div class="product-bottom">
-                <span class="product-price">Rs. 3,499</span>
+            <div class="th-card-info">
+              <h3 class="th-product-title">TH Flex Earbuds</h3>
+              <p class="th-product-desc">Ultra Bass | Clear Sound | USB-C</p>
+              <div class="th-rating-row">
+                <div class="th-stars">★★★★★</div>
+                <span class="th-rating-val">4.7</span>
+              </div>
+              <div class="th-card-bottom">
+                <span class="th-price">Rs.4,950.00</span>
                 <button
-                  class="add-btn"
-                  onclick="addToCart('ZERONIC Pro')"
-                  aria-label="Add ZERONIC Pro to cart"
+                  class="th-buy-btn"
+                  onclick="addToCart('TH Flex Earbuds')"
+                  aria-label="Buy TH Flex Earbuds"
                 >
-                  Add to Cart
+                  Buy Now
                 </button>
               </div>
             </div>
           </article>
 
-          <!-- PRODUCT 3 -->
-          <article class="product-card">
-            <div class="product-image-wrap">
-              <span class="product-tag">Compact</span>
+          <!-- PRODUCT 2 (TH Gaming Pods) -->
+          <article class="th-product-card">
+            <div class="th-card-image-wrap">
+              <span class="th-badge">Low Latency</span>
               <img
-                class="product-image"
-                src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=800&q=90"
-                alt="ZERONIC Studio Earbuds"
-              />
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">ZERONIC Studio</h3>
-              <p class="product-subtitle">Ultra-compact wireless form with acoustic clarity.</p>
-              <div class="product-bottom">
-                <span class="product-price">Rs. 2,799</span>
-                <button
-                  class="add-btn"
-                  onclick="addToCart('ZERONIC Studio')"
-                  aria-label="Add ZERONIC Studio to cart"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- PRODUCT 4 -->
-          <article class="product-card">
-            <div class="product-image-wrap">
-              <span class="product-tag">Special Edition</span>
-              <img
-                class="product-image"
+                class="th-product-img"
                 src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=800&q=90"
-                alt="ZERONIC Ultra Earbuds"
+                alt="TH Gaming Pods"
               />
             </div>
-            <div class="product-info">
-              <h3 class="product-name">ZERONIC Ultra</h3>
-              <p class="product-subtitle">Refined sound stage and minimalist tactile finish.</p>
-              <div class="product-bottom">
-                <span class="product-price">Rs. 3,999</span>
+            <div class="th-card-info">
+              <h3 class="th-product-title">TH Gaming Pods</h3>
+              <p class="th-product-desc">Mode Switch | Dual Mic for Calls</p>
+              <div class="th-rating-row">
+                <div class="th-stars">★★★★★</div>
+                <span class="th-rating-val">4.8</span>
+              </div>
+              .
+              <div class="th-card-bottom">
+                <span class="th-price">Rs.5,250.00</span>
                 <button
-                  class="add-btn"
-                  onclick="addToCart('ZERONIC Ultra')"
-                  aria-label="Add ZERONIC Ultra to cart"
+                  class="th-buy-btn"
+                  onclick="addToCart('TH Gaming Pods')"
+                  aria-label="Buy TH Gaming Pods"
                 >
-                  Add to Cart
+                  Buy Now
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PRODUCT 3 (TH Pro Wireless) -->
+          <article class="th-product-card">
+            <div class="th-card-image-wrap">
+              <span class="th-badge">Active Noise Cancellation</span>
+              <img
+                class="th-product-img"
+                src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?auto=format&fit=crop&w=800&q=90"
+                alt="TH Pro Wireless"
+              />
+            </div>
+            <div class="th-card-info">
+              <h3 class="th-product-title">TH Pro Wireless</h3>
+              <p class="th-product-desc">ANC Mode | High Fidelity Sound</p>
+              <div class="th-rating-row">
+                <div class="th-stars">★★★★★</div>
+                <span class="th-rating-val">4.9</span>
+              </div>
+              <div class="th-card-bottom">
+                <span class="th-price">Rs.6,490.00</span>
+                <button
+                  class="th-buy-btn"
+                  onclick="addToCart('TH Pro Wireless')"
+                  aria-label="Buy TH Pro Wireless"
+                >
+                  Buy Now
                 </button>
               </div>
             </div>
