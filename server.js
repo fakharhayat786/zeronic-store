@@ -27,6 +27,17 @@ app.use(express.static(__dirname, {
   }
 }));
 
+// Guarantee asset paths resolve even with sub-paths like /pages/assets or /shipping-policy/assets
+app.use(['/assets', '/pages/assets', '/*/assets'], express.static(path.join(__dirname, 'assets'), {
+  etag: false,
+  lastModified: false,
+  setHeaders: (res) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+  }
+}));
+
 // Privacy policy page route
 app.get(['/privacy-policy', '/privacy', '/privacy.html'], (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
@@ -37,6 +48,12 @@ app.get(['/privacy-policy', '/privacy', '/privacy.html'], (req, res) => {
 app.get(['/contact-us', '/contact', '/contact-us.html', '/pages/contact-us'], (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.sendFile(path.join(__dirname, 'contact-us.html'));
+});
+
+// Shipping policy page route
+app.get(['/shipping-policy', '/shipping', '/shipping-policy.html', '/pages/shipping-policy', '/pages/shipping-return-policy'], (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.sendFile(path.join(__dirname, 'shipping-policy.html'));
 });
 
 // Route fallback to index.html
