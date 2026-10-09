@@ -149,14 +149,18 @@
     }
 
     .btn-white {
-      background: #111111;
-      color: #ffffff;
+      background: #ffffff;
+      color: #111111;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
     }
 
     .btn-white:hover {
-      background: #333333;
+      background: #f8f9fa;
+      color: #000000;
+      border-color: rgba(0, 0, 0, 0.18);
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.09);
     }
 
     /* =========================================================
@@ -679,18 +683,19 @@
     }
 
     .th-buy-btn {
-      background: #111111;
+      background: #0062d8;
       color: #ffffff;
       border: none;
       border-radius: 12px;
       padding: 10px 22px;
       font-size: 13px;
       font-weight: 700;
-      transition: background 0.2s ease, transform 0.2s ease;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .th-buy-btn:hover {
-      background: #333333;
+      background: #004eb0;
+      box-shadow: 0 4px 14px rgba(0, 98, 216, 0.35);
       transform: translateY(-1px);
     }
 
@@ -785,10 +790,14 @@
       line-height: 0.98;
       letter-spacing: -0.05em;
       font-weight: 800;
-      color: #111111;
+      color: #0062d8;
     }
 
-    .experience-title span {
+    .experience-title .experience-sound {
+      color: #0062d8;
+    }
+
+    .experience-title span:not(.experience-sound) {
       color: var(--secondary-gray);
       font-weight: 400;
     }
@@ -803,6 +812,19 @@
 
     .experience-action {
       margin-top: 40px;
+    }
+
+    .experience-action .btn {
+      background: #0062d8 !important;
+      color: #ffffff !important;
+      border: none !important;
+      box-shadow: 0 4px 16px rgba(0, 98, 216, 0.25);
+    }
+
+    .experience-action .btn:hover {
+      background: #004eb0 !important;
+      box-shadow: 0 10px 24px rgba(0, 98, 216, 0.38) !important;
+      transform: translateY(-2px);
     }
 
     .experience-image-area {
@@ -944,9 +966,9 @@
       color: #111111;
     }
     .thfs-nav:hover {
-      background: #14347c;
+      background: #0062d8;
       color: #ffffff;
-      border-color: #14347c;
+      border-color: #0062d8;
     }
     .thfs-prev { left: 4px; }
     .thfs-next { right: 4px; }
@@ -997,7 +1019,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      background: #14347c;
+      background: #0062d8;
       color: #ffffff !important;
       font-family: "Poppins", "Inter", sans-serif;
       font-size: 13px;
@@ -1007,12 +1029,12 @@
       border-radius: 999px;
       text-decoration: none !important;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 6px 18px rgba(20, 52, 124, 0.28);
+      box-shadow: 0 6px 18px rgba(0, 98, 216, 0.28);
     }
     .thfs-cta:hover {
-      background: #0c2356;
+      background: #004eb0;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(20, 52, 124, 0.38);
+      box-shadow: 0 8px 24px rgba(0, 98, 216, 0.38);
     }
     .thfs-cta svg {
       transition: transform 0.2s ease;
@@ -1081,6 +1103,24 @@
 
     .cta-actions {
       margin-top: 36px;
+    }
+
+    .cta-card .btn-white,
+    .cta-actions .btn {
+      background: #ffffff;
+      color: #0062d8;
+      border: none;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .cta-card .btn-white:hover,
+    .cta-actions .btn:hover {
+      background: #ffffff;
+      color: #004eb0;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
     }
 
     .cta-image {
@@ -2017,7 +2057,7 @@
               THE AUDIO EXPERIENCE
             </div>
             <h2 class="experience-title">
-              Sound.<br />
+              <span class="experience-sound" style="color: #0062d8;">Sound.</span><br />
               <span>Designed around you.</span>
             </h2>
             <p class="experience-description">
@@ -2027,6 +2067,7 @@
               <a
                 href="#earbuds"
                 class="btn btn-white"
+                style="background: #0062d8; color: #ffffff;"
               >
                 Explore Earbuds
               </a>
@@ -2040,13 +2081,13 @@
                 <div class="page-width">
                   <h2 class="dual-heading__title" style="display:flex; flex-wrap:wrap; gap: 6px; justify-content:center; text-align: center; font-size: 26px; line-height: 1.2; font-family: 'Poppins', sans-serif; letter-spacing: -0.02em; margin-bottom: 4px;">
                     <span style="color: #000000; font-weight: 600; font-style: normal;">ZERONIC</span>
-                    <span style="color: #14347c; font-weight: 800; font-style: normal;">Earbuds</span>
+                    <span style="color: #0062d8; font-weight: 800; font-style: normal;">Earbuds</span>
                   </h2>
                 </div>
               </section>
             </div>
             <div class="shopify-section" style="width: 100%;">
-              <section class="th-focus-slider" style="--bg: #ffffff; --ink: #0f172a; --dot: #14347c;">
+              <section class="th-focus-slider" style="--bg: #ffffff; --ink: #0f172a; --dot: #0062d8;">
                 <div class="thfs-wrap">    
                   <div class="thfs-stage">
                     <!-- arrows (desktop only; hidden on mobile via CSS) -->
