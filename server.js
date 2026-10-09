@@ -33,6 +33,12 @@ app.get(['/privacy-policy', '/privacy', '/privacy.html'], (req, res) => {
   res.sendFile(path.join(__dirname, 'privacy-policy.html'));
 });
 
+// Contact us page route
+app.get(['/contact-us', '/contact', '/contact-us.html', '/pages/contact-us'], (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.sendFile(path.join(__dirname, 'contact-us.html'));
+});
+
 // Route fallback to index.html
 app.get('*', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
