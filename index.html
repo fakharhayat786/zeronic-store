@@ -755,7 +755,7 @@
 
     .experience-image-area {
       position: relative;
-      min-height: auto;
+      min-height: 470px;
       border-radius: 28px;
       overflow: hidden;
       background: #ffffff;
@@ -764,7 +764,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 30px 18px 24px;
+      padding: 36px 20px 28px;
       box-shadow: 0 10px 32px rgba(0, 0, 0, 0.04);
     }
 
@@ -786,8 +786,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 270px;
-      overflow: hidden;
+      min-height: 250px;
+      height: 250px;
+      overflow: visible;
     }
     /* Soft ambient blue glow behind the center active earbuds */
     .thfs-stage::before {
@@ -796,9 +797,9 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(20, 52, 124, 0.22) 0%, rgba(20, 52, 124, 0.06) 55%, transparent 75%);
+      width: 210px;
+      height: 210px;
+      background: radial-gradient(circle, rgba(20, 52, 124, 0.18) 0%, rgba(20, 52, 124, 0.05) 55%, transparent 72%);
       border-radius: 50%;
       pointer-events: none;
       z-index: 1;
@@ -818,8 +819,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 145px;
-      height: 145px;
+      width: 135px;
+      height: 135px;
       transform: translate(-50%, -50%) scale(0.6);
       opacity: 0.4;
       transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.45s ease;
@@ -835,45 +836,33 @@
     }
     /* Strictly uniform sizing for all images */
     .thfs-slide img {
-      width: 140px;
-      height: auto;
-      max-width: 146px;
-      max-height: 168px;
+      width: 100%;
+      height: 100%;
+      max-width: 130px;
+      max-height: 130px;
       display: block;
       object-fit: contain;
-      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.10));
       user-select: none;
       cursor: pointer;
       pointer-events: auto;
     }
-    .thfs-slide-1 img {
-      width: 165px;
-      max-width: 172px;
-    }
-    .thfs-slide-3 img {
-      width: 142px;
-      max-width: 146px;
-    }
-    .thfs-slide-4 img {
-      width: 148px;
-      max-width: 152px;
-    }
     /* Positions: Center enlarged, side thumbnails previewed cleanly */
     .thfs-slide.is-center {
-      transform: translate(-50%, -50%) scale(1.72);
+      transform: translate(-50%, -50%) scale(1.42);
       opacity: 1;
       z-index: 3;
       pointer-events: auto;
     }
     .thfs-slide.is-left {
-      transform: translate(calc(-50% - clamp(95px, 26vw, 140px)), -50%) scale(0.55);
-      opacity: 0.72;
+      transform: translate(calc(-50% - clamp(95px, 26vw, 135px)), -50%) scale(0.52);
+      opacity: 0.65;
       z-index: 2;
       pointer-events: auto;
     }
     .thfs-slide.is-right {
-      transform: translate(calc(-50% + clamp(95px, 26vw, 140px)), -50%) scale(0.55);
-      opacity: 0.72;
+      transform: translate(calc(-50% + clamp(95px, 26vw, 135px)), -50%) scale(0.52);
+      opacity: 0.65;
       z-index: 2;
       pointer-events: auto;
     }
@@ -914,21 +903,22 @@
         display: none !important; /* Hidden on mobile like Tech Hunk screenshot */
       }
       .thfs-stage {
-        min-height: 240px;
+        min-height: 250px;
+        height: 250px;
       }
       .thfs-track {
-        height: 220px;
+        height: 250px;
       }
       .thfs-slide.is-left {
-        transform: translate(calc(-50% - clamp(85px, 28vw, 120px)), -50%) scale(0.52);
-        opacity: 0.65;
+        transform: translate(calc(-50% - clamp(88px, 28vw, 118px)), -50%) scale(0.50);
+        opacity: 0.60;
       }
       .thfs-slide.is-right {
-        transform: translate(calc(-50% + clamp(85px, 28vw, 120px)), -50%) scale(0.52);
-        opacity: 0.65;
+        transform: translate(calc(-50% + clamp(88px, 28vw, 118px)), -50%) scale(0.50);
+        opacity: 0.60;
       }
       .thfs-slide.is-center {
-        transform: translate(-50%, -50%) scale(1.85);
+        transform: translate(-50%, -50%) scale(1.42);
         opacity: 1;
       }
     }
@@ -1549,8 +1539,8 @@
         grid-template-columns: 1fr;
       }
       .experience-image-area {
-        min-height: auto;
-        padding: 24px 14px 20px;
+        min-height: 420px;
+        padding: 32px 16px 24px;
       }
       .cta-section {
         padding: 24px 0 36px;
@@ -1965,16 +1955,16 @@
                     <button class="thfs-nav thfs-prev" aria-label="Previous">&#x276E;</button>
                     <ul class="thfs-track">
                       <li class="thfs-slide thfs-slide-1 is-center" data-title="AirPods Pro 2" data-link="#earbuds">
-                        <img src="assets/airpods-1-hd.png?v=20261007_v5" alt="AirPods Pro 2" loading="lazy">
+                        <img src="assets/airpods-1.png?v=20261009_final" alt="AirPods Pro 2" loading="lazy">
                       </li>
                       <li class="thfs-slide thfs-slide-2 is-right" data-title="AirPods Pro 2" data-link="#earbuds">
-                        <img src="assets/airpods-2.png?v=20261007_v5" alt="AirPods Pro 2" loading="lazy">
+                        <img src="assets/airpods-2.png?v=20261009_final" alt="AirPods Pro 2" loading="lazy">
                       </li>
                       <li class="thfs-slide thfs-slide-3 is-far" data-title="AirPods Pro 2" data-link="#earbuds">
-                        <img src="assets/airpods-3.png?v=20261007_v5" alt="AirPods Pro 2" loading="lazy">
+                        <img src="assets/airpods-3.png?v=20261009_final" alt="AirPods Pro 2" loading="lazy">
                       </li>
                       <li class="thfs-slide thfs-slide-4 is-left" data-title="AirPods Pro 2" data-link="#earbuds">
-                        <img src="assets/airpods-4.png?v=20261007_v5" alt="AirPods Pro 2" loading="lazy">
+                        <img src="assets/airpods-4.png?v=20261009_final" alt="AirPods Pro 2" loading="lazy">
                       </li>
                     </ul>
                     <button class="thfs-nav thfs-next" aria-label="Next">&#x276F;</button>
