@@ -39,19 +39,19 @@ app.use(['/assets', '/pages/assets', '/*/assets'], express.static(path.join(__di
 }));
 
 // Privacy policy page route
-app.get(['/privacy-policy', '/privacy', '/privacy.html'], (req, res) => {
+app.get(['/privacy-policy', '/privacy', '/privacy.html', '/privacy-policy/', '/privacy-policy/index.html'], (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.sendFile(path.join(__dirname, 'privacy-policy.html'));
 });
 
 // Contact us page route
-app.get(['/contact-us', '/contact', '/contact-us.html', '/pages/contact-us'], (req, res) => {
+app.get(['/contact-us', '/contact', '/contact-us.html', '/pages/contact-us', '/contact-us/', '/contact-us/index.html'], (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.sendFile(path.join(__dirname, 'contact-us.html'));
 });
 
 // Shipping policy page route
-app.get(['/shipping-policy', '/shipping', '/shipping-policy.html', '/pages/shipping-policy', '/pages/shipping-return-policy'], (req, res) => {
+app.get(['/shipping-policy', '/shipping', '/shipping-policy.html', '/pages/shipping-policy', '/pages/shipping-return-policy', '/shipping-policy/', '/shipping-policy/index.html'], (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.sendFile(path.join(__dirname, 'shipping-policy.html'));
 });
