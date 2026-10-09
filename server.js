@@ -27,6 +27,12 @@ app.use(express.static(__dirname, {
   }
 }));
 
+// Privacy policy page route
+app.get(['/privacy-policy', '/privacy', '/privacy.html'], (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.sendFile(path.join(__dirname, 'privacy-policy.html'));
+});
+
 // Route fallback to index.html
 app.get('*', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
