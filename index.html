@@ -545,177 +545,178 @@
 }
 
     
-    /* =========================================================
-       PRODUCTS SECTION
-    ========================================================= */
-    .products-section {
-      background: #ffffff;
-      color: var(--dark-gray-1);
-      padding: 60px 0 40px;
-    }
+  /* =========================================================
+   PRODUCTS SECTION (Updated Headline Colors)
+========================================================= */
+.products-section {
+  background: #ffffff;
+  color: var(--dark-gray-1);
+  padding: 60px 0 40px;
+}
 
-    .section-heading-wrap {
-      text-align: center;
-      margin-bottom: 32px;
-    }
+.section-heading-wrap {
+  text-align: center;
+  margin-bottom: 32px;
+}
 
-    .bestseller-heading {
-      font-family: "Manrope", sans-serif;
-      font-size: 36px;
-      font-weight: 800;
-      color: #111111;
-      letter-spacing: -0.02em;
-    }
+.bestseller-heading {
+  font-family: "Manrope", sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #111111; /* "Best" word ko hamesha pitch black rakhega */
+  letter-spacing: -0.02em;
+}
 
-    .bestseller-heading span {
-      color: #111111;
-    }
+.bestseller-heading span {
+  color: #0062d8; /* "Sellers" word ko aapki site ka trademark electric blue color dega */
+}
 
-    .products-carousel-wrapper {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 20px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; /* Firefox */
-    }
+.products-carousel-wrapper {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 20px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
 
-    .products-carousel-wrapper::-webkit-scrollbar {
-      display: none; /* Chrome/Safari */
-    }
+.products-carousel-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
 
-    .th-product-card {
-      flex: 0 0 calc(50% - 8px);
-      min-width: 280px;
-      max-width: 380px;
-      scroll-snap-align: start;
-      border: 1px solid #111111;
-      border-radius: 28px;
-      overflow: hidden;
-      background: #ffffff;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
+.th-product-card {
+  flex: 0 0 calc(50% - 8px);
+  min-width: 280px;
+  max-width: 380px;
+  scroll-snap-align: start;
+  border: 1px solid #111111;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
 
-    .th-card-image-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      background: #ffffff;
-      padding: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.th-card-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #ffffff;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .th-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: #eef2ff;
-      color: #111111;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 999px;
-      z-index: 2;
-    }
+.th-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #eef2ff;
+  color: #111111;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  z-index: 2;
+}
 
-    .th-product-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+.th-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-    .th-card-info {
-      background: #ebedee;
-      padding: 18px 20px 20px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
+.th-card-info {
+  background: #ebedee;
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
 
-    .th-product-title {
-      font-family: "Manrope", sans-serif;
-      font-size: 16px;
-      font-weight: 800;
-      color: #111111;
-      margin-bottom: 4px;
-      line-height: 1.25;
-    }
+.th-product-title {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 4px;
+  line-height: 1.25;
+}
 
-    .th-product-desc {
-      font-size: 12px;
-      color: #555555;
-      margin-bottom: 8px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.th-product-desc {
+  font-size: 12px;
+  color: #555555;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    .th-rating-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
+.th-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
 
-    .th-stars {
-      color: #ffb800;
-      font-size: 14px;
-      letter-spacing: 1px;
-    }
+.th-stars {
+  color: #ffb800;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
 
-    .th-rating-val {
-      font-size: 13px;
-      font-weight: 800;
-      color: #111111;
-    }
+.th-rating-val {
+  font-size: 13px;
+  font-weight: 800;
+  color: #111111;
+}
 
-    .th-card-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: auto;
-    }
+.th-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
 
-    .th-price {
-      font-size: 18px;
-      font-weight: 800;
-      color: #111111;
-    }
+.th-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111111;
+}
 
-    .th-buy-btn {
-      background: #0062d8;
-      color: #ffffff;
-      border: none;
-      border-radius: 12px;
-      padding: 10px 22px;
-      font-size: 13px;
-      font-weight: 700;
-      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    }
+.th-buy-btn {
+  background: #0062d8;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .th-buy-btn:hover {
-      background: #004eb0;
-      box-shadow: 0 4px 14px rgba(0, 98, 216, 0.35);
-      transform: translateY(-1px);
-    }
+.th-buy-btn:hover {
+  background: #004eb0;
+  box-shadow: 0 4px 14px rgba(0, 98, 216, 0.35);
+  transform: translateY(-1px);
+}
 
-    @media (max-width: 650px) {
-      .th-product-card {
-        flex: 0 0 82%;
-        min-width: auto;
-      }
-      .bestseller-heading {
-        font-size: 30px;
-      }
-      .products-section {
-        padding: 40px 0 20px;
-      }
-    }
+@media (max-width: 650px) {
+  .th-product-card {
+    flex: 0 0 82%;
+    min-width: auto;
+  }
+  .bestseller-heading {
+    font-size: 30px;
+    /* Mobile par bhi inner blue span automatic handle ho jaye ga */
+  }
+  .products-section {
+    padding: 40px 0 20px;
+  }
+}
 
     /* =========================================================
        TRUST BADGES / ICON STRIP SECTION
