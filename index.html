@@ -508,37 +508,45 @@
       }
     }
 
-    /* =========================================================
-       STATEMENT BAR
+/* =========================================================
+       STATEMENT BAR (Infinite Marquee Effect)
     ========================================================= */
-    .statement {
-      padding: 28px 0;
-      background: #f8f9fa;
-      color: #111111;
-      border-top: 1px solid var(--border-dark);
-      border-bottom: 1px solid var(--border-dark);
-    }
+.statement {
+  padding: 16px 0; /* Mobile par padding thodi kam kar di */
+  background: #111111; /* Pure white se badal kar premium black kar diya */
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  overflow: hidden; /* Bahar nikalne wale text ko chupane ke liye */
+  position: relative;
+  display: flex;
+}
 
-    .statement-track {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--secondary-gray);
-    }
+.statement-track {
+  display: flex;
+  white-space: nowrap; /* Text ko line break hone se rokega */
+  gap: 30px; /* Words ke darmiyan behtar gap */
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff; /* Black background par white text */
+  animation: marquee-scroll 15s linear infinite; /* Smooth chalne ke liye animation */
+}
 
-    .statement-dot {
-      width: 4px;
-      height: 4px;
-      background: var(--secondary-gray);
-      border-radius: 50%;
-      opacity: 0.5;
-    }
+.statement-dot {
+  align-self: center;
+  width: 5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Smooth Scrolling Animation */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); } 
+}
 
     /* =========================================================
        PRODUCTS SECTION
