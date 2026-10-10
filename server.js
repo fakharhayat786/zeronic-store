@@ -56,6 +56,12 @@ app.get(['/shipping-policy', '/shipping', '/shipping-policy.html', '/pages/shipp
   res.sendFile(path.join(__dirname, 'shipping-policy.html'));
 });
 
+// Product page route
+app.get(['/product', '/product.html', '/products/zeronic-flex', '/products/th-flex', '/zeronic-flex', '/zeronic-flex.html'], (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.sendFile(path.join(__dirname, 'product.html'));
+});
+
 // Route fallback to index.html
 app.get('*', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
