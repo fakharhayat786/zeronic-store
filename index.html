@@ -411,35 +411,6 @@
       margin-top: 40px;
     }
 
-    /* =========================================================
-       GLOBAL HERO BUTTON STYLING (Solid Electric Blue)
-    ========================================================= */
-    .hero-btn {
-      background: #0062d8 !important;
-      color: #ffffff !important;
-      border: none !important;
-      font-family: "Manrope", sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      padding: 12px 32px;
-      border-radius: 999px;
-      box-shadow: 0 4px 14px rgba(0, 98, 216, 0.25);
-      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .hero-btn:hover {
-      background: #004eb0 !important;
-      box-shadow: 0 4px 18px rgba(0, 98, 216, 0.4);
-      transform: translateY(-1px);
-    }
-
     .hero-visual {
       height: 100%;
       min-height: 620px;
@@ -530,17 +501,49 @@
         font-weight: 400;
         color: rgba(0, 0, 0, 0.6);
       }
+      
+      /* Specific Targeting for Mobile Heading: Sets Hear More to Electric Blue */
+      .hero-mobile-title {
+        color: #0062d8 !important;
+      }
+      
+      /* Keeps the rest of the subtitle dark gray */
+      .hero-mobile-title span {
+        color: rgba(0, 0, 0, 0.6) !important;
+      }
+
       .hero-mobile-bottom {
         padding-bottom: 10px;
         display: flex;
         justify-content: center;
       }
-      
-      /* Mobile optimization for text flow margins over the button */
-      .hero-mobile-bottom .hero-btn {
-        width: 80%; /* Mobile screen width optimization */
-        padding: 13px 24px;
+
+      /* Forces View Collection button in mobile frame to display as Solid Electric Blue */
+      .hero-mobile-bottom a {
+        background: #0062d8 !important;
+        color: #ffffff !important;
+        border: none !important;
+        font-family: "Manrope", sans-serif;
         font-size: 13px;
+        font-weight: 700;
+        padding: 12px 32px;
+        border-radius: 999px;
+        box-shadow: 0 4px 14px rgba(0, 98, 216, 0.25);
+        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        cursor: pointer;
+        width: 80%;
+      }
+
+      .hero-mobile-bottom a:hover {
+        background: #004eb0 !important;
+        box-shadow: 0 4px 18px rgba(0, 98, 216, 0.4);
+        transform: translateY(-1px);
       }
     }
 
