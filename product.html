@@ -4040,6 +4040,48 @@
       }
     }
   </script>
+  <!-- Tech Hunk Ultimate Mobile Core Alignment Patch Integration Rules -->
+  <style>
+    /* Fix to remove container box outline and stop horizontal page scrolling globally */
+    html, body {
+      overflow-x: hidden !important;
+      position: relative !important;
+      width: 100% !important;
+    }
+    .product-gallery-main, 
+    .product__media-wrapper, 
+    .product-image-container,
+    .th-card-image-wrap {
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+    }
+    @media screen and (max-width: 749px) {
+      /* Dynamic layout overrides forces messy old thumbnail boxes to hide permanently */
+      .thumbnail-slider, .thumbnail-list, .thumbnail-list__item, .thumbnail-item,
+      .product-thumbnails, .product__media-wrapper .thumbnail-slider,
+      div[class*="product-gallery-thumb"], div[class*="thumb"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        opacity: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      /* Tight spacing modifier maps arrows closely under the product display canvas */
+      .th-mobile-counter-wrap {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 30px !important;
+        width: 100% !important;
+        margin: 4px 0 12px 0 !important;
+        padding: 0 !important;
+      }
+    }
+  </style>
 
 </body>
 </html>
