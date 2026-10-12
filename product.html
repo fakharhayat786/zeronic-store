@@ -4048,17 +4048,47 @@
       position: relative !important;
       width: 100% !important;
     }
+    
+    /* 1. FORCE GALLERY FULL BLEED (Removes white boxes & side borders) */
     .product-gallery-main, 
     .product__media-wrapper, 
     .product-image-container,
-    .th-card-image-wrap {
+    .th-card-image-wrap,
+    .product__media-list,
+    .product__media-item {
       border: none !important;
       box-shadow: none !important;
       border-radius: 0 !important;
       padding: 0 !important;
+      margin: 0 !important;
       background: transparent !important;
+      background-color: transparent !important;
     }
+
+    /* 2. LAYOUT SYMMETRY OVERRIDES (Matches Tech Hunk Spacing Indexes) */
     @media screen and (max-width: 749px) {
+      .product {
+        display: flex !important;
+        flex-direction: column !important;
+        padding-top: 0 !important;
+        gap: 0 !important;
+      }
+      
+      /* Forces elements text grids to be perfectly centered */
+      .th-product-title-wrap,
+      .th-product-subtitle,
+      .th-jd-rating-box,
+      .th-pricebar {
+        justify-content: center !important;
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .th-jd-rating-box {
+        display: flex !important;
+      }
+
       /* Dynamic layout overrides forces messy old thumbnail boxes to hide permanently */
       .thumbnail-slider, .thumbnail-list, .thumbnail-list__item, .thumbnail-item,
       .product-thumbnails, .product__media-wrapper .thumbnail-slider,
@@ -4070,15 +4100,34 @@
         margin: 0 !important;
         padding: 0 !important;
       }
-      /* Tight spacing modifier maps arrows closely under the product display canvas */
+
+      /* 3. ARROWS COUNTER TUNING (Tech Hunk Premium Look Integration) */
       .th-mobile-counter-wrap {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 30px !important;
+        gap: 40px !important;
         width: 100% !important;
-        margin: 4px 0 12px 0 !important;
+        margin: 0px 0 24px 0 !important; /* Pulls indicators tight */
         padding: 0 !important;
+      }
+      .th-counter-arrow {
+        background: transparent !important;
+        border: none !important;
+        font-size: 14px !important;
+        color: #9ca3af !important; /* Subtle gray arrow color matching Dawn styles */
+        font-weight: 400 !important;
+        cursor: pointer !important;
+        padding: 4px 20px !important;
+        font-family: Arial, sans-serif !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .th-counter-text-display {
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        color: #6b7280 !important;
+        letter-spacing: 0.08em !important;
+        font-family: var(--font-body-family), sans-serif !important;
       }
     }
   </style>
