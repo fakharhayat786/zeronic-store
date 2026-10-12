@@ -167,14 +167,24 @@
     }
 
     @media screen and (max-width: 749px) {
-      /* Mobile viewport widths par purane raw thumbnails boxes ko block kar dega */
-      .thumbnail-slider, 
+      /* Tech Hunk System Core Override Rules - Erases messy thumbs blocks */
+      .thumbnail-slider,
       .thumbnail-list,
       .thumbnail-list__item,
       .thumbnail-item,
-      .product__media-wrapper .thumbnail-slider {
+      .product-thumbnails,
+      .product__media-wrapper .thumbnail-slider,
+      div[class*="product-gallery-thumb"],
+      div[class*="thumb"] {
         display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        opacity: 0 !important;
       }
+    }
 
       /* Tech Hunk design standard ke mutabiq alignment matrix container row */
       .th-mobile-counter-wrap {
