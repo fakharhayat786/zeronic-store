@@ -159,6 +159,59 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.09);
     }
+    /* =========================================================
+       TECH HUNK STYLE CAROUSEL DIALS (MOBILE SPECIFIC)
+    ========================================================= */
+    .th-mobile-counter-wrap {
+      display: none; /* Desktop standard viewport par yeh layout hide rahega */
+    }
+
+    @media screen and (max-width: 749px) {
+      /* Mobile viewport widths par purane raw thumbnails boxes ko block kar dega */
+      .thumbnail-slider, 
+      .thumbnail-list,
+      .thumbnail-list__item,
+      .thumbnail-item,
+      .product__media-wrapper .thumbnail-slider {
+        display: none !important;
+      }
+
+      /* Tech Hunk design standard ke mutabiq alignment matrix container row */
+      .th-mobile-counter-wrap {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        width: 100%;
+        margin: 14px 0 8px 0;
+        padding: 4px 0;
+      }
+
+      /* Navigation action controllers UI hooks variables */
+      .th-counter-arrow {
+        background: transparent !important;
+        border: none !important;
+        font-size: 18px !important;
+        color: #9aa3ad !important;
+        cursor: pointer;
+        padding: 0 12px;
+        font-family: inherit;
+        transition: color 0.2s ease;
+      }
+
+      .th-counter-arrow:hover {
+        color: #111111 !important;
+      }
+
+      /* Center text view dashboard (e.g., 1 / 4 tracking digits indicator) */
+      .th-counter-text-display {
+        font-size: 13px;
+        font-weight: 600;
+        color: #4b5563;
+        letter-spacing: 0.06em;
+        font-family: "Manrope", sans-serif;
+      }
+    }
 
 /* =========================================================
        ANNOUNCEMENT BAR (MOVING INFINITE MARQUEE)
@@ -2812,6 +2865,13 @@
       <div class="product-info-column">
 
         <div class="th-product-title-wrap">
+                  <!-- Tech Hunk Native Structural Numerical Counter Overlay Module -->
+        <div class="th-mobile-counter-wrap">
+          <button type="button" class="th-counter-arrow" onclick="shiftMobileGalleryFrameDirection(-1)">&lt;</button>
+          <span class="th-counter-text-display" id="thLiveMobileSlideNumber">1 / 4</span>
+          <button type="button" class="th-counter-arrow" onclick="shiftMobileGalleryFrameDirection(1)">&gt;</button>
+        </div>
+
           <h1>ZERONIC Flex Earbuds</h1>
         </div>
 
@@ -3932,5 +3992,44 @@
       alert("Thank you! Your verified review has been published.");
     }
   </script>
+    <!-- Tech Hunk Mobile Gallery Logic Configuration -->
+  <script>
+    // Slider states calculation parameters
+    let activeMobilePhotoFrameIndex = 1;
+    const totalRegisteredAssetImages = 4;
+
+    // Zeronic dynamic asset directory database array
+    const zeronicImageRepository = [
+      'assets/airpods-1.png',
+      'assets/airpods-2.png',
+      'assets/airpods-3.png',
+      'assets/airpods-4.png'
+    ];
+
+    function shiftMobileGalleryFrameDirection(directionDeltaValue) {
+      activeMobilePhotoFrameIndex += directionDeltaValue;
+
+      // Loop barrier limits calculations configuration hooks
+      if (activeMobilePhotoFrameIndex > totalRegisteredAssetImages) {
+        activeMobilePhotoFrameIndex = 1;
+      }
+      if (activeMobilePhotoFrameIndex < 1) {
+        activeMobilePhotoFrameIndex = totalRegisteredAssetImages;
+      }
+
+      // Live display string counter data node switcher interface
+      const counterUIElement = document.getElementById("thLiveMobileSlideNumber");
+      if (counterUIElement) {
+        counterUIElement.textContent = `${activeMobilePhotoFrameIndex} / ${totalRegisteredAssetImages}`;
+      }
+
+      // Target display image frame source layout tracking rule
+      const mainImgNode = document.querySelector(".product-gallery-main img") || document.querySelector(".th-product-img") || document.getElementById("thMainDisplayCanvas");
+      if (mainImgNode) {
+        mainImgNode.src = zeronicImageRepository[activeMobilePhotoFrameIndex - 1];
+      }
+    }
+  </script>
+
 </body>
 </html>
