@@ -494,7 +494,7 @@
         line-height: 1.08;
         letter-spacing: -0.04em;
         font-weight: 800;
-        color: #0062d8 !important;
+        color: #0062d8 !important; /* Exact match with Sound. (#0062d8) */
       }
       .hero-mobile-title span {
         display: block;
@@ -539,14 +539,14 @@
 
 
 /* =========================================================
-       STATEMENT BAR (Custom Electric Blue & Fast Ticker)
+       STATEMENT BAR (Option B: Refined Minimal Marquee - Balances Blue Hero Button)
     ========================================================= */
 .statement {
-  padding: 14px 0; /* Padding thodi kam ki hai taake section sleek lage */
-  background: linear-gradient(135deg, #0062d8 0%, #004eb0 100%); /* Aapki site ka native blue layout code sy match kiya */
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden; /* Screen se bahar jane wale extra texts ko hide karne k liye */
+  padding: 13px 0;
+  background: #f8fafc; /* Clean, premium off-white canvas so View Collection button stands out */
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
@@ -554,16 +554,15 @@
 
 .statement-track {
   display: flex;
-  white-space: nowrap; /* Text ko doosri line mein break hone se rokta hai */
-  gap: 40px; /* Words ke darmiyan ka perfect distance */
+  white-space: nowrap;
+  gap: 44px;
   font-family: "Poppins", "Inter", sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #ffffff; /* Blue background par pure high-contrast white text */
-  /* Speed Fix: Pehle 15s-20s tha, isko 8s (8 seconds) kiya hai taake speed tez aur smooth ho */
-  animation: dynamic-marquee-fast 8s linear infinite; 
+  color: #0f172a; /* Sophisticated dark typography */
+  animation: dynamic-marquee-fast 10s linear infinite;
   will-change: transform;
 }
 
@@ -571,9 +570,9 @@
   align-self: center;
   width: 5px;
   height: 5px;
-  background: #ffffff; /* Dot ko bhi white kiya taake layout unified lage */
+  background: #0062d8; /* Signature electric blue accent dot matching website branding */
   border-radius: 50%;
-  opacity: 0.7;
+  opacity: 0.9;
   flex-shrink: 0;
 }
 
@@ -1096,38 +1095,39 @@
     }
 
     /* =========================================================
-       UPGRADE YOUR EVERYDAY CTA
+       UPGRADE YOUR EVERYDAY CTA (Consistent Minimal Aesthetic)
     ========================================================= */
     .cta-section {
-      padding: 45px 0 90px;
+      padding: 40px 0 80px;
       background: #ffffff;
     }
 
     .cta-card {
       position: relative;
       overflow: hidden;
-      border-radius: 24px;
+      border-radius: 28px;
       min-height: 480px;
-      background: #0062d8;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #ffffff;
+      background: #ffffff;
+      border: 1px solid var(--border-dark);
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.04);
       display: flex;
       align-items: center;
     }
 
     .cta-card .eyebrow {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .cta-card .cta-description {
-      color: rgba(255, 255, 255, 0.9);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--secondary-gray);
+      margin-bottom: 12px;
     }
 
     .cta-content {
       position: relative;
       z-index: 2;
       width: 55%;
-      padding: 80px;
+      padding: 70px 80px;
       display: flex;
       flex-direction: column;
     }
@@ -1138,18 +1138,24 @@
       line-height: 1.02;
       letter-spacing: -0.05em;
       font-weight: 800;
+      color: var(--secondary-gray);
     }
 
-    .cta-title span {
-      color: rgba(255, 255, 255, 0.75);
+    .cta-title .cta-day {
+      color: #0062d8; /* Exact match with Sound. (#0062d8) */
+      font-weight: 800;
+    }
+
+    .cta-title span:not(.cta-day) {
+      color: var(--secondary-gray);
       font-weight: 400;
     }
 
     .cta-description {
-      max-width: 460px;
-      margin-top: 20px;
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.7;
+      max-width: 480px;
+      margin-top: 22px;
+      color: var(--secondary-gray);
+      line-height: 1.75;
       font-size: 15px;
     }
 
@@ -1157,33 +1163,43 @@
       margin-top: 36px;
     }
 
-    .cta-card .btn-white,
+    .cta-card .btn-blue,
     .cta-actions .btn {
-      background: #ffffff;
-      color: #0062d8;
-      border: none;
+      background: #0062d8 !important;
+      color: #ffffff !important;
+      border: none !important;
+      font-family: "Manrope", sans-serif;
+      font-size: 13px;
       font-weight: 700;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
-      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(0, 98, 216, 0.28);
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
     }
 
-    .cta-card .btn-white:hover,
+    .cta-card .btn-blue:hover,
     .cta-actions .btn:hover {
-      background: #ffffff;
-      color: #004eb0;
+      background: #004eb0 !important;
       transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+      box-shadow: 0 8px 24px rgba(0, 98, 216, 0.4);
     }
 
     .cta-image {
       position: absolute;
-      right: 5%;
+      right: 6%;
       top: 50%;
       transform: translateY(-50%);
-      width: 42%;
-      max-height: 85%;
+      width: 40%;
+      max-height: 82%;
       object-fit: contain;
-      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.4));
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.08));
     }
 
     /* =========================================================
@@ -1706,27 +1722,45 @@
         padding: 60px 0;
       }
       .experience {
-        padding: 50px 0 24px;
+        padding: 40px 0 20px;
       }
       .experience-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .experience-copy {
+        margin-bottom: 0;
+      }
+      .experience-description {
+        margin-top: 14px;
+        margin-bottom: 4px;
+        line-height: 1.6;
       }
       .experience-image-area {
-        min-height: 420px;
-        padding: 32px 16px 24px;
+        min-height: 400px;
+        padding: 24px 14px 20px;
+        margin-top: 6px;
       }
       .cta-section {
         padding: 24px 0 36px;
+        background: #ffffff;
       }
       .cta-card {
         min-height: auto;
         flex-direction: column;
         align-items: center;
+        background: #ffffff !important;
+        border: 1px solid var(--border-dark) !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04) !important;
       }
       .cta-content {
         width: 100%;
-        padding: 36px 20px 28px;
+        padding: 36px 20px 20px;
         text-align: center;
+      }
+      .cta-title {
+        font-size: 34px !important;
+        line-height: 1.08 !important;
       }
       .cta-image {
         position: relative;
@@ -1734,13 +1768,21 @@
         top: auto;
         bottom: auto;
         transform: none;
-        width: 90%;
-        max-width: 380px;
-        max-height: 260px;
-        margin: 0 auto 16px;
+        width: 86%;
+        max-width: 320px;
+        max-height: 240px;
+        margin: 10px auto 20px;
+        filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.08)) !important;
       }
       .cta-actions {
-        margin-top: 12px;
+        margin-top: 0;
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: center;
+      }
+      .cta-actions .btn {
+        width: auto !important;
+        min-width: 180px;
       }
     }
 
@@ -2116,15 +2158,7 @@
             <p class="experience-description">
               Great audio hardware should integrate seamlessly into your routine. ZERONIC pairs minimal industrial aesthetics with acoustic clarity, delivering immersive sound without distraction.
             </p>
-            <div class="experience-action">
-              <a
-                href="#earbuds"
-                class="btn btn-white"
-                style="background: #0062d8; color: #ffffff;"
-              >
-                Explore Earbuds
-              </a>
-            </div>
+
           </div>
 
           <div class="experience-image-area">
@@ -2190,7 +2224,7 @@
               UPGRADE YOUR EVERYDAY
             </div>
             <h2 class="cta-title">
-              Your day.<br />
+              <span class="cta-day">Your day.</span><br />
               <span>Your sound.</span>
             </h2>
             <p class="cta-description">
@@ -2207,7 +2241,7 @@
           <div class="cta-actions">
             <a
               href="#earbuds"
-              class="btn btn-white"
+              class="btn btn-blue"
             >
               View Collection
             </a>

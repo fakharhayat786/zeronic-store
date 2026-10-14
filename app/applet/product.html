@@ -23,6 +23,101 @@
     rel="stylesheet"
   />
   <style>
+        /* =========================================================
+       MASTER FIX: TECH HUNK EDGE-TO-EDGE & CENTER ALIGNMENT
+    ========================================================= */
+    /* 1. Page ko horizontally right side par hilne se mukammal rokne ke liye */
+    html, body {
+      overflow-x: hidden !important;
+      position: relative !important;
+      width: 100% !important;
+    }
+
+    /* 2. Earbuds ke gird se white box dabba aur compress paddings mitaane ke liye */
+    .product,
+    .product__media-wrapper,
+    .product-gallery-main,
+    .slider-mobile-gutter,
+    .product__media-list,
+    .product__media-item,
+    [id^="GalleryViewer-"] {
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    /* 3. Mobile view par text aur layouts ko Tech Hunk jesa center karne ke liye */
+    @media screen and (max-width: 749px) {
+      .product {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .page-width {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+      
+      /* Title, Subtitle, Rating aur Price ko center me lane ke liye */
+      .th-product-title-wrap,
+      .product__title,
+      .product-info-column,
+      .product__info-container,
+      .th-product-subtitle,
+      .product__text,
+      .th-jd-rating-box,
+      .th-price-root,
+      .th-pricebar {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        text-align: center !important;
+        align-items: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+      }
+
+      .th-pricebar, .th-jd-rating-box {
+        flex-direction: row !important; /* Price aur Stars ko horizontal rakhne ke liye */
+      }
+
+      .th-pricebar {
+        gap: 12px !important;
+        margin-top: 10px !important;
+        margin-bottom: 20px !important;
+      }
+
+      /* Indicators aur Arrows (< 1/4 >) ko sleek gray touch dene ke liye */
+      .th-mobile-counter-wrap {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 34px !important;
+        width: 100% !important;
+        margin: 16px 0 !important;
+        padding: 0 !important;
+      }
+      .th-counter-arrow {
+        color: #9ca3af !important; /* Soft gray color code */
+        font-size: 14px !important;
+        padding: 4px 18px !important;
+        cursor: pointer !important;
+        background: transparent !important;
+        border: none !important;
+      }
+      .th-counter-text-display {
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        color: #6b7280 !important;
+      }
+    }
+
 /* =========================================================
        RESET & BASE STYLES
     ========================================================= */
@@ -158,6 +253,69 @@
       border-color: rgba(0, 0, 0, 0.18);
       transform: translateY(-2px);
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.09);
+    }
+    /* =========================================================
+       TECH HUNK STYLE CAROUSEL DIALS (MOBILE SPECIFIC)
+    ========================================================= */
+    .th-mobile-counter-wrap {
+      display: none; /* Desktop standard viewport par yeh layout hide rahega */
+    }
+
+    @media screen and (max-width: 749px) {
+      /* Tech Hunk System Core Override Rules - Erases messy thumbs blocks */
+      .thumbnail-slider,
+      .thumbnail-list,
+      .thumbnail-list__item,
+      .thumbnail-item,
+      .product-thumbnails,
+      .product__media-wrapper .thumbnail-slider,
+      div[class*="product-gallery-thumb"],
+      div[class*="thumb"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        opacity: 0 !important;
+      }
+    }
+
+      /* Tech Hunk design standard ke mutabiq alignment matrix container row */
+      .th-mobile-counter-wrap {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        width: 100%;
+        margin: 14px 0 8px 0;
+        padding: 4px 0;
+      }
+
+      /* Navigation action controllers UI hooks variables */
+      .th-counter-arrow {
+        background: transparent !important;
+        border: none !important;
+        font-size: 18px !important;
+        color: #9aa3ad !important;
+        cursor: pointer;
+        padding: 0 12px;
+        font-family: inherit;
+        transition: color 0.2s ease;
+      }
+
+      .th-counter-arrow:hover {
+        color: #111111 !important;
+      }
+
+      /* Center text view dashboard (e.g., 1 / 4 tracking digits indicator) */
+      .th-counter-text-display {
+        font-size: 13px;
+        font-weight: 600;
+        color: #4b5563;
+        letter-spacing: 0.06em;
+        font-family: "Manrope", sans-serif;
+      }
     }
 
 /* =========================================================
@@ -352,6 +510,7 @@
        BREADCRUMBS
     ========================================================= */
     .product-breadcrumbs {
+      display: none !important;
       padding: 16px 0 10px;
       font-size: 13px;
       color: var(--secondary-gray);
@@ -992,13 +1151,13 @@
     }
 
     /* =========================================================
-   STATEMENT BAR (Exact Homepage Electric Blue Marquee)
+   STATEMENT BAR (Option B: Refined Minimal Marquee)
 ========================================================= */
 .statement {
-  padding: 14px 0;
-  background: linear-gradient(135deg, #0062d8 0%, #004eb0 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 13px 0;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -1008,13 +1167,13 @@
 .statement-track {
   display: flex;
   white-space: nowrap;
-  gap: 40px;
+  gap: 44px;
   font-family: "Poppins", "Inter", sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #0f172a;
   animation: dynamic-marquee-fast 10s linear infinite;
   will-change: transform;
 }
@@ -1023,9 +1182,9 @@
   align-self: center;
   width: 5px;
   height: 5px;
-  background: #ffffff;
+  background: #0062d8;
   border-radius: 50%;
-  opacity: 0.8;
+  opacity: 0.9;
   flex-shrink: 0;
 }
 
@@ -2811,6 +2970,13 @@
       <div class="product-info-column">
 
         <div class="th-product-title-wrap">
+                  <!-- Tech Hunk Native Structural Numerical Counter Overlay Module -->
+        <div class="th-mobile-counter-wrap">
+          <button type="button" class="th-counter-arrow" onclick="shiftMobileGalleryFrameDirection(-1)">&lt;</button>
+          <span class="th-counter-text-display" id="thLiveMobileSlideNumber">1 / 4</span>
+          <button type="button" class="th-counter-arrow" onclick="shiftMobileGalleryFrameDirection(1)">&gt;</button>
+        </div>
+
           <h1>ZERONIC Flex Earbuds</h1>
         </div>
 
@@ -3931,5 +4097,138 @@
       alert("Thank you! Your verified review has been published.");
     }
   </script>
+    <!-- Tech Hunk Mobile Gallery Logic Configuration -->
+  <script>
+    // Slider states calculation parameters
+    let activeMobilePhotoFrameIndex = 1;
+    const totalRegisteredAssetImages = 4;
+
+    // Zeronic dynamic asset directory database array
+    const zeronicImageRepository = [
+      'assets/airpods-1.png',
+      'assets/airpods-2.png',
+      'assets/airpods-3.png',
+      'assets/airpods-4.png'
+    ];
+
+    function shiftMobileGalleryFrameDirection(directionDeltaValue) {
+      activeMobilePhotoFrameIndex += directionDeltaValue;
+
+      // Loop barrier limits calculations configuration hooks
+      if (activeMobilePhotoFrameIndex > totalRegisteredAssetImages) {
+        activeMobilePhotoFrameIndex = 1;
+      }
+      if (activeMobilePhotoFrameIndex < 1) {
+        activeMobilePhotoFrameIndex = totalRegisteredAssetImages;
+      }
+
+      // Live display string counter data node switcher interface
+      const counterUIElement = document.getElementById("thLiveMobileSlideNumber");
+      if (counterUIElement) {
+        counterUIElement.textContent = `${activeMobilePhotoFrameIndex} / ${totalRegisteredAssetImages}`;
+      }
+
+      // Target display image frame source layout tracking rule
+      const mainImgNode = document.querySelector(".product-gallery-main img") || document.querySelector(".th-product-img") || document.getElementById("thMainDisplayCanvas");
+      if (mainImgNode) {
+        mainImgNode.src = zeronicImageRepository[activeMobilePhotoFrameIndex - 1];
+      }
+    }
+  </script>
+    <!-- Tech Hunk Ultimate Mobile Core Alignment Patch Integration Rules -->
+  <style>
+    /* 1. Page ko horizontally right side par hilne se mukammal rokne ke liye */
+    html, body {
+      overflow-x: hidden !important;
+      position: relative !important;
+      width: 100% !important;
+    }
+    
+    /* 2. Earbuds ke gird se white box dabba aur compress paddings mitaane ke liye */
+    .product,
+    .product__media-wrapper,
+    .product-gallery-main,
+    .slider-mobile-gutter,
+    .product__media-list,
+    .product__media-item,
+    .th-card-image-wrap,
+    [id^="GalleryViewer-"] {
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    /* 3. Mobile view par text aur layouts ko Tech Hunk jesa center karne ke liye */
+    @media screen and (max-width: 749px) {
+      .product {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .page-width {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+      
+      /* Title, Subtitle, Rating aur Price ko center me lane ke liye */
+      .th-product-title-wrap,
+      .product__title,
+      .product-info-column,
+      .product__info-container,
+      .th-product-subtitle,
+      .product__text,
+      .th-jd-rating-box,
+      .th-price-root,
+      .th-pricebar {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        text-align: center !important;
+        align-items: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+      }
+
+      .th-pricebar, .th-jd-rating-box {
+        flex-direction: row !important; /* Price aur Stars ko horizontal rakhne ke liye */
+      }
+
+      .th-pricebar {
+        gap: 12px !important;
+        margin-top: 10px !important;
+        margin-bottom: 20px !important;
+      }
+
+      /* Indicators aur Arrows (< 1/4 >) ko sleek gray touch dene ke liye */
+      .th-mobile-counter-wrap {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 34px !important;
+        width: 100% !important;
+        margin: 16px 0 !important;
+        padding: 0 !important;
+      }
+      .th-counter-arrow {
+        color: #9ca3af !important; /* Soft gray color code */
+        font-size: 14px !important;
+        padding: 4px 18px !important;
+        cursor: pointer !important;
+        background: transparent !important;
+        border: none !important;
+      }
+      .th-counter-text-display {
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        color: #6b7280 !important;
+      }
+    }
+  </style>
 </body>
 </html>
