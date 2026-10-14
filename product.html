@@ -23,100 +23,7 @@
     rel="stylesheet"
   />
   <style>
-        /* =========================================================
-       MASTER FIX: TECH HUNK EDGE-TO-EDGE & CENTER ALIGNMENT
-    ========================================================= */
-    /* 1. Page ko horizontally right side par hilne se mukammal rokne ke liye */
-    html, body {
-      overflow-x: hidden !important;
-      position: relative !important;
-      width: 100% !important;
-    }
-
-    /* 2. Earbuds ke gird se white box dabba aur compress paddings mitaane ke liye */
-    .product,
-    .product__media-wrapper,
-    .product-gallery-main,
-    .slider-mobile-gutter,
-    .product__media-list,
-    .product__media-item,
-    [id^="GalleryViewer-"] {
-      border: none !important;
-      box-shadow: none !important;
-      border-radius: 0 !important;
-      background: transparent !important;
-      background-color: transparent !important;
-      padding: 0 !important;
-      margin: 0 !important;
-    }
-
-    /* 3. Mobile view par text aur layouts ko Tech Hunk jesa center karne ke liye */
-    @media screen and (max-width: 749px) {
-      .product {
-        display: block !important;
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-      .page-width {
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-      }
-      
-      /* Title, Subtitle, Rating aur Price ko center me lane ke liye */
-      .th-product-title-wrap,
-      .product__title,
-      .product-info-column,
-      .product__info-container,
-      .th-product-subtitle,
-      .product__text,
-      .th-jd-rating-box,
-      .th-price-root,
-      .th-pricebar {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        text-align: center !important;
-        align-items: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        width: 100% !important;
-      }
-
-      .th-pricebar, .th-jd-rating-box {
-        flex-direction: row !important; /* Price aur Stars ko horizontal rakhne ke liye */
-      }
-
-      .th-pricebar {
-        gap: 12px !important;
-        margin-top: 10px !important;
-        margin-bottom: 20px !important;
-      }
-
-      /* Indicators aur Arrows (< 1/4 >) ko sleek gray touch dene ke liye */
-      .th-mobile-counter-wrap {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 34px !important;
-        width: 100% !important;
-        margin: 16px 0 !important;
-        padding: 0 !important;
-      }
-      .th-counter-arrow {
-        color: #9ca3af !important; /* Soft gray color code */
-        font-size: 14px !important;
-        padding: 4px 18px !important;
-        cursor: pointer !important;
-        background: transparent !important;
-        border: none !important;
-      }
-      .th-counter-text-display {
-        font-size: 12px !important;
-        font-weight: 500 !important;
-        color: #6b7280 !important;
-      }
-    }
+        
 
 /* =========================================================
        RESET & BASE STYLES
@@ -538,569 +445,509 @@
     }
 
     /* =========================================================
-       TECH HUNK PRODUCT MAIN STAGE (EXACT CODE MATCH)
-    ========================================================= */
-    .product-stage-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-      margin-bottom: 30px;
-    }
-
-    /* LEFT: MEDIA GALLERY (Tech Hunk Exact) */
-    .product-media-column {
-      position: sticky;
-      top: 80px;
-    }
-
-    .gallery-main-frame {
-      position: relative;
-      background: #ffffff;
-      border: 1px solid #eeeeee;
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 1 / 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    }
-
-    .gallery-main-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 16px;
-      transition: opacity 0.2s ease, transform 0.25s ease;
-      cursor: zoom-in;
-    }
-
-    .gallery-main-img:hover {
-      transform: scale(1.02);
-    }
-
-    /* Tech Hunk Azadi / Discount Badge */
-    .th-top-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      z-index: 10;
-      background: linear-gradient(135deg, #e8f0ff 0%, #eef7ff 100%);
-      color: #0f172a;
-      font-size: 11.5px;
-      font-weight: 800;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 98, 216, 0.18);
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
-      letter-spacing: 0.02em;
-    }
-
-    /* Tech Hunk Floating Video Review Button */
-    .th-video-review-float {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 10;
-    }
-
-    .th-video-review-btn {
-      border: 0 !important;
-      background: transparent !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(20, 35, 67, 0.9) !important;
-      color: #ffffff;
-      padding: 6px 12px !important;
-      border-radius: 999px;
-      font-size: 11.5px;
-      font-weight: 700;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: all 0.2s ease;
-    }
-
-    .th-video-review-btn:hover {
-      background: var(--primary-blue) !important;
-      transform: scale(1.04);
-    }
-
-    .th-video-review-btn svg {
-      width: 14px;
-      height: 14px;
-      fill: #ffffff;
-    }
-
-    /* Thumbnail slider */
-    .gallery-thumbs-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 14px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .gallery-thumbs-row::-webkit-scrollbar {
-      display: none;
-    }
-
-    .th-thumb-item {
-      flex: 0 0 74px;
-      height: 74px;
-      border-radius: 8px;
-      border: 1.5px solid #e5e5e5;
-      background: #ffffff;
-      padding: 4px;
-      cursor: pointer;
-      transition: border-color 0.2s ease, transform 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .th-thumb-item:hover {
-      border-color: var(--primary-blue);
-    }
-
-    .th-thumb-item.active {
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 0 1px var(--primary-blue);
-    }
-
-    .th-thumb-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* RIGHT: PRODUCT INFO COLUMN (Tech Hunk Exact) */
-    .product-info-column {
-      padding: 0;
-    }
-
-    .th-product-title-wrap h1 {
-      font-family: "Poppins", "Manrope", sans-serif;
-      font-size: 30px;
-      font-weight: 800;
-      color: #111111;
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-
-    .th-product-subtitle {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #6b7280;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    /* Tech Hunk Judge.me Star Rating Box */
-    .th-jd-rating-box {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin: 6px 0 14px;
-      line-height: 1;
-    }
-
-    .th-jd-stars {
-      color: #ffb400;
-      font-size: 17px;
-      letter-spacing: 1px;
-    }
-
-    .th-jd-rating-number {
-      font-size: 14px;
-      font-weight: 700;
-      color: #111111;
-    }
-
-    .th-jd-review-link {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #005ed4;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .th-jd-review-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Tech Hunk Price Bar (th-pricebar) */
-    .th-pricebar {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
-    .th-pricebar .th-price {
-      font-weight: 800;
-      font-size: 32px;
-      line-height: 1.1;
-      color: #0b0b0b;
-      letter-spacing: 0.2px;
-    }
-
-    .th-pricebar .th-compare {
-      font-weight: 600;
-      font-size: 18px;
-      color: #9aa3ad;
-      text-decoration: line-through;
-    }
-
-    .th-pricebar .th-off {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: #dc2626;
-      color: #ffffff;
-      font-size: 12.5px;
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: 0.2px;
-      transform: translateY(-2px);
-    }
-
-    /* Tech Hunk 4-Column Feature Strip (th-fstrip) */
-    .th-fstrip {
-      margin: 12px 0 18px;
-      width: 100%;
-    }
-
-    .th-fstrip__card {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      align-items: stretch;
-      background: linear-gradient(180deg, #ffffff 0%, #f7f8fa 100%);
-      border: 1px solid rgba(17, 24, 39, 0.08);
-      border-radius: 16px;
-      padding: 12px 6px;
-      box-shadow: 0 1px 1px rgba(17,24,39,.04), 0 3px 8px rgba(17,24,39,.05), 0 10px 22px rgba(17,24,39,.08);
-      position: relative;
-    }
-
-    .th-fstrip__item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      text-align: center;
-      gap: 4px;
-      padding: 4px 6px;
-      position: relative;
-    }
-
-    .th-fstrip__item + .th-fstrip__item::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 68%;
-      background: linear-gradient(180deg, transparent, rgba(17,24,39,.12), transparent);
-    }
-
-    .th-fstrip__icon {
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 2px;
-    }
-
-    .th-fstrip__icon svg {
-      width: 24px;
-      height: 24px;
-      color: var(--primary-blue);
-    }
-
-    .th-fstrip__title {
-      font-weight: 800;
-      font-size: 13.5px;
-      line-height: 1.15;
-      color: #111827;
-      letter-spacing: -0.01em;
-    }
-
-    .th-fstrip__sub {
-      font-weight: 400;
-      font-size: 11px;
-      line-height: 1.25;
-      color: #6b7280;
-    }
-
-    /* Variant Swatches (Tech Hunk Exact) */
-    .th-variant-selects {
-      margin: 18px 0;
-    }
-
-    .th-variant-label {
-      font-size: 13.5px;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 8px;
-    }
-
-    .th-variant-label span {
-      color: var(--primary-blue);
-      font-weight: 800;
-    }
-
-    .th-swatches-grid {
-      display: flex;
-      gap: 12px;
-    }
-
-    .th-swatch-input {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 16px;
-      border: 1.5px solid #d1d5db;
-      border-radius: 999px;
-      background: #ffffff;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      color: #374151;
-      transition: all 0.2s ease;
-    }
-
-    .th-swatch-input:hover {
-      border-color: var(--primary-blue);
-    }
-
-    .th-swatch-input.active {
-      border-color: var(--primary-blue);
-      background: #eff6ff;
-      color: var(--primary-blue);
-      font-weight: 700;
-      box-shadow: 0 0 0 1px var(--primary-blue);
-    }
-
-    .th-swatch-circle {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 1px solid rgba(0, 0, 0, 0.15);
-      flex-shrink: 0;
-    }
-
-    .th-swatch-circle.black {
-      background: #111111;
-    }
-
-    .th-swatch-circle.white {
-      background: #ffffff;
-      border-color: #9ca3af;
-    }
-
-    /* Tech Hunk Quantity UI (thQtyWrap) */
-    #thQtyWrap {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 14px;
-      margin: 16px 0;
-    }
-
-    #thQtyWrap .thQtyLabel {
-      font-size: 13px;
-      font-weight: 700;
-      color: #4b5563;
-    }
-
-    #thQtyWrap .thQtyBtn {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 1px solid #d1d5db;
-      background: #ffffff;
-      color: #374151;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 500;
-      transition: all 0.15s ease;
-    }
-
-    #thQtyWrap .thQtyBtn:hover {
-      border-color: var(--primary-blue);
-      color: var(--primary-blue);
-    }
-
-    #thQtyWrap .thQtyInput {
-      width: 32px;
-      border: 0;
-      background: transparent;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: #111827;
-      outline: none;
-    }
-
-    /* Action Buttons (Tech Hunk Exact) */
-    .th-btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 18px 0;
-    }
-
-    .th-add-to-cart-btn {
-      width: 100%;
-      padding: 14px 20px;
-      border: 2px solid var(--primary-blue);
-      background: #ffffff;
-      color: var(--primary-blue);
-      border-radius: 999px;
-      font-size: 15px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .th-add-to-cart-btn:hover {
-      background: #eff6ff;
-    }
-
-    .th-buy-now-btn {
-      width: 100%;
-      padding: 15px 20px;
-      border: 0;
-      background: var(--primary-blue);
-      color: #ffffff;
-      border-radius: 999px;
-      font-size: 15px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(0, 98, 216, 0.35);
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .th-buy-now-btn:hover {
-      background: var(--primary-blue-hover);
-      box-shadow: 0 6px 20px rgba(0, 98, 216, 0.45);
-      transform: translateY(-1px);
-    }
-
-    /* Full Width Custom Divider (hm-custom-divider) */
-    .hm-custom-divider {
-      display: block !important;
-      width: 100% !important;
-      height: 0 !important;
-      border-top: 1px solid #e5e5e5 !important;
-      margin: 18px 0 !important;
-    }
-
-    /* Tech Hunk In-Column Review Cards (th-jdgm-cards) */
-    .th-jdgm-cards-wrap {
-      width: 100%;
-      display: block;
-      margin: 10px 0 !important;
-    }
-
-    .th-review-slider {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 4px 0 8px !important;
-      scrollbar-width: none;
-    }
-
-    .th-review-slider::-webkit-scrollbar {
-      display: none;
-    }
-
-    .th-review-card {
-      flex: 0 0 210px;
-      min-height: 180px;
-      background: #ffffff;
-      border: 1px solid #ececec;
-      border-radius: 8px;
-      padding: 12px 12px 10px;
-      scroll-snap-align: start;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .th-review-top {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-
-    .th-review-img {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      flex-shrink: 0;
-      border-radius: 4px;
-    }
-
-    .th-review-top h3 {
-      font-size: 11.5px;
-      margin: 0 0 2px;
-      font-weight: 700;
-      color: #111111;
-    }
-
-    .th-stars-micro {
-      font-size: 11px;
-      color: #ffb400;
-      line-height: 1;
-    }
-
-    .th-verified-micro {
-      font-size: 10px;
-      color: #34a853;
-      margin-top: 2px;
-    }
-
-    .th-review-text {
-      font-size: 11.5px;
-      line-height: 1.4;
-      color: #444444;
-      margin: 6px 0 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .th-review-footer {
-      font-size: 10px;
-      color: #777777;
-      margin-top: auto;
-      padding-top: 6px;
-    }
+   TECH HUNK EXACT PRODUCT MAIN STAGE (DESKTOP & MOBILE)
+========================================================= */
+.product-stage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.product-media-column {
+  position: relative;
+}
+
+/* Gallery Frame - Tech Hunk has seamless clean white container with rounded corners and no heavy box */
+.gallery-main-frame {
+  position: relative;
+  background: #ffffff;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.gallery-main-img {
+  width: 100%;
+  height: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  padding: 10px;
+}
+
+/* Floating 29% OFF Badge - Pill top right */
+.th-top-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  left: auto !important;
+  z-index: 10;
+  background: #eef5ff;
+  color: #0062d8;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Floating Video Review Red Icon at bottom right of image */
+.th-media-video-review {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 12;
+  cursor: pointer;
+}
+.th-media-video-review svg {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+}
+
+/* 1/6 Navigation counter under image */
+.th-counter-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin: 14px 0 10px;
+  font-size: 13px;
+  color: #9ca3af;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+}
+.th-counter-arrow {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 8px;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+.th-counter-arrow:hover {
+  color: #111111;
+}
+
+/* LEFT-ALIGNED PRODUCT INFO COLUMN (Tech Hunk Standard) */
+.product-info-column {
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: left !important;
+  align-items: flex-start !important;
+  padding: 0;
+  width: 100%;
+}
+
+.th-product-title-wrap {
+  width: 100%;
+  text-align: left !important;
+  margin-bottom: 2px;
+}
+
+.th-product-title-wrap h1 {
+  font-family: "Poppins", "Manrope", sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.th-product-subtitle {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 6px 0 8px 0;
+  text-align: left !important;
+  width: 100%;
+}
+
+/* Rating Box - Left aligned */
+.th-jd-rating-box {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  gap: 6px;
+  margin: 4px 0 12px;
+  line-height: 1;
+  width: 100%;
+}
+.th-jd-stars {
+  color: #f59e0b;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+.th-jd-rating-number {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+.th-jd-review-link {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0062d8;
+  text-decoration: none;
+}
+
+/* Price Bar - Left aligned */
+.th-pricebar {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: baseline !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 8px 0 16px;
+  width: 100%;
+}
+.th-pricebar .th-price {
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+.th-pricebar .th-compare {
+  font-weight: 600;
+  font-size: 17px;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+.th-pricebar .th-off {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 800;
+  line-height: 1;
+  transform: translateY(-2px);
+}
+
+/* 4-Column Feature Strip (th-fstrip) - Exactly like Tech Hunk screenshot */
+.th-fstrip {
+  margin: 6px 0 18px;
+  width: 100%;
+}
+.th-fstrip__card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) !important;
+  align-items: stretch;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
+  padding: 14px 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+.th-fstrip__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+  padding: 2px 4px;
+  position: relative;
+}
+.th-fstrip__item + .th-fstrip__item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: #e2e8f0;
+}
+.th-fstrip__icon svg {
+  width: 22px;
+  height: 22px;
+  color: #1e293b;
+}
+.th-fstrip__title {
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 12px;
+  color: #0f172a;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+.th-fstrip__sub {
+  font-weight: 500;
+  font-size: 10px;
+  color: #64748b;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+/* Color: Flex Black text & round circular swatches */
+.th-variant-selects {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 16px;
+}
+.th-variant-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 8px;
+  text-align: left !important;
+}
+.th-swatches-grid {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.th-swatch-circle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  padding: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.th-swatch-circle-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.th-swatch-circle-btn.active {
+  border-color: #0062d8;
+  box-shadow: 0 0 0 2px rgba(0, 98, 216, 0.25);
+}
+
+/* Quantity Selector - Centered row with round subtle pill buttons */
+#thQtyWrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0 16px;
+}
+.thQtyLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+.thQtyBtn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+.thQtyBtn:hover {
+  border-color: #64748b;
+  color: #0f172a;
+}
+.thQtyInput {
+  width: 26px;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  outline: none;
+}
+
+/* Action Buttons - Add to cart (Outlined) & Buy it now (Solid Blue) */
+.th-btn-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin: 4px 0 20px !important;
+}
+.th-add-to-cart-btn {
+  width: 100% !important;
+  padding: 14px 20px !important;
+  background: #ffffff !important;
+  color: #0062d8 !important;
+  border: 2px solid #0062d8 !important;
+  border-radius: 999px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 4px rgba(0, 98, 216, 0.08) !important;
+}
+.th-add-to-cart-btn:hover {
+  background: #f0f7ff !important;
+}
+.th-buy-now-btn {
+  width: 100% !important;
+  padding: 15px 20px !important;
+  background: #0062d8 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 14px rgba(0, 98, 216, 0.3) !important;
+}
+.th-buy-now-btn:hover {
+  background: #004eb0 !important;
+  box-shadow: 0 6px 20px rgba(0, 98, 216, 0.4) !important;
+}
+
+/* Full Width Thin Divider */
+.hm-custom-divider {
+  display: block !important;
+  width: 100% !important;
+  height: 0 !important;
+  border-top: 1px solid #e2e8f0 !important;
+  margin: 18px 0 !important;
+}
+
+/* In-Page Review Slider Cards (Exact Tech Hunk Layout) */
+.th-jdgm-cards-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+.th-review-slider {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+.th-review-slider::-webkit-scrollbar {
+  display: none;
+}
+.th-review-card {
+  flex: 0 0 210px;
+  min-height: 180px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  scroll-snap-align: start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+}
+.th-review-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.th-review-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.th-review-top h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 2px;
+  line-height: 1.2;
+}
+.th-stars-micro {
+  color: #f59e0b;
+  font-size: 11px;
+}
+.th-verified-micro {
+  color: #16a34a;
+  font-size: 10px;
+  font-weight: 600;
+}
+.th-review-text {
+  font-size: 11px;
+  color: #475569;
+  line-height: 1.4;
+  margin: 4px 0 0;
+}
+.th-review-footer {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+/* Dots indicator under in-page reviews */
+.th-inpage-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.th-inpage-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+.th-inpage-dot.active {
+  background: #64748b;
+}
+
+@media (max-width: 768px) {
+  .product-stage-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .gallery-main-img {
+    max-height: 340px;
+    padding: 0;
+  }
+  .gallery-thumbs-row {
+    display: none !important; /* Tech Hunk hides small thumbnails on mobile in favor of the < 1/6 > dial */
+  }
+  .th-product-title-wrap h1 {
+    font-size: 26px;
+  }
+}
 
     /* =========================================================
        TECH HUNK BENEFITS INFINITE CAROUSEL (th-benefits-carousel)
@@ -4175,24 +4022,7 @@
       }
       
       /* Title, Subtitle, Rating aur Price ko center me lane ke liye */
-      .th-product-title-wrap,
-      .product__title,
-      .product-info-column,
-      .product__info-container,
-      .th-product-subtitle,
-      .product__text,
-      .th-jd-rating-box,
-      .th-price-root,
-      .th-pricebar {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        text-align: center !important;
-        align-items: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        width: 100% !important;
-      }
+      
 
       .th-pricebar, .th-jd-rating-box {
         flex-direction: row !important; /* Price aur Stars ko horizontal rakhne ke liye */
@@ -4230,5 +4060,42 @@
       }
     }
   </style>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 4;
+    const slideImages = [
+      'assets/airpods-1.png',
+      'assets/airpods-2.png',
+      'assets/airpods-3.png',
+      'assets/airpods-4.png'
+    ];
+    function changeSlide(direction) {
+      currentSlide += direction;
+      if (currentSlide > totalSlides) currentSlide = 1;
+      if (currentSlide < 1) currentSlide = totalSlides;
+      
+      const counterEl = document.getElementById('slideCounterText');
+      if (counterEl) counterEl.textContent = `${currentSlide} / ${totalSlides}`;
+      
+      const imgEl = document.getElementById('mainGalleryImg');
+      if (imgEl) imgEl.src = slideImages[currentSlide - 1];
+    }
+
+    // Swatches Click Handler
+    document.querySelectorAll('.th-swatch-circle-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.th-swatch-circle-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const color = this.getAttribute('data-color');
+        const img = this.getAttribute('data-img');
+        const colorNameDisplay = document.getElementById('colorNameDisplay');
+        if (colorNameDisplay) colorNameDisplay.textContent = color;
+        const mainImg = document.getElementById('mainGalleryImg');
+        if (mainImg) mainImg.src = img;
+      });
+    });
+  </script>
+
 </body>
 </html>
