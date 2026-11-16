@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "ZERONIC | Premium Wireless Earbuds",
   "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "echo 'Static assets ready'",
     "dev": "node server.js",

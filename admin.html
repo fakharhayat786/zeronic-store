@@ -44,7 +44,7 @@
     .stat { background: #fff; border: 1px solid #eee; border-radius: 14px; padding: 16px; }
     .stat .num { font-size: 22px; font-weight: 800; }
     .stat .lbl { font-size: 12.5px; color: #6b7280; font-weight: 600; }
-    .toolbar { display: grid; grid-template-columns: 1fr 190px auto; gap: 10px; margin-bottom: 16px; align-items: end; }
+    .toolbar { display: grid; grid-template-columns: 1fr 190px auto auto; gap: 10px; margin-bottom: 16px; align-items: end; }
     @media (max-width: 640px) { .toolbar { grid-template-columns: 1fr; } }
     .toolbar label { margin-top: 0; }
     .order { background: #fff; border: 1px solid #eee; border-radius: 14px; padding: 18px; margin-bottom: 12px; }
@@ -97,7 +97,7 @@
       <!-- DASHBOARD -->
       <section id="dashView" style="display:none;">
         <h1>Orders &amp; enquiries</h1>
-        <p class="muted">Orders placed on the website appear here. Change an order's status when you confirm, ship or deliver it.</p>
+        <p class="muted">Orders placed on the website appear here. Change an order's status when you confirm, ship or deliver it. Download CSV saves the orders currently shown — search and status filters apply, so clear them first for a full backup.</p>
 
         <div class="tabs" role="tablist">
           <button class="tab active" type="button" data-tab="orders">Orders</button>
@@ -129,6 +129,7 @@
               </select>
             </div>
             <button id="refreshBtn" class="btn secondary" type="button">Refresh</button>
+            <button id="exportBtn" class="btn secondary" type="button">Download CSV</button>
           </div>
           <div id="ordersError" class="alert error" role="alert"></div>
           <div id="ordersList"></div>
@@ -259,6 +260,38 @@
         });
       }
 
+      function currentFilteredOrders() {
+        var q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+        var statusFilter = document.getElementById('statusFilter').value;
+        return orders.filter(function (o) {
+          if (statusFilter && o.status !== statusFilter) return false;
+          if (!q) return true;
+          var hay = ((o.number || '') + ' ' + (o.customer.name || '') + ' ' + (o.customer.phone || '') + ' ' + (o.customer.city || '')).toLowerCase();
+          return hay.indexOf(q) !== -1;
+        });
+      }
+
+      function csvCell(value) {
+        var s = value === undefined || value === null ? '' : String(value);
+        return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+      }
+
+      function ordersToCsv(list) {
+        var headers = ['Order Number', 'Date', 'Status', 'Customer', 'Phone', 'Email', 'Address', 'City', 'Items', 'Subtotal (Rs)', 'Delivery (Rs)', 'Total (Rs)', 'Payment', 'Notes'];
+        var lines = [headers.map(csvCell).join(',')];
+        list.forEach(function (o) {
+          var items = (o.items || []).map(function (it) {
+            return it.name + (it.colour ? ' (' + it.colour + ')' : '') + ' x' + it.qty;
+          }).join('; ');
+          lines.push([
+            o.number, o.createdAt, o.status, o.customer.name, o.customer.phone,
+            o.customer.email || '', o.customer.address, o.customer.city, items,
+            o.subtotal, o.deliveryFee, o.total, o.payment, o.customer.notes || ''
+          ].map(csvCell).join(','));
+        });
+        return '\uFEFF' + lines.join('\r\n') + '\r\n';
+      }
+
       function renderOrders() {
         document.getElementById('ordersError').classList.remove('active');
         var total = orders.length;
@@ -269,17 +302,10 @@
         document.getElementById('statNew').textContent = String(newCount);
         document.getElementById('statSales').textContent = money(sales);
 
-        var q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
-        var statusFilter = document.getElementById('statusFilter').value;
         var list = document.getElementById('ordersList');
         list.innerHTML = '';
 
-        var filtered = orders.filter(function (o) {
-          if (statusFilter && o.status !== statusFilter) return false;
-          if (!q) return true;
-          var hay = ((o.number || '') + ' ' + (o.customer.name || '') + ' ' + (o.customer.phone || '') + ' ' + (o.customer.city || '')).toLowerCase();
-          return hay.indexOf(q) !== -1;
-        });
+        var filtered = currentFilteredOrders();
 
         if (!filtered.length) {
           var note = el('div', 'empty-note', total ? 'No orders match your search.' : 'No orders yet. Orders placed on the website will appear here.');
@@ -299,6 +325,7 @@
 
           var meta = el('div', 'order-meta');
           meta.appendChild(el('div', null, order.customer.name + ' · ' + order.customer.phone));
+          if (order.customer.email) meta.appendChild(el('div', null, 'Email: ' + order.customer.email));
           meta.appendChild(el('div', null, order.customer.address + ', ' + order.customer.city));
           if (order.customer.notes) meta.appendChild(el('div', null, 'Notes: ' + order.customer.notes));
           meta.appendChild(el('div', null, 'Payment: Cash on Delivery'));
@@ -448,6 +475,23 @@
       document.getElementById('searchInput').addEventListener('input', renderOrders);
       document.getElementById('statusFilter').addEventListener('change', renderOrders);
       document.getElementById('refreshBtn').addEventListener('click', function () { loadAll(); });
+
+      document.getElementById('exportBtn').addEventListener('click', function () {
+        var list = currentFilteredOrders();
+        if (!list.length) {
+          alert('No orders to download.');
+          return;
+        }
+        var blob = new Blob([ordersToCsv(list)], { type: 'text/csv;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'zeronic-orders-' + new Date().toISOString().slice(0, 10) + '.csv';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      });
 
       /* If a password is already in this tab, try it straight away. */
       if (getPassword()) {

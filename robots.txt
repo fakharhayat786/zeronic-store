@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /checkout
+Disallow: /track-order
 Disallow: /api/
 
 Sitemap: https://zeronicpk.store/sitemap.xml

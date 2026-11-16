@@ -22,10 +22,19 @@ Express server, with a real COD checkout and a simple orders dashboard.
 - **Real cart** — saved in the browser (`localStorage`), shared across all
   pages, with quantity and colour, subtotal and remove. The header badge and
   the cart drawer always show the same cart.
-- **COD checkout on the site** — `/checkout`: name, phone, address, city,
-  order summary, Cash on Delivery only. Orders get a number (`ZN-1001`,
+- **COD checkout on the site** — `/checkout`: name, phone, optional
+  email, address, city, order summary, Cash on Delivery only. Orders get a number (`ZN-1001`,
   counting up) and a confirmation page. The server re-prices every order
   from `products.json`, so prices cannot be tampered with in the browser.
+- **Order tracking** — `/track-order`: customers enter their order
+  number and the phone number used at checkout, and see the order
+  status, items and total. No name or address is shown, and wrong
+  details get one generic message, so the page cannot be used to
+  probe other people's orders. The checkout confirmation page links
+  straight to it.
+- **CSV backup** — `/admin` has a "Download CSV" button that saves the
+  orders currently shown (search and status filters apply — clear
+  them first for a full backup).
 - **Orders dashboard** — `/admin`: sign in with the admin password, view
   orders newest-first, search by order number / name / phone, and change
   each order's status (New → Confirmed → Shipped → Delivered / Cancelled).
@@ -84,6 +93,7 @@ Then open these in your browser (plain text, copy-paste friendly):
 ```
 http://localhost:3000/
 http://localhost:3000/checkout
+http://localhost:3000/track-order
 http://localhost:3000/admin
 ```
 
@@ -91,8 +101,49 @@ http://localhost:3000/admin
   access until the variable is set and the server is restarted.
 - The GitHub preview link only shows the static design — the Express
   server (checkout, orders, admin) does **not** run there. Test the
-  store with `node server.js` as above. Launching live later needs a
-  Node host (for example Render or Railway) plus the domain.
+  store with `node server.js` as above. To launch live, see
+  "Deploying live (Render)" below.
+
+## Deploying live (Render)
+
+`render.yaml` at the repo root is a Render Blueprint: it tells Render
+to run this repo as a Node web service (`npm install`, then
+`node server.js`), with `ADMIN_PASSWORD` prompted at setup and never
+stored in git.
+
+1. Push the latest code to GitHub `main` (already done for the current
+   code).
+2. Create a free account at render.com, then **New > Blueprint** and
+   connect this repository. Render reads `render.yaml` and asks for
+   `ADMIN_PASSWORD` — choose a strong password you have not used
+   anywhere else. If a region choice is offered, pick Frankfurt: it is
+   closer to visitors in Pakistan than the default.
+3. Deploy. Render gives you a public address like
+   `https://zeronic-store.onrender.com`. Open it and test: place a
+   test order, track it, and sign in to `/admin`.
+4. After buying the domain (`zeronicpk.store`), add it in the Render
+   dashboard under **Settings > Custom Domains**, then set the DNS
+   record at your registrar exactly as Render instructs (a CNAME).
+   Render issues the HTTPS certificate automatically — always use the
+   `https://` address.
+5. If the canonical domain ends up different from `zeronicpk.store`,
+   update the URLs first — see "Domain assumption" at the top.
+
+Free-plan limits to know before taking real orders:
+
+- The service **sleeps after about 15 minutes without traffic**; the
+  first visit after that is slow while it wakes up.
+- The filesystem is **ephemeral**: orders saved in `./data/` can
+  disappear when the service restarts or redeploys. Download the CSV
+  backup from `/admin` regularly, and move to a database before real
+  customer volume. (Render persistent disks need a paid plan.)
+- To rotate the admin password, change `ADMIN_PASSWORD` in the Render
+  dashboard — `sync: false` variables are ignored on later Blueprint
+  updates, so the dashboard is the place.
+
+Railway works the same way (new project from the GitHub repo, start
+command `node server.js`, set `ADMIN_PASSWORD`); pick one host, not
+both.
 
 ## How orders are stored (please read before launch)
 
@@ -143,6 +194,9 @@ products.json           Catalogue (single source of truth) + settings
 index.html              Homepage
 product.html            Product detail page (ZERONIC Flex)
 checkout.html           COD checkout + order confirmation
+track-order.html        Order tracking (order number + phone)
+render.yaml             Render Blueprint (Node web service + ADMIN_PASSWORD prompt)
+package-lock.json       Pinned dependency versions for reproducible deploys
 admin.html              Orders / messages / reviews / subscribers dashboard
 contact-us.html         Contact page (real form -> /api/contact)
 privacy-policy.html     Privacy policy
@@ -161,7 +215,9 @@ data/                   Runtime order/message data (git-ignored, created on firs
 ## API summary
 
 - `GET /api/products` — catalogue JSON (public).
-- `POST /api/orders` — `{ customer: { name, phone, address, city, notes? }, items: [{ sku, colour, qty }] }` → `201 { order }`. Server-side pricing and Pakistani-mobile validation.
+- `POST /api/orders` — `{ customer: { name, phone, email?, address, city, notes? }, items: [{ sku, colour, qty }] }` → `201 { order }`. Server-side pricing and Pakistani-mobile validation; the email is optional and validated only when given.
+- `GET /api/track?number=ZN-1001&phone=03XX...` — order status + items + totals only (no name/address). Wrong number, wrong phone or no match all return the same generic 404.
+- `GET /healthz` — `{ ok: true }` for hosting health checks.
 - `POST /api/contact` — `{ name, email, phone?, subject?, message }`.
 - `POST /api/subscribe` — `{ email }` (duplicates return `already: true`).
 - `POST /api/reviews` — `{ name, rating (1-5), text, sku? }` → stored as `pending` for moderation; visible only in `/admin`.

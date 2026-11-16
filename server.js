@@ -227,6 +227,7 @@ app.post('/api/orders', (req, res) => {
 
   const name = cleanText(customer.name, 100);
   const phoneRaw = cleanText(customer.phone, 20);
+  const email = cleanText(customer.email, 200);
   const address = cleanText(customer.address, 500);
   const city = cleanText(customer.city, 100);
   const notes = cleanText(customer.notes, 500);
@@ -234,6 +235,9 @@ app.post('/api/orders', (req, res) => {
   if (name.length < 2) return badRequest(res, 'Please enter your full name.', 'name');
   if (!isValidPakistaniMobile(phoneRaw)) {
     return badRequest(res, 'Please enter a valid Pakistani mobile number, e.g. 03XX-XXXXXXX.', 'phone');
+  }
+  if (email && !isValidEmail(email)) {
+    return badRequest(res, 'Please enter a valid email address, or leave it blank.', 'email');
   }
   if (address.length < 10) return badRequest(res, 'Please enter your complete delivery address.', 'address');
   if (city.length < 2) return badRequest(res, 'Please enter your city.', 'city');
@@ -272,7 +276,7 @@ app.post('/api/orders', (req, res) => {
     id: crypto.randomUUID(),
     number,
     seq,
-    customer: { name, phone: normalizePhone(phoneRaw), address, city, notes },
+    customer: { name, phone: normalizePhone(phoneRaw), email, address, city, notes },
     items: pricedItems,
     subtotal,
     deliveryFee: DELIVERY_FEE,
@@ -358,6 +362,36 @@ app.post('/api/reviews', (req, res) => {
   });
   writeJsonFile('reviews.json', reviews);
   return res.status(201).json({ ok: true });
+});
+
+/* Order tracking: order number + the phone used at checkout. Returns only
+   status and order summary — never the customer's name or address. Every
+   failure (bad number, bad phone, no match) gets the same generic 404 so
+   the endpoint cannot be used to probe which orders exist. Rate-limited
+   with the rest of /api/*. */
+app.get('/api/track', (req, res) => {
+  const noMatch = 'No order matches these details. Please check the order number and phone number.';
+  const rawNumber = String(req.query.number || '').trim().toUpperCase();
+  const phoneRaw = cleanText(req.query.phone, 20);
+  if (!/^ZN-\d+$/.test(rawNumber)) return res.status(404).json({ error: noMatch });
+  if (!isValidPakistaniMobile(phoneRaw)) return res.status(404).json({ error: noMatch });
+  const orders = readJsonFile('orders.json', []);
+  const order = orders.find((o) => o.number === rawNumber);
+  if (!order || normalizePhone(order.customer.phone) !== normalizePhone(phoneRaw)) {
+    return res.status(404).json({ error: noMatch });
+  }
+  return res.json({
+    order: {
+      number: order.number,
+      status: order.status,
+      createdAt: order.createdAt,
+      items: order.items,
+      subtotal: order.subtotal,
+      deliveryFee: order.deliveryFee,
+      total: order.total,
+      payment: order.payment,
+    },
+  });
 });
 
 /* ------------------------------------------------------------------ */
@@ -450,6 +484,11 @@ function sendPage(file) {
   };
 }
 
+// Health check for hosting platforms (Render healthCheckPath: /healthz).
+app.get('/healthz', (req, res) => {
+  res.json({ ok: true });
+});
+
 // Page routes — clean canonical URLs only (see the redirect map above).
 app.get('/', sendPage('index.html'));
 app.get('/privacy-policy', sendPage('privacy-policy.html'));
@@ -461,6 +500,9 @@ app.get('/product', sendPage('product.html'));
 
 // Checkout page route (COD checkout on the site itself; .html kept working)
 app.get(['/checkout', '/checkout.html'], sendPage('checkout.html'));
+
+// Track-order page route (utility page; .html kept working, noindex)
+app.get(['/track-order', '/track-order.html'], sendPage('track-order.html'));
 
 // Admin dashboard route (orders, messages, reviews, subscribers)
 app.get(['/admin', '/admin.html'], sendPage('admin.html'));

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Your Order | ZERONIC Pakistan</title>
+  <meta name="description" content="Track your ZERONIC order with your order number and phone number. See whether your Cash on Delivery order is confirmed, shipped or delivered." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; color: #111; background: #fff; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(720px, calc(100% - 40px)); margin: 0 auto; }
+    .co-header { border-bottom: 1px solid #eee; padding: 18px 0; }
+    .co-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .co-secure { font-size: 13px; font-weight: 600; color: #6b7280; }
+    .co-main { padding: 36px 0 64px; }
+    h1 { font-family: "Manrope", sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .co-sub { color: #6b7280; font-size: 14.5px; margin-bottom: 28px; }
+    .co-card { border: 1px solid #eee; border-radius: 16px; padding: 24px; }
+    .co-card h2 { font-size: 17px; font-weight: 800; margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 700; margin: 14px 0 6px; }
+    label:first-of-type { margin-top: 0; }
+    input { width: 100%; padding: 11px 14px; border: 1px solid #d1d5db; border-radius: 10px; font: inherit; font-size: 14.5px; background: #fff; color: #111; }
+    input:focus { outline: 2px solid #111; outline-offset: 1px; border-color: #111; }
+    .co-hint { font-size: 12.5px; color: #6b7280; margin-top: 5px; }
+    .co-error { display: none; background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; border-radius: 12px; padding: 12px 16px; font-size: 14px; margin-top: 18px; }
+    .co-error.active { display: block; }
+    .co-submit { width: 100%; margin-top: 20px; min-height: 52px; border: 0; border-radius: 999px; background: #111; color: #fff; font: inherit; font-size: 14.5px; font-weight: 700; cursor: pointer; }
+    .co-submit:disabled { opacity: .6; cursor: wait; }
+    .tr-result { margin-top: 20px; }
+    .tr-top { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+    .tr-no { font-size: 18px; font-weight: 800; }
+    .tr-date { font-size: 12.5px; color: #6b7280; }
+    .status-pill { display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; background: #fef3c7; color: #92400e; }
+    .status-pill.Confirmed { background: #dbeafe; color: #1e40af; }
+    .status-pill.Shipped { background: #e0e7ff; color: #3730a3; }
+    .status-pill.Delivered { background: #d1fae5; color: #065f46; }
+    .status-pill.Cancelled { background: #fee2e2; color: #991b1b; }
+    .tr-message { font-size: 14.5px; margin-top: 10px; }
+    .tr-items { font-size: 13.5px; color: #374151; margin-top: 14px; background: #f8f9fa; border-radius: 10px; padding: 12px 14px; }
+    .tr-items div { padding: 2px 0; }
+    .tr-total { font-size: 15px; font-weight: 800; margin-top: 12px; }
+    .tr-help { margin-top: 18px; font-size: 13.5px; color: #6b7280; }
+    .tr-help a { color: #0062d8; font-weight: 600; text-decoration: underline; }
+    .co-footer { border-top: 1px solid #eee; padding: 24px 0 40px; font-size: 13px; color: #6b7280; }
+    .co-footer a { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header class="co-header">
+    <div class="container co-header-inner">
+      <a href="index.html" aria-label="ZERONIC home">
+        <img src="assets/logo.svg" alt="ZERONIC" width="115" height="20" />
+      </a>
+      <span class="co-secure">Order tracking</span>
+    </div>
+  </header>
+
+  <main class="co-main">
+    <div class="container">
+      <h1>Track Your Order</h1>
+      <p class="co-sub">Enter your order number and the phone number you used at checkout.</p>
+
+      <section class="co-card" aria-label="Track your order">
+        <h2>Find your order</h2>
+        <form id="trackForm" novalidate>
+          <label for="trNumber">Order number *</label>
+          <input id="trNumber" name="number" type="text" autocomplete="off" required maxlength="20" placeholder="e.g. ZN-1001" />
+
+          <label for="trPhone">Phone number *</label>
+          <input id="trPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="03XX-XXXXXXX" />
+          <p class="co-hint">The same mobile number you entered when placing the order.</p>
+
+          <div id="trError" class="co-error" role="alert"></div>
+
+          <button id="trSubmit" class="co-submit" type="submit">Track Order</button>
+        </form>
+
+        <div id="trResult" class="tr-result" style="display:none;"></div>
+      </section>
+
+      <p class="tr-help">Cannot find your order, or lost your order number? Call or WhatsApp us at <a href="tel:+923420672554">+92 342 0672554</a> or email <a href="mailto:support@zeronicpk.store">support@zeronicpk.store</a> (Mon–Sat, 8:00 AM – 6:00 PM).</p>
+    </div>
+  </main>
+
+  <footer class="co-footer">
+    <div class="container">
+      ZERONIC Pakistan &middot; <a href="tel:+923420672554">+92 342 0672554</a> &middot; <a href="mailto:support@zeronicpk.store">support@zeronicpk.store</a> &middot; <a href="shipping-policy.html">Shipping Policy</a> &middot; <a href="returns-policy.html">Returns &amp; Refunds</a> &middot; <a href="terms-of-service.html">Terms of Service</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="contact-us.html">Contact Us</a> &middot; <a href="track-order.html">Track Order</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var form = document.getElementById('trackForm');
+      var errorBox = document.getElementById('trError');
+      var submitBtn = document.getElementById('trSubmit');
+      var resultBox = document.getElementById('trResult');
+
+      var STATUS_MESSAGES = {
+        New: 'We have received your order and will confirm it soon.',
+        Confirmed: 'Your order is confirmed and is being prepared for dispatch.',
+        Shipped: 'Your order is on its way. The courier will contact you when it arrives.',
+        Delivered: 'Your order has been delivered. Thank you for shopping with ZERONIC!',
+        Cancelled: 'This order was cancelled. Please contact us if you have any questions.'
+      };
+
+      function money(n) {
+        return 'Rs.' + Number(n || 0).toLocaleString('en-US');
+      }
+
+      function fmtDate(iso) {
+        try {
+          return new Date(iso).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        } catch (e) {
+          return iso || '';
+        }
+      }
+
+      function el(tag, className, text) {
+        var node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text !== undefined && text !== null) node.textContent = text;
+        return node;
+      }
+
+      function validPhone(raw) {
+        var digits = String(raw || '').replace(/[^\d]/g, '');
+        if (digits.startsWith('92')) digits = '0' + digits.slice(2);
+        return /^03\d{9}$/.test(digits);
+      }
+
+      function showError(message) {
+        errorBox.textContent = message;
+        errorBox.classList.add('active');
+        resultBox.style.display = 'none';
+        resultBox.innerHTML = '';
+      }
+
+      function renderOrder(order) {
+        errorBox.classList.remove('active');
+        resultBox.innerHTML = '';
+
+        var top = el('div', 'tr-top');
+        top.appendChild(el('span', 'tr-no', 'Order ' + order.number));
+        top.appendChild(el('span', 'status-pill ' + order.status, order.status));
+        top.appendChild(el('span', 'tr-date', fmtDate(order.createdAt)));
+        resultBox.appendChild(top);
+
+        resultBox.appendChild(el('p', 'tr-message', STATUS_MESSAGES[order.status] || 'Your order status: ' + order.status));
+
+        var itemsBox = el('div', 'tr-items');
+        (order.items || []).forEach(function (item) {
+          itemsBox.appendChild(el('div', null, item.name + (item.colour ? ' (' + item.colour + ')' : '') + ' × ' + item.qty + ' — ' + money(item.lineTotal)));
+        });
+        itemsBox.appendChild(el('div', null, 'Subtotal ' + money(order.subtotal) + ' · Delivery ' + (order.deliveryFee > 0 ? money(order.deliveryFee) : 'Free')));
+        resultBox.appendChild(itemsBox);
+
+        resultBox.appendChild(el('p', 'tr-total', 'Total (Cash on Delivery): ' + money(order.total)));
+        resultBox.style.display = '';
+      }
+
+      function lookup(number, phone) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Checking...';
+        fetch('/api/track?number=' + encodeURIComponent(number) + '&phone=' + encodeURIComponent(phone))
+          .then(function (res) {
+            return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+          })
+          .then(function (result) {
+            if (!result.ok || !result.data.order) {
+              showError((result.data && result.data.error) || 'No order matches these details. Please check the order number and phone number.');
+              return;
+            }
+            renderOrder(result.data.order);
+          })
+          .catch(function () {
+            showError('Could not reach the server. Please check your connection and try again.');
+          })
+          .finally(function () {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Track Order';
+          });
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorBox.classList.remove('active');
+        var number = document.getElementById('trNumber').value.trim();
+        var phone = document.getElementById('trPhone').value.trim();
+        if (!number) return showError('Please enter your order number, e.g. ZN-1001.');
+        if (!validPhone(phone)) return showError('Please enter a valid Pakistani mobile number, e.g. 03XX-XXXXXXX.');
+        lookup(number, phone);
+      });
+
+      /* Prefill from the checkout confirmation link (?number=…&phone=…) and look up straight away. */
+      var params = new URLSearchParams(window.location.search);
+      var preNumber = (params.get('number') || '').trim();
+      var prePhone = (params.get('phone') || '').trim();
+      if (preNumber) document.getElementById('trNumber').value = preNumber;
+      if (prePhone) document.getElementById('trPhone').value = prePhone;
+      if (preNumber && validPhone(prePhone)) lookup(preNumber, prePhone);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# Render Blueprint — deploys ZERONIC as a Node web service.
+# In the Render dashboard: New > Blueprint > connect this repo.
+# Render reads this file and asks for ADMIN_PASSWORD on first deploy
+# (marked sync: false below, so the secret is never stored in git).
+# The custom domain is added later in the dashboard, after it is bought —
+# do not add a domains: section here until the domain exists.
+services:
+  - type: web
+    name: zeronic-store
+    runtime: node
+    plan: free
+    branch: main
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_PASSWORD
+        sync: false

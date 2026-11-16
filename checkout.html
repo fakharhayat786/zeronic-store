@@ -93,6 +93,10 @@
               <input id="coPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="03XX-XXXXXXX" />
               <p class="co-hint">Our team will call this number to confirm your order.</p>
 
+              <label for="coEmail">Email (optional)</label>
+              <input id="coEmail" name="email" type="email" autocomplete="email" maxlength="200" placeholder="you@example.com" />
+              <p class="co-hint">Optional. We only use it if we need to reach you about this order.</p>
+
               <label for="coAddress">Complete address *</label>
               <textarea id="coAddress" name="address" autocomplete="street-address" required maxlength="500" placeholder="House / street / area"></textarea>
 
@@ -132,14 +136,17 @@
         <div><span class="co-done-number" id="doneOrderNumber"></span></div>
         <p id="doneSummary"></p>
         <p style="margin-top:10px;">Questions? Call or WhatsApp us at <a href="tel:+923420672554">+92 342 0672554</a>.</p>
-        <a class="co-btn" href="index.html">Continue Shopping</a>
+        <div>
+          <a id="doneTrackLink" class="co-btn" href="track-order.html" style="background:#fff;color:#111;border:1px solid #d1d5db;">Track Your Order</a>
+          <a class="co-btn" href="index.html" style="margin-left:10px;">Continue Shopping</a>
+        </div>
       </div>
     </div>
   </main>
 
   <footer class="co-footer">
     <div class="container">
-      ZERONIC Pakistan &middot; <a href="tel:+923420672554">+92 342 0672554</a> &middot; <a href="mailto:support@zeronicpk.store">support@zeronicpk.store</a> &middot; <a href="shipping-policy.html">Shipping Policy</a> &middot; <a href="returns-policy.html">Returns &amp; Refunds</a> &middot; <a href="terms-of-service.html">Terms of Service</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="contact-us.html">Contact Us</a>
+      ZERONIC Pakistan &middot; <a href="tel:+923420672554">+92 342 0672554</a> &middot; <a href="mailto:support@zeronicpk.store">support@zeronicpk.store</a> &middot; <a href="shipping-policy.html">Shipping Policy</a> &middot; <a href="returns-policy.html">Returns &amp; Refunds</a> &middot; <a href="terms-of-service.html">Terms of Service</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="contact-us.html">Contact Us</a> &middot; <a href="track-order.html">Track Order</a>
     </div>
   </footer>
 
@@ -231,9 +238,11 @@
         var address = document.getElementById('coAddress').value.trim();
         var city = document.getElementById('coCity').value.trim();
         var notes = document.getElementById('coNotes').value.trim();
+        var email = document.getElementById('coEmail').value.trim();
 
         if (name.length < 2) return showError('Please enter your full name.', 'coName');
         if (!validPhone(phone)) return showError('Please enter a valid Pakistani mobile number, e.g. 03XX-XXXXXXX.', 'coPhone');
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Please enter a valid email address, or leave it blank.', 'coEmail');
         if (address.length < 10) return showError('Please enter your complete delivery address.', 'coAddress');
         if (city.length < 2) return showError('Please enter your city.', 'coCity');
 
@@ -244,7 +253,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            customer: { name: name, phone: phone, address: address, city: city, notes: notes },
+            customer: { name: name, phone: phone, email: email, address: address, city: city, notes: notes },
             items: cart.map(function (line) { return { sku: line.sku, colour: line.colour, qty: line.qty }; })
           })
         })
@@ -253,13 +262,14 @@
           })
           .then(function (result) {
             if (!result.ok) {
-              var fieldMap = { name: 'coName', phone: 'coPhone', address: 'coAddress', city: 'coCity' };
+              var fieldMap = { name: 'coName', phone: 'coPhone', email: 'coEmail', address: 'coAddress', city: 'coCity' };
               showError((result.data && result.data.error) || 'Could not place your order. Please try again.', fieldMap[result.data && result.data.field]);
               return;
             }
             var order = result.data.order;
             window.Zeronic.clearCart();
             document.getElementById('doneOrderNumber').textContent = 'Order ' + order.number;
+            document.getElementById('doneTrackLink').href = 'track-order.html?number=' + encodeURIComponent(order.number) + '&phone=' + encodeURIComponent(order.customer.phone);
             document.getElementById('doneSummary').textContent =
               'Total: ' + money(order.total) + ' (Cash on Delivery) · ' + order.items.length + ' item(s) · Deliver to: ' + order.customer.name + ', ' + order.customer.city + '.';
             checkoutView.style.display = 'none';
