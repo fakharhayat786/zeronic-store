@@ -3455,7 +3455,7 @@
       <!-- NEWSLETTER SECTION -->
       <div class="mcard__news">
         <h3 class="mcard__news-heading">Get exclusive offer and updates</h3>
-        <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="contact-form" novalidate="novalidate">
+        <form id="contact_form" class="contact-form" novalidate="novalidate">
           <input type="hidden" name="form_type" value="customer" />
           <input type="hidden" name="utf8" value="✓" />
           <input type="hidden" name="contact[tags]" value="newsletter">
@@ -3643,9 +3643,9 @@
         <span>Subtotal:</span>
         <span id="cartSubtotalText">Rs.4,950</span>
       </div>
-      <button type="button" class="btn-checkout-now" onclick="alert('Order placed successfully! Our team will contact you for Cash on Delivery confirmation.');">
+      <a href="checkout.html" class="btn-checkout-now" style="display:flex;align-items:center;justify-content:center;min-height:50px;padding:0 28px;border-radius:999px;background:#111111;color:#ffffff;font-size:13px;font-weight:600;text-decoration:none;width:100%;box-sizing:border-box;">
         Checkout (Cash on Delivery)
-      </button>
+      </a>
     </div>
   </aside>
 
@@ -3683,6 +3683,7 @@
   <!-- =========================================================
        JAVASCRIPT
   ========================================================= -->
+  <script src="assets/js/zeronic.js"></script>
   <script>
     const UNIT_PRICE = 4950;
     let qty = 1;
@@ -3833,22 +3834,47 @@
     const mmcBtnAction = document.getElementById("mmcBtnAction");
 
     function updateCartUI() {
+      if (window.Zeronic) {
+        window.Zeronic.renderCart();
+        return;
+      }
+      // Fallback if the shared cart script failed to load: show the current
+      // selection as a single cart line (no persistence in this case).
       const total = qty * UNIT_PRICE;
       const formatted = `Rs.${total.toLocaleString("en-US")}`;
-      document.getElementById("cartCount").textContent = qty;
-      document.getElementById("cartItemRow").style.display = "flex";
-      document.getElementById("emptyCartNotice").style.display = "none";
-      document.getElementById("cartFooter").style.display = "block";
-      document.getElementById("cartItemImg").src = selectedImg;
-      document.getElementById("cartItemMeta").textContent = `Color: ${selectedColor}`;
-      document.getElementById("cartRowPrice").textContent = formatted;
-      document.getElementById("cartRowQty").textContent = `Qty: ${qty}`;
-      document.getElementById("cartSubtotalText").textContent = formatted;
+      const setText = (id, value) => { const node = document.getElementById(id); if (node) node.textContent = value; };
+      const show = (id, display) => { const node = document.getElementById(id); if (node) node.style.display = display; };
+      setText("cartCount", String(qty));
+      show("cartItemRow", "flex");
+      show("emptyCartNotice", "none");
+      show("cartFooter", "block");
+      const img = document.getElementById("cartItemImg");
+      if (img) img.src = selectedImg;
+      setText("cartItemMeta", `Color: ${selectedColor}`);
+      setText("cartRowPrice", formatted);
+      setText("cartRowQty", `Qty: ${qty}`);
+      setText("cartSubtotalText", formatted);
     }
 
-    btnAddToCart?.addEventListener("click", openCart);
-    btnBuyNow?.addEventListener("click", openCart);
-    mmcBtnAction?.addEventListener("click", openCart);
+    function addCurrentSelectionToCart() {
+      if (window.Zeronic) {
+        window.Zeronic.addToCart("flex", qty, selectedColor);
+      }
+      updateCartUI();
+    }
+
+    btnAddToCart?.addEventListener("click", () => {
+      addCurrentSelectionToCart();
+      openCart();
+    });
+    btnBuyNow?.addEventListener("click", () => {
+      addCurrentSelectionToCart();
+      window.location.href = "checkout.html";
+    });
+    mmcBtnAction?.addEventListener("click", () => {
+      addCurrentSelectionToCart();
+      openCart();
+    });
 
     // 6. Mobile Mini Sticky CTA Bar Scroll Trigger
     const mobileMiniCta = document.getElementById("mobile-mini-cta");

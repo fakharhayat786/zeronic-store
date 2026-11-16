@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Orders | ZERONIC</title>
+  <meta name="description" content="ZERONIC store admin: orders, messages and subscribers." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; color: #111; background: #f8f9fa; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .container { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+    header { background: #fff; border-bottom: 1px solid #eee; padding: 16px 0; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { font-weight: 800; font-size: 18px; letter-spacing: -0.01em; }
+    .brand span { color: #6b7280; font-weight: 600; font-size: 13px; margin-left: 6px; }
+    main { padding: 28px 0 64px; }
+    .card { background: #fff; border: 1px solid #eee; border-radius: 16px; padding: 22px; }
+    h1 { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+    h2 { font-size: 17px; font-weight: 800; margin-bottom: 12px; }
+    p.muted { color: #6b7280; font-size: 14px; }
+    label { display: block; font-size: 13px; font-weight: 700; margin: 14px 0 6px; }
+    input, select { width: 100%; padding: 10px 13px; border: 1px solid #d1d5db; border-radius: 10px; font: inherit; font-size: 14.5px; background: #fff; color: #111; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: #111; color: #fff; border: 0; font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; text-decoration: none; }
+    .btn.secondary { background: #fff; color: #111; border: 1px solid #d1d5db; }
+    .btn.small { min-height: 36px; padding: 0 16px; font-size: 12.5px; }
+    .btn:disabled { opacity: .6; cursor: wait; }
+    .alert { display: none; border-radius: 12px; padding: 12px 16px; font-size: 14px; margin-top: 14px; }
+    .alert.active { display: block; }
+    .alert.error { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
+    .alert.info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; }
+    .login-wrap { max-width: 440px; margin: 0 auto; }
+    .tabs { display: flex; gap: 8px; margin: 20px 0 16px; flex-wrap: wrap; }
+    .tab { border: 1px solid #d1d5db; background: #fff; border-radius: 999px; padding: 8px 18px; font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; color: #111; }
+    .tab.active { background: #111; color: #fff; border-color: #111; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    @media (max-width: 640px) { .stats { grid-template-columns: 1fr 1fr; } }
+    .stat { background: #fff; border: 1px solid #eee; border-radius: 14px; padding: 16px; }
+    .stat .num { font-size: 22px; font-weight: 800; }
+    .stat .lbl { font-size: 12.5px; color: #6b7280; font-weight: 600; }
+    .toolbar { display: grid; grid-template-columns: 1fr 190px auto; gap: 10px; margin-bottom: 16px; align-items: end; }
+    @media (max-width: 640px) { .toolbar { grid-template-columns: 1fr; } }
+    .toolbar label { margin-top: 0; }
+    .order { background: #fff; border: 1px solid #eee; border-radius: 14px; padding: 18px; margin-bottom: 12px; }
+    .order-top { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+    .order-no { font-size: 16px; font-weight: 800; }
+    .order-date { font-size: 12.5px; color: #6b7280; }
+    .order-total { margin-left: auto; font-size: 16px; font-weight: 800; white-space: nowrap; }
+    .order-meta { font-size: 14px; margin-top: 8px; }
+    .order-meta div { padding: 2px 0; }
+    .order-items { font-size: 13.5px; color: #374151; margin-top: 8px; background: #f8f9fa; border-radius: 10px; padding: 10px 12px; }
+    .order-actions { display: flex; gap: 10px; margin-top: 12px; align-items: center; flex-wrap: wrap; }
+    .order-actions select { width: auto; min-width: 170px; }
+    .status-pill { display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; background: #fef3c7; color: #92400e; }
+    .status-pill.Confirmed { background: #dbeafe; color: #1e40af; }
+    .status-pill.Shipped { background: #e0e7ff; color: #3730a3; }
+    .status-pill.Delivered { background: #d1fae5; color: #065f46; }
+    .status-pill.Cancelled { background: #fee2e2; color: #991b1b; }
+    .empty-note { text-align: center; color: #6b7280; font-size: 14.5px; padding: 36px 12px; background: #fff; border: 1px dashed #d1d5db; border-radius: 14px; }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="brand">ZERONIC <span>Admin</span></div>
+      <div>
+        <a class="btn small secondary" href="index.html">View Store</a>
+        <button id="logoutBtn" class="btn small secondary" type="button" style="display:none;">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- LOGIN -->
+      <section id="loginView" class="login-wrap">
+        <div class="card">
+          <h1>Admin sign in</h1>
+          <p class="muted">Enter the admin password set on the server (<code>ADMIN_PASSWORD</code>). It is only kept in this browser tab and is never saved permanently.</p>
+          <form id="loginForm">
+            <label for="adminPw">Admin password</label>
+            <input id="adminPw" type="password" autocomplete="current-password" required />
+            <div id="loginError" class="alert error" role="alert"></div>
+            <div id="loginSetup" class="alert info"></div>
+            <button class="btn" type="submit" style="margin-top:18px;width:100%;">Sign in</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- DASHBOARD -->
+      <section id="dashView" style="display:none;">
+        <h1>Orders &amp; enquiries</h1>
+        <p class="muted">Orders placed on the website appear here. Change an order's status when you confirm, ship or deliver it.</p>
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" type="button" data-tab="orders">Orders</button>
+          <button class="tab" type="button" data-tab="messages">Messages</button>
+          <button class="tab" type="button" data-tab="subscribers">Subscribers</button>
+        </div>
+
+        <div id="tabOrders">
+          <div class="stats">
+            <div class="stat"><div class="num" id="statTotal">0</div><div class="lbl">Total orders</div></div>
+            <div class="stat"><div class="num" id="statNew">0</div><div class="lbl">New (need confirmation)</div></div>
+            <div class="stat"><div class="num" id="statSales">Rs.0</div><div class="lbl">Sales (excl. cancelled)</div></div>
+          </div>
+          <div class="toolbar">
+            <div>
+              <label for="searchInput">Search</label>
+              <input id="searchInput" type="search" placeholder="Order number, name or phone" />
+            </div>
+            <div>
+              <label for="statusFilter">Status</label>
+              <select id="statusFilter">
+                <option value="">All statuses</option>
+                <option>New</option>
+                <option>Confirmed</option>
+                <option>Shipped</option>
+                <option>Delivered</option>
+                <option>Cancelled</option>
+              </select>
+            </div>
+            <button id="refreshBtn" class="btn secondary" type="button">Refresh</button>
+          </div>
+          <div id="ordersError" class="alert error" role="alert"></div>
+          <div id="ordersList"></div>
+        </div>
+
+        <div id="tabMessages" style="display:none;">
+          <div id="messagesList"></div>
+        </div>
+
+        <div id="tabSubscribers" style="display:none;">
+          <div id="subscribersList"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var PW_KEY = 'zn_admin_pw';
+      var STATUSES = ['New', 'Confirmed', 'Shipped', 'Delivered', 'Cancelled'];
+      var orders = [];
+      var messages = [];
+      var subscribers = [];
+
+      var loginView = document.getElementById('loginView');
+      var dashView = document.getElementById('dashView');
+      var loginForm = document.getElementById('loginForm');
+      var loginError = document.getElementById('loginError');
+      var loginSetup = document.getElementById('loginSetup');
+      var logoutBtn = document.getElementById('logoutBtn');
+
+      function getPassword() {
+        try { return window.sessionStorage.getItem(PW_KEY) || ''; } catch (e) { return ''; }
+      }
+
+      function setPassword(pw) {
+        try { window.sessionStorage.setItem(PW_KEY, pw); } catch (e) { /* ignore */ }
+      }
+
+      function clearPassword() {
+        try { window.sessionStorage.removeItem(PW_KEY); } catch (e) { /* ignore */ }
+      }
+
+      function money(n) {
+        return 'Rs.' + Number(n || 0).toLocaleString('en-US');
+      }
+
+      function fmtDate(iso) {
+        try {
+          return new Date(iso).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        } catch (e) {
+          return iso || '';
+        }
+      }
+
+      function el(tag, className, text) {
+        var node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text !== undefined && text !== null) node.textContent = text;
+        return node;
+      }
+
+      function api(path, options) {
+        options = options || {};
+        options.headers = Object.assign({ 'x-admin-password': getPassword() }, options.headers || {});
+        return fetch(path, options).then(function (res) {
+          return res.json().then(function (data) { return { ok: res.ok, status: res.status, data: data }; });
+        });
+      }
+
+      function showLogin(errorText, setupText) {
+        dashView.style.display = 'none';
+        logoutBtn.style.display = 'none';
+        loginView.style.display = '';
+        loginError.textContent = errorText || '';
+        loginError.classList.toggle('active', !!errorText);
+        loginSetup.textContent = setupText || '';
+        loginSetup.classList.toggle('active', !!setupText);
+      }
+
+      function showDashboard() {
+        loginView.style.display = 'none';
+        dashView.style.display = '';
+        logoutBtn.style.display = '';
+      }
+
+      function loadAll() {
+        return Promise.all([
+          api('/api/admin/orders'),
+          api('/api/admin/messages'),
+          api('/api/admin/subscribers')
+        ]).then(function (results) {
+          var first = results[0];
+          if (first.status === 503) {
+            clearPassword();
+            showLogin('', 'Admin access is not set up on the server yet. Start the server with an ADMIN_PASSWORD set (see README.md), then sign in here.');
+            return false;
+          }
+          if (first.status === 401) {
+            clearPassword();
+            showLogin('Wrong password. Please try again.', '');
+            return false;
+          }
+          if (!first.ok) throw new Error((first.data && first.data.error) || 'Could not load orders.');
+          orders = first.data.orders || [];
+          messages = (results[1].ok && results[1].data.messages) || [];
+          subscribers = (results[2].ok && results[2].data.subscribers) || [];
+          renderOrders();
+          renderMessages();
+          renderSubscribers();
+          return true;
+        }).catch(function (err) {
+          var box = document.getElementById('ordersError');
+          box.textContent = err.message || 'Could not load data. Please try again.';
+          box.classList.add('active');
+          return true;
+        });
+      }
+
+      function renderOrders() {
+        document.getElementById('ordersError').classList.remove('active');
+        var total = orders.length;
+        var newCount = orders.filter(function (o) { return o.status === 'New'; }).length;
+        var sales = orders.filter(function (o) { return o.status !== 'Cancelled'; })
+          .reduce(function (sum, o) { return sum + (o.total || 0); }, 0);
+        document.getElementById('statTotal').textContent = String(total);
+        document.getElementById('statNew').textContent = String(newCount);
+        document.getElementById('statSales').textContent = money(sales);
+
+        var q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+        var statusFilter = document.getElementById('statusFilter').value;
+        var list = document.getElementById('ordersList');
+        list.innerHTML = '';
+
+        var filtered = orders.filter(function (o) {
+          if (statusFilter && o.status !== statusFilter) return false;
+          if (!q) return true;
+          var hay = ((o.number || '') + ' ' + (o.customer.name || '') + ' ' + (o.customer.phone || '') + ' ' + (o.customer.city || '')).toLowerCase();
+          return hay.indexOf(q) !== -1;
+        });
+
+        if (!filtered.length) {
+          var note = el('div', 'empty-note', total ? 'No orders match your search.' : 'No orders yet. Orders placed on the website will appear here.');
+          list.appendChild(note);
+          return;
+        }
+
+        filtered.forEach(function (order) {
+          var card = el('div', 'order');
+          var top = el('div', 'order-top');
+          top.appendChild(el('span', 'order-no', order.number || ''));
+          var pill = el('span', 'status-pill ' + order.status, order.status);
+          top.appendChild(pill);
+          top.appendChild(el('span', 'order-date', fmtDate(order.createdAt)));
+          top.appendChild(el('span', 'order-total', money(order.total)));
+          card.appendChild(top);
+
+          var meta = el('div', 'order-meta');
+          meta.appendChild(el('div', null, order.customer.name + ' · ' + order.customer.phone));
+          meta.appendChild(el('div', null, order.customer.address + ', ' + order.customer.city));
+          if (order.customer.notes) meta.appendChild(el('div', null, 'Notes: ' + order.customer.notes));
+          meta.appendChild(el('div', null, 'Payment: Cash on Delivery'));
+          card.appendChild(meta);
+
+          var itemsBox = el('div', 'order-items');
+          (order.items || []).forEach(function (item) {
+            itemsBox.appendChild(el('div', null, item.name + (item.colour ? ' (' + item.colour + ')' : '') + ' × ' + item.qty + ' — ' + money(item.lineTotal)));
+          });
+          itemsBox.appendChild(el('div', null, 'Subtotal ' + money(order.subtotal) + ' · Delivery ' + (order.deliveryFee > 0 ? money(order.deliveryFee) : 'Free') + ' · Total ' + money(order.total)));
+          card.appendChild(itemsBox);
+
+          var actions = el('div', 'order-actions');
+          actions.appendChild(el('span', 'muted', 'Status:'));
+          var select = document.createElement('select');
+          select.setAttribute('aria-label', 'Status for order ' + order.number);
+          STATUSES.forEach(function (s) {
+            var opt = document.createElement('option');
+            opt.value = s;
+            opt.textContent = s;
+            if (s === order.status) opt.selected = true;
+            select.appendChild(opt);
+          });
+          select.addEventListener('change', function () {
+            var next = select.value;
+            select.disabled = true;
+            api('/api/admin/orders/' + encodeURIComponent(order.id) + '/status', {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ status: next })
+            }).then(function (result) {
+              if (result.ok) {
+                order.status = next;
+                renderOrders();
+              } else {
+                select.value = order.status;
+                alert((result.data && result.data.error) || 'Could not update status.');
+              }
+            }).catch(function () {
+              select.value = order.status;
+              alert('Could not update status. Please try again.');
+            }).finally(function () {
+              select.disabled = false;
+            });
+          });
+          actions.appendChild(select);
+          var call = el('a', 'btn small secondary', 'Call customer');
+          call.href = 'tel:' + (order.customer.phone || '').replace(/[\s-]/g, '');
+          actions.appendChild(call);
+          card.appendChild(actions);
+
+          list.appendChild(card);
+        });
+      }
+
+      function renderMessages() {
+        var list = document.getElementById('messagesList');
+        list.innerHTML = '';
+        if (!messages.length) {
+          list.appendChild(el('div', 'empty-note', 'No contact messages yet.'));
+          return;
+        }
+        messages.forEach(function (m) {
+          var card = el('div', 'order');
+          var top = el('div', 'order-top');
+          top.appendChild(el('span', 'order-no', m.name || ''));
+          top.appendChild(el('span', 'order-date', fmtDate(m.createdAt)));
+          card.appendChild(top);
+          var meta = el('div', 'order-meta');
+          meta.appendChild(el('div', null, (m.email || '') + (m.phone ? ' · ' + m.phone : '')));
+          if (m.subject) meta.appendChild(el('div', null, 'Subject: ' + m.subject));
+          meta.appendChild(el('div', null, m.message || ''));
+          card.appendChild(meta);
+          list.appendChild(card);
+        });
+      }
+
+      function renderSubscribers() {
+        var list = document.getElementById('subscribersList');
+        list.innerHTML = '';
+        if (!subscribers.length) {
+          list.appendChild(el('div', 'empty-note', 'No newsletter subscribers yet.'));
+          return;
+        }
+        var card = el('div', 'order');
+        card.appendChild(el('h2', null, subscribers.length + ' subscriber(s)'));
+        subscribers.forEach(function (s) {
+          card.appendChild(el('div', 'order-meta', (s.email || '') + ' — ' + fmtDate(s.createdAt)));
+        });
+        list.appendChild(card);
+      }
+
+      loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var pw = document.getElementById('adminPw').value;
+        if (!pw) return;
+        setPassword(pw);
+        loginError.classList.remove('active');
+        loadAll().then(function (ok) {
+          if (ok) {
+            showDashboard();
+            document.getElementById('adminPw').value = '';
+          }
+        });
+      });
+
+      logoutBtn.addEventListener('click', function () {
+        clearPassword();
+        showLogin('', '');
+      });
+
+      document.querySelectorAll('.tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          document.querySelectorAll('.tab').forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          var name = tab.dataset.tab;
+          document.getElementById('tabOrders').style.display = name === 'orders' ? '' : 'none';
+          document.getElementById('tabMessages').style.display = name === 'messages' ? '' : 'none';
+          document.getElementById('tabSubscribers').style.display = name === 'subscribers' ? '' : 'none';
+        });
+      });
+
+      document.getElementById('searchInput').addEventListener('input', renderOrders);
+      document.getElementById('statusFilter').addEventListener('change', renderOrders);
+      document.getElementById('refreshBtn').addEventListener('click', function () { loadAll(); });
+
+      /* If a password is already in this tab, try it straight away. */
+      if (getPassword()) {
+        loadAll().then(function (ok) { if (ok) showDashboard(); });
+      } else {
+        showLogin('', '');
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -2070,7 +2070,7 @@
                 <span class="th-price">Rs.5,250.00</span>
                 <button
                   class="th-buy-btn"
-                  onclick="addToCart('ZERONIC Gaming Pods')"
+                  onclick="addToCart('gaming-pods')"
                   aria-label="Buy ZERONIC Gaming Pods"
                 >
                   Buy Now
@@ -2100,7 +2100,7 @@
                 <span class="th-price">Rs.6,490.00</span>
                 <button
                   class="th-buy-btn"
-                  onclick="addToCart('ZERONIC Pro Wireless')"
+                  onclick="addToCart('pro-wireless')"
                   aria-label="Buy ZERONIC Pro Wireless"
                 >
                   Buy Now
@@ -2318,7 +2318,7 @@
       <!-- NEWSLETTER SECTION -->
       <div class="mcard__news">
         <h3 class="mcard__news-heading">Get exclusive offer and updates</h3>
-        <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="contact-form" novalidate="novalidate">
+        <form id="contact_form" class="contact-form" novalidate="novalidate">
           <input type="hidden" name="form_type" value="customer" />
           <input type="hidden" name="utf8" value="✓" />
           <input type="hidden" name="contact[tags]" value="newsletter">
@@ -2503,6 +2503,7 @@
   <!-- =======================================================
        JAVASCRIPT FUNCTIONALITY
   ======================================================== -->
+  <script src="assets/js/zeronic.js"></script>
   <script>
     const overlay = document.getElementById("overlay");
     const sideMenu = document.getElementById("sideMenu");
@@ -2579,9 +2580,10 @@
     cartOpen.addEventListener("click", openCart);
     cartClose.addEventListener("click", closeCart);
 
-    function addToCart(productName) {
-      cartItems++;
-      cartCount.textContent = cartItems;
+    function addToCart(sku) {
+      if (window.Zeronic) {
+        window.Zeronic.addToCart(sku, 1);
+      }
       openCart();
     }
 

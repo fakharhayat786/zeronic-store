@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | ZERONIC Pakistan</title>
+  <meta name="description" content="Complete your ZERONIC order with Cash on Delivery anywhere in Pakistan." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; color: #111; background: #fff; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    .co-header { border-bottom: 1px solid #eee; padding: 18px 0; }
+    .co-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .co-secure { font-size: 13px; font-weight: 600; color: #6b7280; }
+    .co-main { padding: 36px 0 64px; }
+    h1 { font-family: "Manrope", sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .co-sub { color: #6b7280; font-size: 14.5px; margin-bottom: 28px; }
+    .co-grid { display: grid; grid-template-columns: 1fr 380px; gap: 32px; align-items: start; }
+    @media (max-width: 860px) { .co-grid { grid-template-columns: 1fr; } .co-summary { order: -1; } }
+    .co-card { border: 1px solid #eee; border-radius: 16px; padding: 24px; }
+    .co-card h2 { font-size: 17px; font-weight: 800; margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 700; margin: 14px 0 6px; }
+    label:first-of-type { margin-top: 0; }
+    input, textarea { width: 100%; padding: 11px 14px; border: 1px solid #d1d5db; border-radius: 10px; font: inherit; font-size: 14.5px; background: #fff; color: #111; }
+    textarea { resize: vertical; min-height: 72px; }
+    input:focus, textarea:focus { outline: 2px solid #111; outline-offset: 1px; border-color: #111; }
+    .co-hint { font-size: 12.5px; color: #6b7280; margin-top: 5px; }
+    .co-pay { border: 1px solid #111; border-radius: 12px; padding: 14px 16px; margin-top: 18px; background: #f8f9fa; }
+    .co-pay strong { font-size: 14.5px; }
+    .co-pay p { font-size: 13px; color: #6b7280; margin-top: 4px; }
+    .co-error { display: none; background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; border-radius: 12px; padding: 12px 16px; font-size: 14px; margin-top: 18px; }
+    .co-error.active { display: block; }
+    .co-submit { width: 100%; margin-top: 20px; min-height: 52px; border: 0; border-radius: 999px; background: #111; color: #fff; font: inherit; font-size: 14.5px; font-weight: 700; cursor: pointer; }
+    .co-submit:disabled { opacity: .6; cursor: wait; }
+    .co-back { display: inline-block; margin-top: 14px; font-size: 13.5px; font-weight: 600; text-decoration: underline; }
+    .co-summary { background: #f8f9fa; }
+    .co-line { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #e9ecef; align-items: center; }
+    .co-line:last-of-type { border-bottom: 0; }
+    .co-line img { width: 56px; height: 56px; object-fit: contain; background: #fff; border-radius: 10px; flex-shrink: 0; }
+    .co-line-name { font-size: 14px; font-weight: 700; }
+    .co-line-meta { font-size: 12.5px; color: #6b7280; }
+    .co-line-total { margin-left: auto; font-size: 14px; font-weight: 700; white-space: nowrap; }
+    .co-totals { margin-top: 16px; border-top: 1px solid #e9ecef; padding-top: 14px; }
+    .co-total-row { display: flex; justify-content: space-between; font-size: 14px; padding: 4px 0; color: #374151; }
+    .co-total-row.grand { font-size: 16px; font-weight: 800; color: #111; padding-top: 10px; }
+    .co-empty, .co-done { text-align: center; padding: 48px 20px; }
+    .co-empty h2, .co-done h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .co-empty p, .co-done p { color: #6b7280; font-size: 14.5px; }
+    .co-done-number { display: inline-block; margin: 18px 0 6px; padding: 10px 22px; border: 1px solid #111; border-radius: 999px; font-size: 18px; font-weight: 800; letter-spacing: .02em; }
+    .co-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 26px; border-radius: 999px; background: #111; color: #fff; font-size: 13.5px; font-weight: 700; margin-top: 20px; }
+    .co-footer { border-top: 1px solid #eee; padding: 24px 0 40px; font-size: 13px; color: #6b7280; }
+    .co-footer a { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header class="co-header">
+    <div class="container co-header-inner">
+      <a href="index.html" aria-label="ZERONIC home">
+        <img src="assets/logo.svg" alt="ZERONIC" width="115" height="20" />
+      </a>
+      <span class="co-secure">Cash on Delivery checkout</span>
+    </div>
+  </header>
+
+  <main class="co-main">
+    <div class="container">
+      <div id="checkoutView">
+        <h1>Checkout</h1>
+        <p class="co-sub">Pay in cash when your order arrives. Delivery is free across Pakistan.</p>
+
+        <div id="emptyView" class="co-card co-empty" style="display:none;">
+          <h2>Your cart is empty</h2>
+          <p>Add a product first, then come back to checkout.</p>
+          <a class="co-btn" href="index.html#earbuds">View Collection</a>
+        </div>
+
+        <div id="formView" class="co-grid">
+          <section class="co-card" aria-label="Delivery details">
+            <h2>Delivery details</h2>
+            <form id="checkoutForm" novalidate>
+              <label for="coName">Full name *</label>
+              <input id="coName" name="name" type="text" autocomplete="name" required maxlength="100" placeholder="Your full name" />
+
+              <label for="coPhone">Phone number *</label>
+              <input id="coPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="03XX-XXXXXXX" />
+              <p class="co-hint">Our team will call this number to confirm your order.</p>
+
+              <label for="coAddress">Complete address *</label>
+              <textarea id="coAddress" name="address" autocomplete="street-address" required maxlength="500" placeholder="House / street / area"></textarea>
+
+              <label for="coCity">City *</label>
+              <input id="coCity" name="city" type="text" autocomplete="address-level2" required maxlength="100" placeholder="e.g. Lahore" />
+
+              <label for="coNotes">Order notes (optional)</label>
+              <textarea id="coNotes" name="notes" maxlength="500" placeholder="Anything we should know?"></textarea>
+
+              <div class="co-pay">
+                <strong>Cash on Delivery (COD)</strong>
+                <p>Pay in cash when your order arrives. No advance payment needed.</p>
+              </div>
+
+              <div id="coError" class="co-error" role="alert"></div>
+
+              <button id="coSubmit" class="co-submit" type="submit">Place Order</button>
+              <a class="co-back" href="index.html#earbuds">&larr; Continue shopping</a>
+            </form>
+          </section>
+
+          <aside class="co-card co-summary" aria-label="Order summary">
+            <h2>Order summary</h2>
+            <div id="summaryLines"></div>
+            <div class="co-totals">
+              <div class="co-total-row"><span>Subtotal</span><span id="summarySubtotal">Rs.0</span></div>
+              <div class="co-total-row"><span>Delivery</span><span id="summaryDelivery">Free</span></div>
+              <div class="co-total-row grand"><span>Total (COD)</span><span id="summaryTotal">Rs.0</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <div id="doneView" class="co-card co-done" style="display:none;">
+        <h2>Thank you! Your order is placed.</h2>
+        <p>Please save your order number. Our team will call you to confirm delivery.</p>
+        <div><span class="co-done-number" id="doneOrderNumber"></span></div>
+        <p id="doneSummary"></p>
+        <p style="margin-top:10px;">Questions? Call or WhatsApp us at <a href="tel:+923420672554">+92 342 0672554</a>.</p>
+        <a class="co-btn" href="index.html">Continue Shopping</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="co-footer">
+    <div class="container">
+      ZERONIC Pakistan &middot; <a href="tel:+923420672554">+92 342 0672554</a> &middot; <a href="mailto:support@zeronicpk.store">support@zeronicpk.store</a> &middot; <a href="shipping-policy.html">Shipping Policy</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="contact-us.html">Contact Us</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/zeronic.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var form = document.getElementById('checkoutForm');
+      var errorBox = document.getElementById('coError');
+      var submitBtn = document.getElementById('coSubmit');
+      var emptyView = document.getElementById('emptyView');
+      var formView = document.getElementById('formView');
+      var checkoutView = document.getElementById('checkoutView');
+      var doneView = document.getElementById('doneView');
+
+      function money(n) {
+        return window.Zeronic ? window.Zeronic.formatMoney(n) : 'Rs.' + Number(n || 0).toLocaleString('en-US');
+      }
+
+      function renderSummary() {
+        var detailed = window.Zeronic ? window.Zeronic.getCartDetailed() : { lines: [], subtotal: 0, deliveryFee: 0, total: 0 };
+        var linesEl = document.getElementById('summaryLines');
+        linesEl.innerHTML = '';
+        if (!detailed.lines.length) {
+          emptyView.style.display = '';
+          formView.style.display = 'none';
+          return;
+        }
+        emptyView.style.display = 'none';
+        formView.style.display = '';
+        detailed.lines.forEach(function (line) {
+          var row = document.createElement('div');
+          row.className = 'co-line';
+          var img = document.createElement('img');
+          img.src = line.image;
+          img.alt = line.name;
+          row.appendChild(img);
+          var info = document.createElement('div');
+          var name = document.createElement('div');
+          name.className = 'co-line-name';
+          name.textContent = line.name;
+          info.appendChild(name);
+          var meta = document.createElement('div');
+          meta.className = 'co-line-meta';
+          meta.textContent = (line.showColour ? line.colour + ' · ' : '') + 'Qty: ' + line.qty + ' × ' + money(line.unitPrice);
+          info.appendChild(meta);
+          row.appendChild(info);
+          var total = document.createElement('span');
+          total.className = 'co-line-total';
+          total.textContent = money(line.lineTotal);
+          row.appendChild(total);
+          linesEl.appendChild(row);
+        });
+        document.getElementById('summarySubtotal').textContent = money(detailed.subtotal);
+        document.getElementById('summaryDelivery').textContent = detailed.deliveryFee > 0 ? money(detailed.deliveryFee) : 'Free';
+        document.getElementById('summaryTotal').textContent = money(detailed.total);
+      }
+
+      function showError(message, fieldId) {
+        errorBox.textContent = message;
+        errorBox.classList.add('active');
+        errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (fieldId) {
+          var field = document.getElementById(fieldId);
+          if (field) field.focus();
+        }
+      }
+
+      function validPhone(raw) {
+        var digits = String(raw || '').replace(/[^\d]/g, '');
+        if (digits.startsWith('92')) digits = '0' + digits.slice(2);
+        return /^03\d{9}$/.test(digits);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorBox.classList.remove('active');
+
+        var cart = window.Zeronic ? window.Zeronic.getCart() : [];
+        if (!cart.length) {
+          showError('Your cart is empty. Please add a product first.');
+          renderSummary();
+          return;
+        }
+
+        var name = document.getElementById('coName').value.trim();
+        var phone = document.getElementById('coPhone').value.trim();
+        var address = document.getElementById('coAddress').value.trim();
+        var city = document.getElementById('coCity').value.trim();
+        var notes = document.getElementById('coNotes').value.trim();
+
+        if (name.length < 2) return showError('Please enter your full name.', 'coName');
+        if (!validPhone(phone)) return showError('Please enter a valid Pakistani mobile number, e.g. 03XX-XXXXXXX.', 'coPhone');
+        if (address.length < 10) return showError('Please enter your complete delivery address.', 'coAddress');
+        if (city.length < 2) return showError('Please enter your city.', 'coCity');
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Placing your order...';
+
+        fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            customer: { name: name, phone: phone, address: address, city: city, notes: notes },
+            items: cart.map(function (line) { return { sku: line.sku, colour: line.colour, qty: line.qty }; })
+          })
+        })
+          .then(function (res) {
+            return res.json().then(function (data) { return { ok: res.ok, status: res.status, data: data }; });
+          })
+          .then(function (result) {
+            if (!result.ok) {
+              var fieldMap = { name: 'coName', phone: 'coPhone', address: 'coAddress', city: 'coCity' };
+              showError((result.data && result.data.error) || 'Could not place your order. Please try again.', fieldMap[result.data && result.data.field]);
+              return;
+            }
+            var order = result.data.order;
+            window.Zeronic.clearCart();
+            document.getElementById('doneOrderNumber').textContent = 'Order ' + order.number;
+            document.getElementById('doneSummary').textContent =
+              'Total: ' + money(order.total) + ' (Cash on Delivery) · ' + order.items.length + ' item(s) · Deliver to: ' + order.customer.name + ', ' + order.customer.city + '.';
+            checkoutView.style.display = 'none';
+            doneView.style.display = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          })
+          .catch(function () {
+            showError('Could not reach the server. Please check your connection and try again.');
+          })
+          .finally(function () {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Place Order';
+          });
+      });
+
+      renderSummary();
+      /* Re-render once the catalogue refresh finishes (prices match the
+         embedded fallback, so this is only a safety net). */
+      setTimeout(renderSummary, 600);
+      window.addEventListener('storage', function (e) {
+        if (e.key === 'zeronic_cart_v1') renderSummary();
+      });
+    })();
+  </script>
+</body>
+</html>

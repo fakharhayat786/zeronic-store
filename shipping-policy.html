@@ -1700,6 +1700,7 @@
        JAVASCRIPT FUNCTIONALITY
   ======================================================== -->
   
+  <script src="assets/js/zeronic.js"></script>
   <script>
     const overlay = document.getElementById("overlay");
     const sideMenu = document.getElementById("sideMenu");
@@ -1745,7 +1746,7 @@
       if (e.key === "Enter") {
         const query = searchInput.value.trim();
         if (query) {
-          window.location.href = ;
+          window.location.href = "index.html?q=" + encodeURIComponent(query);
         }
       }
     });

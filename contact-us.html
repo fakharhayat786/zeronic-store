@@ -2030,6 +2030,7 @@
   <!-- =======================================================
        JAVASCRIPT FUNCTIONALITY
   ======================================================== -->
+  <script src="assets/js/zeronic.js"></script>
   <script>
     const overlay = document.getElementById("overlay");
     const sideMenu = document.getElementById("sideMenu");
@@ -2123,28 +2124,66 @@
     const formSuccess = document.getElementById("formSuccess");
     const submitBtn = document.getElementById("submitBtn");
 
+    /* Contact Form Submission (Phase 1: sent to the server, stored for admin) */
+    const formError = document.createElement("div");
+    formError.id = "formError";
+    formError.setAttribute("role", "alert");
+    formError.style.cssText = "display:none;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;border-radius:12px;padding:12px 16px;font-size:14px;margin-bottom:16px;";
+    if (formSuccess && formSuccess.parentNode) {
+      formSuccess.parentNode.insertBefore(formError, formSuccess);
+    }
+
+    function showFormError(message) {
+      formError.textContent = message;
+      formError.style.display = "block";
+      formError.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
     if (contactForm) {
       contactForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        
+        formError.style.display = "none";
+        if (formSuccess) formSuccess.classList.remove("active");
+
+        const name = document.getElementById("contactName").value.trim();
+        const email = document.getElementById("contactEmail").value.trim();
+        const phone = document.getElementById("contactPhone").value.trim();
+        const subject = document.getElementById("contactSubject").value.trim();
+        const message = document.getElementById("contactMessage").value.trim();
+
+        if (name.length < 2) return showFormError("Please enter your name.");
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showFormError("Please enter a valid email address.");
+        if (message.length < 5) return showFormError("Please write your message.");
+
         const originalText = submitBtn.innerHTML;
         submitBtn.disabled = true;
         submitBtn.innerHTML = `<span>Sending...</span>`;
 
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          formSuccess.classList.add("active");
-          contactForm.reset();
-
-          // Scroll smoothly to success banner
-          formSuccess.scrollIntoView({ behavior: "smooth", block: "nearest" });
-
-          // Hide after 10 seconds
-          setTimeout(() => {
-            formSuccess.classList.remove("active");
-          }, 10000);
-        }, 700);
+        fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: name, email: email, phone: phone, subject: subject, message: message }),
+        })
+          .then((res) => res.json().then((data) => ({ ok: res.ok, data: data })))
+          .then((result) => {
+            if (result.ok) {
+              contactForm.reset();
+              if (formSuccess) {
+                formSuccess.classList.add("active");
+                formSuccess.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                setTimeout(() => formSuccess.classList.remove("active"), 10000);
+              }
+            } else {
+              showFormError((result.data && result.data.error) || "Could not send your message. Please try again.");
+            }
+          })
+          .catch(() => {
+            showFormError("Could not reach the server. Please try again later, or contact us on WhatsApp at +92 342 0672554.");
+          })
+          .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+          });
       });
     }
   </script>

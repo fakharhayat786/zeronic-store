@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Local environment (never commit real secrets)
+.env
+
+# Order / message / subscriber data — customer details must never be committed.
+# The server creates these JSON files at runtime. Keep the directory itself.
+data/*.json
+data/*.tmp-*
+!data/.gitkeep
+
+# Logs
+*.log
