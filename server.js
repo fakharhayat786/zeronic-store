@@ -9,6 +9,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+/* Trust exactly one proxy hop (Render). Behind Render, req.ip would
+   otherwise be the proxy's own address, so every visitor would share
+   a single rate-limit bucket. With this, req.ip is the real client IP
+   from X-Forwarded-For. */
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 
 app.disable('x-powered-by');

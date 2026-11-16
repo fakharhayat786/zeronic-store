@@ -2753,6 +2753,7 @@
   </style>
 </head>
 <body>
+  <a class="zn-skip-link" href="#main-content">Skip to main content</a>
   <!-- =======================================================
        ANNOUNCEMENT BAR
   ======================================================== -->
@@ -2846,7 +2847,7 @@
   <!-- =========================================================
        MAIN CONTENT: PRODUCT STAGE (Exact ZERONIC Layout)
   ========================================================= -->
-  <main class="container" style="padding-top: 6px;">
+  <main class="container" style="padding-top: 6px;" id="main-content" tabindex="-1">
 
     <!-- Breadcrumbs -->
     <nav class="product-breadcrumbs" aria-label="Breadcrumb">
@@ -2993,7 +2994,7 @@
         <div id="thQtyWrap">
           <span class="thQtyLabel">Quantity:</span>
           <button type="button" class="thQtyBtn" id="btnQtyDec">−</button>
-          <input type="number" id="inputQty" value="1" min="1" max="10" class="thQtyInput" readonly />
+          <input type="number" id="inputQty" aria-label="Quantity" value="1" min="1" max="10" class="thQtyInput" readonly />
           <button type="button" class="thQtyBtn" id="btnQtyInc">+</button>
         </div>
 
@@ -3633,7 +3634,7 @@
         </svg>
         <input
           type="search"
-          id="searchInput"
+          id="searchInput" aria-label="Search products"
           placeholder="Search wireless earbuds..."
         />
       </div>

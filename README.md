@@ -51,6 +51,9 @@ Express server, with a real COD checkout and a simple orders dashboard.
 - **One catalogue file** — `products.json` is the single source of truth
   for product names, prices, colours and images used by the cart, checkout
   and order pricing.
+- **Accessibility basics** — skip-to-content links on every page,
+  labelled search and quantity controls, 44px cart quantity buttons,
+  and form status messages announced to screen readers.
 - **Complete policy pages** — Privacy, Shipping, Returns & Refunds
   (7-day returns, 13-month replacement warranty) and Terms of Service,
   all linked from every footer. The returns/warranty terms follow what
@@ -66,7 +69,9 @@ Express server, with a real COD checkout and a simple orders dashboard.
   headers, gzip compression, and sensible cache headers (pages and
   prices always revalidated; images/JS cached for a day). Sensitive
   paths (`/data/`, `server.js`, `package.json`, edit scripts,
-  duplicate `app/` copies, `*.orig.*` images) return 404.
+  duplicate `app/` copies, `*.orig.*` images) return 404. The server
+  trusts one proxy hop, so rate limiting sees real visitor IPs behind
+  Render instead of the proxy's address.
 
 ## Run it locally
 

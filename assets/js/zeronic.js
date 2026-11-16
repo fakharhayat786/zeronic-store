@@ -379,6 +379,8 @@
     var style = document.createElement('style');
     style.id = 'zn-shared-styles';
     style.textContent = [
+      '.zn-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}',
+      '.zn-skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:12px 18px;background:#111;color:#fff !important;border-radius:10px;z-index:9999;font-size:14px;font-weight:700;text-decoration:none}',
       '.zn-cart-empty{text-align:center;padding:40px 10px}',
       '.zn-cart-empty h4{font-size:16px;font-weight:700;margin-bottom:6px;color:#111}',
       '.zn-cart-empty p{font-size:13px;color:#6b7280}',
@@ -389,10 +391,10 @@
       '.zn-cart-line-name{font-size:14px;font-weight:700;color:#111}',
       '.zn-cart-line-meta{font-size:12.5px;color:#6b7280;margin-top:2px}',
       '.zn-cart-line-row{display:flex;align-items:center;gap:8px;margin-top:8px}',
-      '.zn-qty-btn{width:26px;height:26px;border:1px solid #d1d5db;border-radius:50%;background:#fff;font-size:15px;line-height:1;cursor:pointer;color:#111}',
+      '.zn-qty-btn{width:44px;height:44px;border:1px solid #d1d5db;border-radius:50%;background:#fff;font-size:18px;line-height:1;cursor:pointer;color:#111}',
       '.zn-qty-text{font-size:12.5px;font-weight:600;color:#111}',
       '.zn-cart-line-total{margin-left:auto;font-size:13.5px;font-weight:700;color:#111}',
-      '.zn-remove-btn{border:0;background:none;font-size:20px;line-height:1;color:#9ca3af;cursor:pointer;padding:2px 4px}',
+      '.zn-remove-btn{border:0;background:none;font-size:20px;line-height:1;color:#9ca3af;cursor:pointer;padding:12px 14px}',
       '.zn-cart-footer{padding:16px;border-top:1px solid #eee;background:#fff}',
       '.zn-subtotal-line{display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:#111;margin-bottom:12px}',
       '.zn-checkout-btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;background:#111;color:#fff !important;font-size:13px;font-weight:700;text-decoration:none;width:100%;box-sizing:border-box}',
@@ -416,6 +418,7 @@
     var button = form.querySelector('button[type="submit"], button');
     var status = document.createElement('p');
     status.className = 'zn-form-status';
+    status.setAttribute('role', 'status');
     status.style.display = 'none';
     form.insertAdjacentElement('afterend', status);
 

@@ -64,9 +64,12 @@
     .status-pill.Cancelled { background: #fee2e2; color: #991b1b; }
     .empty-note { text-align: center; color: #6b7280; font-size: 14.5px; padding: 36px 12px; background: #fff; border: 1px dashed #d1d5db; border-radius: 14px; }
     code { background: #f3f4f6; padding: 2px 6px; border-radius: 6px; font-size: 13px; }
+      .zn-skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .zn-skip-link:focus { position: fixed; left: 16px; top: 16px; width: auto; height: auto; padding: 12px 18px; background: #111; color: #fff; border-radius: 10px; z-index: 9999; font-size: 14px; font-weight: 700; text-decoration: none; }
   </style>
 </head>
 <body>
+  <a class="zn-skip-link" href="#main-content">Skip to main content</a>
   <header>
     <div class="container header-inner">
       <div class="brand">ZERONIC <span>Admin</span></div>
@@ -77,7 +80,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <div class="container">
       <!-- LOGIN -->
       <section id="loginView" class="login-wrap">
