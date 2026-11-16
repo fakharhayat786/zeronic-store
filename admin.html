@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin — Orders | ZERONIC</title>
-  <meta name="description" content="ZERONIC store admin: orders, messages and subscribers." />
+  <meta name="description" content="ZERONIC store admin: orders, messages, reviews and subscribers." />
   <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <meta name="theme-color" content="#ffffff" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -101,6 +102,7 @@
         <div class="tabs" role="tablist">
           <button class="tab active" type="button" data-tab="orders">Orders</button>
           <button class="tab" type="button" data-tab="messages">Messages</button>
+          <button class="tab" type="button" data-tab="reviews">Reviews</button>
           <button class="tab" type="button" data-tab="subscribers">Subscribers</button>
         </div>
 
@@ -136,6 +138,11 @@
           <div id="messagesList"></div>
         </div>
 
+        <div id="tabReviews" style="display:none;">
+          <p class="muted" style="margin-bottom:12px;">Reviews sent from the product page wait here for moderation. They do not appear on the website until you add them to the page.</p>
+          <div id="reviewsList"></div>
+        </div>
+
         <div id="tabSubscribers" style="display:none;">
           <div id="subscribersList"></div>
         </div>
@@ -152,6 +159,7 @@
       var orders = [];
       var messages = [];
       var subscribers = [];
+      var reviews = [];
 
       var loginView = document.getElementById('loginView');
       var dashView = document.getElementById('dashView');
@@ -219,7 +227,8 @@
         return Promise.all([
           api('/api/admin/orders'),
           api('/api/admin/messages'),
-          api('/api/admin/subscribers')
+          api('/api/admin/subscribers'),
+          api('/api/admin/reviews')
         ]).then(function (results) {
           var first = results[0];
           if (first.status === 503) {
@@ -236,9 +245,11 @@
           orders = first.data.orders || [];
           messages = (results[1].ok && results[1].data.messages) || [];
           subscribers = (results[2].ok && results[2].data.subscribers) || [];
+          reviews = (results[3].ok && results[3].data.reviews) || [];
           renderOrders();
           renderMessages();
           renderSubscribers();
+          renderReviews();
           return true;
         }).catch(function (err) {
           var box = document.getElementById('ordersError');
@@ -365,6 +376,29 @@
         });
       }
 
+      function renderReviews() {
+        var list = document.getElementById('reviewsList');
+        list.innerHTML = '';
+        if (!reviews.length) {
+          list.appendChild(el('div', 'empty-note', 'No reviews submitted yet.'));
+          return;
+        }
+        reviews.forEach(function (r) {
+          var card = el('div', 'order');
+          var top = el('div', 'order-top');
+          top.appendChild(el('span', 'order-no', r.name || ''));
+          var stars = '★'.repeat(Math.max(1, Math.min(5, r.rating || 5))) + '☆'.repeat(5 - Math.max(1, Math.min(5, r.rating || 5)));
+          top.appendChild(el('span', null, stars));
+          top.appendChild(el('span', 'order-date', fmtDate(r.createdAt)));
+          card.appendChild(top);
+          var meta = el('div', 'order-meta');
+          meta.appendChild(el('div', null, 'Product: ' + (r.sku || 'flex') + ' · Status: ' + (r.status || 'pending')));
+          meta.appendChild(el('div', null, r.text || ''));
+          card.appendChild(meta);
+          list.appendChild(card);
+        });
+      }
+
       function renderSubscribers() {
         var list = document.getElementById('subscribersList');
         list.innerHTML = '';
@@ -407,6 +441,7 @@
           document.getElementById('tabOrders').style.display = name === 'orders' ? '' : 'none';
           document.getElementById('tabMessages').style.display = name === 'messages' ? '' : 'none';
           document.getElementById('tabSubscribers').style.display = name === 'subscribers' ? '' : 'none';
+          document.getElementById('tabReviews').style.display = name === 'reviews' ? '' : 'none';
         });
       });
 

@@ -4,12 +4,12 @@
   "description": "ZERONIC | Premium Wireless Earbuds",
   "type": "module",
   "scripts": {
+    "build": "echo 'Static assets ready'",
     "dev": "node server.js",
-    "start": "node server.js",
-    "build": "echo 'Static assets ready'"
+    "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.21.2",
-    "sharp": "^0.35.5"
+    "compression": "^1.8.0",
+    "express": "^4.21.2"
   }
 }

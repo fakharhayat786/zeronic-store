@@ -1,4 +1,5 @@
 import express from 'express';
+import compression from 'compression';
 import path from 'path';
 import fs from 'fs';
 import crypto from 'crypto';
@@ -9,6 +10,24 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.disable('x-powered-by');
+
+/* ------------------------------------------------------------------ */
+/* Security headers (all responses). No Content-Security-Policy yet:  */
+/* the pages use inline scripts/styles, so a CSP needs browser testing */
+/* before it can be tightened safely — see README.md.                  */
+/* ------------------------------------------------------------------ */
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()');
+  next();
+});
+
+/* Gzip/deflate for HTML, CSS, JS and JSON responses. */
+app.use(compression());
 
 /* ------------------------------------------------------------------ */
 /* Catalogue: products.json is the single source of truth for prices. */
@@ -29,7 +48,7 @@ const PRODUCTS_BY_SKU = new Map(CATALOG.products.map((p) => [p.sku, p]));
 const DELIVERY_FEE = typeof CATALOG.settings?.deliveryFee === 'number' ? CATALOG.settings.deliveryFee : 0;
 
 /* ------------------------------------------------------------------ */
-/* JSON-file storage (Phase 1). Orders, messages and subscribers live  */
+/* JSON-file storage. Orders, messages, subscribers and reviews live   */
 /* in ./data/*.json — see README.md for the limits of this approach    */
 /* (single-server, no database yet; back up ./data before redeploys).  */
 /* ./data is git-ignored so customer details never land in the repo.   */
@@ -108,10 +127,12 @@ function apiRateLimit(req, res, next) {
 
 /* ------------------------------------------------------------------ */
 /* Block sensitive paths BEFORE static serving. express.static serves  */
-/* the repo root (existing behaviour), so without this guard the edit  */
-/* scripts, package metadata and the ./data store would be public.     */
+/* the repo root, so without this guard the edit scripts, server code, */
+/* package metadata and the ./data store would be public. Also blocks  */
+/* the duplicate app/ copies and *.orig.* images from being served —   */
+/* they stay in the repo (git history) but never reach visitors.       */
 /* ------------------------------------------------------------------ */
-const BLOCKED_BASENAMES = new Set(['package.json', 'bun.lock']);
+const BLOCKED_BASENAMES = new Set(['package.json', 'bun.lock', 'server.js', 'metadata.json', '404.html']);
 app.use((req, res, next) => {
   const pathname = req.path || '';
   const base = path.basename(pathname);
@@ -119,8 +140,11 @@ app.use((req, res, next) => {
     pathname.startsWith('/data/') ||
     pathname.startsWith('/node_modules/') ||
     pathname.startsWith('/.git/') ||
+    pathname.startsWith('/app/') ||
+    pathname === '/app' ||
     pathname.endsWith('.py') ||
     pathname.startsWith('/.env') ||
+    base.includes('.orig.') ||
     BLOCKED_BASENAMES.has(base)
   ) {
     return res.status(404).json({ error: 'Not found.' });
@@ -128,14 +152,51 @@ app.use((req, res, next) => {
   return next();
 });
 
-// Set cache headers to avoid stale cached assets on live/published URLs.
-// NOTE (Phase 3): this no-cache-everything policy hurts speed; it is kept
-// for now so Phase 1 behaviour matches what the site already did.
+/* ------------------------------------------------------------------ */
+/* Canonical redirects (301, query string preserved). One canonical    */
+/* URL per page: clean paths, no .html, no trailing slash. Legacy and  */
+/* duplicate URLs (old /products/th-flex, /privacy, /pages/*, .html    */
+/* versions, /index.html) redirect here so search engines and visitors */
+/* always land on the canonical page. Checkout/admin .html URLs are    */
+/* deliberately NOT redirected — they are noindex utility pages.       */
+/* ------------------------------------------------------------------ */
+const CANONICAL_REDIRECTS = new Map([
+  ['/index.html', '/'],
+  ['/privacy', '/privacy-policy'],
+  ['/privacy.html', '/privacy-policy'],
+  ['/privacy-policy/index.html', '/privacy-policy'],
+  ['/privacy-policy.html', '/privacy-policy'],
+  ['/contact', '/contact-us'],
+  ['/contact-us.html', '/contact-us'],
+  ['/contact-us/index.html', '/contact-us'],
+  ['/pages/contact-us', '/contact-us'],
+  ['/shipping', '/shipping-policy'],
+  ['/shipping-policy.html', '/shipping-policy'],
+  ['/shipping-policy/index.html', '/shipping-policy'],
+  ['/pages/shipping-policy', '/shipping-policy'],
+  ['/pages/shipping-return-policy', '/shipping-policy'],
+  ['/product.html', '/product'],
+  ['/products/zeronic-flex', '/product'],
+  ['/products/th-flex', '/product'],
+  ['/zeronic-flex', '/product'],
+  ['/zeronic-flex.html', '/product'],
+  ['/returns-policy.html', '/returns-policy'],
+  ['/terms-of-service.html', '/terms-of-service'],
+]);
+
 app.use((req, res, next) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.setHeader('Pragma', 'no-cache');
-  res.setHeader('Expires', '0');
-  next();
+  if (req.method !== 'GET' && req.method !== 'HEAD') return next();
+  const pathname = req.path || '';
+  const queryIndex = req.originalUrl.indexOf('?');
+  const query = queryIndex >= 0 ? req.originalUrl.slice(queryIndex) : '';
+  const target = CANONICAL_REDIRECTS.get(pathname);
+  if (target) {
+    return res.redirect(301, target + query);
+  }
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    return res.redirect(301, pathname.slice(0, -1) + query);
+  }
+  return next();
 });
 
 app.use(express.json({ limit: '64kb' }));
@@ -145,7 +206,10 @@ app.use((err, req, res, next) => {
   }
   return next(err);
 });
-app.use('/api/', apiRateLimit);
+app.use('/api/', (req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store');
+  next();
+}, apiRateLimit);
 
 /* ------------------------------------------------------------------ */
 /* Public API                                                          */
@@ -266,6 +330,36 @@ app.post('/api/subscribe', (req, res) => {
   return res.status(201).json({ ok: true, already: false });
 });
 
+/* Reviews are stored as "pending" and shown only in the admin dashboard. */
+/* Nothing a visitor submits appears on the product page automatically.   */
+app.post('/api/reviews', (req, res) => {
+  const body = req.body && typeof req.body === 'object' ? req.body : {};
+  const name = cleanText(body.name, 100);
+  const text = cleanText(body.text, 1000);
+  const rating = Number.parseInt(body.rating, 10);
+  const sku = typeof body.sku === 'string' && body.sku ? body.sku : 'flex';
+
+  if (name.length < 2) return badRequest(res, 'Please enter your name.', 'name');
+  if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+    return badRequest(res, 'Please choose a rating between 1 and 5 stars.', 'rating');
+  }
+  if (text.length < 5) return badRequest(res, 'Please write a few words about the product.', 'text');
+  if (!PRODUCTS_BY_SKU.has(sku)) return badRequest(res, 'Unknown product.');
+
+  const reviews = readJsonFile('reviews.json', []);
+  reviews.push({
+    id: crypto.randomUUID(),
+    name,
+    rating,
+    text,
+    sku,
+    status: 'pending',
+    createdAt: new Date().toISOString(),
+  });
+  writeJsonFile('reviews.json', reviews);
+  return res.status(201).json({ ok: true });
+});
+
 /* ------------------------------------------------------------------ */
 /* Admin API — protected by ADMIN_PASSWORD (env var, never hard-coded).*/
 /* The dashboard sends it as x-admin-password on every request. If the */
@@ -317,67 +411,70 @@ app.get('/api/admin/subscribers', requireAdmin, (req, res) => {
   res.json({ subscribers: newestFirst(readJsonFile('subscribers.json', [])) });
 });
 
-/* ------------------------------------------------------------------ */
-/* Static files + page routes (existing behaviour, kept intact).       */
-/* ------------------------------------------------------------------ */
-app.use(express.static(__dirname, {
-  etag: false,
-  lastModified: false,
-  setHeaders: (res) => {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
-  },
-}));
+app.get('/api/admin/reviews', requireAdmin, (req, res) => {
+  res.json({ reviews: newestFirst(readJsonFile('reviews.json', [])) });
+});
 
-// Guarantee asset paths resolve even with sub-paths like /pages/assets or /shipping-policy/assets
-app.use(['/assets', '/pages/assets', '/*/assets'], express.static(path.join(__dirname, 'assets'), {
-  etag: false,
-  lastModified: false,
-  setHeaders: (res) => {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
-  },
-}));
-
-function sendPage(file) {
-  return (req, res) => {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.sendFile(path.join(__dirname, file));
-  };
-}
-
-// Privacy policy page route
-app.get(['/privacy-policy', '/privacy', '/privacy.html', '/privacy-policy/', '/privacy-policy/index.html'], sendPage('privacy-policy.html'));
-
-// Contact us page route
-app.get(['/contact-us', '/contact', '/contact-us.html', '/pages/contact-us', '/contact-us/', '/contact-us/index.html'], sendPage('contact-us.html'));
-
-// Shipping policy page route
-app.get(['/shipping-policy', '/shipping', '/shipping-policy.html', '/pages/shipping-policy', '/pages/shipping-return-policy', '/shipping-policy/', '/shipping-policy/index.html'], sendPage('shipping-policy.html'));
-
-// Product page route
-app.get(['/product', '/product.html', '/products/zeronic-flex', '/products/th-flex', '/zeronic-flex', '/zeronic-flex.html'], sendPage('product.html'));
-
-// Checkout page route (Phase 1: COD checkout on the site itself)
-app.get(['/checkout', '/checkout.html'], sendPage('checkout.html'));
-
-// Admin dashboard route (Phase 1: orders, messages, subscribers)
-app.get(['/admin', '/admin.html'], sendPage('admin.html'));
-
-// Unknown API paths return JSON, not the homepage.
+// Unknown API paths return JSON, not the homepage or the 404 page.
 app.all('/api/*', (req, res) => {
   res.status(404).json({ error: 'Not found.' });
 });
 
-// Route fallback to index.html.
-// NOTE (Phase 3): this catch-all returns the homepage with HTTP 200 for
-// every unknown URL, so there is no real 404 page yet. It is kept for now
-// to preserve existing behaviour; Phase 3 replaces it with a real 404.
-app.get('*', (req, res) => {
-  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.sendFile(path.join(__dirname, 'index.html'));
+/* ------------------------------------------------------------------ */
+/* Static files. Pages and data files are always revalidated (prices   */
+/* and content must never go stale); images, fonts, CSS and JS may be  */
+/* cached by the browser for a day, with ETag revalidation after that. */
+/* ------------------------------------------------------------------ */
+function staticCacheHeaders(res, filePath) {
+  const ext = path.extname(filePath).toLowerCase();
+  if (ext === '.html' || ext === '.htm' || ext === '.json' || ext === '.xml' || ext === '.txt') {
+    res.setHeader('Cache-Control', 'no-cache');
+  } else {
+    res.setHeader('Cache-Control', 'public, max-age=86400, must-revalidate');
+  }
+}
+
+app.use(express.static(__dirname, { index: false, redirect: false, setHeaders: staticCacheHeaders }));
+
+// Guarantee asset paths resolve even with sub-paths like /pages/assets or /shipping-policy/assets
+app.use(['/assets', '/pages/assets', '/*/assets'], express.static(path.join(__dirname, 'assets'), {
+  index: false,
+  redirect: false,
+  setHeaders: staticCacheHeaders,
+}));
+
+function sendPage(file) {
+  return (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.sendFile(path.join(__dirname, file));
+  };
+}
+
+// Page routes — clean canonical URLs only (see the redirect map above).
+app.get('/', sendPage('index.html'));
+app.get('/privacy-policy', sendPage('privacy-policy.html'));
+app.get('/contact-us', sendPage('contact-us.html'));
+app.get('/shipping-policy', sendPage('shipping-policy.html'));
+app.get('/returns-policy', sendPage('returns-policy.html'));
+app.get('/terms-of-service', sendPage('terms-of-service.html'));
+app.get('/product', sendPage('product.html'));
+
+// Checkout page route (COD checkout on the site itself; .html kept working)
+app.get(['/checkout', '/checkout.html'], sendPage('checkout.html'));
+
+// Admin dashboard route (orders, messages, reviews, subscribers)
+app.get(['/admin', '/admin.html'], sendPage('admin.html'));
+
+/* Real 404: unknown URLs get the branded 404 page with HTTP 404 —     */
+/* never the homepage with 200. API-style requests get a JSON 404.     */
+app.use((req, res) => {
+  if (req.method === 'GET' && req.accepts('html')) {
+    res.status(404);
+    res.setHeader('Cache-Control', 'no-cache');
+    res.sendFile(path.join(__dirname, '404.html'));
+    return;
+  }
+  res.status(404).json({ error: 'Not found.' });
 });
 
 app.listen(PORT, '0.0.0.0', () => {
