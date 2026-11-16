@@ -690,6 +690,18 @@
   position: relative;
 }
 
+.th-product-card[data-product="flex"] {
+  cursor: pointer;
+}
+
+.th-card-img-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
 .th-card-image-wrap {
   position: relative;
   width: 100%;
@@ -2068,22 +2080,24 @@
         <div class="products-carousel-wrapper">
 
      <!-- PRODUCT 1 -->
-<article class="th-product-card">
+<article class="th-product-card" data-product="flex">
   <div class="th-card-image-wrap">
-    <span class="th-badge">SOFTWARE BASED</span>
-    <img
-      class="th-product-img"
-      src="assets/airpods-1.png"
-      alt="ZERONIC Flex Earbuds"
-    />
+    <a class="th-card-img-link" href="product.html" aria-label="View ZERONIC Flex Earbuds">
+      <span class="th-badge">SOFTWARE BASED</span>
+      <img
+        class="th-product-img"
+        src="assets/airpods-1.png"
+        alt="ZERONIC Flex Earbuds"
+      />
+    </a>
   </div>
   <div class="th-card-info">
     <h3 class="th-product-title"><a href="product.html" style="color: inherit; text-decoration: none;">ZERONIC Flex Earbuds</a></h3>
     <p class="th-product-desc">Ultra Bass | Clear Sound | USB-C</p>
-    <div class="th-rating-row">
+    <a class="th-rating-row" href="product.html#reviews" style="text-decoration: none;" aria-label="Read ZERONIC Flex Earbuds reviews">
       <div class="th-stars">★★★★★</div>
       <span class="th-rating-val">4.7</span>
-    </div>
+    </a>
     <div class="th-card-bottom">
       <span class="th-price">Rs.4,950.00</span>
       <a

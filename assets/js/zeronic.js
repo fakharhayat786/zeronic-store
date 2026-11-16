@@ -588,6 +588,23 @@
     }
   }
 
+  /* Homepage Flex card: the photo, title, rating and Buy Now are real
+     links in the markup. This covers the remaining dead areas (badge
+     padding, description, price) so a click anywhere else on the card
+     also opens the product page. Clicks on links/buttons keep their
+     own behaviour. */
+  function wireFlexCard() {
+    var card = document.querySelector('.th-product-card[data-product="flex"]');
+    if (!card || card.dataset.znWired) return;
+    card.dataset.znWired = '1';
+    card.addEventListener('click', function (e) {
+      if (e.defaultPrevented) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (e.target && e.target.closest && e.target.closest('a, button')) return;
+      window.location.href = 'product.html';
+    });
+  }
+
   /* ---------------- init ---------------- */
 
   function init() {
@@ -595,6 +612,7 @@
     renderCart();
     wireNewsletter();
     wireSearch();
+    wireFlexCard();
     applyQueryFromUrl();
     refreshCatalog();
     window.addEventListener('storage', function (e) {
