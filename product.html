@@ -1729,6 +1729,9 @@
     #mobile-mini-cta {
       display: none;
     }
+    .zn-mini-cart {
+      display: none;
+    }
     @media (max-width: 767px) {
       .mmc {
         position: fixed;
@@ -1814,6 +1817,60 @@
       .mmc__btn:active {
         transform: scale(0.97);
         background: #004eb0;
+      }
+      /* Mini round cart button: replaces the MMC bar when the footer is
+         in view. Docked directly below the WhatsApp float (WhatsApp is
+         at bottom:84px/48px tall on mobile; this sits at bottom:20px). */
+      .zn-mini-cart {
+        position: fixed;
+        right: 16px;
+        bottom: 20px;
+        z-index: 10000;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #0062d8;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+        cursor: pointer;
+        transform: translateY(140%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+      }
+      .zn-mini-cart--show {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .zn-mini-cart:active {
+        transform: scale(0.94);
+      }
+      .zn-mini-cart svg {
+        width: 24px;
+        height: 24px;
+      }
+      .zn-mini-cart__badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        min-width: 20px;
+        height: 20px;
+        padding: 0 5px;
+        background: #111111;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        border-radius: 50px;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        line-height: 16px;
+        text-align: center;
       }
     }
 
@@ -3444,6 +3501,16 @@
     </div>
   </div>
 
+  <!-- Mini round cart button: shown instead of the bar when the footer is in view -->
+  <button type="button" id="znMiniCartBtn" class="zn-mini-cart" aria-label="Add ZERONIC Flex Earbuds to cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 5h2l1.5 10.2a2 2 0 0 0 2 1.8h7.7a2 2 0 0 0 1.9-1.5L21 8H7"></path>
+      <circle cx="10" cy="20" r="1"></circle>
+      <circle cx="18" cy="20" r="1"></circle>
+    </svg>
+    <span class="zn-mini-cart__badge" data-cart-count>0</span>
+  </button>
+
   <!-- =======================================================
        FOOTER
   ======================================================== -->
@@ -3891,6 +3958,7 @@
     const btnAddToCart = document.getElementById("btnAddToCart");
     const btnBuyNow = document.getElementById("btnBuyNow");
     const mmcBtnAction = document.getElementById("mmcBtnAction");
+    const znMiniCartBtn = document.getElementById("znMiniCartBtn");
 
     function updateCartUI() {
       if (window.Zeronic) {
@@ -3934,19 +4002,29 @@
       addCurrentSelectionToCart();
       openCart();
     });
+    znMiniCartBtn?.addEventListener("click", () => {
+      addCurrentSelectionToCart();
+      openCart();
+    });
 
     // 6. Mobile Mini Sticky CTA Bar Scroll Trigger
+    // Bar shows once the main Add to cart button has scrolled away. When
+    // the footer comes into view, the bar hides and the mini round cart
+    // button (docked below the WhatsApp float) takes its place.
     const mobileMiniCta = document.getElementById("mobile-mini-cta");
+    const footerEl = document.querySelector("footer.footer");
     function checkMmc() {
       if (!mobileMiniCta || !btnAddToCart) return;
       const rect = btnAddToCart.getBoundingClientRect();
-      if (rect.bottom < 0) {
-        mobileMiniCta.classList.add("mmc--show");
-      } else {
-        mobileMiniCta.classList.remove("mmc--show");
-      }
+      const barWanted = rect.bottom < 0;
+      const footerVisible = footerEl ? footerEl.getBoundingClientRect().top < window.innerHeight : false;
+      const atFooter = barWanted && footerVisible;
+      mobileMiniCta.classList.toggle("mmc--show", barWanted && !atFooter);
+      if (znMiniCartBtn) znMiniCartBtn.classList.toggle("zn-mini-cart--show", atFooter);
     }
     window.addEventListener("scroll", checkMmc, { passive: true });
+    window.addEventListener("resize", checkMmc, { passive: true });
+    checkMmc();
 
     // 7. Sticky Pill Navigation Scrollspy
     const pillNavLinks = document.querySelectorAll(".th-pill-nav__item");
