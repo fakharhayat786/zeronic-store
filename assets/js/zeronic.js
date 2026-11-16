@@ -277,9 +277,11 @@
 
     /* Replace the drawer body with the real lines (or the empty state). */
     body.innerHTML = '';
+    body.classList.toggle('zn-has-items', detailed.lines.length > 0);
 
     if (!detailed.lines.length) {
       var empty = el('div', 'zn-cart-empty');
+      empty.appendChild(el('div', 'zn-empty-icon', '🛍️'));
       empty.appendChild(el('h4', null, 'Your cart is empty'));
       empty.appendChild(el('p', null, 'Explore our wireless earbuds collection and find your sound.'));
       var link = el('a', 'zn-continue-btn', 'View Collection');
@@ -308,15 +310,17 @@
         dec.type = 'button';
         dec.setAttribute('aria-label', 'Decrease quantity');
         dec.addEventListener('click', function () { setQty(index, line.qty - 1); });
-        var qtyText = el('span', 'zn-qty-text', 'Qty: ' + line.qty);
+        var qtyText = el('span', 'zn-qty-text', String(line.qty));
         var inc = el('button', 'zn-qty-btn', '+');
         inc.type = 'button';
         inc.setAttribute('aria-label', 'Increase quantity');
         inc.addEventListener('click', function () { setQty(index, line.qty + 1); });
         var total = el('span', 'zn-cart-line-total', formatMoney(line.lineTotal));
-        controls.appendChild(dec);
-        controls.appendChild(qtyText);
-        controls.appendChild(inc);
+        var stepper = el('span', 'zn-stepper');
+        stepper.appendChild(dec);
+        stepper.appendChild(qtyText);
+        stepper.appendChild(inc);
+        controls.appendChild(stepper);
         controls.appendChild(total);
         info.appendChild(controls);
         row.appendChild(info);
@@ -343,9 +347,11 @@
       }
       footer.innerHTML = '';
       var subLine = el('div', 'zn-subtotal-line');
-      subLine.appendChild(el('span', null, 'Subtotal:'));
+      var itemCount = cartCount();
+      subLine.appendChild(el('span', null, 'Subtotal (' + itemCount + ' item' + (itemCount === 1 ? '' : 's') + ')'));
       subLine.appendChild(el('span', null, formatMoney(detailed.subtotal)));
       footer.appendChild(subLine);
+      footer.appendChild(el('div', 'zn-footer-note', '🚚 Free shipping across Pakistan \u00B7 Cash on Delivery'));
       var checkoutLink = el('a', 'zn-checkout-btn', 'Checkout (Cash on Delivery)');
       checkoutLink.href = 'checkout.html';
       footer.appendChild(checkoutLink);
@@ -368,6 +374,10 @@
       }
       var footerLink = footer.querySelector('a.btn-checkout-now');
       if (footerLink) footerLink.href = 'checkout.html';
+      if (!footer.querySelector('.zn-footer-note')) {
+        var pNote = el('div', 'zn-footer-note', '🚚 Free shipping across Pakistan \u00B7 Cash on Delivery');
+        if (footerLink) footer.insertBefore(pNote, footerLink); else footer.appendChild(pNote);
+      }
     }
 
     footer.style.display = detailed.lines.length ? '' : 'none';
@@ -381,25 +391,33 @@
     style.textContent = [
       '.zn-skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}',
       '.zn-skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:12px 18px;background:#111;color:#fff !important;border-radius:10px;z-index:9999;font-size:14px;font-weight:700;text-decoration:none}',
-      '.zn-cart-empty{text-align:center;padding:40px 10px}',
+      '.cart-body.zn-has-items{display:block;text-align:left;padding:8px 20px 20px;overflow-y:auto}',
+      '.zn-cart-empty{text-align:center;padding:48px 10px}',
+      '.zn-empty-icon{font-size:40px;margin-bottom:12px}',
       '.zn-cart-empty h4{font-size:16px;font-weight:700;margin-bottom:6px;color:#111}',
       '.zn-cart-empty p{font-size:13px;color:#6b7280}',
-      '.zn-cart-line{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #eee;align-items:flex-start}',
+      '.zn-cart-line{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #f0f0f0;align-items:flex-start;text-align:left}',
       '.zn-cart-line:last-child{border-bottom:0}',
-      '.zn-cart-line-img{width:64px;height:64px;object-fit:contain;background:#f8f9fa;border-radius:10px;flex-shrink:0}',
+      '.zn-cart-line-img{width:76px;height:76px;object-fit:contain;background:#f6f7f8;border:1px solid #f0f0f0;border-radius:12px;padding:6px;box-sizing:border-box;flex-shrink:0}',
       '.zn-cart-line-info{flex:1;min-width:0}',
-      '.zn-cart-line-name{font-size:14px;font-weight:700;color:#111}',
-      '.zn-cart-line-meta{font-size:12.5px;color:#6b7280;margin-top:2px}',
-      '.zn-cart-line-row{display:flex;align-items:center;gap:8px;margin-top:8px}',
-      '.zn-qty-btn{width:44px;height:44px;border:1px solid #d1d5db;border-radius:50%;background:#fff;font-size:18px;line-height:1;cursor:pointer;color:#111}',
-      '.zn-qty-text{font-size:12.5px;font-weight:600;color:#111}',
-      '.zn-cart-line-total{margin-left:auto;font-size:13.5px;font-weight:700;color:#111}',
-      '.zn-remove-btn{border:0;background:none;font-size:20px;line-height:1;color:#9ca3af;cursor:pointer;padding:12px 14px}',
-      '.zn-cart-footer{padding:16px;border-top:1px solid #eee;background:#fff}',
-      '.zn-subtotal-line{display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:#111;margin-bottom:12px}',
+      '.zn-cart-line-name{font-size:15px;font-weight:700;color:#111;line-height:1.35}',
+      '.zn-cart-line-meta{font-size:13px;color:#6b7280;margin-top:3px}',
+      '.zn-cart-line-row{display:flex;align-items:center;gap:10px;margin-top:12px}',
+      '.zn-stepper{display:inline-flex;align-items:center;border:1px solid #e5e7eb;border-radius:999px;background:#fff;overflow:hidden}',
+      '.zn-qty-btn{width:44px;height:44px;border:0;background:transparent;font-size:20px;line-height:1;cursor:pointer;color:#111}',
+      '.zn-qty-btn:active{background:#f3f4f6}',
+      '.zn-qty-text{min-width:30px;text-align:center;font-size:14px;font-weight:700;color:#111}',
+      '.zn-cart-line-total{margin-left:auto;font-size:15px;font-weight:800;color:#111;white-space:nowrap}',
+      '.zn-remove-btn{border:0;background:none;font-size:20px;line-height:1;color:#9ca3af;cursor:pointer;padding:12px 14px;flex-shrink:0;margin-top:-10px;margin-right:-12px}',
+      '.zn-remove-btn:active{color:#111}',
+      '.zn-cart-footer{padding:16px 16px 20px;border-top:1px solid #eee;background:#fff}',
+      '.zn-subtotal-line{display:flex;justify-content:space-between;font-size:15px;font-weight:700;color:#111;margin-bottom:8px}',
+      '.zn-footer-note{font-size:12.5px;color:#6b7280;text-align:center;margin:0 0 12px}',
       '.zn-checkout-btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;background:#111;color:#fff !important;font-size:13px;font-weight:700;text-decoration:none;width:100%;box-sizing:border-box}',
       '.zn-continue-btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 22px;border-radius:999px;background:#fff;color:#111 !important;border:1px solid rgba(0,0,0,.12);font-size:12.5px;font-weight:600;text-decoration:none;cursor:pointer;margin-top:12px}',
       '.zn-cart-footer .zn-continue-btn{width:100%;box-sizing:border-box}',
+      '#cartFooter{padding:16px;border-top:1px solid #eee;background:#fff}',
+      '#cartFooter .cart-subtotal-line{display:flex;justify-content:space-between;font-size:15px;font-weight:700;color:#111;margin-bottom:8px}',
       '.zn-form-status{font-size:13px;margin-top:8px;color:#111}',
       '.zn-form-status.is-error{color:#b91c1c}',
       '#znSearchNote{margin:0 0 20px;padding:14px 16px;border:1px solid #eee;border-radius:12px;background:#f8f9fa;font-size:14px;color:#111;display:flex;gap:12px;align-items:center;flex-wrap:wrap}',
