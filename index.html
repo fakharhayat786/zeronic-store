@@ -453,7 +453,7 @@
       color: #0062d8;
     }
 
-    .hero-title span {
+    .hero-title span:not(.hero-blue) {
       color: #111111;
       font-weight: 400;
     }
@@ -553,7 +553,7 @@
       .hero-mobile-title .hero-blue {
         color: #0062d8 !important;
       }
-      .hero-mobile-title span {
+      .hero-mobile-title span:not(.hero-blue) {
         display: block;
         font-weight: 400;
         color: #111111 !important;
@@ -699,7 +699,7 @@
   position: relative;
 }
 
-.th-product-card[data-product="flex"] {
+.th-product-card[data-product] {
   cursor: pointer;
 }
 
@@ -1381,7 +1381,11 @@
     .th-social-icon svg {
       width: 16px;
       height: 16px;
-      fill: currentColor;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .th-help-block {
@@ -2089,7 +2093,7 @@
         <div class="products-carousel-wrapper">
 
      <!-- PRODUCT 1 -->
-<article class="th-product-card" data-product="flex">
+<article class="th-product-card" data-product="flex" data-page="product.html">
   <div class="th-card-image-wrap">
     <a class="th-card-img-link" href="product.html" aria-label="View ZERONIC Flex Earbuds">
       <span class="th-badge">SOFTWARE BASED</span>
@@ -2122,22 +2126,24 @@
 </article>
 
           <!-- PRODUCT 2 -->
-          <article class="th-product-card">
+          <article class="th-product-card" data-product="gaming-pods" data-page="gaming-pods.html">
             <div class="th-card-image-wrap">
               <span class="th-badge">Low Latency</span>
-              <img
-                class="th-product-img"
-                src="assets/airpods-2.png"
-                alt="ZERONIC Gaming Pods"
-              />
+              <a class="th-card-img-link" href="gaming-pods.html" aria-label="View ZERONIC Gaming Pods">
+                <img
+                  class="th-product-img"
+                  src="assets/airpods-2.png"
+                  alt="ZERONIC Gaming Pods"
+                />
+              </a>
             </div>
             <div class="th-card-info">
               <h3 class="th-product-title">ZERONIC Gaming Pods</h3>
               <p class="th-product-desc">Mode Switch | Dual Mic for Calls</p>
-              <div class="th-rating-row">
+              <a class="th-rating-row" href="gaming-pods.html#reviews" style="text-decoration: none;" aria-label="Read ZERONIC Gaming Pods reviews">
                 <div class="th-stars">★★★★★</div>
                 <span class="th-rating-val">4.8</span>
-              </div>
+              </a>
               <div class="th-card-bottom">
                 <span class="th-price">Rs.5,250.00</span>
                 <button
@@ -2152,22 +2158,24 @@
           </article>
 
           <!-- PRODUCT 3 -->
-          <article class="th-product-card">
+          <article class="th-product-card" data-product="pro-wireless" data-page="pro-wireless.html">
             <div class="th-card-image-wrap">
               <span class="th-badge">Active Noise Cancellation</span>
-              <img
-                class="th-product-img"
-                src="assets/airpods-3.png"
-                alt="ZERONIC Pro Wireless"
-              />
+              <a class="th-card-img-link" href="pro-wireless.html" aria-label="View ZERONIC Pro Wireless">
+                <img
+                  class="th-product-img"
+                  src="assets/airpods-3.png"
+                  alt="ZERONIC Pro Wireless"
+                />
+              </a>
             </div>
             <div class="th-card-info">
               <h3 class="th-product-title">ZERONIC Pro Wireless</h3>
               <p class="th-product-desc">ANC Mode | High Fidelity Sound</p>
-              <div class="th-rating-row">
+              <a class="th-rating-row" href="pro-wireless.html#reviews" style="text-decoration: none;" aria-label="Read ZERONIC Pro Wireless reviews">
                 <div class="th-stars">★★★★★</div>
                 <span class="th-rating-val">4.9</span>
-              </div>
+              </a>
               <div class="th-card-bottom">
                 <span class="th-price">Rs.6,490.00</span>
                 <button
